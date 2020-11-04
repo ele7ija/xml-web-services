@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zahtev_za_informaciju>
+    <organ_vlasti>
+        <naziv>Народна банка Србије</naziv>
+        <sediste>
+            <ulica>Немањина</ulica>
+            <broj>17</broj>
+            <mesto>Београд</mesto>
+        </sediste>
+    </organ_vlasti>
+    <naslov>Захтев за приступ информацији од јавног значаја</naslov>
+    <telo>
+        <clan>
+            На основу члана 15. ст. 1. Закона о слободном приступу информацијама од јавног значаја 
+            („Службени гласник РС“, бр. 120/04, 54/07, 104/09 и 36/10), од горе наведеног органа захтевам:* 
+        </clan>
+        <zahtevi>
+            <zahtev odabrano='ne'>
+                обавештење да ли поседује тражену информацију
+            </zahtev>
+            <zahtev odabrano='ne'>
+                увид у документ који садржи тражену информацију
+            </zahtev>
+            <zahtev odabrano='da'>
+                ⁫ достављање копије документа који садржи тражену информацију
+                <vidovi_dostave>
+                    <dostava odabrano="ne">пошта</dostava>
+                    <dostava odabrano="ne">факс</dostava>
+                    <dostava odabrano="da">електронска пошта</dostava>
+                </vidovi_dostave>
+            </zahtev>
+        </zahtevi>
+        <obrazlozenje>
+            <labela>Овај захтев се односи на следеће информације</labela>
+            <opis>
+                Да ли су се банке, које су у периоду 2006, 2007 и 2008 пласирале кредите у швајцарским францима на тржишту Србије,
+                у истом том периоду задуживале у швајцарским францима, и ако јесу,
+                доставите ми податке о томе (ког датума, од кога, у ком износу, на који временски рок и под којим каматама).
+            </opis>
+        </obrazlozenje>
+    </telo>
+    <trazioc>
+        <licni_podaci>
+            <ime>Мика</ime>
+            <prezime>Микић</prezime>
+            <potpis></potpis>
+        </licni_podaci>
+        <adresa>
+            <ulica>Микина</ulica>
+            <broj>45</broj>
+            <mesto>Миријево</mesto>
+        </adresa>
+        <dodatni_podaci></dodatni_podaci>
+    </trazioc>
+    
+    <datum>01.01.2018</datum>
+    <mesto>Београд</mesto>
+</zahtev_za_informaciju>
