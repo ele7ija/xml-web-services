@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<obavestenje>
+    <predmet>
+        <datum>03.01.2018</datum>
+        <broj_predmeta>011834759</broj_predmeta>
+        <organ>
+            <naziv>Народна банка Србије</naziv>
+            <sediste>Београд</sediste>
+        </organ>
+        <trazilac>
+            <licni_podaci>
+                <ime>Мика</ime>
+                <prezime>Микић</prezime>
+            </licni_podaci>
+            <adresa>
+                <ulica>Микина</ulica>
+                <broj>45</broj>
+                <mesto>Миријево</mesto>
+            </adresa>
+            <dodatni_podaci></dodatni_podaci>
+        </trazilac>
+        <referencirani_zakon clan="16" strana="1">
+            Закона о слободном приступу информацијама од јавног значаја,
+        </referencirani_zakon>
+        <originalni_zahtev>
+            Да ли су се банке, које су у периоду 2006, 2007 и 2008 пласирале кредите у швајцарским францима на тржишту Србије,
+            у истом том периоду задуживале у швајцарским францима, и ако јесу,
+            доставите ми податке о томе (ког датума, од кога, у ком износу, на који временски рок и под којим каматама).
+        </originalni_zahtev>
+    </predmet>
+    <odgovor>
+        <odobrenja>
+            <uvid_u_dokument vreme_pocetka="1997-07-16T19:20+01:00" vreme_kraja="1997-07-16T19:20+02:00">
+                <adresa>
+                    <ulica>Перина</ulica>
+                    <broj>45</broj>
+                    <mesto>Салајка</mesto>
+                    <dodatni_podaci>Kancelarija 17</dodatni_podaci>
+                </adresa>
+            </uvid_u_dokument>
+            <izdavanje_kopije>
+                <uplata iznos="500.00">
+                    <racun broj_racuna="840-1231242-90" poziv_na_broj="97"></racun>
+                </uplata>
+            </izdavanje_kopije>
+        </odobrenja>
+    </odgovor>
+</obavestenje>
