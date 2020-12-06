@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.types.com"
+    xmlns="http://www.types.com"
+    elementFormDefault="qualified">
+    <xs:complexType name="datumi">
+        <xs:sequence>
+            <xs:element name="dan" type="xs:gMonthDay" default="--01-01"></xs:element>
+            <xs:element name="godina" type="xs:gYear" default="2020"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="razlog">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="није поступио"/>
+            <xs:enumeration value="није поступио у целости"/>
+            <xs:enumeration value="у законском року"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

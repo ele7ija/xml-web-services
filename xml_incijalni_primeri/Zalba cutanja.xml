@@ -1,51 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<zalba_cutanja>
-    <naslov>
-        ЖАЛБА КАДА ОРГАН ВЛАСТИ НИЈЕ ПОСТУПИО/ није поступио у целости/ ПО ЗАХТЕВУ ТРАЖИОЦА
-        У ЗАКОНСКОМ  РОКУ  (ЋУТАЊЕ УПРАВЕ)
-    </naslov>
-    <Poverenik>
+<zalba_cutanja xmlns="http://www.zalba_cutanja.com"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.zalba_cutanja.com ../xml_scheme/Schema_zalbe_cutanja.xsd"
+ xmlns:types="http://www.types.com">
+    <poverenik>
         <naziv>Повереникy за информације од јавног значаја и заштиту података о личности</naziv>
         <adresa>
             <mesto>Београд</mesto>
             <ulica>Булевар краља Александр</ulica>
             <broj>15</broj>
         </adresa>
-    </Poverenik>
-    <paragraf>
-        У складу са чланом 22. Закона о слободном приступу информацијама од јавног значаја подносим:
-    </paragraf>
+    </poverenik>
+    <zakon>
+        Члан 22. Закона о слободном приступу информацијама од јавног значаја подносим:
+    </zakon>
     <organ_vlasti></organ_vlasti>
-    <razlozi>
-        <razlog odabran = "da">није поступио</razlog>
-        <razlog odabran = "ne">није поступио у целости</razlog>
-        <razlog odabran = "ne">у законском року</razlog>
-    </razlozi>
+    <razlog></razlog>
     
-    <paragraf>
-        по мом захтеву  за слободан приступ информацијама од јавног значаја који сам поднео
-        том органу  дана <datum_zahteva> </datum_zahteva> године, а којим сам тражио/ла да ми се у складу
-        са Законом о слободном приступу информацијама од јавног значаја омогући увид- копија документа
-        који садржи информације  о /у вези са :
-    </paragraf>
-    <zahtevana_informacija>
-        
-    </zahtevana_informacija>
-    <paragraf>
-        На основу изнетог, предлажем да Повереник уважи моју жалбу и омогући ми приступ траженој/им  информацији/ма.
-        Као доказ , уз жалбу достављам копију захтева са доказом о предаји органу власти.
-        Напомена: Код жалбе  због непоступању по захтеву у целости, треба приложити и добијени одговор органа власти.
-    </paragraf>
+    <datum_zahteva>
+        <types:dan></types:dan>
+        <types:godina></types:godina>
+    </datum_zahteva>
+    <zahtevana_informacije></zahtevana_informacije>
+    
     <podnosioc_zalbe>
         <ime></ime>
         <prezime></prezime>
-        <adresa></adresa>
+        <adresa>
+            <mesto></mesto>
+            <ulica></ulica>
+            <broj></broj>
+        </adresa>
         <drugi_podaci_za_kontakt></drugi_podaci_za_kontakt>
     </podnosioc_zalbe>
     <mesto></mesto>
     <datum_zalbe>
-        <dan></dan>
-        <mesec></mesec>
-        <godina></godina>
+        <types:dan></types:dan>
+        <types:godina></types:godina>
     </datum_zalbe>
 </zalba_cutanja>

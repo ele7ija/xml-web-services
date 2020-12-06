@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.zalba_cutanja.com"
+    xmlns="http://www.zalba_cutanja.com"
+    xmlns:types="http://www.types.com"
+    elementFormDefault="qualified">
+    <xs:import namespace="http://www.types.com" schemaLocation="Types.xsd"/>
+    <xs:element name = "zalba_cutanja">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="poverenik"></xs:element>
+                <xs:element name="zakon" type="xs:string"></xs:element>
+                <xs:element name="organ_vlasti" type="xs:string"></xs:element>
+                <xs:element name="razlog" type="types:razlog" default="није поступио"></xs:element>
+                <xs:element name="datum_zahteva" type="types:datumi"></xs:element>
+                <xs:element name="zahtevana_informacije" type="xs:string"></xs:element>
+                <xs:element name="podnosioc_zalbe"></xs:element>
+                <xs:element name="mesto" type="xs:string"></xs:element>
+                <xs:element name="datum_zalbe" type="types:datumi"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="poverenik">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="naziv" type="xs:string"></xs:element>
+                <xs:element name="adresa"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="podnosioc_zalbe">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ime" type="xs:string"></xs:element>
+                <xs:element name="prezime" type="xs:string"></xs:element>
+                <xs:element name="adresa"></xs:element>
+                <xs:element name="drugi_podaci_za_kontakt" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="adresa">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mesto" type="xs:string"></xs:element>
+                <xs:element name="ulica" type="xs:string"></xs:element>
+                <xs:element name="broj" type="xs:positiveInteger" default="1"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
