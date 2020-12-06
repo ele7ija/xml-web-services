@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://ftn.uns.ac.rs/tim5/obavestenje"
+    xmlns:obavestenje="http://ftn.uns.ac.rs/tim5/obavestenje"
+    xmlns:util="http://ftn.uns.ac.rs/tim5/util">
+
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/util" schemaLocation="util.xsd"/>
+    <xs:element name="Obavestenje">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Trazilac" type="util:TFizicko_Lice"/>
+                <xs:element name="Organ" type="util:TPravno_Lice"/>
+                <xs:element name="Predmet">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Broj_Predmeta" type="xs:int"/>
+                            <xs:element name="Datum" type="xs:date"/>
+                            <xs:element name="Opis_Trazene_Informacije" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
