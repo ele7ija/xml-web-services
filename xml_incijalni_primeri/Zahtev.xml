@@ -1,55 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<zahtev_za_informaciju>
-    <organ_vlasti>
-        <naziv>Народна банка Србије</naziv>
-        <sediste>
-            <ulica>Немањина</ulica>
-            <broj>17</broj>
-            <mesto>Београд</mesto>
-        </sediste>
-    </organ_vlasti>
-    <naslov>Захтев за приступ информацији од јавног значаја</naslov>
-    <telo>
-        <!-- Ako je ovaj podatak uivek isti, ili za nas sistem nije bitan sa stanovista parsiranja, onda gra izostaviti-->
-        <referencirani_zakon clan="15" strana="1">
-            Закона о слободном приступу информацијама од јавног значаја  („Службени гласник РС“, бр. 120/04, 54/07, 104/09 и 36/10)
-        </referencirani_zakon>
-        <zahtevi>
-            <zahtev odabrano='ne'>
-                обавештење да ли поседује тражену информацију
-            </zahtev>
-            <zahtev odabrano='ne'>
-                увид у документ који садржи тражену информацију
-            </zahtev>
-            <zahtev odabrano='da'>
-                ⁫ достављање копије документа који садржи тражену информацију
-                <vidovi_dostave>
-                    <dostava odabrano="ne">пошта</dostava>
-                    <dostava odabrano="ne">факс</dostava>
-                    <dostava odabrano="da">електронска пошта</dostava>
-                </vidovi_dostave>
-            </zahtev>
-        </zahtevi>
-        <obrazlozenje>
-            Да ли су се банке, које су у периоду 2006, 2007 и 2008 пласирале кредите у швајцарским францима на тржишту Србије,
-            у истом том периоду задуживале у швајцарским францима, и ако јесу,
-            доставите ми податке о томе (ког датума, од кога, у ком износу, на који временски рок и под којим каматама).
-        </obrazlozenje>
-    </telo>
-    <trazilac>
-        <licni_podaci>
-            <ime>Мика</ime>
-            <prezime>Микић</prezime>
-            <potpis></potpis>
-        </licni_podaci>
-        <adresa>
-            <ulica>Микина</ulica>
-            <broj>45</broj>
-            <mesto>Миријево</mesto>
-        </adresa>
-        <dodatni_podaci></dodatni_podaci>
-    </trazilac>
-    
-    <datum>01.01.2018</datum>
-    <mesto>Београд</mesto>
-</zahtev_za_informaciju>
+<Zahtev xmlns="http://ftn.uns.ac.rs/tim5/zahtev"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://ftn.uns.ac.rs/tim5/zahtev ../xms_seme/Zahtev.xsd"
+    xmlns:util="http://ftn.uns.ac.rs/tim5/util">
+    <Trazilac>
+        <util:Adresa>
+            <util:Mesto>Novi Sad</util:Mesto>
+            <util:Postanski_broj>21000</util:Postanski_broj>
+            <util:Ulica>Jiricekova</util:Ulica>
+            <util:Broj>50</util:Broj>
+        </util:Adresa>
+        <util:Ime>Mirko</util:Ime>
+        <util:Prezime>Mirkovic</util:Prezime>
+    </Trazilac>
+    <Organ>
+        <util:Adresa>
+            <util:Mesto>Novi Sad</util:Mesto>
+            <util:Postanski_broj>21000</util:Postanski_broj>
+            <util:Ulica>Jiricekova</util:Ulica>
+            <util:Broj>51</util:Broj>
+        </util:Adresa>
+        <util:Naziv>Narodna Banka Srbije</util:Naziv>
+    </Organ>
+    <Pravni_Osnov>
+        <util:Naziv>Zakon o slobodnom pristupu informacijama od javnog znacaja</util:Naziv>
+        <util:Clan>15</util:Clan>
+        <util:Strana>1</util:Strana>
+        <util:Dopune>
+            <util:Dopuna>
+                <util:Broj>120</util:Broj>
+                <util:Godina>2004</util:Godina>
+            </util:Dopuna>
+            <util:Dopuna>
+                <util:Broj>54</util:Broj>
+                <util:Godina>2007</util:Godina>
+            </util:Dopuna>
+            <util:Dopuna>
+                <util:Broj>104</util:Broj>
+                <util:Godina>2009</util:Godina>
+            </util:Dopuna>
+            <util:Dopuna>
+                <util:Broj>36</util:Broj>
+                <util:Godina>2010</util:Godina>
+            </util:Dopuna>
+        </util:Dopune>
+    </Pravni_Osnov>
+    <Opis_Zahteva>
+        Da li su se banke, koje su u periodu 2006, 2007 i 2008 plasirale kredite u švajcarskim francima na tržištu Srbije,
+        u istom tom periodu zaduživale u švajcarskim francima, i ako jesu,
+        dostavite mi podatke o tome (kog datuma, od koga, u kom iznosu, na koji vremenski rok i pod kojim kamatama).
+    </Opis_Zahteva>
+    <Elementi_Zahteva>
+        <Element_Zahteva>
+            <util:Tekst>Uvid u dokument koji sadrzi trazenu informaciju</util:Tekst>
+        </Element_Zahteva>
+        <Element_Zahteva>
+            <util:Tekst>Dostavljanje kopije dokumenta koji sadrzi trazenu informaciju</util:Tekst>
+            <util:Metod_Dostave>Faks</util:Metod_Dostave>
+            <util:Metod_Dostave>Posta</util:Metod_Dostave>
+        </Element_Zahteva>
+    </Elementi_Zahteva>
+    <Datum>
+        <util:dan>---09</util:dan>
+        <util:mesec>--12</util:mesec>
+        <util:godina>2020</util:godina>
+    </Datum>
+    <Mesto>
+        Novi Sad   
+    </Mesto>
+</Zahtev>

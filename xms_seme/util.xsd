@@ -43,9 +43,7 @@
                     </xs:element>
                     <xs:element name="Prezime">
                         <xs:simpleType>
-                            <xs:restriction base="xs:string">
-                                <xs:pattern value=""/>
-                            </xs:restriction>
+                            <xs:restriction base="xs:string"> </xs:restriction>
                         </xs:simpleType>
                     </xs:element>
                 </xs:sequence>
@@ -68,7 +66,7 @@
     <xs:complexType name="TPravni_Osnov">
         <xs:sequence>
             <xs:element name="Naziv" type="xs:string"/>
-            <xs:element name="Clan" type="xs:positiveInteger"/>
+            <xs:element name="Clan" type="xs:positiveInteger" minOccurs="0"/>
             <xs:element name="Strana" type="xs:positiveInteger" minOccurs="0"/>
             <xs:element maxOccurs="1" name="Dopune" minOccurs="0">
                 <xs:complexType>
@@ -109,40 +107,31 @@
     <xs:complexType name="TElement_Zahteva">
         <xs:sequence>
             <xs:element name="Tekst" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Metod_Dostave" type="xs:string"/>
         </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="TElement_Zahteva_Dostava">
-        <xs:complexContent>
-            <xs:extension base="util:TElement_Zahteva">
-                <xs:sequence maxOccurs="unbounded">
-                    <xs:element name="Metod_Dostave" type="xs:string"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="TOdgovor_Na_Zahtev">
         <xs:sequence>
             <xs:element name="Odobren" type="xs:boolean"/>
             <xs:element name="Element_Zahteva" type="util:TElement_Zahteva"/>
+            <xs:element minOccurs="0" name="Uvid">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Datum_Uvida" type="util:Datum"/>
+                        <xs:element name="Vreme_Uvida" type="util:TVreme"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element minOccurs="0" name="Trosak">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="Iznos" type="xs:nonNegativeInteger"/>
+                        <xs:element name="Valuta" type="xs:string"/>
                         <xs:element minOccurs="0" name="Pravni_Osnov" type="util:TPravni_Osnov"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
         </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="TOdgovor_Na_Zahtev_Uvid">
-        <xs:complexContent>
-            <xs:extension base="util:TOdgovor_Na_Zahtev">
-                <xs:sequence>
-                    <xs:element name="Datum_Uvida" type="util:Datum"/>
-                    <xs:element name="Vreme_Uvida" type="util:TVreme"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="TVreme">
         <xs:sequence>

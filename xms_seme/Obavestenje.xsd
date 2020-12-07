@@ -14,13 +14,13 @@
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="Broj_Predmeta" type="xs:int"/>
-                            <xs:element name="Datum" type="xs:date"/>
+                            <xs:element name="Datum" type="util:Datum"/>
                             <xs:element name="Opis_Trazene_Informacije" type="xs:string"/>
                             <xs:element maxOccurs="unbounded" minOccurs="0" name="Pravni_Osnov"
                                 type="util:TPravni_Osnov"/>
                             <xs:element maxOccurs="unbounded" name="Odgovor"
                                 type="util:TOdgovor_Na_Zahtev"/>
-                            <xs:element minOccurs="0" name="Upltata" type="util:TUplata"/>
+                            <xs:element minOccurs="0" name="Uplata" type="util:TUplata"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>

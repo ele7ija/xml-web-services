@@ -11,8 +11,6 @@
                 <xs:element name="Organ" type="util:TPravno_Lice"/>
                 <xs:element name="Pravni_Osnov" type="util:TPravni_Osnov" maxOccurs="unbounded"
                     minOccurs="0"/>
-                <xs:element ref="util:Adresa"/>
-                <xs:element name="Datum" type="util:Datum"/>
                 <xs:element name="Opis_Zahteva" type="xs:string"/>
                 <xs:element name="Elementi_Zahteva">
                     <xs:complexType>
@@ -22,6 +20,8 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
+                <xs:element name="Datum" type="util:Datum"/>
+                <xs:element name="Mesto" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
