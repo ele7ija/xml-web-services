@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<zalba_cutanja xmlns="http://www.zalba_cutanja.com"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.zalba_cutanja.com ../xml_scheme/Schema_zalbe_cutanja.xsd"
- xmlns:types="http://www.types.com">
+<zalba_cutanja xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.zalba_cutanja.com ../xms_seme/Zalbe_cutanja.xsd"
+ xmlns="http://www.zalba_cutanja.com" xmlns:util="http://ftn.uns.ac.rs/tim5/util">
     <poverenik>
         <naziv>Повереникy за информације од јавног значаја и заштиту података о личности</naziv>
         <adresa>
@@ -12,14 +11,16 @@
         </adresa>
     </poverenik>
     <zakon>
-        Члан 22. Закона о слободном приступу информацијама од јавног значаја подносим:
+        <util:Naziv>Закона о слободном приступу информацијама од јавног значаја</util:Naziv>
+        <util:Clan>22</util:Clan>  
     </zakon>
     <organ_vlasti></organ_vlasti>
     <razlog></razlog>
     
     <datum_zahteva>
-        <types:dan></types:dan>
-        <types:godina></types:godina>
+        <util:dan></util:dan>
+        <util:mesec></util:mesec>
+        <util:godina></util:godina>
     </datum_zahteva>
     <zahtevana_informacije></zahtevana_informacije>
     
@@ -35,7 +36,8 @@
     </podnosioc_zalbe>
     <mesto></mesto>
     <datum_zalbe>
-        <types:dan></types:dan>
-        <types:godina></types:godina>
+        <util:dan></util:dan>
+        <util:mesec></util:mesec>
+        <util:godina></util:godina>
     </datum_zalbe>
 </zalba_cutanja>

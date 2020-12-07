@@ -69,8 +69,8 @@
         <xs:sequence>
             <xs:element name="Naziv" type="xs:string"/>
             <xs:element name="Clan" type="xs:positiveInteger"/>
-            <xs:element name="Strana" type="xs:positiveInteger"/>
-            <xs:element maxOccurs="1" name="Dopune">
+            <xs:element name="Strana" type="xs:positiveInteger" minOccurs="0"/>
+            <xs:element maxOccurs="1" name="Dopune" minOccurs="0">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" name="Dopuna"
@@ -92,4 +92,18 @@
             </xs:element>
         </xs:sequence>
     </xs:complexType>
+    <xs:complexType name="Datum">
+        <xs:sequence>
+            <xs:element name="dan" type="xs:gDay" default="---01"></xs:element>
+            <xs:element name="mesec" type="xs:gMonth" default="--01"></xs:element>
+            <xs:element name="godina" type="xs:gYear" default="2020"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="Razlog">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="није поступио"/>
+            <xs:enumeration value="није поступио у целости"/>
+            <xs:enumeration value="у законском року"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>
