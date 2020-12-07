@@ -28,19 +28,19 @@
         <util:Strana>1</util:Strana>
         <util:Dopune>
             <util:Dopuna>
-                <util:Broj>120</util:Broj>
+                <util:Broj_dopune>120</util:Broj_dopune>
                 <util:Godina>2004</util:Godina>
             </util:Dopuna>
             <util:Dopuna>
-                <util:Broj>54</util:Broj>
+                <util:Broj_dopune>54</util:Broj_dopune>
                 <util:Godina>2007</util:Godina>
             </util:Dopuna>
             <util:Dopuna>
-                <util:Broj>104</util:Broj>
+                <util:Broj_dopune>104</util:Broj_dopune>
                 <util:Godina>2009</util:Godina>
             </util:Dopuna>
             <util:Dopuna>
-                <util:Broj>36</util:Broj>
+                <util:Broj_dopune>36</util:Broj_dopune>
                 <util:Godina>2010</util:Godina>
             </util:Dopuna>
         </util:Dopune>

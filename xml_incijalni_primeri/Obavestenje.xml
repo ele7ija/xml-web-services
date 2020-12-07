@@ -40,19 +40,19 @@
             <util:Strana>1</util:Strana>
             <util:Dopune>
                 <util:Dopuna>
-                    <util:Broj>120</util:Broj>
+                    <util:Broj_dopune>120</util:Broj_dopune>
                     <util:Godina>2004</util:Godina>
                 </util:Dopuna>
                 <util:Dopuna>
-                    <util:Broj>54</util:Broj>
+                    <util:Broj_dopune>54</util:Broj_dopune>
                     <util:Godina>2007</util:Godina>
                 </util:Dopuna>
                 <util:Dopuna>
-                    <util:Broj>104</util:Broj>
+                    <util:Broj_dopune>104</util:Broj_dopune>
                     <util:Godina>2009</util:Godina>
                 </util:Dopuna>
                 <util:Dopuna>
-                    <util:Broj>36</util:Broj>
+                    <util:Broj_dopune>36</util:Broj_dopune>
                     <util:Godina>2010</util:Godina>
                 </util:Dopuna>
             </util:Dopune>
@@ -89,7 +89,7 @@
                     <util:Naziv>Uredba o troskovima Vlade Republike Srbije</util:Naziv>
                     <util:Dopune>
                         <util:Dopuna>
-                            <util:Broj>8</util:Broj>
+                            <util:Broj_dopune>8</util:Broj_dopune>
                             <util:Godina>2006</util:Godina>
                         </util:Dopuna>
                         
@@ -108,19 +108,19 @@
                 <util:Naziv>Pravilnik o uslovima vodjenja racuna</util:Naziv>
                 <util:Dopune>
                     <util:Dopuna>
-                        <util:Broj>20</util:Broj>
+                        <util:Broj_dopune>20</util:Broj_dopune>
                         <util:Godina>2007</util:Godina>
                     </util:Dopuna>
                     <util:Dopuna>
-                        <util:Broj>40</util:Broj>
+                        <util:Broj_dopune>40</util:Broj_dopune>
                         <util:Godina>2010</util:Godina>
                     </util:Dopuna>
                     <util:Dopuna>
-                        <util:Broj>104</util:Broj>
+                        <util:Broj_dopune>104</util:Broj_dopune>
                         <util:Godina>2009</util:Godina>
                     </util:Dopuna>
                     <util:Dopuna>
-                        <util:Broj>36</util:Broj>
+                        <util:Broj_dopune>36</util:Broj_dopune>
                         <util:Godina>2010</util:Godina>
                     </util:Dopuna>
                 </util:Dopune>
