@@ -261,8 +261,8 @@ public class DOMParser implements ErrorHandler {
 
         if (args.length != 1) {
 
-            filePath = "xml_incijalni_primeri/Zalba cutanja.xml";
-
+            //filePath = "xml_incijalni_primeri/Zalba cutanja.xml";
+            filePath = "xml_incijalni_primeri/zalba_cutanja3.xml";
             System.out.println("[INFO] No input file, using default \""	+ filePath + "\"");
 
         } else {
