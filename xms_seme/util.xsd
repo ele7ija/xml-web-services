@@ -94,9 +94,9 @@
     </xs:complexType>
     <xs:complexType name="Datum">
         <xs:sequence>
-            <xs:element name="dan" type="xs:gDay" default="---01"></xs:element>
-            <xs:element name="mesec" type="xs:gMonth" default="--01"></xs:element>
-            <xs:element name="godina" type="xs:gYear" default="2020"></xs:element>
+            <xs:element name="dan" type="xs:gDay" default="---01"/>
+            <xs:element name="mesec" type="xs:gMonth" default="--01"/>
+            <xs:element name="godina" type="xs:gYear" default="2020"/>
         </xs:sequence>
     </xs:complexType>
     <xs:simpleType name="Razlog">
@@ -106,4 +106,81 @@
             <xs:enumeration value="у законском року"/>
         </xs:restriction>
     </xs:simpleType>
+    <xs:complexType name="TElement_Zahteva">
+        <xs:sequence>
+            <xs:element name="Tekst" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TElement_Zahteva_Dostava">
+        <xs:complexContent>
+            <xs:extension base="util:TElement_Zahteva">
+                <xs:sequence maxOccurs="unbounded">
+                    <xs:element name="Metod_Dostave" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="TOdgovor_Na_Zahtev">
+        <xs:sequence>
+            <xs:element name="Odobren" type="xs:boolean"/>
+            <xs:element name="Element_Zahteva" type="util:TElement_Zahteva"/>
+            <xs:element minOccurs="0" name="Trosak">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Iznos" type="xs:nonNegativeInteger"/>
+                        <xs:element minOccurs="0" name="Pravni_Osnov" type="util:TPravni_Osnov"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TOdgovor_Na_Zahtev_Uvid">
+        <xs:complexContent>
+            <xs:extension base="util:TOdgovor_Na_Zahtev">
+                <xs:sequence>
+                    <xs:element name="Datum_Uvida" type="util:Datum"/>
+                    <xs:element name="Vreme_Uvida" type="util:TVreme"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="TVreme">
+        <xs:sequence>
+            <xs:element name="Sat">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="23"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Minut">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="59"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TUplata">
+        <xs:sequence>
+            <xs:element name="Racun" type="util:TRacun"/>
+            <xs:element name="Iznos" type="xs:nonNegativeInteger"/>
+            <xs:element name="Poziv_Na_Broj" type="xs:nonNegativeInteger"/>
+            <xs:element minOccurs="0" name="Pravni_Osnov" type="util:TPravni_Osnov"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TRacun">
+        <xs:sequence>
+            <xs:element name="Broj_Racuna">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="\d{3}-\d{1,13}-\d{2}"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>
