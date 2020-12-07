@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><zalba_cutanja xmlns="http://www.zalba_cutanja.com" xmlns:util="http://ftn.uns.ac.rs/tim5/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.zalba_cutanja.com ../xms_seme/Zalbe_cutanja.xsd">
+  <poverenik>
+    <naziv>Повереникy за информације од јавног значаја и заштиту података о личности</naziv>
+    <adresa>
+      <mesto>Београд</mesto>
+      <ulica>Булевар краља Александр</ulica>
+      <broj>15</broj>
+    </adresa>
+  </poverenik>
+  <zakon>
+    <util:Naziv>Закона о слободном приступу информацијама од јавног значаја</util:Naziv>
+    <util:Clan>22</util:Clan>
+  </zakon>
+  <organ_vlasti>Пореска управа</organ_vlasti>
+  <razlog>у законском року</razlog>
+  <datum_zahteva>
+    <util:dan>---21</util:dan>
+    <util:mesec>--05</util:mesec>
+    <util:godina>2018</util:godina>
+  </datum_zahteva>
+  <zahtevana_informacije>Заостала камата на картицама</zahtevana_informacije>
+  <podnosioc_zalbe>
+    <ime>Пера</ime>
+    <prezime>Петровић</prezime>
+    <adresa>
+      <mesto>Нови Сад</mesto>
+      <ulica>Булевар Михајла Пупина</ulica>
+      <broj>11</broj>
+    </adresa>
+  </podnosioc_zalbe>
+  <mesto>Нови Сад</mesto>
+  <datum_zalbe>
+    <util:dan>---15</util:dan>
+    <util:mesec>--08</util:mesec>
+    <util:godina>2018</util:godina>
+  </datum_zalbe>
+</zalba_cutanja>
