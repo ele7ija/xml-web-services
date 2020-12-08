@@ -9,33 +9,20 @@
             <xs:sequence>
                 <xs:element name="Trazilac" type="util:TFizicko_Lice"/>
                 <xs:element name="Organ" type="util:TPravno_Lice"/>
-                <xs:element name="Pravni_Osnov" type="util:TPravni_Osnov"/>
-                <xs:element ref="util:Adresa"/>
-                <xs:element name="Datum" type="xs:date"/>
+                <xs:element name="Pravni_Osnov" type="util:TPravni_Osnov" maxOccurs="unbounded"
+                    minOccurs="0"/>
                 <xs:element name="Opis_Zahteva" type="xs:string"/>
                 <xs:element name="Elementi_Zahteva">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element maxOccurs="unbounded" name="Element_Zahteva"
-                                type="zahtev:TElement_Zahteva"/>
+                                type="util:TElement_Zahteva"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
+                <xs:element name="Datum" type="util:Datum"/>
+                <xs:element name="Mesto" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:complexType abstract="true" name="TElement_Zahteva">
-        <xs:sequence>
-            <xs:element name="Tekst" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="TElement_Zahteva_Dostava">
-        <xs:complexContent>
-            <xs:extension base="zahtev:TElement_Zahteva">
-                <xs:sequence>
-                    <xs:element name="Metod_Dostave" type="xs:string"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
 </xs:schema>

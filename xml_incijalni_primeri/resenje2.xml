@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Resenje xmlns="http://ftn.uns.ac.rs/tim5/resenje" xmlns:util="http://ftn.uns.ac.rs/tim5/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ftn.uns.ac.rs/tim5/resenje ../xms_seme/resenje.xsd">
+    <Broj_resenja>071-01-4075/2018-03</Broj_resenja>
+    <Datum>
+        <util:dan>---15</util:dan>
+        <util:mesec>--08</util:mesec>
+        <util:godina>2018</util:godina>
+    </Datum>
+    <Poverenik>
+        <Ime>Мика</Ime>
+        <Prezime>Микић</Prezime>
+    </Poverenik>
+</Resenje>

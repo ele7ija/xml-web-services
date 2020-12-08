@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><Obavestenje xmlns="http://ftn.uns.ac.rs/tim5/obavestenje" xmlns:util="http://ftn.uns.ac.rs/tim5/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ftn.uns.ac.rs/tim5/obavestenje ../xms_seme/Obavestenje.xsd">
+  <Trazilac>
+    <util:Adresa>
+      <util:Mesto>Novi Sad</util:Mesto>
+      <util:Postanski_broj>21000</util:Postanski_broj>
+      <util:Ulica>Jiricekova</util:Ulica>
+      <util:Broj>50</util:Broj>
+    </util:Adresa>
+    <util:Ime>Mirko</util:Ime>
+    <util:Prezime>Mirkovic</util:Prezime>
+  </Trazilac>
+  <Organ>
+    <util:Adresa>
+      <util:Mesto>Novi Sad</util:Mesto>
+      <util:Postanski_broj>21000</util:Postanski_broj>
+      <util:Ulica>Jiricekova</util:Ulica>
+      <util:Broj>51</util:Broj>
+    </util:Adresa>
+    <util:Naziv>Narodna Banka Srbije</util:Naziv>
+  </Organ>
+  <Predmet>
+    <Broj_Predmeta>123</Broj_Predmeta>
+    <Datum>
+      <util:dan>---09</util:dan>
+      <util:mesec>--12</util:mesec>
+      <util:godina>2020</util:godina>
+    </Datum>
+    <Opis_Trazene_Informacije>Da li su se banke, koje su u periodu 2006, 2007 i 2008 plasirale kredite u švajcarskim francima na tržištu Srbije, 
+u istom tom periodu zaduživale u švajcarskim francima, i ako jesu, 
+dostavite mi podatke o tome (kog datuma, od koga, u kom iznosu, na koji vremenski rok i pod kojim kamatama).</Opis_Trazene_Informacije>
+    <Pravni_Osnov>
+      <util:Naziv>Zakon o slobodnom pristupu informacijama od javnog znacaja</util:Naziv>
+      <util:Clan>15</util:Clan>
+      <util:Strana>1</util:Strana>
+      <util:Dopune>
+        <util:Dopuna>
+          <util:Broj_dopune>120</util:Broj_dopune>
+          <util:Godina>2004</util:Godina>
+        </util:Dopuna>
+        <util:Dopuna>
+          <util:Broj_dopune>54</util:Broj_dopune>
+          <util:Godina>2007</util:Godina>
+        </util:Dopuna>
+        <util:Dopuna>
+          <util:Broj_dopune>104</util:Broj_dopune>
+          <util:Godina>2009</util:Godina>
+        </util:Dopuna>
+        <util:Dopuna>
+          <util:Broj_dopune>36</util:Broj_dopune>
+          <util:Godina>2010</util:Godina>
+        </util:Dopuna>
+      </util:Dopune>
+    </Pravni_Osnov>
+    <Odgovor>
+      <util:Odobren>true</util:Odobren>
+      <util:Element_Zahteva>
+        <util:Tekst>Uvid u dokument koji sadrzi trazenu informaciju</util:Tekst>
+      </util:Element_Zahteva>
+      <util:Uvid>
+        <util:Datum_Uvida>
+          <util:dan>---15</util:dan>
+          <util:mesec>--12</util:mesec>
+          <util:godina>2020</util:godina>
+        </util:Datum_Uvida>
+        <util:Vreme_Uvida>
+          <util:Sat>14</util:Sat>
+          <util:Minut>05</util:Minut>
+        </util:Vreme_Uvida>
+      </util:Uvid>
+    </Odgovor>
+    <Odgovor>
+      <util:Odobren>true</util:Odobren>
+      <util:Element_Zahteva>
+        <util:Tekst>Dostavljanje kopije dokumenta koji sadrzi trazenu informaciju</util:Tekst>
+        <util:Metod_Dostave>Faks</util:Metod_Dostave>
+        <util:Metod_Dostave>Posta</util:Metod_Dostave>
+      </util:Element_Zahteva>
+      <util:Trosak>
+        <util:Iznos>100</util:Iznos>
+        <util:Valuta>RSD</util:Valuta>
+        <util:Pravni_Osnov>
+          <util:Naziv>Uredba o troskovima Vlade Republike Srbije</util:Naziv>
+          <util:Dopune>
+            <util:Dopuna>
+              <util:Broj_dopune>8</util:Broj_dopune>
+              <util:Godina>2006</util:Godina>
+            </util:Dopuna>
+          </util:Dopune>
+        </util:Pravni_Osnov>
+      </util:Trosak>
+    </Odgovor>
+    <Uplata>
+      <util:Racun>
+        <util:Broj_Racuna>200-123456-00</util:Broj_Racuna>
+      </util:Racun>
+      <util:Iznos>100</util:Iznos>
+      <util:Poziv_Na_Broj>97</util:Poziv_Na_Broj>
+      <util:Pravni_Osnov>
+        <util:Naziv>Pravilnik o uslovima vodjenja racuna</util:Naziv>
+        <util:Dopune>
+          <util:Dopuna>
+            <util:Broj_dopune>20</util:Broj_dopune>
+            <util:Godina>2007</util:Godina>
+          </util:Dopuna>
+          <util:Dopuna>
+            <util:Broj_dopune>40</util:Broj_dopune>
+            <util:Godina>2010</util:Godina>
+          </util:Dopuna>
+          <util:Dopuna>
+            <util:Broj_dopune>104</util:Broj_dopune>
+            <util:Godina>2009</util:Godina>
+          </util:Dopuna>
+          <util:Dopuna>
+            <util:Broj_dopune>36</util:Broj_dopune>
+            <util:Godina>2010</util:Godina>
+          </util:Dopuna>
+        </util:Dopune>
+      </util:Pravni_Osnov>
+    </Uplata>
+  </Predmet>
+</Obavestenje>
