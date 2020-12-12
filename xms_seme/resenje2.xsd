@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://ftn.uns.ac.rs/tim5/resenje"
+    xmlns:resenje="http://ftn.uns.ac.rs/tim5/resenje"
+    xmlns:util="http://ftn.uns.ac.rs/tim5/util">
+
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/util" schemaLocation="util.xsd"/>
+
+    <!-- RESENJE I ELEMENTI RESENJA -->
+    <xs:element name="Resenje">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="resenje:Kontekst"/>
+                <xs:element ref="resenje:Odluka"/>
+                <xs:element name="Poverenik" type="resenje:TOsoba"/>
+            </xs:sequence>
+            <xs:attribute name="datum" type="xs:date" use="optional"/>
+            <xs:attribute name="broj_resenja" type="resenje:TBroj_resenja" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Kontekst"> 
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Tekst_konteksta">
+                    <xs:complexType mixed="true">
+                        <!-- Ovde je tekst -->
+                        <xs:sequence minOccurs="0" maxOccurs="unbounded" >
+                            <xs:element name="Pravni_osnov" type="util:TPravni_Osnov"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Zalba">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Podnosilac" type="resenje:TOsoba"/>
+                            <xs:element name="Organ_vlasti" type="util:TPravno_Lice"/>
+                        </xs:sequence>
+                        <xs:attribute name="datum_podnosenja_zahteva" type="xs:date"/>
+                        <xs:attribute name="tip" type="resenje:TTip_zalbe"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Odluka">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element name="Obrazlozenje">
+                    <xs:complexType mixed="true">
+                        <!-- Ovde je tekst -->
+                        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="Pravni_osnov" type="util:TPravni_Osnov"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ishod" type="resenje:TIshod_odluke" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- TIPOVI -->
+    <xs:simpleType name="TBroj_resenja">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[^/]*/[0-9]{4}-[0-9]{2}"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TIshod_odluke">
+        <xs:restriction base="xs:string">
+            <!-- Osnovana zalba povlaci naloge -->
+            <xs:enumeration value="osnovana_zalba"/>
+            <!-- Nesnovana zalba povlaci naloge -->
+            <xs:enumeration value="neosnovana_zalba"/>
+            <xs:enumeration value="ponistena_zalba"/>
+            <xs:enumeration value="odbijen_zahtev"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="TOsoba">
+        <xs:sequence>
+            <xs:element name="Ime">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Prezime">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="TTip_zalbe">
+        <xs:restriction base="xs:string">
+            <!-- Odbijena/odbacena zalba -->
+            <xs:enumeration value="odbacivanje"/>
+            <!-- Nepostupanje/nije u celosti/u roku -->
+            <xs:enumeration value="nepostupanje"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
