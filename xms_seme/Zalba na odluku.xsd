@@ -10,7 +10,7 @@
                 <xs:element name="Poverenik">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element ref="util:Adresa"/>
+                            <xs:element name="Adresa" type="util:Adresa"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>

@@ -24,7 +24,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="naziv" type="xs:string"></xs:element>
-                <xs:element name="adresa"></xs:element>
+                <xs:element name="adresa" type="util:Adresa"></xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -33,17 +33,8 @@
             <xs:sequence>
                 <xs:element name="ime" type="xs:string"></xs:element>
                 <xs:element name="prezime" type="xs:string"></xs:element>
-                <xs:element name="adresa"></xs:element>
+                <xs:element name="adresa" type="util:Adresa"></xs:element>
                 <xs:element name="drugi_podaci_za_kontakt" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="adresa">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="mesto" type="xs:string"></xs:element>
-                <xs:element name="ulica" type="xs:string"></xs:element>
-                <xs:element name="broj" type="xs:positiveInteger" default="1"></xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

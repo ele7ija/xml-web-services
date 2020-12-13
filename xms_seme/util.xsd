@@ -4,39 +4,36 @@
 
     <xs:complexType name="TLice">
         <xs:sequence>
-            <xs:element ref="util:Adresa"/>
+            <xs:element name="Adresa" type="util:Adresa"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:element name="Adresa">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="Mesto">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string"/>
-                    </xs:simpleType>
-                </xs:element>
-                <xs:element name="Postanski_broj" minOccurs="0">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:int">
-                            <xs:minInclusive value="11000"/>
-                            <xs:maxInclusive value="40000"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
-                <xs:element name="Ulica">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string"/>
-                    </xs:simpleType>
-                </xs:element>
-                <xs:element name="Broj">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:positiveInteger"/>
-                    </xs:simpleType>
-                </xs:element>
-                
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+    <xs:complexType name="Adresa">
+        <xs:sequence>
+            <xs:element name="Mesto">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Postanski_broj" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="11000"/>
+                        <xs:maxInclusive value="40000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Ulica">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Broj">
+                <xs:simpleType>
+                    <xs:restriction base="xs:positiveInteger"/>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
     <xs:complexType name="TFizicko_Lice">
         <xs:complexContent>
             <xs:extension base="util:TLice">
