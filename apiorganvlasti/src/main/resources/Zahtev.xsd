@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/zahtev"
+    xmlns:util="http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/util"
+    xmlns:zahtev="http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/zahtev">
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/util"
+        schemaLocation="util.xsd"/>
+    <xs:element name="Zahtev">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="Trazilac" type="util:TFizicko_Lice"/>
+                <xs:element name="Organ" type="util:TPravno_Lice"/>
+                <xs:element name="Pravni_Osnov" type="util:TPravni_Osnov" maxOccurs="unbounded"
+                    minOccurs="0"/>
+                <xs:element name="Opis_Zahteva" type="xs:string"/>
+                <xs:element name="Elementi_Zahteva">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="Element_Zahteva"
+                                type="util:TElement_Zahteva"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Datum" type="util:Datum"/>
+                <xs:element name="Mesto" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getAllZahtevRequest"/>
+    <xs:element name="getAllZahtevResponse">
+        <xs:complexType>
+            <xs:sequence maxOccurs="1" minOccurs="1">
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="zahtev:Zahtev"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getZahtevRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idZahteva" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getZahtevResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="0" ref="zahtev:Zahtev"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="createZahtevRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="zahtev:Zahtev"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="createZahtevResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="idZahteva" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateZahtevRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idZahteva" type="xs:long"/>
+                <xs:element ref="zahtev:Zahtev"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateZahtevResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="uspeh" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteZahtevRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idZahteva" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteZahtevResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="uspeh" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
