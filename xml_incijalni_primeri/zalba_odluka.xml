@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Zalba_na_odluku xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ftn.uns.ac.rs/tim5/zalba_na_odluku ../xms_seme/Zalba%20na%20odluku.xsd"
+  xmlns="http://ftn.uns.ac.rs/tim5/zalba_na_odluku" xmlns:util="http://ftn.uns.ac.rs/tim5/util">
+  <Poverenik>
+    <util:Adresa>
+      <util:Mesto> Београд </util:Mesto>
+      <util:Postanski_broj>11000</util:Postanski_broj>
+      <util:Ulica> Булевар краља Александрa </util:Ulica>
+	    <util:Broj> 15 </util:Broj>
+    </util:Adresa>
+    
+  </Poverenik>
+
+  <Zalilac>
+    <util:Adresa>
+      <util:Mesto></util:Mesto>
+      <util:Postanski_broj>11000</util:Postanski_broj>
+      <util:Ulica></util:Ulica>
+      <util:Broj>1</util:Broj>
+    </util:Adresa>
+    <util:Ime></util:Ime>
+    <util:Prezime></util:Prezime>
+  </Zalilac>
+  
+  <organ_vlasti></organ_vlasti>
+  
+  <odluka>
+	 <broj_odluke></broj_odluke>
+	 <godina></godina>
+  </odluka>
+
+  <Datum>
+    <util:dan></util:dan>
+    <util:mesec></util:mesec>
+    <util:godina></util:godina>
+  </Datum>
+
+  <Osnova_za_zaljenje></Osnova_za_zaljenje>
+
+  <Zakon>
+    <Naziv>Закона о слободном приступу информацијама од јавног значаја.</Naziv>
+	  <Clan>22</Clan>
+	  <Strana>1</Strana>
+  </Zakon>
+
+  <Mesto></Mesto>
+
+  <Datum_zahteva>
+    <util:dan></util:dan>
+	  <util:mesec></util:mesec>
+    <util:godina></util:godina>
+  </Datum_zahteva>
+
+  <Podnosilac_zalbe>
+	  <Obavezni_podaci>
+	    <util:Adresa>
+	      <util:Mesto></util:Mesto>
+	      <util:Postanski_broj>11000</util:Postanski_broj>
+	      <util:Ulica></util:Ulica>
+	      <util:Broj>1</util:Broj>
+	    </util:Adresa>
+	    <util:Ime></util:Ime>
+	    <util:Prezime></util:Prezime>
+	  </Obavezni_podaci>
+    <Kontakt_podaci></Kontakt_podaci>
+  </Podnosilac_zalbe>
+
+</Zalba_na_odluku>

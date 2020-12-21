@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://ftn.uns.ac.rs/tim5/util" xmlns:util="http://ftn.uns.ac.rs/tim5/util">
+
+    <xs:complexType name="TLice">
+        <xs:sequence>
+            <xs:element name="Adresa" type="util:Adresa"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Adresa">
+        <xs:sequence>
+            <xs:element name="Mesto">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Postanski_broj" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="11000"/>
+                        <xs:maxInclusive value="40000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Ulica">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Broj">
+                <xs:simpleType>
+                    <xs:restriction base="xs:positiveInteger"/>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TFizicko_Lice">
+        <xs:complexContent>
+            <xs:extension base="util:TLice">
+                <xs:sequence>
+                    <xs:element name="Ime">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string"/>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="Prezime">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string"> </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="TPravno_Lice">
+        <xs:complexContent>
+            <xs:extension base="util:TLice">
+                <xs:sequence>
+                    <xs:element name="Naziv">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string"/>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="TPravni_Osnov">
+        <xs:sequence>
+            <xs:element name="Naziv" type="xs:string"/>
+            <xs:element name="Clan" type="xs:positiveInteger" minOccurs="0"/>
+            <xs:element name="Strana" type="xs:positiveInteger" minOccurs="0"/>
+            <xs:element name="Dopune" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="Dopuna"
+                            type="util:TDopuna_Pravnog_Osnova"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TDopuna_Pravnog_Osnova">
+        <xs:sequence>
+            <xs:element name="Broj_dopune" type="xs:positiveInteger"/>
+            <xs:element name="Godina">
+                <xs:simpleType>
+                    <xs:restriction base="xs:positiveInteger">
+                        <xs:pattern value="[12][0-9]{3}"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Datum">
+        <xs:sequence>
+            <xs:element name="dan" type="xs:gDay" default="---01"/>
+            <xs:element name="mesec" type="xs:gMonth" default="--01"/>
+            <xs:element name="godina" type="xs:gYear" default="2020"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="Razlog">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="није поступио"/>
+            <xs:enumeration value="није поступио у целости"/>
+            <xs:enumeration value="у законском року"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="TElement_Zahteva">
+        <xs:sequence>
+            <xs:element name="Tekst" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Metod_Dostave" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TOdgovor_Na_Zahtev">
+        <xs:sequence>
+            <xs:element name="Odobren" type="xs:boolean"/>
+            <xs:element name="Element_Zahteva" type="util:TElement_Zahteva"/>
+            <xs:element minOccurs="0" name="Uvid">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Datum_Uvida" type="util:Datum"/>
+                        <xs:element name="Vreme_Uvida" type="util:TVreme"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="Trosak">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Iznos" type="xs:nonNegativeInteger"/>
+                        <xs:element name="Valuta" type="xs:string"/>
+                        <xs:element minOccurs="0" name="Pravni_Osnov" type="util:TPravni_Osnov"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TVreme">
+        <xs:sequence>
+            <xs:element name="Sat">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="23"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Minut">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="59"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TUplata">
+        <xs:sequence>
+            <xs:element name="Racun" type="util:TRacun"/>
+            <xs:element name="Iznos" type="xs:nonNegativeInteger"/>
+            <xs:element name="Poziv_Na_Broj" type="xs:nonNegativeInteger"/>
+            <xs:element minOccurs="0" name="Pravni_Osnov" type="util:TPravni_Osnov"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TRacun">
+        <xs:sequence>
+            <xs:element name="Broj_Racuna">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="\d{3}-\d{1,13}-\d{2}"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
