@@ -75,4 +75,7 @@ public class GetAllZahtevResponse {
         return this.zahtev;
     }
 
+    public void setZahtev(List<Zahtev> zahtev) {
+        this.zahtev = zahtev;
+    }
 }
