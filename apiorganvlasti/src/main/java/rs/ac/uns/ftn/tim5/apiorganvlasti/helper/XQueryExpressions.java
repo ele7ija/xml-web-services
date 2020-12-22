@@ -12,14 +12,15 @@ public class XQueryExpressions {
             "where $x/id=%d\n" +
             "return $x";
 
-    public static final String X_UPDATE_UPDATE_BY_ID_ZAHTEVA_EXPRESSION = "<xu:modifications version=\"1.0\"\n" +
-            "\txmlns:xu=\"http://www.xmldb.org/xupdate\"\n" +
-            "\txmlns=\"http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/zahtev\">\n" +
-            "\txmlns:util=\"http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/util\">\n" +
-            "\t<xu:update select=\"collection('/db/sample/zahtevi')/Zahtev/id=%d\">\n" +
-            "\t%s" +
-            "\t</xu:update>\n" +
-            "\t</xu:modifications>";
+    public static final String X_UPDATE_UPDATE_BY_ID_ZAHTEVA_EXPRESSION = "xquery version \"3.1\";\n" +
+            "xmldb:update(\"/db/sample/zahtevi\",\n" +
+            "    <xu:modifications version=\"1.0\"\n" +
+            "    \txmlns:xu=\"http://www.xmldb.org/xupdate\"\n" +
+            "    \txmlns:ns2=\"http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/util\">\n" +
+            "    \t<xu:update select=\"doc('/db/sample/zahtevi/%s')/Zahtev\">\n" +
+            "    \t%s" +
+            "    \t</xu:update>\n" +
+            "    </xu:modifications>)\n";
 
     public static final String X_UPDATE_REMOVE_BY_ID_ZAHTEVA_EXPRESSION =
             "xquery version \"3.1\";\n" +
