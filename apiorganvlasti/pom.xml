@@ -23,6 +23,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
 
+        <!-- soap ws and jaxb to java classes dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
@@ -30,6 +31,19 @@
         <dependency>
             <groupId>wsdl4j</groupId>
             <artifactId>wsdl4j</artifactId>
+        </dependency>
+
+        <!-- exist db and XML DB API dependencies -->
+        <dependency>
+            <groupId>net.sf.xmldb-org</groupId>
+            <artifactId>xmldb-api</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.exist-db</groupId>
+            <artifactId>exist-core</artifactId>
+            <version>5.0.0</version>
+            <scope>runtime</scope>
         </dependency>
 
     </dependencies>
