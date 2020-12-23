@@ -16,6 +16,7 @@ public class XQueryExpressions {
             "xmldb:update(\"/db/sample/zahtevi\",\n" +
             "    <xu:modifications version=\"1.0\"\n" +
             "    \txmlns:xu=\"http://www.xmldb.org/xupdate\"\n" +
+            "    \txmlns=\"http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/zahtev\"\n" +
             "    \txmlns:ns2=\"http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/util\">\n" +
             "    \t<xu:update select=\"doc('/db/sample/zahtevi/%s')/Zahtev\">\n" +
             "    \t%s" +

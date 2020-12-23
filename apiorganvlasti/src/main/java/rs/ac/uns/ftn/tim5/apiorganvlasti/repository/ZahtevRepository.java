@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -28,28 +29,11 @@ import static rs.ac.uns.ftn.tim5.apiorganvlasti.helper.XQueryExpressions.*;
 @Repository
 public class ZahtevRepository {
 
-    static List<Zahtev> zahtevi = new ArrayList<>();
     static final String collectionId = "/db/sample/zahtevi";
     static final String jaxbContextPath = "rs.ac.uns.ftn.tim5.apiorganvlasti.model.zahtev";
+
     @Autowired
     DbConnection dbConnection;
-
-    @PostConstruct
-    public void initData() {
-        Zahtev z1 = new Zahtev();
-        z1.setId(1);
-        z1.setMesto("Novi Sad");
-        z1.setOpisZahteva("Opis 1");
-
-        Zahtev z2 = new Zahtev();
-        z2.setId(2);
-        z2.setMesto("Beograd");
-        z2.setOpisZahteva("Opis 2");
-
-        zahtevi.add(z1);
-        zahtevi.add(z2);
-
-    }
 
     public List<Zahtev> getAllZahtevi() {
         ArrayList<Zahtev> zahtevi = new ArrayList<>();
@@ -93,7 +77,7 @@ public class ZahtevRepository {
     }
 
     public Long createZahtev(Zahtev zahtev) {
-        Long id = UUID.randomUUID().getMostSignificantBits();
+        Long id = UUID.randomUUID().getLeastSignificantBits();
         zahtev.setId(id);
         Collection collection = dbConnection.getCollection(collectionId);
         OutputStream os = new ByteArrayOutputStream();
@@ -106,6 +90,7 @@ public class ZahtevRepository {
             // marshal the contents to an output stream
             marshaller.marshal(zahtev, os);
             xmlResource.setContent(os);
+
             collection.storeResource(xmlResource);
             return id;
         } catch (XMLDBException | JAXBException e) {
@@ -122,13 +107,17 @@ public class ZahtevRepository {
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             marshaller.marshal(zahtev, sw);
-            String xmlFragment = sw.toString();
-            System.out.println(xmlFragment);
+            String[] xmlFragments = sw.toString().split("\n");
+            String[] xmlFragmentsWithoutWrapper = Arrays.copyOfRange(xmlFragments, 2, xmlFragments.length - 1);
+            String xmlFragment = String.join("\n", xmlFragmentsWithoutWrapper);
 
-            XUpdateQueryService xupdateService = (XUpdateQueryService) collection.getService("XUpdateQueryService", "1.0");
-            long mods = xupdateService.updateResource(zahtev.getId() + ".xml", String.format(X_UPDATE_UPDATE_BY_ID_ZAHTEVA_EXPRESSION, zahtev.getId(), xmlFragment));
-
-            return mods == 1;
+            XQueryService xQueryService = (XQueryService) collection.getService("XQueryService", "1.0");
+            CompiledExpression compiledExpression = xQueryService.compile(String.format(X_UPDATE_UPDATE_BY_ID_ZAHTEVA_EXPRESSION, zahtev.getId() + ".xml", xmlFragment));
+            ResourceSet resourceSet  = xQueryService.execute(compiledExpression);
+            ResourceIterator resourceIterator = resourceSet.getIterator();
+            XMLResource xmlResource = (XMLResource) resourceIterator.nextResource();
+            Long mods = Long.parseLong((String) xmlResource.getContent());
+            return mods > 0; //vraca true iako dokument nije pronadjen, do exist-db je
         } catch (XMLDBException | JAXBException e) {
             e.printStackTrace();
         }
