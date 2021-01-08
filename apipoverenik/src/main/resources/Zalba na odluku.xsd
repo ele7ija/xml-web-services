@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           targetNamespace="http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalba_na_odluku"
+           xmlns="http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalba_na_odluku"
+           xmlns:util="http://ftn.uns.ac.rs/tim5/apipoverenik/model/util">
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/apipoverenik/model/util"
+               schemaLocation="util.xsd"/>
+    <xs:element name="Zalba_na_odluku">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="Poverenik">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Adresa" type="util:Adresa"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Zalilac" type="util:TFizicko_Lice"> </xs:element>
+
+                <xs:element name="organ_vlasti"/>
+
+                <xs:element name="odluka">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="broj_odluke" default="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:positiveInteger"/>
+                                </xs:simpleType>
+                            </xs:element>
+
+                            <xs:element name="godina" default="2020">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:gYear"/>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Datum" type="util:Datum"/>
+                <xs:element name="Osnova_za_zaljenje" type="xs:string"/>
+
+                <xs:element name="Zakon">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Naziv">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="Clan">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="Strana">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Mesto" type="xs:string"/>
+                <xs:element name="Datum_zahteva" type="util:Datum"/>
+
+                <xs:element name="Podnosilac_zalbe">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Obavezni_podaci" type="util:TFizicko_Lice"/>
+                            <xs:element name="Kontakt_podaci" minOccurs="0" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+            </xs:sequence>
+
+        </xs:complexType>
+
+    </xs:element>
+
+</xs:schema>
