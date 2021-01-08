@@ -13,6 +13,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import rs.ac.uns.ftn.tim5.apipoverenik.interfaces.Identifiable;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.util.Datum;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.util.Razlog;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.util.TPravniOsnov;
@@ -58,7 +60,7 @@ import rs.ac.uns.ftn.tim5.apipoverenik.model.util.TPravniOsnov;
     "datumZalbe"
 })
 @XmlRootElement(name = "zalba_cutanja")
-public class ZalbaCutanja {
+public class ZalbaCutanja implements Identifiable {
 
     protected long id;
     @XmlElement(required = true)

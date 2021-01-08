@@ -15,6 +15,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
+
+import rs.ac.uns.ftn.tim5.apipoverenik.interfaces.Identifiable;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.util.Adresa;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.util.Datum;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.util.TFizickoLice;
@@ -133,7 +135,7 @@ import rs.ac.uns.ftn.tim5.apipoverenik.model.util.TFizickoLice;
     "podnosilacZalbe"
 })
 @XmlRootElement(name = "Zalba_na_odluku")
-public class ZalbaNaOdluku {
+public class ZalbaNaOdluku implements Identifiable {
 
     protected long id;
     @XmlElement(name = "Poverenik", required = true)
