@@ -6,6 +6,7 @@ import org.xmldb.api.base.*;
 import org.xmldb.api.modules.XMLResource;
 import org.xmldb.api.modules.XQueryService;
 import rs.ac.uns.ftn.tim5.apipoverenik.helper.DbConnection;
+import rs.ac.uns.ftn.tim5.apipoverenik.helper.XmlConversionAgent;
 import rs.ac.uns.ftn.tim5.apipoverenik.interfaces.Identifiable;
 
 import javax.xml.bind.JAXBContext;
@@ -25,7 +26,7 @@ import java.util.UUID;
 public class AbstractXmlRepository<T extends Identifiable> {
 
     private String collectionId;
-    private String jaxbContextPath;
+    public String jaxbContextPath;
     private String X_QUERY_FIND_ALL_ENTITIES;
     private String X_QUERY_FIND_ENTITY_BY_ID;
     private String X_UPDATE_UPDATE_ENTITY_BY_ID_EXPRESSION;
@@ -33,6 +34,9 @@ public class AbstractXmlRepository<T extends Identifiable> {
 
     @Autowired
     DbConnection dbConnection;
+
+    @Autowired
+    XmlConversionAgent<T> xmlConversionAgent;
 
     public List<T> getAllEntities() throws XMLDBException, JAXBException {
         ArrayList<T> entities = new ArrayList<>();
@@ -43,10 +47,7 @@ public class AbstractXmlRepository<T extends Identifiable> {
         ResourceIterator resourceIterator = resourceSet.getIterator();
         while (resourceIterator.hasMoreResources()){
             XMLResource xmlResource = (XMLResource) resourceIterator.nextResource();
-            JAXBContext context = JAXBContext.newInstance(this.jaxbContextPath);
-            Unmarshaller unmarshaller = context.createUnmarshaller();
-            T entity = (T) unmarshaller.unmarshal(xmlResource.getContentAsDOM());
-            entities.add(entity);
+            entities.add(this.xmlConversionAgent.unmarshall(xmlResource.getContentAsDOM(), this.jaxbContextPath));
         }
         return entities;
     }
@@ -59,40 +60,25 @@ public class AbstractXmlRepository<T extends Identifiable> {
         ResourceIterator resourceIterator = resourceSet.getIterator();
         while (resourceIterator.hasMoreResources()){
             XMLResource xmlResource = (XMLResource) resourceIterator.nextResource();
-            JAXBContext context = JAXBContext.newInstance(this.jaxbContextPath);
-            Unmarshaller unmarshaller = context.createUnmarshaller();
-            T entity = (T) unmarshaller.unmarshal(xmlResource.getContentAsDOM());
-            return entity;
+            return this.xmlConversionAgent.unmarshall(xmlResource.getContentAsDOM(), this.jaxbContextPath);
         }
         return null;
     }
 
-    public Long createEntity(T entity) throws XMLDBException, JAXBException {
+    public T createEntity(T entity) throws XMLDBException, JAXBException {
         Long id = UUID.randomUUID().getLeastSignificantBits() * -1;
         entity.setId(id);
         Collection collection = this.dbConnection.getCollection(this.collectionId);
-        OutputStream os = new ByteArrayOutputStream();
         XMLResource xmlResource = (XMLResource) collection.createResource(id.toString() + ".xml", XMLResource.RESOURCE_TYPE);
-        JAXBContext context = JAXBContext.newInstance(this.jaxbContextPath);
-        Marshaller marshaller = context.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-
-        // marshal the contents to an output stream
-        marshaller.marshal(entity, os);
-        xmlResource.setContent(os);
-
+        xmlResource.setContent(this.xmlConversionAgent.marshallToOutputStream(entity, this.jaxbContextPath));
         collection.storeResource(xmlResource);
-        return id;
+        return this.getEntity(id);
     }
 
     public boolean updateEntity(T entity) throws XMLDBException, JAXBException {
         Collection collection = this.dbConnection.getCollection(this.collectionId);
-        StringWriter sw = new StringWriter();
-        JAXBContext context = JAXBContext.newInstance(this.jaxbContextPath);
-        Marshaller marshaller = context.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        marshaller.marshal(entity, sw);
-        String[] xmlFragments = sw.toString().split("\n");
+        String xmlString = this.xmlConversionAgent.marshall(entity, this.jaxbContextPath);
+        String[] xmlFragments = xmlString.split("\n");
         String[] xmlFragmentsWithoutWrapper = Arrays.copyOfRange(xmlFragments, 2, xmlFragments.length - 1);
         String xmlFragment = String.join("\n", xmlFragmentsWithoutWrapper);
 
@@ -123,6 +109,7 @@ public class AbstractXmlRepository<T extends Identifiable> {
             String X_UPDATE_UPDATE_ENTITY_BY_ID_EXPRESSION,
             String X_UPDATE_REMOVE_ENTITY_BY_ID_EXPRESSION
     ){
+
         this.collectionId = collectionId;
         this.jaxbContextPath = jaxbContextPath;
         this.X_QUERY_FIND_ALL_ENTITIES = X_QUERY_FIND_ALL_ENTITIES;

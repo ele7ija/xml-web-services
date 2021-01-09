@@ -6,8 +6,8 @@ public interface AbstractXmlService<T> {
 
     List<T> findAll();
     T findById(Long entityId);
-    Long create(String entityXml);
-    boolean update(String entityXml);
+    T create(String entityXml);
+    T update(String entityXml);
     boolean deleteById(Long entityId);
 }
 

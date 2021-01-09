@@ -6,7 +6,7 @@
 //
 
 
-package rs.ac.uns.ftn.tim5.apipoverenik.model.util;
+package rs.ac.uns.ftn.tim5.apipoverenik.model.resenje;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
@@ -14,34 +14,31 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Razlog.
+ * <p>Java class for TTip_zalbe.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="Razlog">
+ * &lt;simpleType name="TTip_zalbe">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="nije postupio"/>
- *     &lt;enumeration value="nije postupio u celosti"/>
- *     &lt;enumeration value="u zakonskom roku"/>
+ *     &lt;enumeration value="odbacivanje"/>
+ *     &lt;enumeration value="nepostupanje"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
  * 
  */
-@XmlType(name = "Razlog")
+@XmlType(name = "TTip_zalbe")
 @XmlEnum
-public enum Razlog {
+public enum TTipZalbe {
 
-    @XmlEnumValue("nije postupio")
-    NIJE_POSTUPIO("nije postupio"),
-    @XmlEnumValue("nije postupio u celosti")
-    NIJE_POSTUPIO_U_CELOSTI("nije postupio u celosti"),
-    @XmlEnumValue("u zakonskom roku")
-    U_ZAKONSKOM_ROKU("u zakonskom roku");
+    @XmlEnumValue("odbacivanje")
+    ODBACIVANJE("odbacivanje"),
+    @XmlEnumValue("nepostupanje")
+    NEPOSTUPANJE("nepostupanje");
     private final String value;
 
-    Razlog(String v) {
+    TTipZalbe(String v) {
         value = v;
     }
 
@@ -49,8 +46,8 @@ public enum Razlog {
         return value;
     }
 
-    public static Razlog fromValue(String v) {
-        for (Razlog c: Razlog.values()) {
+    public static TTipZalbe fromValue(String v) {
+        for (TTipZalbe c: TTipZalbe.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

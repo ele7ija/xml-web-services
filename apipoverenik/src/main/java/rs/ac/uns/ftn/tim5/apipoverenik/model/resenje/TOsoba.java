@@ -6,28 +6,36 @@
 //
 
 
-package rs.ac.uns.ftn.tim5.apipoverenik.model.zalbe_cutanja;
+package rs.ac.uns.ftn.tim5.apipoverenik.model.resenje;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import rs.ac.uns.ftn.tim5.apipoverenik.model.util.Adresa;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Java class for TOsoba complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="TOsoba">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="naziv" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="adresa" type="{http://ftn.uns.ac.rs/tim5/apipoverenik/model/util}Adresa"/>
+ *         &lt;element name="Ime">
+ *           &lt;simpleType>
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *             &lt;/restriction>
+ *           &lt;/simpleType>
+ *         &lt;/element>
+ *         &lt;element name="Prezime">
+ *           &lt;simpleType>
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *             &lt;/restriction>
+ *           &lt;/simpleType>
+ *         &lt;/element>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,64 +45,63 @@ import rs.ac.uns.ftn.tim5.apipoverenik.model.util.Adresa;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "naziv",
-    "adresa"
+@XmlType(name = "TOsoba", propOrder = {
+    "ime",
+    "prezime"
 })
-@XmlRootElement(name = "poverenik")
-public class Poverenik {
+public class TOsoba {
 
-    @XmlElement(required = true)
-    protected String naziv;
-    @XmlElement(required = true)
-    protected Adresa adresa;
+    @XmlElement(name = "Ime", required = true)
+    protected String ime;
+    @XmlElement(name = "Prezime", required = true)
+    protected String prezime;
 
     /**
-     * Gets the value of the naziv property.
+     * Gets the value of the ime property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getNaziv() {
-        return naziv;
+    public String getIme() {
+        return ime;
     }
 
     /**
-     * Sets the value of the naziv property.
+     * Sets the value of the ime property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setNaziv(String value) {
-        this.naziv = value;
+    public void setIme(String value) {
+        this.ime = value;
     }
 
     /**
-     * Gets the value of the adresa property.
+     * Gets the value of the prezime property.
      * 
      * @return
      *     possible object is
-     *     {@link Adresa }
+     *     {@link String }
      *     
      */
-    public Adresa getAdresa() {
-        return adresa;
+    public String getPrezime() {
+        return prezime;
     }
 
     /**
-     * Sets the value of the adresa property.
+     * Sets the value of the prezime property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Adresa }
+     *     {@link String }
      *     
      */
-    public void setAdresa(Adresa value) {
-        this.adresa = value;
+    public void setPrezime(String value) {
+        this.prezime = value;
     }
 
 }

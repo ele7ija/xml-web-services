@@ -1,0 +1,124 @@
+package rs.ac.uns.ftn.tim5.apipoverenik.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.xmldb.api.base.XMLDBException;
+import rs.ac.uns.ftn.tim5.apipoverenik.helper.XmlConversionAgent;
+import rs.ac.uns.ftn.tim5.apipoverenik.model.exception.EntityNotFoundException;
+import rs.ac.uns.ftn.tim5.apipoverenik.model.exception.InvalidXmlDatabaseException;
+import rs.ac.uns.ftn.tim5.apipoverenik.model.exception.InvalidXmlException;
+import rs.ac.uns.ftn.tim5.apipoverenik.model.exception.XmlDatabaseException;
+import rs.ac.uns.ftn.tim5.apipoverenik.model.resenje.Resenje;
+import rs.ac.uns.ftn.tim5.apipoverenik.repository.AbstractXmlRepository;
+import javax.annotation.PostConstruct;
+import javax.xml.bind.JAXBException;
+import java.util.List;
+
+import static rs.ac.uns.ftn.tim5.apipoverenik.helper.XQueryExpressions.*;
+
+@Service
+public class ResenjeService implements AbstractXmlService<Resenje>{
+
+    private final String jaxbContextPath = "rs.ac.uns.ftn.tim5.apipoverenik.model.resenje";
+
+    @Autowired
+    @Qualifier("resenjeRepository")
+    private AbstractXmlRepository<Resenje> resenjeAbstractXmlRepository;
+
+    @Autowired
+    private XmlConversionAgent<Resenje> resenjeXmlConversionAgent;
+
+    @PostConstruct
+    public void injectRepositoryProperties(){
+        this.resenjeAbstractXmlRepository.injectRepositoryProperties(
+                "/db/sample/resenja",
+                jaxbContextPath,
+                X_QUERY_FIND_ALL_RESENJA_EXPRESSION,
+                X_QUERY_FIND_RESENJE_BY_ID_EXPRESSION,
+                X_UPDATE_UPDATE_RESENJE_BY_ID_EXPRESSION,
+                X_UPDATE_REMOVE_RESENJE_BY_ID_EXPRESSION
+        );
+    }
+
+    @Override
+    public List<Resenje> findAll() {
+        try {
+            return this.resenjeAbstractXmlRepository.getAllEntities();
+        } catch (XMLDBException e) {
+            throw new XmlDatabaseException(e.getMessage());
+        } catch (JAXBException e) {
+            throw new InvalidXmlDatabaseException(Resenje.class, e.getMessage());
+        }
+    }
+
+    @Override
+    public Resenje findById(Long entityId) {
+        try {
+            Resenje resenje = this.resenjeAbstractXmlRepository.getEntity(entityId);
+            if(resenje == null)
+                throw new EntityNotFoundException(entityId, Resenje.class);
+            return resenje;
+        } catch (XMLDBException e) {
+            throw new XmlDatabaseException(e.getMessage());
+        } catch (JAXBException e) {
+            throw new InvalidXmlDatabaseException(Resenje.class, e.getMessage());
+        }
+    }
+
+    @Override
+    public Resenje create(String xmlEntity) {
+        /*
+            Bojane, radi ovde sa stringom sta ti treba...
+         */
+
+
+        Resenje resenje;
+        try{
+            resenje = this.resenjeXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
+        }catch(JAXBException e){
+            throw new InvalidXmlException(Resenje.class, e.getMessage());
+        }
+
+        try {
+            return resenjeAbstractXmlRepository.createEntity(resenje);
+        } catch (XMLDBException e) {
+            throw new XmlDatabaseException(e.getMessage());
+        } catch (JAXBException e) {
+            throw new InvalidXmlDatabaseException(Resenje.class, e.getMessage());
+        }
+    }
+
+    @Override
+    public Resenje update(String xmlEntity) {
+        Resenje resenje;
+        try{
+            resenje = this.resenjeXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
+        }catch(JAXBException e){
+            throw new InvalidXmlException(Resenje.class, e.getMessage());
+        }
+
+        try {
+            if(this.resenjeAbstractXmlRepository.updateEntity(resenje))
+                return resenje;
+            else{
+                throw new EntityNotFoundException(resenje.getId(), Resenje.class);
+            }
+        } catch (XMLDBException e) {
+            throw new XmlDatabaseException(e.getMessage());
+        } catch (JAXBException e) {
+            throw new InvalidXmlDatabaseException(Resenje.class, e.getMessage());
+        }
+
+    }
+
+    @Override
+    public boolean deleteById(Long entityId) {
+        try {
+            return this.resenjeAbstractXmlRepository.deleteEntity(entityId);
+        } catch (XMLDBException e) {
+            throw new XmlDatabaseException(e.getMessage());
+        }
+    }
+
+}

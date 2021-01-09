@@ -5,5 +5,5 @@
 // Generated on: 2021.01.09 at 11:16:02 AM CET 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/util", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package rs.ac.uns.ftn.tim5.apipoverenik.model.util;
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+package rs.ac.uns.ftn.tim5.apipoverenik.model.resenje;

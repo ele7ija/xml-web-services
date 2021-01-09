@@ -19,7 +19,7 @@
 
                 <xs:element name="Zalilac" type="util:TFizicko_Lice"> </xs:element>
 
-                <xs:element name="organ_vlasti"/>
+                <xs:element name="organ_vlasti" type="util:TPravno_Lice"/>
 
                 <xs:element name="odluka">
                     <xs:complexType>

@@ -9,12 +9,13 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="id" type="xs:long"/>
+                <xs:element ref="poverenik"/>
                 <xs:element name="zakon" type="util:TPravni_Osnov"/>
                 <xs:element name="organ_vlasti" type="xs:string"/>
-                <xs:element name="razlog" type="util:Razlog" default="nije postupio"/>
+                <xs:element name="razlog" type="util:Razlog" default="није поступио"/>
                 <xs:element name="datum_zahteva" type="util:Datum"/>
                 <xs:element name="zahtevana_informacije" type="xs:string"/>
-                <xs:element name="podnosioc_zalbe"/>
+                <xs:element ref="podnosioc_zalbe"/>
                 <xs:element name="mesto" type="xs:string"/>
                 <xs:element name="datum_zalbe" type="util:Datum"/>
             </xs:sequence>

@@ -6,7 +6,7 @@
 //
 
 
-package rs.ac.uns.ftn.tim5.apipoverenik.model.util;
+package rs.ac.uns.ftn.tim5.apipoverenik.model.resenje;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
@@ -14,34 +14,37 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Razlog.
+ * <p>Java class for TIshod_odluke.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="Razlog">
+ * &lt;simpleType name="TIshod_odluke">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="nije postupio"/>
- *     &lt;enumeration value="nije postupio u celosti"/>
- *     &lt;enumeration value="u zakonskom roku"/>
+ *     &lt;enumeration value="osnovana_zalba"/>
+ *     &lt;enumeration value="neosnovana_zalba"/>
+ *     &lt;enumeration value="ponistena_zalba"/>
+ *     &lt;enumeration value="odbijen_zahtev"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
  * 
  */
-@XmlType(name = "Razlog")
+@XmlType(name = "TIshod_odluke")
 @XmlEnum
-public enum Razlog {
+public enum TIshodOdluke {
 
-    @XmlEnumValue("nije postupio")
-    NIJE_POSTUPIO("nije postupio"),
-    @XmlEnumValue("nije postupio u celosti")
-    NIJE_POSTUPIO_U_CELOSTI("nije postupio u celosti"),
-    @XmlEnumValue("u zakonskom roku")
-    U_ZAKONSKOM_ROKU("u zakonskom roku");
+    @XmlEnumValue("osnovana_zalba")
+    OSNOVANA_ZALBA("osnovana_zalba"),
+    @XmlEnumValue("neosnovana_zalba")
+    NEOSNOVANA_ZALBA("neosnovana_zalba"),
+    @XmlEnumValue("ponistena_zalba")
+    PONISTENA_ZALBA("ponistena_zalba"),
+    @XmlEnumValue("odbijen_zahtev")
+    ODBIJEN_ZAHTEV("odbijen_zahtev");
     private final String value;
 
-    Razlog(String v) {
+    TIshodOdluke(String v) {
         value = v;
     }
 
@@ -49,8 +52,8 @@ public enum Razlog {
         return value;
     }
 
-    public static Razlog fromValue(String v) {
-        for (Razlog c: Razlog.values()) {
+    public static TIshodOdluke fromValue(String v) {
+        for (TIshodOdluke c: TIshodOdluke.values()) {
             if (c.value.equals(v)) {
                 return c;
             }
