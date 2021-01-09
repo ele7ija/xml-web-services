@@ -5,5 +5,13 @@
 // Generated on: 2021.01.09 at 01:46:54 PM CET 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(
+        namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje",
+        xmlns = {
+                @XmlNs(namespaceURI = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/util", prefix = "ns2"),
+                @XmlNs(namespaceURI = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje", prefix = "")
+        },
+        elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package rs.ac.uns.ftn.tim5.apipoverenik.model.resenje;
+
+import javax.xml.bind.annotation.XmlNs;

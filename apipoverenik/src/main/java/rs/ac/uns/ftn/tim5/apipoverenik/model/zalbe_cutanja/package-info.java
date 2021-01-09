@@ -5,5 +5,13 @@
 // Generated on: 2021.01.09 at 01:45:28 PM CET 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalbe_cutanja", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(
+        namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalbe_cutanja",
+        xmlns = {
+                @XmlNs(namespaceURI = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/util", prefix = "ns2"),
+                @XmlNs(namespaceURI = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalbe_cutanja", prefix = "")
+        },
+        elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package rs.ac.uns.ftn.tim5.apipoverenik.model.zalbe_cutanja;
+
+import javax.xml.bind.annotation.XmlNs;

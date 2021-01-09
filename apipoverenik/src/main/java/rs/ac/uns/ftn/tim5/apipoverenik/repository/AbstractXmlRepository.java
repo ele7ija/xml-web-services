@@ -53,7 +53,6 @@ public class AbstractXmlRepository<T extends Identifiable> {
     }
 
     public T getEntity(long entityId) throws XMLDBException, JAXBException {
-        System.out.println(String.format(this.X_QUERY_FIND_ENTITY_BY_ID, entityId));
         Collection collection = this.dbConnection.getCollection(this.collectionId);
         XQueryService xQueryService = (XQueryService) collection.getService("XQueryService", "1.0");
         CompiledExpression compiledExpression = xQueryService.compile(String.format(this.X_QUERY_FIND_ENTITY_BY_ID, entityId));
@@ -72,6 +71,7 @@ public class AbstractXmlRepository<T extends Identifiable> {
         Collection collection = this.dbConnection.getCollection(this.collectionId);
         XMLResource xmlResource = (XMLResource) collection.createResource(id.toString() + ".xml", XMLResource.RESOURCE_TYPE);
         xmlResource.setContent(this.xmlConversionAgent.marshallToOutputStream(entity, this.jaxbContextPath));
+        System.out.println(this.xmlConversionAgent.marshall(entity, this.jaxbContextPath));
         collection.storeResource(xmlResource);
         return this.getEntity(id);
     }

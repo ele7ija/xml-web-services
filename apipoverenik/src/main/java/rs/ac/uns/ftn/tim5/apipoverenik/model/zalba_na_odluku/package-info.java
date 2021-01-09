@@ -5,5 +5,13 @@
 // Generated on: 2021.01.09 at 01:40:34 PM CET 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalba_na_odluku", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(
+        namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalba_na_odluku",
+        xmlns = {
+                @XmlNs(namespaceURI = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/util", prefix = "ns2"),
+                @XmlNs(namespaceURI = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalba_na_odluku", prefix = "")
+        },
+        elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package rs.ac.uns.ftn.tim5.apipoverenik.model.zalba_na_odluku;
+
+import javax.xml.bind.annotation.XmlNs;
