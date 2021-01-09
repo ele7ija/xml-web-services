@@ -41,7 +41,7 @@ public class ResenjeController {
         return new ResponseEntity<>(this.resenjeService.update(body), HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/{id}", consumes = MediaType.APPLICATION_XML_VALUE)
+    @DeleteMapping(value = "/{id}")
     ResponseEntity<Void> delete(@PathVariable("id") Long id){
         this.resenjeService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);

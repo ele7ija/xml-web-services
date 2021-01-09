@@ -43,6 +43,7 @@ public class XmlConversionAgent<T> {
         JAXBContext context = JAXBContext.newInstance(contextPath);
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        marshaller.setProperty(JAXB_);
         OutputStream os = new ByteArrayOutputStream();
         marshaller.marshal(entity, os);
         return os;

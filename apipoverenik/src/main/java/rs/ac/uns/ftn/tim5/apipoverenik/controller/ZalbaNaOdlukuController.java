@@ -41,7 +41,7 @@ public class ZalbaNaOdlukuController {
         return new ResponseEntity<>(this.zalbaNaOdlukuService.update(body), HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/{id}", consumes = MediaType.APPLICATION_XML_VALUE)
+    @DeleteMapping(value = "/{id}")
     ResponseEntity<Void> delete(@PathVariable("id") Long id){
         this.zalbaNaOdlukuService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);

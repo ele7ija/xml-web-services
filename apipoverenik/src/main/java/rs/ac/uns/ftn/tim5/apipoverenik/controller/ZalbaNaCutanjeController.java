@@ -39,7 +39,7 @@ public class ZalbaNaCutanjeController {
         return new ResponseEntity<>(this.zalbaNaCutanjeService.update(body), HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/{id}", consumes = MediaType.APPLICATION_XML_VALUE)
+    @DeleteMapping(value = "/{id}")
     ResponseEntity<Void> delete(@PathVariable("id") Long id){
         this.zalbaNaCutanjeService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);

@@ -4,11 +4,11 @@
            xmlns="http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalbe_cutanja"
            xmlns:util="http://ftn.uns.ac.rs/tim5/apipoverenik/model/util" elementFormDefault="qualified">
     <xs:import namespace="http://ftn.uns.ac.rs/tim5/apipoverenik/model/util"
-               schemaLocation="util.xsd"/>
+               schemaLocation="src/main/resources/util.xsd"/>
     <xs:element name="zalba_cutanja">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="id" type="xs:long"/>
+                <xs:element name="id" type="xs:long" minOccurs="0"/>
                 <xs:element name="poverenik">
                     <xs:complexType>
                         <xs:sequence>
@@ -18,7 +18,7 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="zakon" type="util:TPravni_Osnov"/>
-                <xs:element name="organ_vlasti" type="xs:string"/>
+                <xs:element name="organ_vlasti" type="util:TPravno_Lice"/>
                 <xs:element name="razlog" type="util:Razlog" default="nije postupio"/>
                 <xs:element name="datum_zahteva" type="util:Datum"/>
                 <xs:element name="zahtevana_informacije" type="xs:string"/>

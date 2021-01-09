@@ -13,9 +13,11 @@ import rs.ac.uns.ftn.tim5.apipoverenik.model.zalba_na_odluku.ZalbaNaOdluku;
 import rs.ac.uns.ftn.tim5.apipoverenik.repository.AbstractXmlRepository;
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
+
 import java.util.List;
 
 import static rs.ac.uns.ftn.tim5.apipoverenik.helper.XQueryExpressions.*;
+
 
 @Service
 public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {

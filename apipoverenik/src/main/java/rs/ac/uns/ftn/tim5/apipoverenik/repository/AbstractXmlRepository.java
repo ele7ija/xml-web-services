@@ -53,6 +53,7 @@ public class AbstractXmlRepository<T extends Identifiable> {
     }
 
     public T getEntity(long entityId) throws XMLDBException, JAXBException {
+        System.out.println(String.format(this.X_QUERY_FIND_ENTITY_BY_ID, entityId));
         Collection collection = this.dbConnection.getCollection(this.collectionId);
         XQueryService xQueryService = (XQueryService) collection.getService("XQueryService", "1.0");
         CompiledExpression compiledExpression = xQueryService.compile(String.format(this.X_QUERY_FIND_ENTITY_BY_ID, entityId));
@@ -78,6 +79,7 @@ public class AbstractXmlRepository<T extends Identifiable> {
     public boolean updateEntity(T entity) throws XMLDBException, JAXBException {
         Collection collection = this.dbConnection.getCollection(this.collectionId);
         String xmlString = this.xmlConversionAgent.marshall(entity, this.jaxbContextPath);
+        System.out.println(xmlString);
         String[] xmlFragments = xmlString.split("\n");
         String[] xmlFragmentsWithoutWrapper = Arrays.copyOfRange(xmlFragments, 2, xmlFragments.length - 1);
         String xmlFragment = String.join("\n", xmlFragmentsWithoutWrapper);

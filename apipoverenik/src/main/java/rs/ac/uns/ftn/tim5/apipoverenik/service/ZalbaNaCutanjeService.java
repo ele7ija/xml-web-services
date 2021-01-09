@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.xmldb.api.base.XMLDBException;
+import rs.ac.uns.ftn.tim5.apipoverenik.helper.XQueryExpressions;
 import rs.ac.uns.ftn.tim5.apipoverenik.helper.XmlConversionAgent;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.exception.EntityNotFoundException;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.exception.InvalidXmlDatabaseException;
@@ -14,6 +15,7 @@ import rs.ac.uns.ftn.tim5.apipoverenik.repository.AbstractXmlRepository;
 
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
+
 import java.util.List;
 
 import static rs.ac.uns.ftn.tim5.apipoverenik.helper.XQueryExpressions.*;
@@ -119,5 +121,4 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
             throw new XmlDatabaseException(e.getMessage());
         }
     }
-
 }

@@ -4,11 +4,11 @@
            xmlns="http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalba_na_odluku"
            xmlns:util="http://ftn.uns.ac.rs/tim5/apipoverenik/model/util">
     <xs:import namespace="http://ftn.uns.ac.rs/tim5/apipoverenik/model/util"
-               schemaLocation="util.xsd"/>
+               schemaLocation="src/main/resources/util.xsd"/>
     <xs:element name="Zalba_na_odluku">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="id" type="xs:long"/>
+                <xs:element name="id" type="xs:long" minOccurs="0"/>
                 <xs:element name="Poverenik">
                     <xs:complexType>
                         <xs:sequence>
@@ -42,27 +42,7 @@
                 <xs:element name="Datum" type="util:Datum"/>
                 <xs:element name="Osnova_za_zaljenje" type="xs:string"/>
 
-                <xs:element name="Zakon">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="Naziv">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:string"/>
-                                </xs:simpleType>
-                            </xs:element>
-                            <xs:element name="Clan">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:string"/>
-                                </xs:simpleType>
-                            </xs:element>
-                            <xs:element name="Strana">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:string"/>
-                                </xs:simpleType>
-                            </xs:element>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
+                <xs:element name="Zakon" type="util:TPravni_Osnov"> </xs:element>
 
                 <xs:element name="Mesto" type="xs:string"/>
                 <xs:element name="Datum_zahteva" type="util:Datum"/>
