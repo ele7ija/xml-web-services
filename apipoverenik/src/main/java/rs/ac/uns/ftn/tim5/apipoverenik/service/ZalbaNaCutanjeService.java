@@ -72,10 +72,6 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
 
     @Override
     public ZalbaCutanja create(String xmlEntity) {
-        /*
-            Bojane, radi ovde sa stringom sta ti treba...
-         */
-
 
         ZalbaCutanja zalbaCutanja;
         try{

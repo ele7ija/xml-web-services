@@ -6,7 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import rs.ac.uns.ftn.tim5.apipoverenik.model.wrapper.ZalbaCutanjaXmlListWrapper;
+import rs.ac.uns.ftn.tim5.apipoverenik.model.zalbe_cutanja.KolekcijaZalbiCutanja;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.zalbe_cutanja.ZalbaCutanja;
 import rs.ac.uns.ftn.tim5.apipoverenik.service.ZalbaNaCutanjeService;
 
@@ -18,8 +18,10 @@ public class ZalbaNaCutanjeController {
     private ZalbaNaCutanjeService zalbaNaCutanjeService;
 
     @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
-    ResponseEntity<ZalbaCutanjaXmlListWrapper> findAll(){
-        return new ResponseEntity<>(new ZalbaCutanjaXmlListWrapper(this.zalbaNaCutanjeService.findAll()), HttpStatus.OK);
+    ResponseEntity<KolekcijaZalbiCutanja> findAll(){
+        KolekcijaZalbiCutanja kolekcijaZalbiCutanja = new KolekcijaZalbiCutanja();
+        kolekcijaZalbiCutanja.setZalbaCutanja(this.zalbaNaCutanjeService.findAll());
+        return new ResponseEntity<>(kolekcijaZalbiCutanja, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_XML_VALUE)
@@ -32,7 +34,7 @@ public class ZalbaNaCutanjeController {
         return new ResponseEntity<>(this.zalbaNaCutanjeService.create(body), HttpStatus.OK);
     }
 
-    @PutMapping(consumes = MediaType.APPLICATION_XML_VALUE)
+    @PutMapping(produces = MediaType.APPLICATION_XML_VALUE)
     ResponseEntity<ZalbaCutanja> update(@RequestBody String body){
         return new ResponseEntity<>(this.zalbaNaCutanjeService.update(body), HttpStatus.OK);
     }

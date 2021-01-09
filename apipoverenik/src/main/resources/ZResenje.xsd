@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-           targetNamespace="http://ftn.uns.ac.rs/tim5/apipoverenik/resenje"
-           xmlns:resenje="http://ftn.uns.ac.rs/tim5/apipoverenik/resenje"
+           targetNamespace="http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje"
+           xmlns:resenje="http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje"
            xmlns:util="http://ftn.uns.ac.rs/tim5/apipoverenik/model/util">
 
     <!-- RESENJE I ELEMENTI RESENJA -->
@@ -97,4 +97,11 @@
             <xs:enumeration value="nepostupanje"/>
         </xs:restriction>
     </xs:simpleType>
+    <xs:element name="Kolekcija_resenja">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="resenje:Resenje"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

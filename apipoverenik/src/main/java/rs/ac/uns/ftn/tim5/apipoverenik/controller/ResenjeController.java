@@ -6,7 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import rs.ac.uns.ftn.tim5.apipoverenik.model.dummy.Dummy;
+import rs.ac.uns.ftn.tim5.apipoverenik.model.resenje.KolekcijaResenja;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.resenje.Resenje;
 import rs.ac.uns.ftn.tim5.apipoverenik.service.ResenjeService;
 
@@ -19,22 +19,11 @@ public class ResenjeController {
     @Autowired
     private ResenjeService resenjeService;
 
-    @GetMapping(value = "/dummy", produces = MediaType.APPLICATION_XML_VALUE)
-    ResponseEntity<Dummy> getDummy(){
-        Dummy dummy = new Dummy();
-        dummy.setField(123);
-        return new ResponseEntity<>(dummy, HttpStatus.OK);
-    }
-
-    @PostMapping(value = "/dummy", produces = MediaType.APPLICATION_XML_VALUE, consumes = MediaType.APPLICATION_XML_VALUE)
-    ResponseEntity<Dummy> createDummy(@RequestBody Dummy dummy){
-        dummy.setField(123);
-        return new ResponseEntity<>(dummy, HttpStatus.OK);
-    }
-
     @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
-    ResponseEntity<List<Resenje>> findAll(){
-        return new ResponseEntity<>(this.resenjeService.findAll(), HttpStatus.OK);
+    ResponseEntity<KolekcijaResenja> findAll(){
+        KolekcijaResenja kolekcijaResenja = new KolekcijaResenja();
+        kolekcijaResenja.setResenje(this.resenjeService.findAll());
+        return new ResponseEntity<>(kolekcijaResenja, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_XML_VALUE)
@@ -47,7 +36,7 @@ public class ResenjeController {
         return new ResponseEntity<>(this.resenjeService.create(body), HttpStatus.OK);
     }
 
-    @PutMapping(consumes = MediaType.APPLICATION_XML_VALUE)
+    @PutMapping(produces = MediaType.APPLICATION_XML_VALUE)
     ResponseEntity<Resenje> update(@RequestBody String body){
         return new ResponseEntity<>(this.resenjeService.update(body), HttpStatus.OK);
     }

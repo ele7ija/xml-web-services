@@ -69,11 +69,6 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
 
     @Override
     public ZalbaNaOdluku create(String xmlEntity) {
-/*
-            Bojane, radi ovde sa stringom sta ti treba...
-         */
-
-
         ZalbaNaOdluku zalbaNaOdluku;
         try{
             zalbaNaOdluku = this.zalbaNaOdlukuXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);

@@ -68,10 +68,6 @@ public class ResenjeService implements AbstractXmlService<Resenje>{
 
     @Override
     public Resenje create(String xmlEntity) {
-        /*
-            Bojane, radi ovde sa stringom sta ti treba...
-         */
-
 
         Resenje resenje;
         try{

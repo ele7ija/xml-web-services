@@ -6,6 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import rs.ac.uns.ftn.tim5.apipoverenik.model.zalba_na_odluku.KolekcijaZalbiNaOdluku;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.zalba_na_odluku.ZalbaNaOdluku;
 import rs.ac.uns.ftn.tim5.apipoverenik.service.ZalbaNaOdlukuService;
 
@@ -19,8 +20,10 @@ public class ZalbaNaOdlukuController {
     private ZalbaNaOdlukuService zalbaNaOdlukuService;
 
     @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
-    ResponseEntity<List<ZalbaNaOdluku>> findAll(){
-        return new ResponseEntity<>(this.zalbaNaOdlukuService.findAll(), HttpStatus.OK);
+    ResponseEntity<KolekcijaZalbiNaOdluku> findAll(){
+        KolekcijaZalbiNaOdluku kolekcijaZalbiNaOdluku = new KolekcijaZalbiNaOdluku();
+        kolekcijaZalbiNaOdluku.setZalbaNaOdluku(this.zalbaNaOdlukuService.findAll());
+        return new ResponseEntity<>(kolekcijaZalbiNaOdluku, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_XML_VALUE)
@@ -33,7 +36,7 @@ public class ZalbaNaOdlukuController {
         return new ResponseEntity<>(this.zalbaNaOdlukuService.create(body), HttpStatus.OK);
     }
 
-    @PutMapping(consumes = MediaType.APPLICATION_XML_VALUE)
+    @PutMapping(produces = MediaType.APPLICATION_XML_VALUE)
     ResponseEntity<ZalbaNaOdluku> update(@RequestBody String body){
         return new ResponseEntity<>(this.zalbaNaOdlukuService.update(body), HttpStatus.OK);
     }
@@ -43,6 +46,4 @@ public class ZalbaNaOdlukuController {
         this.zalbaNaOdlukuService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
 }

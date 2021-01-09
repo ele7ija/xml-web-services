@@ -82,4 +82,12 @@
 
     </xs:element>
 
+    <xs:element name="Kolekcija_zalbi_na_Odluku">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="Zalba_na_odluku"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
 </xs:schema>
