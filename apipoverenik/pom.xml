@@ -43,6 +43,14 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- fuseki jena RDF DB dependencies -->
+        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>apache-jena-libs</artifactId>
+            <type>pom</type>
+            <version>3.17.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

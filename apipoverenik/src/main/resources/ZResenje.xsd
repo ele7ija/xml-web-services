@@ -10,13 +10,12 @@
     <xs:element name="Resenje">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="id" type="xs:long" minOccurs="0"/>
+                <xs:element name="Datum" type="util:Datum"/>
+                <xs:element name="Broj_resenja" type="resenje:TBroj_resenja"/>
                 <xs:element ref="resenje:Kontekst"/>
                 <xs:element ref="resenje:Odluka"/>
                 <xs:element name="Poverenik" type="resenje:TOsoba"/>
             </xs:sequence>
-            <xs:attribute name="datum" type="xs:date" use="optional"/>
-            <xs:attribute name="broj_resenja" type="resenje:TBroj_resenja" use="required"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="Kontekst">
@@ -33,11 +32,11 @@
                 <xs:element name="Zalba">
                     <xs:complexType>
                         <xs:sequence>
+                            <xs:element name="Datum_podnosenja_zahteva" type="util:Datum"/>
+                            <xs:element name="Tip_zalbe" type="resenje:TTip_zalbe"/>
                             <xs:element name="Podnosilac" type="resenje:TOsoba"/>
                             <xs:element name="Organ_vlasti" type="util:TPravno_Lice"/>
                         </xs:sequence>
-                        <xs:attribute name="datum_podnosenja_zahteva" type="xs:date"/>
-                        <xs:attribute name="tip" type="resenje:TTip_zalbe"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
@@ -46,6 +45,7 @@
     <xs:element name="Odluka">
         <xs:complexType mixed="true">
             <xs:sequence>
+                <xs:element name="Ishod" type="resenje:TIshod_odluke"/>
                 <xs:element name="Obrazlozenje">
                     <xs:complexType mixed="true">
                         <!-- Ovde je tekst -->
@@ -55,7 +55,6 @@
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
-            <xs:attribute name="ishod" type="resenje:TIshod_odluke" use="required"/>
         </xs:complexType>
     </xs:element>
 

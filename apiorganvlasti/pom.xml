@@ -15,8 +15,9 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>1.8</java.version>
-    </properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+      </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -44,6 +45,14 @@
             <artifactId>exist-core</artifactId>
             <version>5.0.0</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- fuseki jena RDF DB dependencies -->
+        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>apache-jena-libs</artifactId>
+            <type>pom</type>
+            <version>3.17.0</version>
         </dependency>
 
     </dependencies>
@@ -76,4 +85,3 @@
         </plugins>
     </build>
 </project>
-

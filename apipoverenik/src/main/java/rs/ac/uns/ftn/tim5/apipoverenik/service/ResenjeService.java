@@ -23,12 +23,17 @@ public class ResenjeService implements AbstractXmlService<Resenje>{
 
     private final String jaxbContextPath = "rs.ac.uns.ftn.tim5.apipoverenik.model.resenje";
 
+    private static final String SPARQL_NAMED_GRAPH_URI = "/resenje/sparql/metadata";
+
     @Autowired
     @Qualifier("resenjeRepository")
     private AbstractXmlRepository<Resenje> resenjeAbstractXmlRepository;
 
     @Autowired
     private XmlConversionAgent<Resenje> resenjeXmlConversionAgent;
+
+    @Autowired 
+    private RDFService rdfService;
 
     @PostConstruct
     public void injectRepositoryProperties(){
@@ -78,12 +83,19 @@ public class ResenjeService implements AbstractXmlService<Resenje>{
         }
 
         try {
-            return resenjeAbstractXmlRepository.createEntity(resenje);
+            resenje = resenjeAbstractXmlRepository.createEntity(resenje);
         } catch (XMLDBException e) {
             throw new XmlDatabaseException(e.getMessage());
         } catch (JAXBException e) {
             throw new InvalidXmlDatabaseException(Resenje.class, e.getMessage());
         }
+
+        // Sacuvaj u RDF
+        if (!rdfService.save(xmlEntity, SPARQL_NAMED_GRAPH_URI)) {
+            System.out.println("[ERROR] Neuspesno cuvanje metapodataka resenja u RDF DB.");
+        };
+
+        return resenje;
     }
 
     @Override

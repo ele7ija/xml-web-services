@@ -1,0 +1,32 @@
+version: "3.7"
+services:
+  xml-db:
+    image: existdb/existdb:latest
+    ports:
+    - "8080:8080"
+    restart: always
+    networks:
+      - organ-vlasti-network
+  rdf-db:
+    image: stain/jena-fuseki
+    ports:
+    - "8082:3030"
+    restart: always
+    networks:
+      - organ-vlasti-network
+  organ-vlasti:
+    build:
+      context: ./apiorganvlasti
+      dockerfile: Dockerfile
+    command: sh -c 'wait-for-it xml-db:8080 -t 3 -- java -cp app:app/lib/* rs.ac.uns.ftn.tim5.apiorganvlasti.ApiorganvlastiApplication.java'
+    ports:
+      - "8081:8081"
+    networks:
+      - organ-vlasti-network
+    depends_on:
+      - xml-db
+      - rdf-db
+networks:
+  organ-vlasti-network:
+    driver: bridge
+

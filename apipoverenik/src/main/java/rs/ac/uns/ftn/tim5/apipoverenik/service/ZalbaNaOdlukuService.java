@@ -24,12 +24,17 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
 
     private final String jaxbContextPath = "rs.ac.uns.ftn.tim5.apipoverenik.model.zalba_na_odluku";
 
+    private static final String SPARQL_NAMED_GRAPH_URI = "/zalbanaodluku/sparql/metadata";
+
     @Autowired
     @Qualifier("zalbaNaOdlukuRepository")
     private AbstractXmlRepository<ZalbaNaOdluku> zalbaNaOdlukuAbstractXmlRepository;
 
     @Autowired
     private XmlConversionAgent<ZalbaNaOdluku> zalbaNaOdlukuXmlConversionAgent;
+
+    @Autowired 
+    private RDFService rdfService;
 
     @PostConstruct
     public void injectRepositoryProperties(){
@@ -79,12 +84,18 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
         }
 
         try {
-            return zalbaNaOdlukuAbstractXmlRepository.createEntity(zalbaNaOdluku);
+            zalbaNaOdluku = zalbaNaOdlukuAbstractXmlRepository.createEntity(zalbaNaOdluku);
         } catch (XMLDBException e) {
             throw new XmlDatabaseException(e.getMessage());
         } catch (JAXBException e) {
             throw new InvalidXmlDatabaseException(ZalbaNaOdluku.class, e.getMessage());
         }
+
+        if (!rdfService.save(xmlEntity, SPARQL_NAMED_GRAPH_URI)) {
+            System.out.println("[ERROR] Neuspesno cuvanje metapodataka zalbe na odluku u RDF DB.");
+        }
+
+        return zalbaNaOdluku;
     }
 
     @Override
