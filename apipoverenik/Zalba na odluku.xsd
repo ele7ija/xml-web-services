@@ -4,7 +4,7 @@
            xmlns="http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalba_na_odluku"
            xmlns:util="http://ftn.uns.ac.rs/tim5/apipoverenik/model/util">
     <xs:import namespace="http://ftn.uns.ac.rs/tim5/apipoverenik/model/util"
-               schemaLocation="src/main/resources/util.xsd"/>
+               schemaLocation="util.xsd"/>
     <xs:element name="Zalba_na_odluku">
         <xs:complexType>
             <xs:sequence>

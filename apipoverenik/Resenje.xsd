@@ -10,6 +10,7 @@
     <xs:element name="Resenje">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="id" type="xs:long" minOccurs="0"/>
                 <xs:element name="Datum" type="util:Datum"/>
                 <xs:element name="Broj_resenja" type="resenje:TBroj_resenja"/>
                 <xs:element ref="resenje:Kontekst"/>

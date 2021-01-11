@@ -4,7 +4,7 @@
            xmlns="http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalbe_cutanja"
            xmlns:util="http://ftn.uns.ac.rs/tim5/apipoverenik/model/util" elementFormDefault="qualified">
     <xs:import namespace="http://ftn.uns.ac.rs/tim5/apipoverenik/model/util"
-               schemaLocation="src/main/resources/util.xsd"/>
+               schemaLocation="util.xsd"/>
     <xs:element name="zalba_cutanja">
         <xs:complexType>
             <xs:sequence>
