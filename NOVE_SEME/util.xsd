@@ -100,13 +100,6 @@
             <xs:element name="godina" type="xs:gYear" default="2020"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:simpleType name="Razlog">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="није поступио"/>
-            <xs:enumeration value="није поступио у целости"/>
-            <xs:enumeration value="у законском року"/>
-        </xs:restriction>
-    </xs:simpleType>
     <xs:complexType name="TElement_Zahteva">
         <xs:sequence>
             <xs:element name="Tekst" type="xs:string"/>

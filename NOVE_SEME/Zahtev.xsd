@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/zahtev"
+    xmlns:util="http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/util"
+    xmlns:zahtev="http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/zahtev">
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/util"
+        schemaLocation="util.xsd"/>
+    <xs:element name="Zahtev">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="trazilac" type="util:TFizicko_Lice"/>
+                <xs:element name="organ" type="util:TPravno_Lice"/>
+                <xs:element name="pravni_osnov" type="util:TPravni_Osnov" maxOccurs="unbounded"
+                    minOccurs="0"/>
+                <xs:element name="opis_zahteva" type="xs:string"/>
+                <xs:element name="elementi_zahteva">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="Element_Zahteva"
+                                type="util:TElement_Zahteva"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="datum" type="util:Datum"/>
+                <xs:element name="mesto" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:long"/>
+            <xs:attribute name="id_gradjanina" type="xs:long"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Kolekcija_zahteva">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="zahtev:Zahtev"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

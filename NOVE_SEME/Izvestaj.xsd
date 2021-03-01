@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://ftn.uns.ac.rs/tim5/apiogranvlasti/model/izvestaj"
+    elementFormDefault="qualified"
+    xmlns:izvestaj="http://ftn.uns.ac.rs/tim5/apiogranvlasti/model/izvestaj"
+    xmlns:util="http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/util">
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/util"
+        schemaLocation="util.xsd"/>
+    <xs:element name="Izvestaj">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="statistika_zahteva">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="broj_prihvacenih" type="xs:nonNegativeInteger"/>
+                            <xs:element name="broj_odbijenih" type="xs:nonNegativeInteger"/>
+                            <xs:element name="broj_isteklih" type="xs:nonNegativeInteger"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="statistika_zalbi">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="broj_zalbi_na_odluku" type="xs:nonNegativeInteger"/>
+                            <xs:element name="zalbe_cutanja">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nije_postupio"
+                                            type="xs:nonNegativeInteger"/>
+                                        <xs:element name="nije_postupio_u_celosti"
+                                            type="xs:nonNegativeInteger"/>
+                                        <xs:element name="nije_postupio_u_zakonskom_roku"
+                                            type="xs:nonNegativeInteger"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="organ_vlasti" type="util:TPravno_Lice"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:long"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Kolekcija_Izvestaja">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="izvestaj:Izvestaj"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

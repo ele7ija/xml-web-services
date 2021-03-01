@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-           targetNamespace="http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje"
-           xmlns:resenje="http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje"
-           xmlns:util="http://ftn.uns.ac.rs/tim5/apipoverenik/model/util">
+    targetNamespace="http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje"
+    xmlns:resenje="http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje"
+    xmlns:util="http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/util">
 
     <!-- RESENJE I ELEMENTI RESENJA -->
-    <xs:import namespace="http://ftn.uns.ac.rs/tim5/apipoverenik/model/util"
-               schemaLocation="util.xsd"/>
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/util"
+        schemaLocation="util.xsd"/>
     <xs:element name="Resenje">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="id" type="xs:long" minOccurs="0"/>
-                <xs:element name="Datum" type="util:Datum"/>
-                <xs:element name="Broj_resenja" type="resenje:TBroj_resenja"/>
+                <xs:element name="datum_resenja" type="util:Datum"/>
+                <xs:element name="broj_resenja"/>
                 <xs:element ref="resenje:Kontekst"/>
                 <xs:element ref="resenje:Odluka"/>
                 <xs:element name="Poverenik" type="resenje:TOsoba"/>
             </xs:sequence>
+            <xs:attribute name="id" type="xs:long"/>
+            <xs:attribute name="id_zalbe" type="xs:long"/>
+            <xs:attribute name="id_poverenika" type="xs:long"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="Kontekst">
