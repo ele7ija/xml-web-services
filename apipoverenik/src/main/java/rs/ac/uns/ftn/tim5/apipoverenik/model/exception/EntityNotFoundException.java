@@ -1,6 +1,6 @@
 package rs.ac.uns.ftn.tim5.apipoverenik.model.exception;
 
-public class EntityNotFoundException extends RuntimeException{
+public class EntityNotFoundException extends RuntimeException {
 
     private Long id;
     private Class classObject;

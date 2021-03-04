@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for TIshod_odluke.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -28,7 +28,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
  */
 @XmlType(name = "TIshod_odluke")
 @XmlEnum
@@ -53,7 +52,7 @@ public enum TIshodOdluke {
     }
 
     public static TIshodOdluke fromValue(String v) {
-        for (TIshodOdluke c: TIshodOdluke.values()) {
+        for (TIshodOdluke c : TIshodOdluke.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

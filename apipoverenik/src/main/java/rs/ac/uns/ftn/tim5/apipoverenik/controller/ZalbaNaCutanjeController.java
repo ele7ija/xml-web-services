@@ -18,29 +18,29 @@ public class ZalbaNaCutanjeController {
     private ZalbaNaCutanjeService zalbaNaCutanjeService;
 
     @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
-    ResponseEntity<KolekcijaZalbiCutanja> findAll(){
+    ResponseEntity<KolekcijaZalbiCutanja> findAll() {
         KolekcijaZalbiCutanja kolekcijaZalbiCutanja = new KolekcijaZalbiCutanja();
         kolekcijaZalbiCutanja.setZalbaCutanja(this.zalbaNaCutanjeService.findAll());
         return new ResponseEntity<>(kolekcijaZalbiCutanja, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_XML_VALUE)
-    ResponseEntity<ZalbaCutanja> findOne(@PathVariable("id") Long id){
+    ResponseEntity<ZalbaCutanja> findOne(@PathVariable("id") Long id) {
         return new ResponseEntity<>(this.zalbaNaCutanjeService.findById(id), HttpStatus.OK);
     }
 
     @PostMapping(produces = MediaType.APPLICATION_XML_VALUE)
-    ResponseEntity<ZalbaCutanja> create(@RequestBody String body){
+    ResponseEntity<ZalbaCutanja> create(@RequestBody String body) {
         return new ResponseEntity<>(this.zalbaNaCutanjeService.create(body), HttpStatus.OK);
     }
 
     @PutMapping(produces = MediaType.APPLICATION_XML_VALUE)
-    ResponseEntity<ZalbaCutanja> update(@RequestBody String body){
+    ResponseEntity<ZalbaCutanja> update(@RequestBody String body) {
         return new ResponseEntity<>(this.zalbaNaCutanjeService.update(body), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
-    ResponseEntity<Void> delete(@PathVariable("id") Long id){
+    ResponseEntity<Void> delete(@PathVariable("id") Long id) {
         this.zalbaNaCutanjeService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

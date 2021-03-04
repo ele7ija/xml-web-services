@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
 import rs.ac.uns.ftn.tim5.apipoverenik.model.util.Datum;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.util.TPravniOsnov;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.util.TPravnoLice;
@@ -26,9 +27,9 @@ import rs.ac.uns.ftn.tim5.apipoverenik.model.util.TPravnoLice;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -64,13 +65,11 @@ import rs.ac.uns.ftn.tim5.apipoverenik.model.util.TPravnoLice;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "tekstKonteksta",
-    "zalba"
+        "tekstKonteksta",
+        "zalba"
 })
 @XmlRootElement(name = "Kontekst")
 public class Kontekst {
@@ -82,11 +81,9 @@ public class Kontekst {
 
     /**
      * Gets the value of the tekstKonteksta property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Kontekst.TekstKonteksta }
-     *     
+     *
+     * @return possible object is
+     * {@link Kontekst.TekstKonteksta }
      */
     public Kontekst.TekstKonteksta getTekstKonteksta() {
         return tekstKonteksta;
@@ -94,11 +91,9 @@ public class Kontekst {
 
     /**
      * Sets the value of the tekstKonteksta property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Kontekst.TekstKonteksta }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Kontekst.TekstKonteksta }
      */
     public void setTekstKonteksta(Kontekst.TekstKonteksta value) {
         this.tekstKonteksta = value;
@@ -106,11 +101,9 @@ public class Kontekst {
 
     /**
      * Gets the value of the zalba property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Kontekst.Zalba }
-     *     
+     *
+     * @return possible object is
+     * {@link Kontekst.Zalba }
      */
     public Kontekst.Zalba getZalba() {
         return zalba;
@@ -118,11 +111,9 @@ public class Kontekst {
 
     /**
      * Sets the value of the zalba property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Kontekst.Zalba }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Kontekst.Zalba }
      */
     public void setZalba(Kontekst.Zalba value) {
         this.zalba = value;
@@ -131,9 +122,9 @@ public class Kontekst {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -145,12 +136,10 @@ public class Kontekst {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "content"
+            "content"
     })
     public static class TekstKonteksta {
 
@@ -160,26 +149,24 @@ public class Kontekst {
 
         /**
          * Gets the value of the content property.
-         * 
+         *
          * <p>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
          * returned list will be present inside the JAXB object.
          * This is why there is not a <CODE>set</CODE> method for the content property.
-         * 
+         *
          * <p>
          * For example, to add a new item, do as follows:
          * <pre>
          *    getContent().add(newItem);
          * </pre>
-         * 
-         * 
+         *
+         *
          * <p>
          * Objects of the following type(s) are allowed in the list
          * {@link String }
          * {@link JAXBElement }{@code <}{@link TPravniOsnov }{@code >}
-         * 
-         * 
          */
         public List<Serializable> getContent() {
             if (content == null) {
@@ -193,9 +180,9 @@ public class Kontekst {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -210,15 +197,13 @@ public class Kontekst {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "datumPodnosenjaZahteva",
-        "tipZalbe",
-        "podnosilac",
-        "organVlasti"
+            "datumPodnosenjaZahteva",
+            "tipZalbe",
+            "podnosilac",
+            "organVlasti"
     })
     public static class Zalba {
 
@@ -233,11 +218,9 @@ public class Kontekst {
 
         /**
          * Gets the value of the datumPodnosenjaZahteva property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Datum }
-         *     
+         *
+         * @return possible object is
+         * {@link Datum }
          */
         public Datum getDatumPodnosenjaZahteva() {
             return datumPodnosenjaZahteva;
@@ -245,11 +228,9 @@ public class Kontekst {
 
         /**
          * Sets the value of the datumPodnosenjaZahteva property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Datum }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link Datum }
          */
         public void setDatumPodnosenjaZahteva(Datum value) {
             this.datumPodnosenjaZahteva = value;
@@ -257,11 +238,9 @@ public class Kontekst {
 
         /**
          * Gets the value of the tipZalbe property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link TTipZalbe }
-         *     
+         *
+         * @return possible object is
+         * {@link TTipZalbe }
          */
         public TTipZalbe getTipZalbe() {
             return tipZalbe;
@@ -269,11 +248,9 @@ public class Kontekst {
 
         /**
          * Sets the value of the tipZalbe property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link TTipZalbe }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link TTipZalbe }
          */
         public void setTipZalbe(TTipZalbe value) {
             this.tipZalbe = value;
@@ -281,11 +258,9 @@ public class Kontekst {
 
         /**
          * Gets the value of the podnosilac property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link TOsoba }
-         *     
+         *
+         * @return possible object is
+         * {@link TOsoba }
          */
         public TOsoba getPodnosilac() {
             return podnosilac;
@@ -293,11 +268,9 @@ public class Kontekst {
 
         /**
          * Sets the value of the podnosilac property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link TOsoba }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link TOsoba }
          */
         public void setPodnosilac(TOsoba value) {
             this.podnosilac = value;
@@ -305,11 +278,9 @@ public class Kontekst {
 
         /**
          * Gets the value of the organVlasti property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link TPravnoLice }
-         *     
+         *
+         * @return possible object is
+         * {@link TPravnoLice }
          */
         public TPravnoLice getOrganVlasti() {
             return organVlasti;
@@ -317,11 +288,9 @@ public class Kontekst {
 
         /**
          * Sets the value of the organVlasti property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link TPravnoLice }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link TPravnoLice }
          */
         public void setOrganVlasti(TPravnoLice value) {
             this.organVlasti = value;

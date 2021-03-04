@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for TElement_Zahteva complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="TElement_Zahteva">
  *   &lt;complexContent>
@@ -33,13 +33,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TElement_Zahteva", propOrder = {
-    "tekst",
-    "metodDostave"
+        "tekst",
+        "metodDostave"
 })
 public class TElementZahteva {
 
@@ -50,11 +48,9 @@ public class TElementZahteva {
 
     /**
      * Gets the value of the tekst property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getTekst() {
         return tekst;
@@ -62,11 +58,9 @@ public class TElementZahteva {
 
     /**
      * Sets the value of the tekst property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setTekst(String value) {
         this.tekst = value;
@@ -74,25 +68,23 @@ public class TElementZahteva {
 
     /**
      * Gets the value of the metodDostave property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the metodDostave property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getMetodDostave().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getMetodDostave() {
         if (metodDostave == null) {

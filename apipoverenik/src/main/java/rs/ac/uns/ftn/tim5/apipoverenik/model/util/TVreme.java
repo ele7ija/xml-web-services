@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for TVreme complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="TVreme">
  *   &lt;complexContent>
@@ -45,13 +45,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TVreme", propOrder = {
-    "sat",
-    "minut"
+        "sat",
+        "minut"
 })
 public class TVreme {
 
@@ -62,7 +60,6 @@ public class TVreme {
 
     /**
      * Gets the value of the sat property.
-     * 
      */
     public int getSat() {
         return sat;
@@ -70,7 +67,6 @@ public class TVreme {
 
     /**
      * Sets the value of the sat property.
-     * 
      */
     public void setSat(int value) {
         this.sat = value;
@@ -78,7 +74,6 @@ public class TVreme {
 
     /**
      * Gets the value of the minut property.
-     * 
      */
     public int getMinut() {
         return minut;
@@ -86,7 +81,6 @@ public class TVreme {
 
     /**
      * Sets the value of the minut property.
-     * 
      */
     public void setMinut(int value) {
         this.minut = value;

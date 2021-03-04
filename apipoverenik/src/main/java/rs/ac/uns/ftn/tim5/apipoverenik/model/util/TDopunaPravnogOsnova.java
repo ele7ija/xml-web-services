@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for TDopuna_Pravnog_Osnova complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="TDopuna_Pravnog_Osnova">
  *   &lt;complexContent>
@@ -39,13 +39,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TDopuna_Pravnog_Osnova", propOrder = {
-    "brojDopune",
-    "godina"
+        "brojDopune",
+        "godina"
 })
 public class TDopunaPravnogOsnova {
 
@@ -57,11 +55,9 @@ public class TDopunaPravnogOsnova {
 
     /**
      * Gets the value of the brojDopune property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @return possible object is
+     * {@link BigInteger }
      */
     public BigInteger getBrojDopune() {
         return brojDopune;
@@ -69,11 +65,9 @@ public class TDopunaPravnogOsnova {
 
     /**
      * Sets the value of the brojDopune property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link BigInteger }
      */
     public void setBrojDopune(BigInteger value) {
         this.brojDopune = value;
@@ -81,11 +75,9 @@ public class TDopunaPravnogOsnova {
 
     /**
      * Gets the value of the godina property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @return possible object is
+     * {@link BigInteger }
      */
     public BigInteger getGodina() {
         return godina;
@@ -93,11 +85,9 @@ public class TDopunaPravnogOsnova {
 
     /**
      * Sets the value of the godina property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link BigInteger }
      */
     public void setGodina(BigInteger value) {
         this.godina = value;

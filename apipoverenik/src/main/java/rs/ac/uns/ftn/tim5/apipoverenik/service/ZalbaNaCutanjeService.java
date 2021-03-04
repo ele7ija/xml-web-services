@@ -56,11 +56,11 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
     @Autowired
     private XmlConversionAgent<ZalbaCutanja> zalbaCutanjaXmlConversionAgent;
 
-    @Autowired 
+    @Autowired
     private RDFService rdfService;
 
     @PostConstruct
-    public void injectRepositoryProperties(){
+    public void injectRepositoryProperties() {
         this.zalbaCutanjaAbstractXmlRepository.injectRepositoryProperties(
                 "/db/sample/zalbe_cutanja",
                 this.jaxbContextPath,
@@ -88,7 +88,7 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
     public ZalbaCutanja findById(Long entityId) {
         try {
             ZalbaCutanja zalbaCutanja = this.zalbaCutanjaAbstractXmlRepository.getEntity(entityId);
-            if(zalbaCutanja == null){
+            if (zalbaCutanja == null) {
                 throw new EntityNotFoundException(entityId, ZalbaCutanja.class);
             }
             return zalbaCutanja;
@@ -103,9 +103,9 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
     public ZalbaCutanja create(String xmlEntity) {
 
         ZalbaCutanja zalbaCutanja;
-        try{
+        try {
             zalbaCutanja = this.zalbaCutanjaXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
-        }catch(JAXBException e){
+        } catch (JAXBException e) {
             throw new InvalidXmlException(ZalbaCutanja.class, e.getMessage());
         }
 
@@ -120,7 +120,8 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
         // Sacuvaj u RDF
         if (!rdfService.save(xmlEntity, SPARQL_NAMED_GRAPH_URI)) {
             System.out.println("[ERROR] Neuspesno cuvanje metapodataka zalbe cutanja u RDF DB.");
-        };
+        }
+        ;
 
         return zalbaCutanja;
     }
@@ -128,16 +129,16 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
     @Override
     public ZalbaCutanja update(String xmlEntity) {
         ZalbaCutanja zalbaCutanja;
-        try{
+        try {
             zalbaCutanja = this.zalbaCutanjaXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
-        }catch(JAXBException e){
+        } catch (JAXBException e) {
             throw new InvalidXmlException(ZalbaCutanja.class, e.getMessage());
         }
 
         try {
-            if(this.zalbaCutanjaAbstractXmlRepository.updateEntity(zalbaCutanja))
+            if (this.zalbaCutanjaAbstractXmlRepository.updateEntity(zalbaCutanja))
                 return zalbaCutanja;
-            else{
+            else {
                 throw new EntityNotFoundException(zalbaCutanja.getId(), ZalbaCutanja.class);
             }
         } catch (XMLDBException e) {

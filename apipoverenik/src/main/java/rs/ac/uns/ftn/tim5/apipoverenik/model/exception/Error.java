@@ -3,7 +3,8 @@ package rs.ac.uns.ftn.tim5.apipoverenik.model.exception;
 public class Error {
     private String message;
 
-    public Error(){}
+    public Error() {
+    }
 
     public Error(String message) {
         this.message = message;

@@ -26,7 +26,7 @@ import rs.ac.uns.ftn.tim5.apipoverenik.util.SparqlUtil;
 
 @Service
 public class RDFService {
-    
+
     @Autowired
     private RDFDBConnectionProperties rdfdbConnectionProperties;
 
@@ -37,13 +37,13 @@ public class RDFService {
             PrintWriter p = new PrintWriter(new FileOutputStream(tmpFilename, true));
             p.println(rdfa);
             p.close();
-            
+
             MetadataExtractor metadataExtractor = new MetadataExtractor();
             ByteArrayOutputStream xmlrdf = new ByteArrayOutputStream();
             System.out.println("[INFO] Extracting metadata from RDFa attributes...");
             metadataExtractor.extractMetadata(
-                new FileInputStream(new File(tmpFilename)), 
-                xmlrdf);
+                    new FileInputStream(new File(tmpFilename)),
+                    xmlrdf);
             FileOutputStream xmlrdfOut = new FileOutputStream(new File(tmpFilename));
             xmlrdfOut.write(xmlrdf.toByteArray());
         } catch (FileNotFoundException e1) {
@@ -68,24 +68,24 @@ public class RDFService {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-		
-		ByteArrayOutputStream outNTRIPLES = new ByteArrayOutputStream();
-		model.write(outNTRIPLES, SparqlUtil.NTRIPLES);
-		
-		System.out.println("[INFO] Extracted metadata as RDF/XML...");
-        model.write(System.out, SparqlUtil.RDF_XML);
-        
-        // Writing the named graph
-		System.out.println("[INFO] Populating named graph \"" + named_graph_uri + "\" with extracted metadata.");
-		String sparqlUpdate = SparqlUtil.insertData(rdfdbConnectionProperties.getDataEndpoint() + named_graph_uri, new String(outNTRIPLES.toByteArray()));
-		System.out.println(sparqlUpdate);
-		
-		// UpdateRequest represents a unit of execution
-		UpdateRequest update = UpdateFactory.create(sparqlUpdate);
 
-		UpdateProcessor processor = UpdateExecutionFactory.createRemote(update, rdfdbConnectionProperties.getUpdateEndpoint());
+        ByteArrayOutputStream outNTRIPLES = new ByteArrayOutputStream();
+        model.write(outNTRIPLES, SparqlUtil.NTRIPLES);
+
+        System.out.println("[INFO] Extracted metadata as RDF/XML...");
+        model.write(System.out, SparqlUtil.RDF_XML);
+
+        // Writing the named graph
+        System.out.println("[INFO] Populating named graph \"" + named_graph_uri + "\" with extracted metadata.");
+        String sparqlUpdate = SparqlUtil.insertData(rdfdbConnectionProperties.getDataEndpoint() + named_graph_uri, new String(outNTRIPLES.toByteArray()));
+        System.out.println(sparqlUpdate);
+
+        // UpdateRequest represents a unit of execution
+        UpdateRequest update = UpdateFactory.create(sparqlUpdate);
+
+        UpdateProcessor processor = UpdateExecutionFactory.createRemote(update, rdfdbConnectionProperties.getUpdateEndpoint());
         processor.execute();
-        
+
         return true;
     }
 }

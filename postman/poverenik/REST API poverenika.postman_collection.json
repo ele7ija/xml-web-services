@@ -1,344 +1,344 @@
 {
-	"info": {
-		"_postman_id": "ffc01cce-d482-4c19-b9b9-94c69ee44ad4",
-		"name": "REST API poverenika",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Resenje",
-			"item": [
-				{
-					"name": "GET ALL",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8082/resenja",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"resenja"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CREATE",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Resenje xmlns=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje\" xmlns:util=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/util\"\r\n    xmlns:addr=\"http://www.ftn.uns.ac.rs/rdf/resenja\"\r\n\txmlns:pred=\"http://www.ftn.uns.ac.rs/rdf/resenja/predicate/\"\r\n    vocab=\"http://www.ftn.uns.ac.rs/tim5/rdf/resenja/\" \r\n    about=\"http://www.ftn.uns.ac.rs/tim5/rdf/resenja/resenje/1\" typeof=\"pred:resenje\">\r\n    <Datum>\r\n        <util:dan property=\"pred:dan\" datatype=\"xs:string\">---09</util:dan>\r\n        <util:mesec property=\"pred:mesec\" datatype=\"xs:string\">--12</util:mesec>\r\n        <util:godina property=\"pred:godina\" datatype=\"xs:string\">2020</util:godina>\r\n    </Datum>\r\n    <Broj_resenja property=\"pred:broj\" datatype=\"xs:string\">01-02-141/2020-12</Broj_resenja>\r\n    <Kontekst>\r\n        <Tekst_konteksta>\r\n            Повереник за информације од јавног значаја и заштиту података о личности, у поступку по алби\r\n            коју је изјавио AA, због непоступања Учитељског факултета у Призрену са привременим седиштем\r\n            у Лепосавићу, ул. Немањина бб, по његовом захтеву од 16.04.2020. године за приступ\r\n            информацијама од јавног значаја, на основу\r\n            <Pravni_osnov>\r\n                <util:Naziv>Закон о слободном приступу информацијама од јавног значаја</util:Naziv>\r\n                <util:Clan>35</util:Clan>\r\n            </Pravni_osnov>\r\n            , а у вези са\r\n            чланом 4. тачка 22. Закона о заштити података о личности („Сл. гласник РС“, број 87/18), као и члана\r\n            23. и члана 24. став 4. Закона о слободном приступу информацијама од јавног значаја и члана 173.\r\n            став 2. Закона о општем управном поступку („Сл. гласник РС“, бр. 18/2016 и 95/2018-аутентично\r\n            тумачење), доноси\r\n        </Tekst_konteksta>\r\n        <Zalba>\r\n            <Datum_podnosenja_zahteva>\r\n                <util:dan property=\"pred:zahtev_dan\" datatype=\"xs:string\">---09</util:dan>\r\n                <util:mesec property=\"pred:zahtev_mesec\" datatype=\"xs:string\">--12</util:mesec>\r\n                <util:godina property=\"pred:zahtev_godina\" datatype=\"xs:string\">2020</util:godina>\r\n            </Datum_podnosenja_zahteva>\r\n            <Tip_zalbe property=\"pred:zalba_tip\" datatype=\"xs:string\">nepostupanje</Tip_zalbe>\r\n            <Podnosilac>\r\n                <Ime property=\"pred:podnosilac_zalbe_ime\" datatype=\"xs:string\">Miki</Ime>\r\n                <Prezime property=\"pred:podnosilac_zalbe_prezime\" datatype=\"xs:string\">Mikic</Prezime>\r\n            </Podnosilac>\r\n            <Organ_vlasti>\r\n                <util:Adresa>\r\n                    <util:Mesto property=\"pred:organ_vlasti_mesto\" datatype=\"xs:string\">Novi Sad</util:Mesto>\r\n                    <util:Postanski_broj property=\"pred:organ_vlasti_postanski_broj\" datatype=\"xs:unsignedInt\">21000</util:Postanski_broj>\r\n                    <util:Ulica property=\"pred:organ_vlasti_ulica\" datatype=\"xs:string\">Jiricekova</util:Ulica>\r\n                    <util:Broj property=\"pred:organ_vlasti_broj\" datatype=\"xs:unsignedInt\">51</util:Broj>\r\n                </util:Adresa>\r\n                <util:Naziv property=\"pred:organ_vlasti_naziv\" datatype=\"xs:string\">Narodna Banka Srbije</util:Naziv>\r\n            </Organ_vlasti>\r\n        </Zalba>\r\n    </Kontekst>\r\n    <Odluka>\r\n        <Ishod property=\"pred:ishod_odluke\" datatype=\"xs:string\">osnovana_zalba</Ishod>\r\n        I Налаже се Учитељском факултету у Призрену са привременим седиштем у Лепосавићу, да\r\n        без одлагања, а најкасније у року од пет дана од дана пријема овог решења, обавести АА, да ли\r\n        поседује тражене информације односно документ у коме су исте садржане, и то: Уговор о раду који\r\n        је као последњи потписан између тог Факултета и ББ, те да му, уколико такав документ поседује\r\n        достави копију истог електронском поштом на адресу … или поштом, с тим што ће пре достављања\r\n        заштитити и учинити недоступним податке о личности којима би се повредило право на приватност\r\n        лица на које се информације односе, као што су: адреса становања, лични матични број грађана, име\r\n        оца, радни стаж, просечна оцена студирања и сл. уколико су такви подаци садржани у траженом\r\n        документу.\r\n        II О извршењу решења Учитељски факултет у Призрену са привременим седиштем у\r\n        Лепосавићу, ће обавестити Повереника у року од седам дана од пријема овог решења.\r\n        <Obrazlozenje>\r\n            АА, као тражилац информација, изјавио је дана 07.05.2020. године жалбу Поверенику, због\r\n            непоступања Учитељског факултета у Призрену са привременим седиштем у Лепосавићу по\r\n            његовом захтеву од 16.04.2020. године за приступ информацијама од јавног значаја и у прилогу\r\n            доставио копију истог.\r\n            Поступајући по жалби, Повереник је дана 11.05.2020. године упутио исту на изјашњење\r\n            Учитељском факултету у Призрену са привременим седиштем у Лепосавићу, као органу власти у\r\n            смислу\r\n            <Pravni_osnov>\r\n                <util:Naziv>Закона о слободном приступу информацијама од јавног значаја</util:Naziv>\r\n                <util:Clan>3</util:Clan>\r\n            </Pravni_osnov>\r\n            и затражио да се\r\n            изјасни о наводима жалбе, посебно о разлозима непоступања у законском року по поднетом захтеву\r\n            у складу са одредбама члана 16. ст.1-9. или ст. 10. Закона, остављајући рок од осам дана, поводом\r\n            чега није добио одговор.\r\n        </Obrazlozenje>\r\n    </Odluka>\r\n    <Poverenik>\r\n        <Ime property=\"pred:poverenik_ime\" datatype=\"xs:string\">Пера</Ime>\r\n        <Prezime property=\"pred:poverenik_prezime\" datatype=\"xs:string\">Петровић</Prezime>\r\n    </Poverenik>\r\n    \r\n</Resenje>"
-						},
-						"url": {
-							"raw": "http://localhost:8082/resenja",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"resenja"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET ONE",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8082/resenja/7384707976924750645",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"resenja",
-								"7384707976924750645"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "UPDATE",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Resenje xmlns=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje\" xmlns:ns2=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/util\" \r\n    datum=\"2020-12-12\"\r\n    broj_resenja=\"01-02-141/2020-12\">\r\n    <id>7384707976924750645</id>\r\n    <Kontekst>\r\n        <Tekst_konteksta>\r\n            Повереник за информације од јавног значаја и заштиту података о личности, у поступку по алби\r\n            коју је изјавио AA, због непоступања Учитељског факултета у Призрену са привременим седиштем\r\n            у Лепосавићу, ул. Немањина бб, по његовом захтеву од 16.04.2020. године за приступ\r\n            информацијама од јавног значаја, на основу\r\n            \r\n            <Pravni_osnov>\r\n                <ns2:Naziv>Закон о слободном приступу информацијама од јавног значаја!?</ns2:Naziv>\r\n                <ns2:Clan>35</ns2:Clan>\r\n            </Pravni_osnov>\r\n            , а у вези са\r\n            чланом 4. тачка 22. Закона о заштити података о личности („Сл. гласник РС“, број 87/18), као и члана\r\n            23. и члана 24. став 4. Закона о слободном приступу информацијама од јавног значаја и члана 173.\r\n            став 2. Закона о општем управном поступку („Сл. гласник РС“, бр. 18/2016 и 95/2018-аутентично\r\n            тумачење), доноси\r\n        </Tekst_konteksta>\r\n        <Zalba datum_podnosenja_zahteva=\"2020-04-16\" tip=\"nepostupanje\">\r\n            <Podnosilac>\r\n                <Ime></Ime>\r\n                <Prezime></Prezime>\r\n            </Podnosilac>\r\n            <Organ_vlasti>\r\n                <ns2:Adresa>\r\n                    <ns2:Mesto>Novi Sad</ns2:Mesto>\r\n                    <ns2:Postanski_broj>21000</ns2:Postanski_broj>\r\n                    <ns2:Ulica>Cara Dusana</ns2:Ulica>\r\n                    <ns2:Broj>45</ns2:Broj>\r\n                </ns2:Adresa>\r\n                <ns2:Naziv>Ustanova neka</ns2:Naziv>\r\n            </Organ_vlasti>\r\n        </Zalba>\r\n    </Kontekst>\r\n    <Odluka ishod=\"osnovana_zalba\">\r\n        I Налаже се Учитељском факултету у Призрену са привременим седиштем у Лепосавићу, да\r\n        без одлагања, а најкасније у року од пет дана од дана пријема овог решења, обавести АА, да ли\r\n        поседује тражене информације односно документ у коме су исте садржане, и то: Уговор о раду који\r\n        је као последњи потписан између тог Факултета и ББ, те да му, уколико такав документ поседује\r\n        достави копију истог електронском поштом на адресу … или поштом, с тим што ће пре достављања\r\n        заштитити и учинити недоступним податке о личности којима би се повредило право на приватност\r\n        лица на које се информације односе, као што су: адреса становања, лични матични број грађана, име\r\n        оца, радни стаж, просечна оцена студирања и сл. уколико су такви подаци садржани у траженом\r\n        документу.\r\n        II О извршењу решења Учитељски факултет у Призрену са привременим седиштем у\r\n        Лепосавићу, ће обавестити Повереника у року од седам дана од пријема овог решења.\r\n        \r\n        <Obrazlozenje>\r\n            АА, као тражилац информација, изјавио је дана 07.05.2020. године жалбу Поверенику, због\r\n            непоступања Учитељског факултета у Призрену са привременим седиштем у Лепосавићу по\r\n            његовом захтеву од 16.04.2020. године за приступ информацијама од јавног значаја и у прилогу\r\n            доставио копију истог.\r\n            Поступајући по жалби, Повереник је дана 11.05.2020. године упутио исту на изјашњење\r\n            Учитељском факултету у Призрену са привременим седиштем у Лепосавићу, као органу власти у\r\n            смислу\r\n            \r\n            <Pravni_osnov>\r\n                <ns2:Naziv>Закона о слободном приступу информацијама од јавног значаја</ns2:Naziv>\r\n                <ns2:Clan>3</ns2:Clan>\r\n            </Pravni_osnov>\r\n            и затражио да се\r\n            изјасни о наводима жалбе, посебно о разлозима непоступања у законском року по поднетом захтеву\r\n            у складу са одредбама члана 16. ст.1-9. или ст. 10. Закона, остављајући рок од осам дана, поводом\r\n            чега није добио одговор.\r\n        </Obrazlozenje>\r\n    </Odluka>\r\n    <Poverenik>\r\n        <Ime>Пера</Ime>\r\n        <Prezime>Петровић</Prezime>\r\n    </Poverenik>\r\n</Resenje>"
-						},
-						"url": {
-							"raw": "http://localhost:8082/resenja",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"resenja"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8082/resenja/7884494158227087222",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"resenja",
-								"7884494158227087222"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Zalba na odluku",
-			"item": [
-				{
-					"name": "GET ALL",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8082/zalbe-na-odluku",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"zalbe-na-odluku"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET ONE",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8082/zalbe-na-odluku/5963409056004452416",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"zalbe-na-odluku",
-								"5963409056004452416"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CREATE",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Zalba_na_odluku xmlns=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalba_na_odluku\"\r\n    xmlns:util=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/util\"\r\n    xmlns:addr=\"http://www.ftn.uns.ac.rs/rdf/zalbe_na_odluku\"\r\n\txmlns:pred=\"http://www.ftn.uns.ac.rs/rdf/zalbe_na_odluku/predicate/\"\r\n    vocab=\"http://www.ftn.uns.ac.rs/tim5/rdf/zalbe_na_odluku/\" \r\n    about=\"http://www.ftn.uns.ac.rs/tim5/rdf/zalbe_na_odluku/zalba/1\" typeof=\"pred:zalba_na_odluku\">\r\n    <Poverenik>\r\n        <Adresa>\r\n            <util:Mesto property=\"pred:poverenik_mesto\" datatype=\"xs:string\">Beograd</util:Mesto>\r\n            <util:Postanski_broj property=\"pred:poverenik_postanski_broj\" datatype=\"xs:unsignedInt\">11000</util:Postanski_broj>\r\n            <util:Ulica property=\"pred:poverenik_ulica\" datatype=\"xs:string\">Bulevar Kralja Aleksandra</util:Ulica>\r\n            <util:Broj property=\"pred:poverenik_broj\" datatype=\"xs:unsignedInt\">15</util:Broj>\r\n        </Adresa>\r\n    </Poverenik>\r\n    <Zalilac>\r\n        <util:Adresa>\r\n            <util:Mesto>Novi Sad</util:Mesto>\r\n            <util:Postanski_broj>21000</util:Postanski_broj>\r\n            <util:Ulica>Jiricekova</util:Ulica>\r\n            <util:Broj>10</util:Broj>\r\n        </util:Adresa>\r\n        <util:Ime property=\"pred:zalilac_ime\" datatype=\"xs:string\">Miki</util:Ime>\r\n        <util:Prezime property=\"pred:zalilac_prezime\" datatype=\"xs:string\">Mikic</util:Prezime>\r\n    </Zalilac>\r\n    <organ_vlasti>\r\n        <util:Adresa>\r\n            <util:Mesto property=\"pred:organ_vlasti_mesto\" datatype=\"xs:string\">Novi Sad</util:Mesto>\r\n            <util:Postanski_broj property=\"pred:organ_vlasti_postanski_broj\" datatype=\"xs:unsignedInt\">21000</util:Postanski_broj>\r\n            <util:Ulica property=\"pred:organ_vlasti_ulica\" datatype=\"xs:string\">Jiricekova</util:Ulica>\r\n            <util:Broj property=\"pred:organ_vlasti_broj\" datatype=\"xs:unsignedInt\">51</util:Broj>\r\n        </util:Adresa>\r\n        <util:Naziv property=\"pred:organ_vlasti_naziv\" datatype=\"xs:string\">Narodna Banka Srbije</util:Naziv>\r\n    </organ_vlasti>\r\n    <odluka>\r\n        <broj_odluke property=\"pred:organ_vlasti_broj_odluke\" datatype=\"xs:string\"></broj_odluke>\r\n        <godina property=\"pred:organ_vlasti_datum_odluke\" datatype=\"xs:string\"></godina>\r\n    </odluka>\r\n    <Datum>\r\n        <util:dan property=\"pred:zalba_dan\" datatype=\"xs:string\">---19</util:dan>\r\n        <util:mesec property=\"pred:zalba_mesec\" datatype=\"xs:string\">--12</util:mesec>\r\n        <util:godina property=\"pred:zalba_godina\" datatype=\"xs:string\">2020</util:godina>\r\n    </Datum>\r\n    <Osnova_za_zaljenje></Osnova_za_zaljenje>\r\n    <Zakon>\r\n        <util:Naziv>Zakon o slobodnom pristupu informacijama od javnog znacaja</util:Naziv>\r\n        <util:Clan>15</util:Clan>\r\n        <util:Strana>1</util:Strana>\r\n        <util:Dopune>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>120</util:Broj_dopune>\r\n                <util:Godina>2004</util:Godina>\r\n            </util:Dopuna>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>54</util:Broj_dopune>\r\n                <util:Godina>2007</util:Godina>\r\n            </util:Dopuna>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>104</util:Broj_dopune>\r\n                <util:Godina>2009</util:Godina>\r\n            </util:Dopuna>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>36</util:Broj_dopune>\r\n                <util:Godina>2010</util:Godina>\r\n            </util:Dopuna>\r\n        </util:Dopune>\r\n    </Zakon>\r\n    <Mesto></Mesto>\r\n    <Datum_zahteva>\r\n        <util:dan property=\"pred:zahtev_dan\" datatype=\"xs:string\">---09</util:dan>\r\n        <util:mesec property=\"pred:zahtev_mesec\" datatype=\"xs:string\">--12</util:mesec>\r\n        <util:godina property=\"pred:zahtev_godina\" datatype=\"xs:string\">2020</util:godina>\r\n    </Datum_zahteva>\r\n    <Podnosilac_zalbe>\r\n        <Obavezni_podaci>\r\n            <util:Adresa>\r\n                <util:Mesto>Novi Sad</util:Mesto>\r\n                <util:Postanski_broj>21000</util:Postanski_broj>\r\n                <util:Ulica>Jiricekova</util:Ulica>\r\n                <util:Broj>10</util:Broj>\r\n            </util:Adresa>\r\n            <util:Ime property=\"pred:podnosilac_zalbe_ime\" datatype=\"xs:string\">Miki</util:Ime>\r\n            <util:Prezime property=\"pred:podnosilac_zalbe_prezime\" datatype=\"xs:string\">Mikic</util:Prezime>\r\n        </Obavezni_podaci>\r\n        <Kontakt_podaci></Kontakt_podaci>\r\n    </Podnosilac_zalbe>\r\n</Zalba_na_odluku>"
-						},
-						"url": {
-							"raw": "http://localhost:8082/zalbe-na-odluku",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"zalbe-na-odluku"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "UPDATE",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Zalba_na_odluku xmlns=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalba_na_odluku\" xmlns:ns2=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/util\">\r\n    <id>5963409056004452416</id>\r\n    <Poverenik>\r\n        <Adresa>\r\n            <ns2:Mesto>Beograd</ns2:Mesto>\r\n            <ns2:Postanski_broj>11000</ns2:Postanski_broj>\r\n            <ns2:Ulica>Bulevar Kralja Aleksandra</ns2:Ulica>\r\n            <ns2:Broj>15</ns2:Broj>\r\n        </Adresa>\r\n    </Poverenik>\r\n    <Zalilac>\r\n        <ns2:Adresa>\r\n            <ns2:Mesto>Novi Sad</ns2:Mesto>\r\n            <ns2:Postanski_broj>21000</ns2:Postanski_broj>\r\n            <ns2:Ulica>Jiricekova</ns2:Ulica>\r\n            <ns2:Broj>10</ns2:Broj>\r\n        </ns2:Adresa>\r\n        <ns2:Ime>Miki</ns2:Ime>\r\n        <ns2:Prezime>Mikic</ns2:Prezime>\r\n    </Zalilac>\r\n    <organ_vlasti>\r\n        <ns2:Adresa>\r\n            <ns2:Mesto>Novi Sad</ns2:Mesto>\r\n            <ns2:Postanski_broj>21000</ns2:Postanski_broj>\r\n            <ns2:Ulica>Jiricekova</ns2:Ulica>\r\n            <ns2:Broj>51</ns2:Broj>\r\n        </ns2:Adresa>\r\n        <ns2:Naziv>Narodna Banka Srbije</ns2:Naziv>\r\n    </organ_vlasti>\r\n    <odluka>\r\n        <broj_odluke>1</broj_odluke>\r\n        <godina>2020</godina>\r\n    </odluka>\r\n    <Datum>\r\n        <ns2:dan>---19</ns2:dan>\r\n        <ns2:mesec>--12</ns2:mesec>\r\n        <ns2:godina>2020</ns2:godina>\r\n    </Datum>\r\n    <Osnova_za_zaljenje></Osnova_za_zaljenje>\r\n    <Zakon>\r\n        <ns2:Naziv>Zakon o slobodnom pristupu informacijama od javnog znacaja</ns2:Naziv>\r\n        <ns2:Clan>15</ns2:Clan>\r\n        <ns2:Strana>1</ns2:Strana>\r\n        <ns2:Dopune>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>120</ns2:Broj_dopune>\r\n                <ns2:Godina>2004</ns2:Godina>\r\n            </ns2:Dopuna>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>54</ns2:Broj_dopune>\r\n                <ns2:Godina>2007</ns2:Godina>\r\n            </ns2:Dopuna>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>104</ns2:Broj_dopune>\r\n                <ns2:Godina>2009</ns2:Godina>\r\n            </ns2:Dopuna>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>36</ns2:Broj_dopune>\r\n                <ns2:Godina>2010</ns2:Godina>\r\n            </ns2:Dopuna>\r\n        </ns2:Dopune>\r\n    </Zakon>\r\n    <Mesto></Mesto>\r\n    <Datum_zahteva>\r\n        <ns2:dan>---09</ns2:dan>\r\n        <ns2:mesec>--12</ns2:mesec>\r\n        <ns2:godina>2020</ns2:godina>\r\n    </Datum_zahteva>\r\n    <Podnosilac_zalbe>\r\n        <Obavezni_podaci>\r\n            <ns2:Adresa>\r\n                <ns2:Mesto>Novi Sad</ns2:Mesto>\r\n                <ns2:Postanski_broj>21000</ns2:Postanski_broj>\r\n                <ns2:Ulica>Jiricekova</ns2:Ulica>\r\n                <ns2:Broj>10</ns2:Broj>\r\n            </ns2:Adresa>\r\n            <ns2:Ime>Miki</ns2:Ime>\r\n            <ns2:Prezime>Mikic</ns2:Prezime>\r\n        </Obavezni_podaci>\r\n        <Kontakt_podaci></Kontakt_podaci>\r\n    </Podnosilac_zalbe>\r\n</Zalba_na_odluku>"
-						},
-						"url": {
-							"raw": "http://localhost:8082/zalbe-na-odluku",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"zalbe-na-odluku"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8082/zalbe-na-odluku/6787437572416319816",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"zalbe-na-odluku",
-								"6787437572416319816"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Zalba na cutanje",
-			"item": [
-				{
-					"name": "GET ALL",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8082/zalbe-na-cutanje",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"zalbe-na-cutanje"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET ONE",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8082/zalbe-na-cutanje/5958714886178295374",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"zalbe-na-cutanje",
-								"5958714886178295374"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CREATE",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<zalba_cutanja xmlns=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalbe_cutanja\"\r\n    xmlns:util=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/util\"\r\n    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n    xsi:schemaLocation=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalbe_cutanja file:/C:/Users/milla/Documents/dev/cetvrta_godina/xml-web-services/xml-web-services/xms_seme/Zalbe_cutanja.xsd\"\r\n    xmlns:addr=\"http://www.ftn.uns.ac.rs/rdf/zalbe_cutanja\"\r\n\txmlns:pred=\"http://www.ftn.uns.ac.rs/rdf/zalbe_cutanja/predicate/\"\r\n    vocab=\"http://www.ftn.uns.ac.rs/tim5/rdf/zalbe_cutanja/\" \r\n    about=\"http://www.ftn.uns.ac.rs/tim5/rdf/zalbe_cutanja/zalba/1\" typeof=\"pred:zalba_cutanja\">\r\n    <poverenik>\r\n        <naziv>Povereniku za informacije od javnog znacaja i zastitu podataka o linosti</naziv>\r\n        <adresa>\r\n            <util:Mesto property=\"pred:poverenik_mesto\" datatype=\"xs:string\">Beograd</util:Mesto>\r\n            <util:Postanski_broj property=\"pred:poverenik_postanski_broj\" datatype=\"xs:unsignedInt\">11000</util:Postanski_broj>\r\n            <util:Ulica property=\"pred:poverenik_ulica\" datatype=\"xs:string\">Bulevar Kralja Aleksandra</util:Ulica>\r\n            <util:Broj property=\"pred:poverenik_broj\" datatype=\"xs:unsignedInt\">15</util:Broj>\r\n        </adresa>\r\n    </poverenik>\r\n    <zakon>\r\n        <util:Naziv>Zakon o slobodnom pristupu informacijama od javnog znacaja</util:Naziv>\r\n        <util:Clan>15</util:Clan>\r\n        <util:Strana>1</util:Strana>\r\n        <util:Dopune>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>120</util:Broj_dopune>\r\n                <util:Godina>2004</util:Godina>\r\n            </util:Dopuna>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>54</util:Broj_dopune>\r\n                <util:Godina>2007</util:Godina>\r\n            </util:Dopuna>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>104</util:Broj_dopune>\r\n                <util:Godina>2009</util:Godina>\r\n            </util:Dopuna>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>36</util:Broj_dopune>\r\n                <util:Godina>2010</util:Godina>\r\n            </util:Dopuna>\r\n        </util:Dopune>\r\n    </zakon>\r\n    <organ_vlasti>\r\n        <util:Adresa>\r\n            <util:Mesto property=\"pred:organ_vlasti_mesto\" datatype=\"xs:string\">Novi Sad</util:Mesto>\r\n            <util:Postanski_broj property=\"pred:organ_vlasti_postanski_broj\" datatype=\"xs:unsignedInt\">21000</util:Postanski_broj>\r\n            <util:Ulica property=\"pred:organ_vlasti_ulica\" datatype=\"xs:string\">Jiricekova</util:Ulica>\r\n            <util:Broj property=\"pred:organ_vlasti_broj\" datatype=\"xs:unsignedInt\">51</util:Broj>\r\n        </util:Adresa>\r\n        <util:Naziv property=\"pred:organ_vlasti_naziv\" datatype=\"xs:string\">Narodna Banka Srbije</util:Naziv>\r\n    </organ_vlasti>\r\n    <razlog property=\"pred:razlog\" datatype=\"xs:string\">nije postupio</razlog>\r\n    <datum_zahteva>\r\n        <util:dan property=\"pred:zahtev_dan\" datatype=\"xs:string\">---09</util:dan>\r\n        <util:mesec property=\"pred:zahtev_mesec\" datatype=\"xs:string\">--12</util:mesec>\r\n        <util:godina property=\"pred:zahtev_godina\" datatype=\"xs:string\">2020</util:godina>\r\n    </datum_zahteva>\r\n    <zahtevana_informacije>Neka informacija...</zahtevana_informacije>\r\n    <podnosioc_zalbe>\r\n        <ime property=\"pred:podnosilac_zalbe_ime\" datatype=\"xs:string\">Miki</ime>\r\n        <prezime property=\"pred:podnosilac_zalbe_prezime\" datatype=\"xs:string\">Mikic</prezime>\r\n        <adresa>\r\n            <util:Mesto>Novi Sad</util:Mesto>\r\n            <util:Postanski_broj>21000</util:Postanski_broj>\r\n            <util:Ulica>Jiricekova</util:Ulica>\r\n            <util:Broj>10</util:Broj>\r\n        </adresa>\r\n        <drugi_podaci_za_kontakt></drugi_podaci_za_kontakt>\r\n    </podnosioc_zalbe>\r\n    <mesto></mesto>\r\n    <datum_zalbe>\r\n        <util:dan property=\"pred:zalba_dan\" datatype=\"xs:string\">---19</util:dan>\r\n        <util:mesec property=\"pred:zalba_mesec\" datatype=\"xs:string\">--12</util:mesec>\r\n        <util:godina property=\"pred:zalba_godina\" datatype=\"xs:string\">2020</util:godina>\r\n    </datum_zalbe>\r\n</zalba_cutanja>",
-							"options": {
-								"raw": {
-									"language": "text"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8082/zalbe-na-cutanje",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"zalbe-na-cutanje"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "UPDATE",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<zalba_cutanja xmlns=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalbe_cutanja\" xmlns:ns2=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/util\">\r\n    <id>5958714886178295374</id>\r\n    <poverenik>\r\n        <naziv>Povereniku za informacije od javnog znacaja i zastitu podataka o linosti!!!</naziv>\r\n        <adresa>\r\n            <ns2:Mesto>Mirijevo</ns2:Mesto>\r\n            <ns2:Postanski_broj>11000</ns2:Postanski_broj>\r\n            <ns2:Ulica>Bulevar Kralja Aleksandra</ns2:Ulica>\r\n            <ns2:Broj>15</ns2:Broj>\r\n        </adresa>\r\n    </poverenik>\r\n    <zakon>\r\n        <ns2:Naziv>Zakon o slobodnom pristupu informacijama od javnog znacaja</ns2:Naziv>\r\n        <ns2:Clan>15</ns2:Clan>\r\n        <ns2:Strana>1</ns2:Strana>\r\n        <ns2:Dopune>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>120</ns2:Broj_dopune>\r\n                <ns2:Godina>2004</ns2:Godina>\r\n            </ns2:Dopuna>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>54</ns2:Broj_dopune>\r\n                <ns2:Godina>2007</ns2:Godina>\r\n            </ns2:Dopuna>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>104</ns2:Broj_dopune>\r\n                <ns2:Godina>2009</ns2:Godina>\r\n            </ns2:Dopuna>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>36</ns2:Broj_dopune>\r\n                <ns2:Godina>2010</ns2:Godina>\r\n            </ns2:Dopuna>\r\n        </ns2:Dopune>\r\n    </zakon>\r\n    <organ_vlasti>\r\n        <ns2:Adresa>\r\n            <ns2:Mesto>Novi Sad</ns2:Mesto>\r\n            <ns2:Postanski_broj>21000</ns2:Postanski_broj>\r\n            <ns2:Ulica>Jiricekova</ns2:Ulica>\r\n            <ns2:Broj>51</ns2:Broj>\r\n        </ns2:Adresa>\r\n        <ns2:Naziv>Narodna Banka Srbije</ns2:Naziv>\r\n    </organ_vlasti>\r\n    <razlog>nije postupio</razlog>\r\n    <datum_zahteva>\r\n        <ns2:dan>---09</ns2:dan>\r\n        <ns2:mesec>--12</ns2:mesec>\r\n        <ns2:godina>2020</ns2:godina>\r\n    </datum_zahteva>\r\n    <zahtevana_informacije>Neka informacija...</zahtevana_informacije>\r\n    <podnosioc_zalbe>\r\n        <ime>Miki</ime>\r\n        <prezime>Mikic</prezime>\r\n        <adresa>\r\n            <ns2:Mesto>Novi Sad</ns2:Mesto>\r\n            <ns2:Postanski_broj>21000</ns2:Postanski_broj>\r\n            <ns2:Ulica>Jiricekova</ns2:Ulica>\r\n            <ns2:Broj>10</ns2:Broj>\r\n        </adresa>\r\n        <drugi_podaci_za_kontakt></drugi_podaci_za_kontakt>\r\n    </podnosioc_zalbe>\r\n    <mesto></mesto>\r\n    <datum_zalbe>\r\n        <ns2:dan>---19</ns2:dan>\r\n        <ns2:mesec>--12</ns2:mesec>\r\n        <ns2:godina>2020</ns2:godina>\r\n    </datum_zalbe>\r\n</zalba_cutanja>"
-						},
-						"url": {
-							"raw": "http://localhost:8082/zalbe-na-cutanje",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"zalbe-na-cutanje"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8082/zalbe-na-cutanje/7738211632476677204",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8082",
-							"path": [
-								"zalbe-na-cutanje",
-								"7738211632476677204"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	]
+  "info": {
+    "_postman_id": "ffc01cce-d482-4c19-b9b9-94c69ee44ad4",
+    "name": "REST API poverenika",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Resenje",
+      "item": [
+        {
+          "name": "GET ALL",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/resenja",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "resenja"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CREATE",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Resenje xmlns=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje\" xmlns:util=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/util\"\r\n    xmlns:addr=\"http://www.ftn.uns.ac.rs/rdf/resenja\"\r\n\txmlns:pred=\"http://www.ftn.uns.ac.rs/rdf/resenja/predicate/\"\r\n    vocab=\"http://www.ftn.uns.ac.rs/tim5/rdf/resenja/\" \r\n    about=\"http://www.ftn.uns.ac.rs/tim5/rdf/resenja/resenje/1\" typeof=\"pred:resenje\">\r\n    <Datum>\r\n        <util:dan property=\"pred:dan\" datatype=\"xs:string\">---09</util:dan>\r\n        <util:mesec property=\"pred:mesec\" datatype=\"xs:string\">--12</util:mesec>\r\n        <util:godina property=\"pred:godina\" datatype=\"xs:string\">2020</util:godina>\r\n    </Datum>\r\n    <Broj_resenja property=\"pred:broj\" datatype=\"xs:string\">01-02-141/2020-12</Broj_resenja>\r\n    <Kontekst>\r\n        <Tekst_konteksta>\r\n            Повереник за информације од јавног значаја и заштиту података о личности, у поступку по алби\r\n            коју је изјавио AA, због непоступања Учитељског факултета у Призрену са привременим седиштем\r\n            у Лепосавићу, ул. Немањина бб, по његовом захтеву од 16.04.2020. године за приступ\r\n            информацијама од јавног значаја, на основу\r\n            <Pravni_osnov>\r\n                <util:Naziv>Закон о слободном приступу информацијама од јавног значаја</util:Naziv>\r\n                <util:Clan>35</util:Clan>\r\n            </Pravni_osnov>\r\n            , а у вези са\r\n            чланом 4. тачка 22. Закона о заштити података о личности („Сл. гласник РС“, број 87/18), као и члана\r\n            23. и члана 24. став 4. Закона о слободном приступу информацијама од јавног значаја и члана 173.\r\n            став 2. Закона о општем управном поступку („Сл. гласник РС“, бр. 18/2016 и 95/2018-аутентично\r\n            тумачење), доноси\r\n        </Tekst_konteksta>\r\n        <Zalba>\r\n            <Datum_podnosenja_zahteva>\r\n                <util:dan property=\"pred:zahtev_dan\" datatype=\"xs:string\">---09</util:dan>\r\n                <util:mesec property=\"pred:zahtev_mesec\" datatype=\"xs:string\">--12</util:mesec>\r\n                <util:godina property=\"pred:zahtev_godina\" datatype=\"xs:string\">2020</util:godina>\r\n            </Datum_podnosenja_zahteva>\r\n            <Tip_zalbe property=\"pred:zalba_tip\" datatype=\"xs:string\">nepostupanje</Tip_zalbe>\r\n            <Podnosilac>\r\n                <Ime property=\"pred:podnosilac_zalbe_ime\" datatype=\"xs:string\">Miki</Ime>\r\n                <Prezime property=\"pred:podnosilac_zalbe_prezime\" datatype=\"xs:string\">Mikic</Prezime>\r\n            </Podnosilac>\r\n            <Organ_vlasti>\r\n                <util:Adresa>\r\n                    <util:Mesto property=\"pred:organ_vlasti_mesto\" datatype=\"xs:string\">Novi Sad</util:Mesto>\r\n                    <util:Postanski_broj property=\"pred:organ_vlasti_postanski_broj\" datatype=\"xs:unsignedInt\">21000</util:Postanski_broj>\r\n                    <util:Ulica property=\"pred:organ_vlasti_ulica\" datatype=\"xs:string\">Jiricekova</util:Ulica>\r\n                    <util:Broj property=\"pred:organ_vlasti_broj\" datatype=\"xs:unsignedInt\">51</util:Broj>\r\n                </util:Adresa>\r\n                <util:Naziv property=\"pred:organ_vlasti_naziv\" datatype=\"xs:string\">Narodna Banka Srbije</util:Naziv>\r\n            </Organ_vlasti>\r\n        </Zalba>\r\n    </Kontekst>\r\n    <Odluka>\r\n        <Ishod property=\"pred:ishod_odluke\" datatype=\"xs:string\">osnovana_zalba</Ishod>\r\n        I Налаже се Учитељском факултету у Призрену са привременим седиштем у Лепосавићу, да\r\n        без одлагања, а најкасније у року од пет дана од дана пријема овог решења, обавести АА, да ли\r\n        поседује тражене информације односно документ у коме су исте садржане, и то: Уговор о раду који\r\n        је као последњи потписан између тог Факултета и ББ, те да му, уколико такав документ поседује\r\n        достави копију истог електронском поштом на адресу … или поштом, с тим што ће пре достављања\r\n        заштитити и учинити недоступним податке о личности којима би се повредило право на приватност\r\n        лица на које се информације односе, као што су: адреса становања, лични матични број грађана, име\r\n        оца, радни стаж, просечна оцена студирања и сл. уколико су такви подаци садржани у траженом\r\n        документу.\r\n        II О извршењу решења Учитељски факултет у Призрену са привременим седиштем у\r\n        Лепосавићу, ће обавестити Повереника у року од седам дана од пријема овог решења.\r\n        <Obrazlozenje>\r\n            АА, као тражилац информација, изјавио је дана 07.05.2020. године жалбу Поверенику, због\r\n            непоступања Учитељског факултета у Призрену са привременим седиштем у Лепосавићу по\r\n            његовом захтеву од 16.04.2020. године за приступ информацијама од јавног значаја и у прилогу\r\n            доставио копију истог.\r\n            Поступајући по жалби, Повереник је дана 11.05.2020. године упутио исту на изјашњење\r\n            Учитељском факултету у Призрену са привременим седиштем у Лепосавићу, као органу власти у\r\n            смислу\r\n            <Pravni_osnov>\r\n                <util:Naziv>Закона о слободном приступу информацијама од јавног значаја</util:Naziv>\r\n                <util:Clan>3</util:Clan>\r\n            </Pravni_osnov>\r\n            и затражио да се\r\n            изјасни о наводима жалбе, посебно о разлозима непоступања у законском року по поднетом захтеву\r\n            у складу са одредбама члана 16. ст.1-9. или ст. 10. Закона, остављајући рок од осам дана, поводом\r\n            чега није добио одговор.\r\n        </Obrazlozenje>\r\n    </Odluka>\r\n    <Poverenik>\r\n        <Ime property=\"pred:poverenik_ime\" datatype=\"xs:string\">Пера</Ime>\r\n        <Prezime property=\"pred:poverenik_prezime\" datatype=\"xs:string\">Петровић</Prezime>\r\n    </Poverenik>\r\n    \r\n</Resenje>"
+            },
+            "url": {
+              "raw": "http://localhost:8082/resenja",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "resenja"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET ONE",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/resenja/7384707976924750645",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "resenja",
+                "7384707976924750645"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UPDATE",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Resenje xmlns=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje\" xmlns:ns2=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/util\" \r\n    datum=\"2020-12-12\"\r\n    broj_resenja=\"01-02-141/2020-12\">\r\n    <id>7384707976924750645</id>\r\n    <Kontekst>\r\n        <Tekst_konteksta>\r\n            Повереник за информације од јавног значаја и заштиту података о личности, у поступку по алби\r\n            коју је изјавио AA, због непоступања Учитељског факултета у Призрену са привременим седиштем\r\n            у Лепосавићу, ул. Немањина бб, по његовом захтеву од 16.04.2020. године за приступ\r\n            информацијама од јавног значаја, на основу\r\n            \r\n            <Pravni_osnov>\r\n                <ns2:Naziv>Закон о слободном приступу информацијама од јавног значаја!?</ns2:Naziv>\r\n                <ns2:Clan>35</ns2:Clan>\r\n            </Pravni_osnov>\r\n            , а у вези са\r\n            чланом 4. тачка 22. Закона о заштити података о личности („Сл. гласник РС“, број 87/18), као и члана\r\n            23. и члана 24. став 4. Закона о слободном приступу информацијама од јавног значаја и члана 173.\r\n            став 2. Закона о општем управном поступку („Сл. гласник РС“, бр. 18/2016 и 95/2018-аутентично\r\n            тумачење), доноси\r\n        </Tekst_konteksta>\r\n        <Zalba datum_podnosenja_zahteva=\"2020-04-16\" tip=\"nepostupanje\">\r\n            <Podnosilac>\r\n                <Ime></Ime>\r\n                <Prezime></Prezime>\r\n            </Podnosilac>\r\n            <Organ_vlasti>\r\n                <ns2:Adresa>\r\n                    <ns2:Mesto>Novi Sad</ns2:Mesto>\r\n                    <ns2:Postanski_broj>21000</ns2:Postanski_broj>\r\n                    <ns2:Ulica>Cara Dusana</ns2:Ulica>\r\n                    <ns2:Broj>45</ns2:Broj>\r\n                </ns2:Adresa>\r\n                <ns2:Naziv>Ustanova neka</ns2:Naziv>\r\n            </Organ_vlasti>\r\n        </Zalba>\r\n    </Kontekst>\r\n    <Odluka ishod=\"osnovana_zalba\">\r\n        I Налаже се Учитељском факултету у Призрену са привременим седиштем у Лепосавићу, да\r\n        без одлагања, а најкасније у року од пет дана од дана пријема овог решења, обавести АА, да ли\r\n        поседује тражене информације односно документ у коме су исте садржане, и то: Уговор о раду који\r\n        је као последњи потписан између тог Факултета и ББ, те да му, уколико такав документ поседује\r\n        достави копију истог електронском поштом на адресу … или поштом, с тим што ће пре достављања\r\n        заштитити и учинити недоступним податке о личности којима би се повредило право на приватност\r\n        лица на које се информације односе, као што су: адреса становања, лични матични број грађана, име\r\n        оца, радни стаж, просечна оцена студирања и сл. уколико су такви подаци садржани у траженом\r\n        документу.\r\n        II О извршењу решења Учитељски факултет у Призрену са привременим седиштем у\r\n        Лепосавићу, ће обавестити Повереника у року од седам дана од пријема овог решења.\r\n        \r\n        <Obrazlozenje>\r\n            АА, као тражилац информација, изјавио је дана 07.05.2020. године жалбу Поверенику, због\r\n            непоступања Учитељског факултета у Призрену са привременим седиштем у Лепосавићу по\r\n            његовом захтеву од 16.04.2020. године за приступ информацијама од јавног значаја и у прилогу\r\n            доставио копију истог.\r\n            Поступајући по жалби, Повереник је дана 11.05.2020. године упутио исту на изјашњење\r\n            Учитељском факултету у Призрену са привременим седиштем у Лепосавићу, као органу власти у\r\n            смислу\r\n            \r\n            <Pravni_osnov>\r\n                <ns2:Naziv>Закона о слободном приступу информацијама од јавног значаја</ns2:Naziv>\r\n                <ns2:Clan>3</ns2:Clan>\r\n            </Pravni_osnov>\r\n            и затражио да се\r\n            изјасни о наводима жалбе, посебно о разлозима непоступања у законском року по поднетом захтеву\r\n            у складу са одредбама члана 16. ст.1-9. или ст. 10. Закона, остављајући рок од осам дана, поводом\r\n            чега није добио одговор.\r\n        </Obrazlozenje>\r\n    </Odluka>\r\n    <Poverenik>\r\n        <Ime>Пера</Ime>\r\n        <Prezime>Петровић</Prezime>\r\n    </Poverenik>\r\n</Resenje>"
+            },
+            "url": {
+              "raw": "http://localhost:8082/resenja",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "resenja"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/resenja/7884494158227087222",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "resenja",
+                "7884494158227087222"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Zalba na odluku",
+      "item": [
+        {
+          "name": "GET ALL",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/zalbe-na-odluku",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "zalbe-na-odluku"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET ONE",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/zalbe-na-odluku/5963409056004452416",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "zalbe-na-odluku",
+                "5963409056004452416"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CREATE",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Zalba_na_odluku xmlns=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalba_na_odluku\"\r\n    xmlns:util=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/util\"\r\n    xmlns:addr=\"http://www.ftn.uns.ac.rs/rdf/zalbe_na_odluku\"\r\n\txmlns:pred=\"http://www.ftn.uns.ac.rs/rdf/zalbe_na_odluku/predicate/\"\r\n    vocab=\"http://www.ftn.uns.ac.rs/tim5/rdf/zalbe_na_odluku/\" \r\n    about=\"http://www.ftn.uns.ac.rs/tim5/rdf/zalbe_na_odluku/zalba/1\" typeof=\"pred:zalba_na_odluku\">\r\n    <Poverenik>\r\n        <Adresa>\r\n            <util:Mesto property=\"pred:poverenik_mesto\" datatype=\"xs:string\">Beograd</util:Mesto>\r\n            <util:Postanski_broj property=\"pred:poverenik_postanski_broj\" datatype=\"xs:unsignedInt\">11000</util:Postanski_broj>\r\n            <util:Ulica property=\"pred:poverenik_ulica\" datatype=\"xs:string\">Bulevar Kralja Aleksandra</util:Ulica>\r\n            <util:Broj property=\"pred:poverenik_broj\" datatype=\"xs:unsignedInt\">15</util:Broj>\r\n        </Adresa>\r\n    </Poverenik>\r\n    <Zalilac>\r\n        <util:Adresa>\r\n            <util:Mesto>Novi Sad</util:Mesto>\r\n            <util:Postanski_broj>21000</util:Postanski_broj>\r\n            <util:Ulica>Jiricekova</util:Ulica>\r\n            <util:Broj>10</util:Broj>\r\n        </util:Adresa>\r\n        <util:Ime property=\"pred:zalilac_ime\" datatype=\"xs:string\">Miki</util:Ime>\r\n        <util:Prezime property=\"pred:zalilac_prezime\" datatype=\"xs:string\">Mikic</util:Prezime>\r\n    </Zalilac>\r\n    <organ_vlasti>\r\n        <util:Adresa>\r\n            <util:Mesto property=\"pred:organ_vlasti_mesto\" datatype=\"xs:string\">Novi Sad</util:Mesto>\r\n            <util:Postanski_broj property=\"pred:organ_vlasti_postanski_broj\" datatype=\"xs:unsignedInt\">21000</util:Postanski_broj>\r\n            <util:Ulica property=\"pred:organ_vlasti_ulica\" datatype=\"xs:string\">Jiricekova</util:Ulica>\r\n            <util:Broj property=\"pred:organ_vlasti_broj\" datatype=\"xs:unsignedInt\">51</util:Broj>\r\n        </util:Adresa>\r\n        <util:Naziv property=\"pred:organ_vlasti_naziv\" datatype=\"xs:string\">Narodna Banka Srbije</util:Naziv>\r\n    </organ_vlasti>\r\n    <odluka>\r\n        <broj_odluke property=\"pred:organ_vlasti_broj_odluke\" datatype=\"xs:string\"></broj_odluke>\r\n        <godina property=\"pred:organ_vlasti_datum_odluke\" datatype=\"xs:string\"></godina>\r\n    </odluka>\r\n    <Datum>\r\n        <util:dan property=\"pred:zalba_dan\" datatype=\"xs:string\">---19</util:dan>\r\n        <util:mesec property=\"pred:zalba_mesec\" datatype=\"xs:string\">--12</util:mesec>\r\n        <util:godina property=\"pred:zalba_godina\" datatype=\"xs:string\">2020</util:godina>\r\n    </Datum>\r\n    <Osnova_za_zaljenje></Osnova_za_zaljenje>\r\n    <Zakon>\r\n        <util:Naziv>Zakon o slobodnom pristupu informacijama od javnog znacaja</util:Naziv>\r\n        <util:Clan>15</util:Clan>\r\n        <util:Strana>1</util:Strana>\r\n        <util:Dopune>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>120</util:Broj_dopune>\r\n                <util:Godina>2004</util:Godina>\r\n            </util:Dopuna>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>54</util:Broj_dopune>\r\n                <util:Godina>2007</util:Godina>\r\n            </util:Dopuna>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>104</util:Broj_dopune>\r\n                <util:Godina>2009</util:Godina>\r\n            </util:Dopuna>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>36</util:Broj_dopune>\r\n                <util:Godina>2010</util:Godina>\r\n            </util:Dopuna>\r\n        </util:Dopune>\r\n    </Zakon>\r\n    <Mesto></Mesto>\r\n    <Datum_zahteva>\r\n        <util:dan property=\"pred:zahtev_dan\" datatype=\"xs:string\">---09</util:dan>\r\n        <util:mesec property=\"pred:zahtev_mesec\" datatype=\"xs:string\">--12</util:mesec>\r\n        <util:godina property=\"pred:zahtev_godina\" datatype=\"xs:string\">2020</util:godina>\r\n    </Datum_zahteva>\r\n    <Podnosilac_zalbe>\r\n        <Obavezni_podaci>\r\n            <util:Adresa>\r\n                <util:Mesto>Novi Sad</util:Mesto>\r\n                <util:Postanski_broj>21000</util:Postanski_broj>\r\n                <util:Ulica>Jiricekova</util:Ulica>\r\n                <util:Broj>10</util:Broj>\r\n            </util:Adresa>\r\n            <util:Ime property=\"pred:podnosilac_zalbe_ime\" datatype=\"xs:string\">Miki</util:Ime>\r\n            <util:Prezime property=\"pred:podnosilac_zalbe_prezime\" datatype=\"xs:string\">Mikic</util:Prezime>\r\n        </Obavezni_podaci>\r\n        <Kontakt_podaci></Kontakt_podaci>\r\n    </Podnosilac_zalbe>\r\n</Zalba_na_odluku>"
+            },
+            "url": {
+              "raw": "http://localhost:8082/zalbe-na-odluku",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "zalbe-na-odluku"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UPDATE",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Zalba_na_odluku xmlns=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalba_na_odluku\" xmlns:ns2=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/util\">\r\n    <id>5963409056004452416</id>\r\n    <Poverenik>\r\n        <Adresa>\r\n            <ns2:Mesto>Beograd</ns2:Mesto>\r\n            <ns2:Postanski_broj>11000</ns2:Postanski_broj>\r\n            <ns2:Ulica>Bulevar Kralja Aleksandra</ns2:Ulica>\r\n            <ns2:Broj>15</ns2:Broj>\r\n        </Adresa>\r\n    </Poverenik>\r\n    <Zalilac>\r\n        <ns2:Adresa>\r\n            <ns2:Mesto>Novi Sad</ns2:Mesto>\r\n            <ns2:Postanski_broj>21000</ns2:Postanski_broj>\r\n            <ns2:Ulica>Jiricekova</ns2:Ulica>\r\n            <ns2:Broj>10</ns2:Broj>\r\n        </ns2:Adresa>\r\n        <ns2:Ime>Miki</ns2:Ime>\r\n        <ns2:Prezime>Mikic</ns2:Prezime>\r\n    </Zalilac>\r\n    <organ_vlasti>\r\n        <ns2:Adresa>\r\n            <ns2:Mesto>Novi Sad</ns2:Mesto>\r\n            <ns2:Postanski_broj>21000</ns2:Postanski_broj>\r\n            <ns2:Ulica>Jiricekova</ns2:Ulica>\r\n            <ns2:Broj>51</ns2:Broj>\r\n        </ns2:Adresa>\r\n        <ns2:Naziv>Narodna Banka Srbije</ns2:Naziv>\r\n    </organ_vlasti>\r\n    <odluka>\r\n        <broj_odluke>1</broj_odluke>\r\n        <godina>2020</godina>\r\n    </odluka>\r\n    <Datum>\r\n        <ns2:dan>---19</ns2:dan>\r\n        <ns2:mesec>--12</ns2:mesec>\r\n        <ns2:godina>2020</ns2:godina>\r\n    </Datum>\r\n    <Osnova_za_zaljenje></Osnova_za_zaljenje>\r\n    <Zakon>\r\n        <ns2:Naziv>Zakon o slobodnom pristupu informacijama od javnog znacaja</ns2:Naziv>\r\n        <ns2:Clan>15</ns2:Clan>\r\n        <ns2:Strana>1</ns2:Strana>\r\n        <ns2:Dopune>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>120</ns2:Broj_dopune>\r\n                <ns2:Godina>2004</ns2:Godina>\r\n            </ns2:Dopuna>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>54</ns2:Broj_dopune>\r\n                <ns2:Godina>2007</ns2:Godina>\r\n            </ns2:Dopuna>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>104</ns2:Broj_dopune>\r\n                <ns2:Godina>2009</ns2:Godina>\r\n            </ns2:Dopuna>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>36</ns2:Broj_dopune>\r\n                <ns2:Godina>2010</ns2:Godina>\r\n            </ns2:Dopuna>\r\n        </ns2:Dopune>\r\n    </Zakon>\r\n    <Mesto></Mesto>\r\n    <Datum_zahteva>\r\n        <ns2:dan>---09</ns2:dan>\r\n        <ns2:mesec>--12</ns2:mesec>\r\n        <ns2:godina>2020</ns2:godina>\r\n    </Datum_zahteva>\r\n    <Podnosilac_zalbe>\r\n        <Obavezni_podaci>\r\n            <ns2:Adresa>\r\n                <ns2:Mesto>Novi Sad</ns2:Mesto>\r\n                <ns2:Postanski_broj>21000</ns2:Postanski_broj>\r\n                <ns2:Ulica>Jiricekova</ns2:Ulica>\r\n                <ns2:Broj>10</ns2:Broj>\r\n            </ns2:Adresa>\r\n            <ns2:Ime>Miki</ns2:Ime>\r\n            <ns2:Prezime>Mikic</ns2:Prezime>\r\n        </Obavezni_podaci>\r\n        <Kontakt_podaci></Kontakt_podaci>\r\n    </Podnosilac_zalbe>\r\n</Zalba_na_odluku>"
+            },
+            "url": {
+              "raw": "http://localhost:8082/zalbe-na-odluku",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "zalbe-na-odluku"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/zalbe-na-odluku/6787437572416319816",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "zalbe-na-odluku",
+                "6787437572416319816"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Zalba na cutanje",
+      "item": [
+        {
+          "name": "GET ALL",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/zalbe-na-cutanje",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "zalbe-na-cutanje"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET ONE",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/zalbe-na-cutanje/5958714886178295374",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "zalbe-na-cutanje",
+                "5958714886178295374"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CREATE",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<zalba_cutanja xmlns=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalbe_cutanja\"\r\n    xmlns:util=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/util\"\r\n    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n    xsi:schemaLocation=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalbe_cutanja file:/C:/Users/milla/Documents/dev/cetvrta_godina/xml-web-services/xml-web-services/xms_seme/Zalbe_cutanja.xsd\"\r\n    xmlns:addr=\"http://www.ftn.uns.ac.rs/rdf/zalbe_cutanja\"\r\n\txmlns:pred=\"http://www.ftn.uns.ac.rs/rdf/zalbe_cutanja/predicate/\"\r\n    vocab=\"http://www.ftn.uns.ac.rs/tim5/rdf/zalbe_cutanja/\" \r\n    about=\"http://www.ftn.uns.ac.rs/tim5/rdf/zalbe_cutanja/zalba/1\" typeof=\"pred:zalba_cutanja\">\r\n    <poverenik>\r\n        <naziv>Povereniku za informacije od javnog znacaja i zastitu podataka o linosti</naziv>\r\n        <adresa>\r\n            <util:Mesto property=\"pred:poverenik_mesto\" datatype=\"xs:string\">Beograd</util:Mesto>\r\n            <util:Postanski_broj property=\"pred:poverenik_postanski_broj\" datatype=\"xs:unsignedInt\">11000</util:Postanski_broj>\r\n            <util:Ulica property=\"pred:poverenik_ulica\" datatype=\"xs:string\">Bulevar Kralja Aleksandra</util:Ulica>\r\n            <util:Broj property=\"pred:poverenik_broj\" datatype=\"xs:unsignedInt\">15</util:Broj>\r\n        </adresa>\r\n    </poverenik>\r\n    <zakon>\r\n        <util:Naziv>Zakon o slobodnom pristupu informacijama od javnog znacaja</util:Naziv>\r\n        <util:Clan>15</util:Clan>\r\n        <util:Strana>1</util:Strana>\r\n        <util:Dopune>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>120</util:Broj_dopune>\r\n                <util:Godina>2004</util:Godina>\r\n            </util:Dopuna>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>54</util:Broj_dopune>\r\n                <util:Godina>2007</util:Godina>\r\n            </util:Dopuna>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>104</util:Broj_dopune>\r\n                <util:Godina>2009</util:Godina>\r\n            </util:Dopuna>\r\n            <util:Dopuna>\r\n                <util:Broj_dopune>36</util:Broj_dopune>\r\n                <util:Godina>2010</util:Godina>\r\n            </util:Dopuna>\r\n        </util:Dopune>\r\n    </zakon>\r\n    <organ_vlasti>\r\n        <util:Adresa>\r\n            <util:Mesto property=\"pred:organ_vlasti_mesto\" datatype=\"xs:string\">Novi Sad</util:Mesto>\r\n            <util:Postanski_broj property=\"pred:organ_vlasti_postanski_broj\" datatype=\"xs:unsignedInt\">21000</util:Postanski_broj>\r\n            <util:Ulica property=\"pred:organ_vlasti_ulica\" datatype=\"xs:string\">Jiricekova</util:Ulica>\r\n            <util:Broj property=\"pred:organ_vlasti_broj\" datatype=\"xs:unsignedInt\">51</util:Broj>\r\n        </util:Adresa>\r\n        <util:Naziv property=\"pred:organ_vlasti_naziv\" datatype=\"xs:string\">Narodna Banka Srbije</util:Naziv>\r\n    </organ_vlasti>\r\n    <razlog property=\"pred:razlog\" datatype=\"xs:string\">nije postupio</razlog>\r\n    <datum_zahteva>\r\n        <util:dan property=\"pred:zahtev_dan\" datatype=\"xs:string\">---09</util:dan>\r\n        <util:mesec property=\"pred:zahtev_mesec\" datatype=\"xs:string\">--12</util:mesec>\r\n        <util:godina property=\"pred:zahtev_godina\" datatype=\"xs:string\">2020</util:godina>\r\n    </datum_zahteva>\r\n    <zahtevana_informacije>Neka informacija...</zahtevana_informacije>\r\n    <podnosioc_zalbe>\r\n        <ime property=\"pred:podnosilac_zalbe_ime\" datatype=\"xs:string\">Miki</ime>\r\n        <prezime property=\"pred:podnosilac_zalbe_prezime\" datatype=\"xs:string\">Mikic</prezime>\r\n        <adresa>\r\n            <util:Mesto>Novi Sad</util:Mesto>\r\n            <util:Postanski_broj>21000</util:Postanski_broj>\r\n            <util:Ulica>Jiricekova</util:Ulica>\r\n            <util:Broj>10</util:Broj>\r\n        </adresa>\r\n        <drugi_podaci_za_kontakt></drugi_podaci_za_kontakt>\r\n    </podnosioc_zalbe>\r\n    <mesto></mesto>\r\n    <datum_zalbe>\r\n        <util:dan property=\"pred:zalba_dan\" datatype=\"xs:string\">---19</util:dan>\r\n        <util:mesec property=\"pred:zalba_mesec\" datatype=\"xs:string\">--12</util:mesec>\r\n        <util:godina property=\"pred:zalba_godina\" datatype=\"xs:string\">2020</util:godina>\r\n    </datum_zalbe>\r\n</zalba_cutanja>",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/zalbe-na-cutanje",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "zalbe-na-cutanje"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UPDATE",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<zalba_cutanja xmlns=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalbe_cutanja\" xmlns:ns2=\"http://ftn.uns.ac.rs/tim5/apipoverenik/model/util\">\r\n    <id>5958714886178295374</id>\r\n    <poverenik>\r\n        <naziv>Povereniku za informacije od javnog znacaja i zastitu podataka o linosti!!!</naziv>\r\n        <adresa>\r\n            <ns2:Mesto>Mirijevo</ns2:Mesto>\r\n            <ns2:Postanski_broj>11000</ns2:Postanski_broj>\r\n            <ns2:Ulica>Bulevar Kralja Aleksandra</ns2:Ulica>\r\n            <ns2:Broj>15</ns2:Broj>\r\n        </adresa>\r\n    </poverenik>\r\n    <zakon>\r\n        <ns2:Naziv>Zakon o slobodnom pristupu informacijama od javnog znacaja</ns2:Naziv>\r\n        <ns2:Clan>15</ns2:Clan>\r\n        <ns2:Strana>1</ns2:Strana>\r\n        <ns2:Dopune>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>120</ns2:Broj_dopune>\r\n                <ns2:Godina>2004</ns2:Godina>\r\n            </ns2:Dopuna>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>54</ns2:Broj_dopune>\r\n                <ns2:Godina>2007</ns2:Godina>\r\n            </ns2:Dopuna>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>104</ns2:Broj_dopune>\r\n                <ns2:Godina>2009</ns2:Godina>\r\n            </ns2:Dopuna>\r\n            <ns2:Dopuna>\r\n                <ns2:Broj_dopune>36</ns2:Broj_dopune>\r\n                <ns2:Godina>2010</ns2:Godina>\r\n            </ns2:Dopuna>\r\n        </ns2:Dopune>\r\n    </zakon>\r\n    <organ_vlasti>\r\n        <ns2:Adresa>\r\n            <ns2:Mesto>Novi Sad</ns2:Mesto>\r\n            <ns2:Postanski_broj>21000</ns2:Postanski_broj>\r\n            <ns2:Ulica>Jiricekova</ns2:Ulica>\r\n            <ns2:Broj>51</ns2:Broj>\r\n        </ns2:Adresa>\r\n        <ns2:Naziv>Narodna Banka Srbije</ns2:Naziv>\r\n    </organ_vlasti>\r\n    <razlog>nije postupio</razlog>\r\n    <datum_zahteva>\r\n        <ns2:dan>---09</ns2:dan>\r\n        <ns2:mesec>--12</ns2:mesec>\r\n        <ns2:godina>2020</ns2:godina>\r\n    </datum_zahteva>\r\n    <zahtevana_informacije>Neka informacija...</zahtevana_informacije>\r\n    <podnosioc_zalbe>\r\n        <ime>Miki</ime>\r\n        <prezime>Mikic</prezime>\r\n        <adresa>\r\n            <ns2:Mesto>Novi Sad</ns2:Mesto>\r\n            <ns2:Postanski_broj>21000</ns2:Postanski_broj>\r\n            <ns2:Ulica>Jiricekova</ns2:Ulica>\r\n            <ns2:Broj>10</ns2:Broj>\r\n        </adresa>\r\n        <drugi_podaci_za_kontakt></drugi_podaci_za_kontakt>\r\n    </podnosioc_zalbe>\r\n    <mesto></mesto>\r\n    <datum_zalbe>\r\n        <ns2:dan>---19</ns2:dan>\r\n        <ns2:mesec>--12</ns2:mesec>\r\n        <ns2:godina>2020</ns2:godina>\r\n    </datum_zalbe>\r\n</zalba_cutanja>"
+            },
+            "url": {
+              "raw": "http://localhost:8082/zalbe-na-cutanje",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "zalbe-na-cutanje"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/zalbe-na-cutanje/7738211632476677204",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "zalbe-na-cutanje",
+                "7738211632476677204"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
 }

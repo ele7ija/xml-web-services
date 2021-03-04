@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for TRacun complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="TRacun">
  *   &lt;complexContent>
@@ -36,12 +36,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TRacun", propOrder = {
-    "brojRacuna"
+        "brojRacuna"
 })
 public class TRacun {
 
@@ -50,11 +48,9 @@ public class TRacun {
 
     /**
      * Gets the value of the brojRacuna property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getBrojRacuna() {
         return brojRacuna;
@@ -62,11 +58,9 @@ public class TRacun {
 
     /**
      * Sets the value of the brojRacuna property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setBrojRacuna(String value) {
         this.brojRacuna = value;

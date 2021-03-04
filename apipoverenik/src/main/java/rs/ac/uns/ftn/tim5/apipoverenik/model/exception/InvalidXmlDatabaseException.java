@@ -1,11 +1,12 @@
 package rs.ac.uns.ftn.tim5.apipoverenik.model.exception;
 
-public class InvalidXmlDatabaseException extends  RuntimeException{
+public class InvalidXmlDatabaseException extends RuntimeException {
 
     private Class classObject;
     private String text;
 
-    public InvalidXmlDatabaseException(){}
+    public InvalidXmlDatabaseException() {
+    }
 
     public InvalidXmlDatabaseException(Class classObject, String text) {
         this.classObject = classObject;

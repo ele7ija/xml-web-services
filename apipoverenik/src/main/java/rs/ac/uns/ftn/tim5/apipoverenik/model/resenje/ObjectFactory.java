@@ -12,22 +12,22 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
+
 import rs.ac.uns.ftn.tim5.apipoverenik.model.util.TPravniOsnov;
 
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the rs.ac.uns.ftn.tim5.apipoverenik.model.resenje package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the rs.ac.uns.ftn.tim5.apipoverenik.model.resenje package.
+ * <p>An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups.  Factory methods for each of these are
  * provided in this class.
- * 
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -38,14 +38,12 @@ public class ObjectFactory {
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: rs.ac.uns.ftn.tim5.apipoverenik.model.resenje
-     * 
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link Kontekst }
-     * 
      */
     public Kontekst createKontekst() {
         return new Kontekst();
@@ -53,7 +51,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Odluka }
-     * 
      */
     public Odluka createOdluka() {
         return new Odluka();
@@ -61,7 +58,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Kontekst.TekstKonteksta }
-     * 
      */
     public Kontekst.TekstKonteksta createKontekstTekstKonteksta() {
         return new Kontekst.TekstKonteksta();
@@ -69,7 +65,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Kontekst.Zalba }
-     * 
      */
     public Kontekst.Zalba createKontekstZalba() {
         return new Kontekst.Zalba();
@@ -77,7 +72,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Odluka.Obrazlozenje }
-     * 
      */
     public Odluka.Obrazlozenje createOdlukaObrazlozenje() {
         return new Odluka.Obrazlozenje();
@@ -85,7 +79,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Resenje }
-     * 
      */
     public Resenje createResenje() {
         return new Resenje();
@@ -93,7 +86,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link TOsoba }
-     * 
      */
     public TOsoba createTOsoba() {
         return new TOsoba();
@@ -101,7 +93,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link KolekcijaResenja }
-     * 
      */
     public KolekcijaResenja createKolekcijaResenja() {
         return new KolekcijaResenja();
@@ -109,7 +100,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link TPravniOsnov }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje", name = "Pravni_osnov", scope = Kontekst.TekstKonteksta.class)
     public JAXBElement<TPravniOsnov> createKontekstTekstKontekstaPravniOsnov(TPravniOsnov value) {
@@ -118,7 +108,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link TPravniOsnov }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje", name = "Pravni_osnov", scope = Odluka.Obrazlozenje.class)
     public JAXBElement<TPravniOsnov> createOdlukaObrazlozenjePravniOsnov(TPravniOsnov value) {
@@ -127,7 +116,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Odluka.Obrazlozenje }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje", name = "Obrazlozenje", scope = Odluka.class)
     public JAXBElement<Odluka.Obrazlozenje> createOdlukaObrazlozenje(Odluka.Obrazlozenje value) {
@@ -136,7 +124,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link TIshodOdluke }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje", name = "Ishod", scope = Odluka.class)
     public JAXBElement<TIshodOdluke> createOdlukaIshod(TIshodOdluke value) {

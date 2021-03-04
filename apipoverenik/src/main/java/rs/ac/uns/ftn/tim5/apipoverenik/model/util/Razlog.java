@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Razlog.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -27,7 +27,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
  */
 @XmlType(name = "Razlog")
 @XmlEnum
@@ -50,7 +49,7 @@ public enum Razlog {
     }
 
     public static Razlog fromValue(String v) {
-        for (Razlog c: Razlog.values()) {
+        for (Razlog c : Razlog.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

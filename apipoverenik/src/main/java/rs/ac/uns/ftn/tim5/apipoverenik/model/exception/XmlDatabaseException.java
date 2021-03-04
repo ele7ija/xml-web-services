@@ -4,7 +4,8 @@ public class XmlDatabaseException extends RuntimeException {
 
     private String text;
 
-    public XmlDatabaseException(){}
+    public XmlDatabaseException() {
+    }
 
     public XmlDatabaseException(String text) {
         this.text = text;

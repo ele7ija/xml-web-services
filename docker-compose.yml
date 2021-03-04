@@ -3,14 +3,14 @@ services:
   xml-db:
     image: existdb/existdb:latest
     ports:
-    - "8080:8080"
+      - "8080:8080"
     restart: always
     networks:
       - organ-vlasti-network
   rdf-db:
     image: stain/jena-fuseki
     ports:
-    - "8082:3030"
+      - "8082:3030"
     restart: always
     networks:
       - organ-vlasti-network

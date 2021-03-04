@@ -19,7 +19,7 @@ import java.util.List;
 import static rs.ac.uns.ftn.tim5.apipoverenik.helper.XQueryExpressions.*;
 
 @Service
-public class ResenjeService implements AbstractXmlService<Resenje>{
+public class ResenjeService implements AbstractXmlService<Resenje> {
 
     private final String jaxbContextPath = "rs.ac.uns.ftn.tim5.apipoverenik.model.resenje";
 
@@ -32,11 +32,11 @@ public class ResenjeService implements AbstractXmlService<Resenje>{
     @Autowired
     private XmlConversionAgent<Resenje> resenjeXmlConversionAgent;
 
-    @Autowired 
+    @Autowired
     private RDFService rdfService;
 
     @PostConstruct
-    public void injectRepositoryProperties(){
+    public void injectRepositoryProperties() {
         this.resenjeAbstractXmlRepository.injectRepositoryProperties(
                 "/db/sample/resenja",
                 jaxbContextPath,
@@ -62,7 +62,7 @@ public class ResenjeService implements AbstractXmlService<Resenje>{
     public Resenje findById(Long entityId) {
         try {
             Resenje resenje = this.resenjeAbstractXmlRepository.getEntity(entityId);
-            if(resenje == null)
+            if (resenje == null)
                 throw new EntityNotFoundException(entityId, Resenje.class);
             return resenje;
         } catch (XMLDBException e) {
@@ -76,9 +76,9 @@ public class ResenjeService implements AbstractXmlService<Resenje>{
     public Resenje create(String xmlEntity) {
 
         Resenje resenje;
-        try{
+        try {
             resenje = this.resenjeXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
-        }catch(JAXBException e){
+        } catch (JAXBException e) {
             throw new InvalidXmlException(Resenje.class, e.getMessage());
         }
 
@@ -93,7 +93,8 @@ public class ResenjeService implements AbstractXmlService<Resenje>{
         // Sacuvaj u RDF
         if (!rdfService.save(xmlEntity, SPARQL_NAMED_GRAPH_URI)) {
             System.out.println("[ERROR] Neuspesno cuvanje metapodataka resenja u RDF DB.");
-        };
+        }
+        ;
 
         return resenje;
     }
@@ -101,16 +102,16 @@ public class ResenjeService implements AbstractXmlService<Resenje>{
     @Override
     public Resenje update(String xmlEntity) {
         Resenje resenje;
-        try{
+        try {
             resenje = this.resenjeXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
-        }catch(JAXBException e){
+        } catch (JAXBException e) {
             throw new InvalidXmlException(Resenje.class, e.getMessage());
         }
 
         try {
-            if(this.resenjeAbstractXmlRepository.updateEntity(resenje))
+            if (this.resenjeAbstractXmlRepository.updateEntity(resenje))
                 return resenje;
-            else{
+            else {
                 throw new EntityNotFoundException(resenje.getId(), Resenje.class);
             }
         } catch (XMLDBException e) {

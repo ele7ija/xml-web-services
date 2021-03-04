@@ -29,8 +29,7 @@ public class XQueryExpressions {
 
     public static final String X_UPDATE_REMOVE_ZALBA_NA_ODLUKU_BY_ID_EXPRESSION =
             "xquery version \"3.1\";\n" +
-            "xmldb:remove('/db/sample/zalbe_na_odluku', '%s')";
-
+                    "xmldb:remove('/db/sample/zalbe_na_odluku', '%s')";
 
 
     //XQUERY I XUPDATE ZA ZALBU NA CUTANJE
@@ -60,7 +59,6 @@ public class XQueryExpressions {
     public static final String X_UPDATE_REMOVE_ZALBA_CUTANJA_BY_ID_EXPRESSION =
             "xquery version \"3.1\";\n" +
                     "xmldb:remove('/db/sample/zalbe_cutanja', '%s')";
-
 
 
     //XQUERY I XUPDATE ZA RESENJE

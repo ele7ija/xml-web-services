@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for TOdgovor_Na_Zahtev complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="TOdgovor_Na_Zahtev">
  *   &lt;complexContent>
@@ -58,15 +58,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TOdgovor_Na_Zahtev", propOrder = {
-    "odobren",
-    "elementZahteva",
-    "uvid",
-    "trosak"
+        "odobren",
+        "elementZahteva",
+        "uvid",
+        "trosak"
 })
 public class TOdgovorNaZahtev {
 
@@ -81,7 +79,6 @@ public class TOdgovorNaZahtev {
 
     /**
      * Gets the value of the odobren property.
-     * 
      */
     public boolean isOdobren() {
         return odobren;
@@ -89,7 +86,6 @@ public class TOdgovorNaZahtev {
 
     /**
      * Sets the value of the odobren property.
-     * 
      */
     public void setOdobren(boolean value) {
         this.odobren = value;
@@ -97,11 +93,9 @@ public class TOdgovorNaZahtev {
 
     /**
      * Gets the value of the elementZahteva property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TElementZahteva }
-     *     
+     *
+     * @return possible object is
+     * {@link TElementZahteva }
      */
     public TElementZahteva getElementZahteva() {
         return elementZahteva;
@@ -109,11 +103,9 @@ public class TOdgovorNaZahtev {
 
     /**
      * Sets the value of the elementZahteva property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TElementZahteva }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link TElementZahteva }
      */
     public void setElementZahteva(TElementZahteva value) {
         this.elementZahteva = value;
@@ -121,11 +113,9 @@ public class TOdgovorNaZahtev {
 
     /**
      * Gets the value of the uvid property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TOdgovorNaZahtev.Uvid }
-     *     
+     *
+     * @return possible object is
+     * {@link TOdgovorNaZahtev.Uvid }
      */
     public TOdgovorNaZahtev.Uvid getUvid() {
         return uvid;
@@ -133,11 +123,9 @@ public class TOdgovorNaZahtev {
 
     /**
      * Sets the value of the uvid property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TOdgovorNaZahtev.Uvid }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link TOdgovorNaZahtev.Uvid }
      */
     public void setUvid(TOdgovorNaZahtev.Uvid value) {
         this.uvid = value;
@@ -145,11 +133,9 @@ public class TOdgovorNaZahtev {
 
     /**
      * Gets the value of the trosak property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TOdgovorNaZahtev.Trosak }
-     *     
+     *
+     * @return possible object is
+     * {@link TOdgovorNaZahtev.Trosak }
      */
     public TOdgovorNaZahtev.Trosak getTrosak() {
         return trosak;
@@ -157,11 +143,9 @@ public class TOdgovorNaZahtev {
 
     /**
      * Sets the value of the trosak property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TOdgovorNaZahtev.Trosak }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link TOdgovorNaZahtev.Trosak }
      */
     public void setTrosak(TOdgovorNaZahtev.Trosak value) {
         this.trosak = value;
@@ -170,9 +154,9 @@ public class TOdgovorNaZahtev {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -186,14 +170,12 @@ public class TOdgovorNaZahtev {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "iznos",
-        "valuta",
-        "pravniOsnov"
+            "iznos",
+            "valuta",
+            "pravniOsnov"
     })
     public static class Trosak {
 
@@ -207,11 +189,9 @@ public class TOdgovorNaZahtev {
 
         /**
          * Gets the value of the iznos property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link BigInteger }
-         *     
+         *
+         * @return possible object is
+         * {@link BigInteger }
          */
         public BigInteger getIznos() {
             return iznos;
@@ -219,11 +199,9 @@ public class TOdgovorNaZahtev {
 
         /**
          * Sets the value of the iznos property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link BigInteger }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link BigInteger }
          */
         public void setIznos(BigInteger value) {
             this.iznos = value;
@@ -231,11 +209,9 @@ public class TOdgovorNaZahtev {
 
         /**
          * Gets the value of the valuta property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
+         *
+         * @return possible object is
+         * {@link String }
          */
         public String getValuta() {
             return valuta;
@@ -243,11 +219,9 @@ public class TOdgovorNaZahtev {
 
         /**
          * Sets the value of the valuta property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link String }
          */
         public void setValuta(String value) {
             this.valuta = value;
@@ -255,11 +229,9 @@ public class TOdgovorNaZahtev {
 
         /**
          * Gets the value of the pravniOsnov property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link TPravniOsnov }
-         *     
+         *
+         * @return possible object is
+         * {@link TPravniOsnov }
          */
         public TPravniOsnov getPravniOsnov() {
             return pravniOsnov;
@@ -267,11 +239,9 @@ public class TOdgovorNaZahtev {
 
         /**
          * Sets the value of the pravniOsnov property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link TPravniOsnov }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link TPravniOsnov }
          */
         public void setPravniOsnov(TPravniOsnov value) {
             this.pravniOsnov = value;
@@ -282,9 +252,9 @@ public class TOdgovorNaZahtev {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -297,13 +267,11 @@ public class TOdgovorNaZahtev {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "datumUvida",
-        "vremeUvida"
+            "datumUvida",
+            "vremeUvida"
     })
     public static class Uvid {
 
@@ -314,11 +282,9 @@ public class TOdgovorNaZahtev {
 
         /**
          * Gets the value of the datumUvida property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Datum }
-         *     
+         *
+         * @return possible object is
+         * {@link Datum }
          */
         public Datum getDatumUvida() {
             return datumUvida;
@@ -326,11 +292,9 @@ public class TOdgovorNaZahtev {
 
         /**
          * Sets the value of the datumUvida property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Datum }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link Datum }
          */
         public void setDatumUvida(Datum value) {
             this.datumUvida = value;
@@ -338,11 +302,9 @@ public class TOdgovorNaZahtev {
 
         /**
          * Gets the value of the vremeUvida property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link TVreme }
-         *     
+         *
+         * @return possible object is
+         * {@link TVreme }
          */
         public TVreme getVremeUvida() {
             return vremeUvida;
@@ -350,11 +312,9 @@ public class TOdgovorNaZahtev {
 
         /**
          * Sets the value of the vremeUvida property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link TVreme }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link TVreme }
          */
         public void setVremeUvida(TVreme value) {
             this.vremeUvida = value;

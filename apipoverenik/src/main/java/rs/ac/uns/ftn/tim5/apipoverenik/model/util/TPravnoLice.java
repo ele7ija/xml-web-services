@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for TPravno_Lice complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="TPravno_Lice">
  *   &lt;complexContent>
@@ -35,27 +35,22 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TPravno_Lice", propOrder = {
-    "naziv"
+        "naziv"
 })
 public class TPravnoLice
-    extends TLice
-{
+        extends TLice {
 
     @XmlElement(name = "Naziv", required = true)
     protected String naziv;
 
     /**
      * Gets the value of the naziv property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getNaziv() {
         return naziv;
@@ -63,11 +58,9 @@ public class TPravnoLice
 
     /**
      * Sets the value of the naziv property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setNaziv(String value) {
         this.naziv = value;

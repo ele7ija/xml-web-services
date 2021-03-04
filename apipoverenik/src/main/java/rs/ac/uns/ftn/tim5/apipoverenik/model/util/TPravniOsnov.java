@@ -20,9 +20,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for TPravni_Osnov complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="TPravni_Osnov">
  *   &lt;complexContent>
@@ -47,15 +47,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TPravni_Osnov", propOrder = {
-    "naziv",
-    "clan",
-    "strana",
-    "dopune"
+        "naziv",
+        "clan",
+        "strana",
+        "dopune"
 })
 public class TPravniOsnov {
 
@@ -72,11 +70,9 @@ public class TPravniOsnov {
 
     /**
      * Gets the value of the naziv property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getNaziv() {
         return naziv;
@@ -84,11 +80,9 @@ public class TPravniOsnov {
 
     /**
      * Sets the value of the naziv property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setNaziv(String value) {
         this.naziv = value;
@@ -96,11 +90,9 @@ public class TPravniOsnov {
 
     /**
      * Gets the value of the clan property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @return possible object is
+     * {@link BigInteger }
      */
     public BigInteger getClan() {
         return clan;
@@ -108,11 +100,9 @@ public class TPravniOsnov {
 
     /**
      * Sets the value of the clan property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link BigInteger }
      */
     public void setClan(BigInteger value) {
         this.clan = value;
@@ -120,11 +110,9 @@ public class TPravniOsnov {
 
     /**
      * Gets the value of the strana property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @return possible object is
+     * {@link BigInteger }
      */
     public BigInteger getStrana() {
         return strana;
@@ -132,11 +120,9 @@ public class TPravniOsnov {
 
     /**
      * Sets the value of the strana property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link BigInteger }
      */
     public void setStrana(BigInteger value) {
         this.strana = value;
@@ -144,11 +130,9 @@ public class TPravniOsnov {
 
     /**
      * Gets the value of the dopune property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TPravniOsnov.Dopune }
-     *     
+     *
+     * @return possible object is
+     * {@link TPravniOsnov.Dopune }
      */
     public TPravniOsnov.Dopune getDopune() {
         return dopune;
@@ -156,11 +140,9 @@ public class TPravniOsnov {
 
     /**
      * Sets the value of the dopune property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TPravniOsnov.Dopune }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link TPravniOsnov.Dopune }
      */
     public void setDopune(TPravniOsnov.Dopune value) {
         this.dopune = value;
@@ -169,9 +151,9 @@ public class TPravniOsnov {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -183,12 +165,10 @@ public class TPravniOsnov {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "dopuna"
+            "dopuna"
     })
     public static class Dopune {
 
@@ -197,25 +177,23 @@ public class TPravniOsnov {
 
         /**
          * Gets the value of the dopuna property.
-         * 
+         *
          * <p>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
          * returned list will be present inside the JAXB object.
          * This is why there is not a <CODE>set</CODE> method for the dopuna property.
-         * 
+         *
          * <p>
          * For example, to add a new item, do as follows:
          * <pre>
          *    getDopuna().add(newItem);
          * </pre>
-         * 
-         * 
+         *
+         *
          * <p>
          * Objects of the following type(s) are allowed in the list
          * {@link TDopunaPravnogOsnova }
-         * 
-         * 
          */
         public List<TDopunaPravnogOsnova> getDopuna() {
             if (dopuna == null) {

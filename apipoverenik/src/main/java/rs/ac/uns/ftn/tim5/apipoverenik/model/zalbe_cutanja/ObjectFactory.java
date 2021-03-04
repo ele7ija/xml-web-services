@@ -12,18 +12,17 @@ import javax.xml.bind.annotation.XmlRegistry;
 
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the rs.ac.uns.ftn.tim5.apipoverenik.model.zalbe_cutanja package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the rs.ac.uns.ftn.tim5.apipoverenik.model.zalbe_cutanja package.
+ * <p>An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups.  Factory methods for each of these are
  * provided in this class.
- * 
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -31,14 +30,12 @@ public class ObjectFactory {
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: rs.ac.uns.ftn.tim5.apipoverenik.model.zalbe_cutanja
-     * 
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link ZalbaCutanja }
-     * 
      */
     public ZalbaCutanja createZalbaCutanja() {
         return new ZalbaCutanja();
@@ -46,7 +43,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link KolekcijaZalbiCutanja }
-     * 
      */
     public KolekcijaZalbiCutanja createKolekcijaZalbiCutanja() {
         return new KolekcijaZalbiCutanja();
@@ -54,7 +50,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ZalbaCutanja.Poverenik }
-     * 
      */
     public ZalbaCutanja.Poverenik createZalbaCutanjaPoverenik() {
         return new ZalbaCutanja.Poverenik();
@@ -62,7 +57,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ZalbaCutanja.PodnosiocZalbe }
-     * 
      */
     public ZalbaCutanja.PodnosiocZalbe createZalbaCutanjaPodnosiocZalbe() {
         return new ZalbaCutanja.PodnosiocZalbe();

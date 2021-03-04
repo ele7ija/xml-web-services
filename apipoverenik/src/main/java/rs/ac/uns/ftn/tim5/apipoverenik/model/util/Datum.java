@@ -18,9 +18,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * <p>Java class for Datum complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Datum">
  *   &lt;complexContent>
@@ -34,14 +34,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Datum", propOrder = {
-    "dan",
-    "mesec",
-    "godina"
+        "dan",
+        "mesec",
+        "godina"
 })
 public class Datum {
 
@@ -57,11 +55,9 @@ public class Datum {
 
     /**
      * Gets the value of the dan property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @return possible object is
+     * {@link XMLGregorianCalendar }
      */
     public XMLGregorianCalendar getDan() {
         return dan;
@@ -69,11 +65,9 @@ public class Datum {
 
     /**
      * Sets the value of the dan property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link XMLGregorianCalendar }
      */
     public void setDan(XMLGregorianCalendar value) {
         this.dan = value;
@@ -81,11 +75,9 @@ public class Datum {
 
     /**
      * Gets the value of the mesec property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @return possible object is
+     * {@link XMLGregorianCalendar }
      */
     public XMLGregorianCalendar getMesec() {
         return mesec;
@@ -93,11 +85,9 @@ public class Datum {
 
     /**
      * Sets the value of the mesec property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link XMLGregorianCalendar }
      */
     public void setMesec(XMLGregorianCalendar value) {
         this.mesec = value;
@@ -105,11 +95,9 @@ public class Datum {
 
     /**
      * Gets the value of the godina property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @return possible object is
+     * {@link XMLGregorianCalendar }
      */
     public XMLGregorianCalendar getGodina() {
         return godina;
@@ -117,11 +105,9 @@ public class Datum {
 
     /**
      * Sets the value of the godina property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link XMLGregorianCalendar }
      */
     public void setGodina(XMLGregorianCalendar value) {
         this.godina = value;

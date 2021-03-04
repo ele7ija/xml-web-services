@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for TOsoba complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="TOsoba">
  *   &lt;complexContent>
@@ -41,13 +41,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TOsoba", propOrder = {
-    "ime",
-    "prezime"
+        "ime",
+        "prezime"
 })
 public class TOsoba {
 
@@ -58,11 +56,9 @@ public class TOsoba {
 
     /**
      * Gets the value of the ime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getIme() {
         return ime;
@@ -70,11 +66,9 @@ public class TOsoba {
 
     /**
      * Sets the value of the ime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setIme(String value) {
         this.ime = value;
@@ -82,11 +76,9 @@ public class TOsoba {
 
     /**
      * Gets the value of the prezime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getPrezime() {
         return prezime;
@@ -94,11 +86,9 @@ public class TOsoba {
 
     /**
      * Sets the value of the prezime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setPrezime(String value) {
         this.prezime = value;

@@ -24,9 +24,9 @@ import rs.ac.uns.ftn.tim5.apipoverenik.model.util.TPravnoLice;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -71,21 +71,19 @@ import rs.ac.uns.ftn.tim5.apipoverenik.model.util.TPravnoLice;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id",
-    "poverenik",
-    "zakon",
-    "organVlasti",
-    "razlog",
-    "datumZahteva",
-    "zahtevanaInformacije",
-    "podnosiocZalbe",
-    "mesto",
-    "datumZalbe"
+        "id",
+        "poverenik",
+        "zakon",
+        "organVlasti",
+        "razlog",
+        "datumZahteva",
+        "zahtevanaInformacije",
+        "podnosiocZalbe",
+        "mesto",
+        "datumZalbe"
 })
 @XmlRootElement(name = "zalba_cutanja")
 public class ZalbaCutanja implements Identifiable {
@@ -112,11 +110,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     *
+     * @return possible object is
+     * {@link Long }
      */
     public Long getId() {
         return id;
@@ -124,11 +120,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Long }
      */
     public void setId(Long value) {
         this.id = value;
@@ -136,11 +130,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Gets the value of the poverenik property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ZalbaCutanja.Poverenik }
-     *     
+     *
+     * @return possible object is
+     * {@link ZalbaCutanja.Poverenik }
      */
     public ZalbaCutanja.Poverenik getPoverenik() {
         return poverenik;
@@ -148,11 +140,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Sets the value of the poverenik property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ZalbaCutanja.Poverenik }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link ZalbaCutanja.Poverenik }
      */
     public void setPoverenik(ZalbaCutanja.Poverenik value) {
         this.poverenik = value;
@@ -160,11 +150,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Gets the value of the zakon property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TPravniOsnov }
-     *     
+     *
+     * @return possible object is
+     * {@link TPravniOsnov }
      */
     public TPravniOsnov getZakon() {
         return zakon;
@@ -172,11 +160,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Sets the value of the zakon property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TPravniOsnov }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link TPravniOsnov }
      */
     public void setZakon(TPravniOsnov value) {
         this.zakon = value;
@@ -184,11 +170,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Gets the value of the organVlasti property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TPravnoLice }
-     *     
+     *
+     * @return possible object is
+     * {@link TPravnoLice }
      */
     public TPravnoLice getOrganVlasti() {
         return organVlasti;
@@ -196,11 +180,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Sets the value of the organVlasti property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TPravnoLice }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link TPravnoLice }
      */
     public void setOrganVlasti(TPravnoLice value) {
         this.organVlasti = value;
@@ -208,11 +190,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Gets the value of the razlog property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Razlog }
-     *     
+     *
+     * @return possible object is
+     * {@link Razlog }
      */
     public Razlog getRazlog() {
         return razlog;
@@ -220,11 +200,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Sets the value of the razlog property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Razlog }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Razlog }
      */
     public void setRazlog(Razlog value) {
         this.razlog = value;
@@ -232,11 +210,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Gets the value of the datumZahteva property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Datum }
-     *     
+     *
+     * @return possible object is
+     * {@link Datum }
      */
     public Datum getDatumZahteva() {
         return datumZahteva;
@@ -244,11 +220,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Sets the value of the datumZahteva property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Datum }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Datum }
      */
     public void setDatumZahteva(Datum value) {
         this.datumZahteva = value;
@@ -256,11 +230,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Gets the value of the zahtevanaInformacije property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getZahtevanaInformacije() {
         return zahtevanaInformacije;
@@ -268,11 +240,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Sets the value of the zahtevanaInformacije property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setZahtevanaInformacije(String value) {
         this.zahtevanaInformacije = value;
@@ -280,11 +250,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Gets the value of the podnosiocZalbe property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ZalbaCutanja.PodnosiocZalbe }
-     *     
+     *
+     * @return possible object is
+     * {@link ZalbaCutanja.PodnosiocZalbe }
      */
     public ZalbaCutanja.PodnosiocZalbe getPodnosiocZalbe() {
         return podnosiocZalbe;
@@ -292,11 +260,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Sets the value of the podnosiocZalbe property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ZalbaCutanja.PodnosiocZalbe }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link ZalbaCutanja.PodnosiocZalbe }
      */
     public void setPodnosiocZalbe(ZalbaCutanja.PodnosiocZalbe value) {
         this.podnosiocZalbe = value;
@@ -304,11 +270,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Gets the value of the mesto property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getMesto() {
         return mesto;
@@ -316,11 +280,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Sets the value of the mesto property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setMesto(String value) {
         this.mesto = value;
@@ -328,11 +290,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Gets the value of the datumZalbe property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Datum }
-     *     
+     *
+     * @return possible object is
+     * {@link Datum }
      */
     public Datum getDatumZalbe() {
         return datumZalbe;
@@ -340,11 +300,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * Sets the value of the datumZalbe property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Datum }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Datum }
      */
     public void setDatumZalbe(Datum value) {
         this.datumZalbe = value;
@@ -353,9 +311,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -370,15 +328,13 @@ public class ZalbaCutanja implements Identifiable {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "ime",
-        "prezime",
-        "adresa",
-        "drugiPodaciZaKontakt"
+            "ime",
+            "prezime",
+            "adresa",
+            "drugiPodaciZaKontakt"
     })
     public static class PodnosiocZalbe {
 
@@ -393,11 +349,9 @@ public class ZalbaCutanja implements Identifiable {
 
         /**
          * Gets the value of the ime property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
+         *
+         * @return possible object is
+         * {@link String }
          */
         public String getIme() {
             return ime;
@@ -405,11 +359,9 @@ public class ZalbaCutanja implements Identifiable {
 
         /**
          * Sets the value of the ime property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link String }
          */
         public void setIme(String value) {
             this.ime = value;
@@ -417,11 +369,9 @@ public class ZalbaCutanja implements Identifiable {
 
         /**
          * Gets the value of the prezime property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
+         *
+         * @return possible object is
+         * {@link String }
          */
         public String getPrezime() {
             return prezime;
@@ -429,11 +379,9 @@ public class ZalbaCutanja implements Identifiable {
 
         /**
          * Sets the value of the prezime property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link String }
          */
         public void setPrezime(String value) {
             this.prezime = value;
@@ -441,11 +389,9 @@ public class ZalbaCutanja implements Identifiable {
 
         /**
          * Gets the value of the adresa property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Adresa }
-         *     
+         *
+         * @return possible object is
+         * {@link Adresa }
          */
         public Adresa getAdresa() {
             return adresa;
@@ -453,11 +399,9 @@ public class ZalbaCutanja implements Identifiable {
 
         /**
          * Sets the value of the adresa property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Adresa }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link Adresa }
          */
         public void setAdresa(Adresa value) {
             this.adresa = value;
@@ -465,11 +409,9 @@ public class ZalbaCutanja implements Identifiable {
 
         /**
          * Gets the value of the drugiPodaciZaKontakt property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
+         *
+         * @return possible object is
+         * {@link String }
          */
         public String getDrugiPodaciZaKontakt() {
             return drugiPodaciZaKontakt;
@@ -477,11 +419,9 @@ public class ZalbaCutanja implements Identifiable {
 
         /**
          * Sets the value of the drugiPodaciZaKontakt property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link String }
          */
         public void setDrugiPodaciZaKontakt(String value) {
             this.drugiPodaciZaKontakt = value;
@@ -492,9 +432,9 @@ public class ZalbaCutanja implements Identifiable {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -507,13 +447,11 @@ public class ZalbaCutanja implements Identifiable {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "naziv",
-        "adresa"
+            "naziv",
+            "adresa"
     })
     public static class Poverenik {
 
@@ -524,11 +462,9 @@ public class ZalbaCutanja implements Identifiable {
 
         /**
          * Gets the value of the naziv property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
+         *
+         * @return possible object is
+         * {@link String }
          */
         public String getNaziv() {
             return naziv;
@@ -536,11 +472,9 @@ public class ZalbaCutanja implements Identifiable {
 
         /**
          * Sets the value of the naziv property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link String }
          */
         public void setNaziv(String value) {
             this.naziv = value;
@@ -548,11 +482,9 @@ public class ZalbaCutanja implements Identifiable {
 
         /**
          * Gets the value of the adresa property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Adresa }
-         *     
+         *
+         * @return possible object is
+         * {@link Adresa }
          */
         public Adresa getAdresa() {
             return adresa;
@@ -560,11 +492,9 @@ public class ZalbaCutanja implements Identifiable {
 
         /**
          * Sets the value of the adresa property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Adresa }
-         *     
+         *
+         * @param value allowed object is
+         *              {@link Adresa }
          */
         public void setAdresa(Adresa value) {
             this.adresa = value;

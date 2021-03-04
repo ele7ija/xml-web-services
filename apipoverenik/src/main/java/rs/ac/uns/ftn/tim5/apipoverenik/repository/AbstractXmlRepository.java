@@ -45,7 +45,7 @@ public class AbstractXmlRepository<T extends Identifiable> {
         CompiledExpression compiledExpression = xQueryService.compile(this.X_QUERY_FIND_ALL_ENTITIES);
         ResourceSet resourceSet = xQueryService.execute(compiledExpression);
         ResourceIterator resourceIterator = resourceSet.getIterator();
-        while (resourceIterator.hasMoreResources()){
+        while (resourceIterator.hasMoreResources()) {
             XMLResource xmlResource = (XMLResource) resourceIterator.nextResource();
             entities.add(this.xmlConversionAgent.unmarshall(xmlResource.getContentAsDOM(), this.jaxbContextPath));
         }
@@ -58,7 +58,7 @@ public class AbstractXmlRepository<T extends Identifiable> {
         CompiledExpression compiledExpression = xQueryService.compile(String.format(this.X_QUERY_FIND_ENTITY_BY_ID, entityId));
         ResourceSet resourceSet = xQueryService.execute(compiledExpression);
         ResourceIterator resourceIterator = resourceSet.getIterator();
-        while (resourceIterator.hasMoreResources()){
+        while (resourceIterator.hasMoreResources()) {
             XMLResource xmlResource = (XMLResource) resourceIterator.nextResource();
             return this.xmlConversionAgent.unmarshall(xmlResource.getContentAsDOM(), this.jaxbContextPath);
         }
@@ -86,7 +86,7 @@ public class AbstractXmlRepository<T extends Identifiable> {
 
         XQueryService xQueryService = (XQueryService) collection.getService("XQueryService", "1.0");
         CompiledExpression compiledExpression = xQueryService.compile(String.format(this.X_UPDATE_UPDATE_ENTITY_BY_ID_EXPRESSION, entity.getId() + ".xml", xmlFragment));
-        ResourceSet resourceSet  = xQueryService.execute(compiledExpression);
+        ResourceSet resourceSet = xQueryService.execute(compiledExpression);
         ResourceIterator resourceIterator = resourceSet.getIterator();
         XMLResource xmlResource = (XMLResource) resourceIterator.nextResource();
         Long mods = Long.parseLong((String) xmlResource.getContent());
@@ -110,7 +110,7 @@ public class AbstractXmlRepository<T extends Identifiable> {
             String X_QUERY_FIND_ENTITY_BY_ID,
             String X_UPDATE_UPDATE_ENTITY_BY_ID_EXPRESSION,
             String X_UPDATE_REMOVE_ENTITY_BY_ID_EXPRESSION
-    ){
+    ) {
 
         this.collectionId = collectionId;
         this.jaxbContextPath = jaxbContextPath;

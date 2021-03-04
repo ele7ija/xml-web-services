@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for TUplata complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="TUplata">
  *   &lt;complexContent>
@@ -35,15 +35,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TUplata", propOrder = {
-    "racun",
-    "iznos",
-    "pozivNaBroj",
-    "pravniOsnov"
+        "racun",
+        "iznos",
+        "pozivNaBroj",
+        "pravniOsnov"
 })
 public class TUplata {
 
@@ -60,11 +58,9 @@ public class TUplata {
 
     /**
      * Gets the value of the racun property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TRacun }
-     *     
+     *
+     * @return possible object is
+     * {@link TRacun }
      */
     public TRacun getRacun() {
         return racun;
@@ -72,11 +68,9 @@ public class TUplata {
 
     /**
      * Sets the value of the racun property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TRacun }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link TRacun }
      */
     public void setRacun(TRacun value) {
         this.racun = value;
@@ -84,11 +78,9 @@ public class TUplata {
 
     /**
      * Gets the value of the iznos property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @return possible object is
+     * {@link BigInteger }
      */
     public BigInteger getIznos() {
         return iznos;
@@ -96,11 +88,9 @@ public class TUplata {
 
     /**
      * Sets the value of the iznos property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link BigInteger }
      */
     public void setIznos(BigInteger value) {
         this.iznos = value;
@@ -108,11 +98,9 @@ public class TUplata {
 
     /**
      * Gets the value of the pozivNaBroj property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @return possible object is
+     * {@link BigInteger }
      */
     public BigInteger getPozivNaBroj() {
         return pozivNaBroj;
@@ -120,11 +108,9 @@ public class TUplata {
 
     /**
      * Sets the value of the pozivNaBroj property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link BigInteger }
      */
     public void setPozivNaBroj(BigInteger value) {
         this.pozivNaBroj = value;
@@ -132,11 +118,9 @@ public class TUplata {
 
     /**
      * Gets the value of the pravniOsnov property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TPravniOsnov }
-     *     
+     *
+     * @return possible object is
+     * {@link TPravniOsnov }
      */
     public TPravniOsnov getPravniOsnov() {
         return pravniOsnov;
@@ -144,11 +128,9 @@ public class TUplata {
 
     /**
      * Sets the value of the pravniOsnov property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TPravniOsnov }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link TPravniOsnov }
      */
     public void setPravniOsnov(TPravniOsnov value) {
         this.pravniOsnov = value;

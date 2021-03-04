@@ -19,14 +19,15 @@ import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
 import rs.ac.uns.ftn.tim5.apipoverenik.model.util.TPravniOsnov;
 
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -49,46 +50,42 @@ import rs.ac.uns.ftn.tim5.apipoverenik.model.util.TPravniOsnov;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "content"
+        "content"
 })
 @XmlRootElement(name = "Odluka")
 public class Odluka {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "Obrazlozenje", namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje", type = JAXBElement.class),
-        @XmlElementRef(name = "Ishod", namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje", type = JAXBElement.class)
+            @XmlElementRef(name = "Obrazlozenje", namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje", type = JAXBElement.class),
+            @XmlElementRef(name = "Ishod", namespace = "http://ftn.uns.ac.rs/tim5/apipoverenik/model/resenje", type = JAXBElement.class)
     })
     @XmlMixed
     protected List<Serializable> content;
 
     /**
      * Gets the value of the content property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the content property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getContent().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link Odluka.Obrazlozenje }{@code >}
      * {@link JAXBElement }{@code <}{@link TIshodOdluke }{@code >}
      * {@link String }
-     * 
-     * 
      */
     public List<Serializable> getContent() {
         if (content == null) {
@@ -100,9 +97,9 @@ public class Odluka {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -114,12 +111,10 @@ public class Odluka {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "content"
+            "content"
     })
     public static class Obrazlozenje {
 
@@ -129,26 +124,24 @@ public class Odluka {
 
         /**
          * Gets the value of the content property.
-         * 
+         *
          * <p>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
          * returned list will be present inside the JAXB object.
          * This is why there is not a <CODE>set</CODE> method for the content property.
-         * 
+         *
          * <p>
          * For example, to add a new item, do as follows:
          * <pre>
          *    getContent().add(newItem);
          * </pre>
-         * 
-         * 
+         *
+         *
          * <p>
          * Objects of the following type(s) are allowed in the list
          * {@link String }
          * {@link JAXBElement }{@code <}{@link TPravniOsnov }{@code >}
-         * 
-         * 
          */
         public List<Serializable> getContent() {
             if (content == null) {

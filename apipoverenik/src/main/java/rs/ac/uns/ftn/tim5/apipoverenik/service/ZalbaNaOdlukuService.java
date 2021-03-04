@@ -11,6 +11,7 @@ import rs.ac.uns.ftn.tim5.apipoverenik.model.exception.InvalidXmlException;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.exception.XmlDatabaseException;
 import rs.ac.uns.ftn.tim5.apipoverenik.model.zalba_na_odluku.ZalbaNaOdluku;
 import rs.ac.uns.ftn.tim5.apipoverenik.repository.AbstractXmlRepository;
+
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
 
@@ -33,11 +34,11 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
     @Autowired
     private XmlConversionAgent<ZalbaNaOdluku> zalbaNaOdlukuXmlConversionAgent;
 
-    @Autowired 
+    @Autowired
     private RDFService rdfService;
 
     @PostConstruct
-    public void injectRepositoryProperties(){
+    public void injectRepositoryProperties() {
         this.zalbaNaOdlukuAbstractXmlRepository.injectRepositoryProperties(
                 "/db/sample/zalbe_na_odluku",
                 this.jaxbContextPath,
@@ -63,7 +64,7 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
     public ZalbaNaOdluku findById(Long entityId) {
         try {
             ZalbaNaOdluku zalbaNaOdluku = this.zalbaNaOdlukuAbstractXmlRepository.getEntity(entityId);
-            if(zalbaNaOdluku == null){
+            if (zalbaNaOdluku == null) {
                 throw new EntityNotFoundException(entityId, ZalbaNaOdluku.class);
             }
             return zalbaNaOdluku;
@@ -77,9 +78,9 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
     @Override
     public ZalbaNaOdluku create(String xmlEntity) {
         ZalbaNaOdluku zalbaNaOdluku;
-        try{
+        try {
             zalbaNaOdluku = this.zalbaNaOdlukuXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
-        }catch(JAXBException e){
+        } catch (JAXBException e) {
             throw new InvalidXmlException(ZalbaNaOdluku.class, e.getMessage());
         }
 
@@ -101,16 +102,16 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
     @Override
     public ZalbaNaOdluku update(String xmlEntity) {
         ZalbaNaOdluku zalbaNaOdluku;
-        try{
+        try {
             zalbaNaOdluku = this.zalbaNaOdlukuXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
-        }catch(JAXBException e){
+        } catch (JAXBException e) {
             throw new InvalidXmlException(ZalbaNaOdluku.class, e.getMessage());
         }
 
         try {
-            if(this.zalbaNaOdlukuAbstractXmlRepository.updateEntity(zalbaNaOdluku))
+            if (this.zalbaNaOdlukuAbstractXmlRepository.updateEntity(zalbaNaOdluku))
                 return zalbaNaOdluku;
-            else{
+            else {
                 throw new EntityNotFoundException(zalbaNaOdluku.getId(), ZalbaNaOdluku.class);
             }
         } catch (XMLDBException e) {

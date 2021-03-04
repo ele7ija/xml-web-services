@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalba_na_odluku"
-    xmlns:util="http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/util"
-    xmlns:zalba_na_odluku="http://ftn.uns.ac.rs/tim5/apipoverenik/model/zalba_na_odluku">
-    <xs:import namespace="http://ftn.uns.ac.rs/tim5/apiorganvlasti/model/util"
-        schemaLocation="util.xsd"/>
+    targetNamespace="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku"
+    xmlns:util="http://ftn.uns.ac.rs/tim5/model/util"
+    xmlns:zalba_na_odluku="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku">
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util" schemaLocation="util.xsd"/>
     <xs:element name="Zalba_na_odluku">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="poverenik" type="util:TFizicko_Lice"> </xs:element>
+                <xs:element name="poverenik" type="util:TFizicko_Lice"/>
 
                 <xs:element name="zalilac">
                     <xs:complexType>

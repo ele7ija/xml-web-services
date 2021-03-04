@@ -17,20 +17,20 @@ import java.io.StringWriter;
 @Component
 public class XmlConversionAgent<T> {
 
-    public T unmarshall(String xmlEntity, String contextPath) throws JAXBException{
+    public T unmarshall(String xmlEntity, String contextPath) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(contextPath);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         StringReader reader = new StringReader(xmlEntity);
         return (T) unmarshaller.unmarshal(reader);
     }
 
-    public T unmarshall(Node xmlEntity, String contextPath) throws JAXBException{
+    public T unmarshall(Node xmlEntity, String contextPath) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(contextPath);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         return (T) unmarshaller.unmarshal(xmlEntity);
     }
 
-    public String marshall(T entity, String contextPath) throws JAXBException{
+    public String marshall(T entity, String contextPath) throws JAXBException {
         JAXBContext contextObj = JAXBContext.newInstance(contextPath);
         Marshaller marshaller = contextObj.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -39,7 +39,7 @@ public class XmlConversionAgent<T> {
         return sw.toString();
     }
 
-    public OutputStream marshallToOutputStream(T entity, String contextPath) throws JAXBException{
+    public OutputStream marshallToOutputStream(T entity, String contextPath) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(contextPath);
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
