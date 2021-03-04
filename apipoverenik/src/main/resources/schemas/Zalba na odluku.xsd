@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku"
+    xmlns:util="http://ftn.uns.ac.rs/tim5/model/util"
+    xmlns:zalba_na_odluku="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku">
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util" schemaLocation="util.xsd"/>
+    <xs:element name="Zalba_na_odluku">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="poverenik" type="util:TFizicko_Lice"/>
+
+                <xs:element name="zalilac">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="osnovni_podaci" type="util:TFizicko_Lice"/>
+                            <xs:element maxOccurs="1" minOccurs="0" name="drugi_podaci_za_kontakt"
+                                type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="organ_vlasti" type="util:TPravno_Lice"/>
+
+                <xs:element name="datum_zahteva" type="util:Datum"/>
+                <xs:element name="odluka">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="broj_odluke" default="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:positiveInteger"/>
+                                </xs:simpleType>
+                            </xs:element>
+
+                            <xs:element name="godina" default="2020">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:gYear"/>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="osnova_za_zaljenje" type="xs:string"/>
+                <xs:element name="mesto_zalbe" type="xs:string"/>
+                <xs:element name="datum_zalbe" type="util:Datum"/>
+
+            </xs:sequence>
+
+            <xs:attribute name="id" type="xs:long"/>
+            <xs:attribute name="id_obavestenja" type="xs:long"/>
+            <xs:attribute name="id_poverenika" type="xs:long"/>
+        </xs:complexType>
+
+    </xs:element>
+
+    <xs:element name="Kolekcija_zalbi_na_Odluku">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0"
+                    ref="zalba_na_odluku:Zalba_na_odluku"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

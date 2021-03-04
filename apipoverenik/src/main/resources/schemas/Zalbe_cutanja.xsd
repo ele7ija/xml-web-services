@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja"
+    xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" elementFormDefault="qualified"
+    xmlns:zalba_cutanja="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja">
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util" schemaLocation="util.xsd"/>
+    <xs:element name="Zalba_cutanja">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="poverenik" type="util:TFizicko_Lice"/>
+                <xs:element name="zalilac">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="osnovni_podaci" type="util:TFizicko_Lice"/>
+                            <xs:element name="drugi_podaci_za_kontakt" type="xs:string"
+                                minOccurs="0" maxOccurs="1"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="organ_vlasti" type="util:TPravno_Lice"/>
+                <xs:element name="razlog_zalbe">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="nije postupio"/>
+                            <xs:enumeration value="nije postupio u celosti"/>
+                            <xs:enumeration value="nije postupio u zakonskom roku"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="datum_zahteva" type="util:Datum"/>
+                <xs:element name="zahtevana_informacije" type="xs:string"/>
+                <xs:element name="mesto_zalbe" type="xs:string"/>
+                <xs:element name="datum_zalbe" type="util:Datum"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:long"/>
+            <xs:attribute name="id_zahteva" type="xs:long"/>
+            <xs:attribute name="id_poverenika" type="xs:long"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Kolekcija_zalbi_cutanja">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="zalba_cutanja:Zalba_cutanja"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Zahtev xmlns="http://ftn.uns.ac.rs/tim5/model/zahtev"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://ftn.uns.ac.rs/tim5/model/zahtev file:/C:/Users/milla/Documents/dev/cetvrta_godina/xml-web-services/NOVE_SEME/Zahtev.xsd">
+    <trazilac>
+        <Adresa xmlns="http://ftn.uns.ac.rs/tim5/model/util">
+            <Mesto>Novi Sad</Mesto>
+            <Ulica>Vladislava Kacanskog</Ulica>
+            <Broj>6</Broj>
+        </Adresa>
+        <Ime xmlns="http://ftn.uns.ac.rs/tim5/model/util">Mika</Ime>
+        <Prezime xmlns="http://ftn.uns.ac.rs/tim5/model/util">Mikic</Prezime>
+    </trazilac>
+    <organ>
+        <Adresa xmlns="http://ftn.uns.ac.rs/tim5/model/util">
+            <Mesto>Novi Sad</Mesto>
+            <Ulica>Vladislava Kacanskog</Ulica>
+            <Broj>7</Broj>
+        </Adresa>
+        <Naziv xmlns="http://ftn.uns.ac.rs/tim5/model/util">Pekara Surdulica</Naziv>
+    </organ>
+    <pravni_osnov>
+        <Naziv xmlns="http://ftn.uns.ac.rs/tim5/model/util">Nesto</Naziv>
+        <Clan xmlns="http://ftn.uns.ac.rs/tim5/model/util">Nesto</Clan>
+        <Strana xmlns="http://ftn.uns.ac.rs/tim5/model/util">Nesto</Strana>
+        <Dopune xmlns="http://ftn.uns.ac.rs/tim5/model/util">
+            <Dopuna>
+                <Broj_dopune>1</Broj_dopune>
+                <Godina>2020</Godina>
+            </Dopuna>
+        </Dopune>
+    </pravni_osnov>
+    <opis_zahteva>Nesto</opis_zahteva>
+    <elementi_zahteva>
+        <Element_Zahteva>
+            <Tekst xmlns="http://ftn.uns.ac.rs/tim5/model/util">Nesto</Tekst>
+            <Metod_Dostave xmlns="http://ftn.uns.ac.rs/tim5/model/util">Nesto</Metod_Dostave>
+        </Element_Zahteva>
+    </elementi_zahteva>
+    <datum>
+        <dan xmlns="http://ftn.uns.ac.rs/tim5/model/util">1</dan>
+        <mesec xmlns="http://ftn.uns.ac.rs/tim5/model/util">1</mesec>
+        <godina xmlns="http://ftn.uns.ac.rs/tim5/model/util">2020</godina>
+    </datum>
+    <mesto>Novi Sad</mesto>
+</Zahtev>

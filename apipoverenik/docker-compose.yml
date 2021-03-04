@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  xml-db:
+    image: existdb/existdb:latest
+    ports:
+      - "8084:8080"
+  rdf-db:
+    build:
+      context: .
+      dockerfile: .docker.fuseki/Dockerfile
+    ports:
+      - "8085:3030"
+    environment:
+      - ADMIN_PASSWORD=password
+  poverenik:
+    build:
+      context: .
+      dockerfile: .docker.java/Dockerfile
+    ports:
+      - "8083:8080"
+    environment:
+      XML_DB_HOST: xml-db
+      XML_DB_USER: admin
+      XML_DB_PORT: 8080
+      RDF_DB_HOST: rdf-db
+      RDF_DB_PORT: 3030
+      RDF_DB_PASSWORD: password
+      SPRING_PORT: 8080

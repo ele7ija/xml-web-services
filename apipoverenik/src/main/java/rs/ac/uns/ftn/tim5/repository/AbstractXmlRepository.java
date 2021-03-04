@@ -11,7 +11,6 @@ import rs.ac.uns.ftn.tim5.interfaces.Identifiable;
 
 import javax.xml.bind.JAXBException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
