@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           targetNamespace="http://ftn.uns.ac.rs/tim5/model/osnovnaPretraga"
+           xmlns:zahtev="http://ftn.uns.ac.rs/tim5/model/zahtev"
+           xmlns:resenje="http://ftn.uns.ac.rs/tim5/model/resenje"
+           xmlns:izvestaj="http://ftn.uns.ac.rs/tim5/model/izvestaj">
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util" schemaLocation="util.xsd"/>
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/zahtev" schemaLocation="Zahtev.xsd"/>
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/resenje" schemaLocation="Resenje.xsd"/>
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/izvestaj" schemaLocation="Izvestaj.xsd"/>
+    <xs:element name="Osnovna_Pretraga">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Termin" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Rezultat_Osnovne_Pretrage">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="zahtev:Kolekcija_zahteva"/>
+                <xs:element ref="resenje:Kolekcija_resenja"/>
+                <xs:element ref="izvestaj:Kolekcija_Izvestaja"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
