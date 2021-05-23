@@ -17,7 +17,9 @@ import javax.xml.bind.JAXBException;
 import java.util.List;
 
 import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_QUERY_FIND_ALL_GRADJANI_EXPRESSION;
+import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_QUERY_FIND_GRADJANIN_BY_KORISNICKO_IME;
 import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_UPDATE_REMOVE_GRADJANIN_BY_ID_EXPRESSION;
+
 
 @Service
 public class GradjaninService implements AbstractXmlService<Gradjanin> {
@@ -128,4 +130,14 @@ public class GradjaninService implements AbstractXmlService<Gradjanin> {
         }
     }
 
+    public Gradjanin findByUsername(String username) {
+        try {
+            return this.gradjaninAbstractXmlRepository.findEntity(X_QUERY_FIND_GRADJANIN_BY_KORISNICKO_IME, username);
+        } catch (XMLDBException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

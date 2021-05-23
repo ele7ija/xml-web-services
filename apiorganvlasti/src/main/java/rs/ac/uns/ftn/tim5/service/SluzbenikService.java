@@ -9,6 +9,7 @@ import rs.ac.uns.ftn.tim5.model.exception.EntityNotFoundException;
 import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlDatabaseException;
 import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlException;
 import rs.ac.uns.ftn.tim5.model.exception.XmlDatabaseException;
+import rs.ac.uns.ftn.tim5.model.gradjanin.Gradjanin;
 import rs.ac.uns.ftn.tim5.model.sluzbenik.Sluzbenik;
 import rs.ac.uns.ftn.tim5.repository.AbstractXmlRepository;
 
@@ -16,8 +17,7 @@ import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
 import java.util.List;
 
-import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_QUERY_FIND_ALL_ZAHTEVI_EXPRESSION;
-import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_UPDATE_REMOVE_ZAHTEV_BY_ID_EXPRESSION;
+import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.*;
 
 @Service
 public class SluzbenikService implements AbstractXmlService<Sluzbenik> {
@@ -128,4 +128,14 @@ public class SluzbenikService implements AbstractXmlService<Sluzbenik> {
         }
     }
 
+    public Sluzbenik findByUsername(String username) {
+        try {
+            return this.sluzbenikAbstractXmlRepository.findEntity(X_QUERY_FIND_SLUZBENIK_BY_KORISNICKO_IME, username);
+        } catch (XMLDBException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
