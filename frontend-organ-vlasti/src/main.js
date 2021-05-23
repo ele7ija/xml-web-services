@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './vuex';
 import router from './vue-router';
+import 'popper.js';
+import 'jquery';
 import 'bootstrap/dist/js/bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';

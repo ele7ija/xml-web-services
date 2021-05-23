@@ -14,7 +14,8 @@
           <div :id="idEditorGradjaninWrapper"></div>
           <div :id="idEditorSluzbenikWrapper"></div>
           <button
-            class="btn btn-outline-primary btn-block my-4"
+            class="btn btn-outline-primary my-4"
+            :style="{width: '100%'}"
             @click="register"
           >
             <div v-if="loadingSubmit" class="spinner-border mr-2" role="status" :style="{width: '1rem', height: '1rem', 'font-size': '8px'}">
