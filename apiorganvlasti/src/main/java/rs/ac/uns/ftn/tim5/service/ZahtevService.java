@@ -73,14 +73,14 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
 
     @Override
     public Zahtev create(String xmlEntity) {
-
+        System.out.println(xmlEntity);
         Zahtev zahtev;
         try {
             zahtev = this.zahtevXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
         } catch (JAXBException e) {
             throw new InvalidXmlException(Zahtev.class, e.getMessage());
         }
-
+        System.out.println(zahtev.ge);
         try {
             zahtev = zahtevAbstractXmlRepository.createEntity(zahtev);
         } catch (XMLDBException e) {

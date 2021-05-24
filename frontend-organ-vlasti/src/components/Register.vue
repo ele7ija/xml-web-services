@@ -69,8 +69,7 @@ export default {
         },
         elements: {
           "gr:Gradjanin": {
-            hasText: false,
-            oneLiner: true
+            hasText: false
           },
           "gr:korisnicko_ime": {
             validate: function (jsElement) {
@@ -312,15 +311,14 @@ export default {
   },
   methods: {
     switchToGradjaninView() {
-      Xonomy.refresh();
       this.registerGradjanin = true;
       
       document.getElementById(this.idEditorSluzbenikWrapper).innerHTML = '';
       
       const container = document.getElementById(this.idEditorGradjaninWrapper);
-      let page = document.createElement('page');
+      let page = document.createElement('div');
       page.id = this.idEditorGradjanin;
-      page.attributes.size = '4';
+      page.classList.add('page');
       container.appendChild(page);
 
       const xmlString = 
@@ -352,9 +350,9 @@ export default {
       document.getElementById(this.idEditorGradjaninWrapper).innerHTML = '';
       
       const container = document.getElementById(this.idEditorSluzbenikWrapper);
-      let page = document.createElement('page');
+      let page = document.createElement('div');
       page.id = this.idEditorGradjanin;
-      page.attributes.size = '4';
+      page.classList.add('page');
       container.appendChild(page);
 
       const xmlString = 

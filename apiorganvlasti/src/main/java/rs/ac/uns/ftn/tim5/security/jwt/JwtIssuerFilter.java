@@ -69,7 +69,6 @@ public class JwtIssuerFilter extends UsernamePasswordAuthenticationFilter {
                                             Authentication authResult) throws IOException, ServletException {
 
         CustomUserDetails customUserDetails = (CustomUserDetails) authResult.getPrincipal();
-
         String token = Jwts.builder()
                 .setSubject(authResult.getName())
                 .claim("user", new JwtModel(customUserDetails.getId(), customUserDetails.getUsername(), customUserDetails.getUserRole(), (Set<GrantedAuthority>) customUserDetails.getAuthorities()))

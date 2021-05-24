@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.tim5.model.gradjanin.KolekcijaGradjana;
@@ -27,6 +28,12 @@ public class GradjaninController {
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_XML_VALUE)
     ResponseEntity<Gradjanin> findOne(@PathVariable("id") Long id) {
         return new ResponseEntity<>(this.gradjaninService.findById(id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/authenticated", produces = MediaType.APPLICATION_XML_VALUE)
+    ResponseEntity<Gradjanin> findAuthenticate() {
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return new ResponseEntity<>(this.gradjaninService.findByUsername(email), HttpStatus.OK);
     }
 
     @PostMapping(produces = MediaType.APPLICATION_XML_VALUE)
