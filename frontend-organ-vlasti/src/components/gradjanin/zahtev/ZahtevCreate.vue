@@ -218,6 +218,16 @@ export default {
             hasText: false,
             mustBeBefore: ["za:mesto"]
           },
+          'util:dan': {
+            displayValue: function(jsElement) {
+              return jsElement.getText().split("---")[1]
+            }
+          },
+          'util:mesec': {
+            displayValue: function(jsElement) {
+              return jsElement.getText().split("--")[1]
+            }
+          },
           'za:mesto': {
             hasText: true,
           },
@@ -285,8 +295,8 @@ export default {
                 </za:Element_Zahteva>
             </za:elementi_zahteva>
             <za:datum>
-                <util:dan>${new Date().getDate()}</util:dan>
-                <util:mesec>${this.getCurrentMonth()}</util:mesec>
+                <util:dan>${"---"+new Date().getDate()}</util:dan>
+                <util:mesec>${"--"+this.getCurrentMonth()}</util:mesec>
                 <util:godina>${new Date().getFullYear()}</util:godina>
             </za:datum>
             <za:mesto>${process.env.VUE_APP_PREDUZECE_ADRESA_MESTO}</za:mesto>
