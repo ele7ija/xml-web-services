@@ -64,7 +64,7 @@ public class XQueryExpressions {
 
     public static final String X_QUERY_FIND_GRADJANIN_BY_KORISNICKO_IME = "xquery version \"3.1\";\n"
             + "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/gradjanin\";\n"
-            + "for $x in collection(\"/db/sample/gradjanin\")/gradjanin\n" + "where $x/korisnicko_ime/text()=\"%s\"\n"
+            + "for $x in collection(\"/db/sample/gradjanin\")/Gradjanin\n" + "where $x/korisnicko_ime/text()=\"%s\"\n"
             + "return $x";
 
 
@@ -81,6 +81,6 @@ public class XQueryExpressions {
 
     public static final String X_QUERY_FIND_SLUZBENIK_BY_KORISNICKO_IME = "xquery version \"3.1\";\n"
             + "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/sluzbenik\";\n"
-            + "for $x in collection(\"/db/sample/sluzbenik\")/sluzbenik\n" + "where $x/korisnicko_ime/text()=\"%s\"\n"
+            + "for $x in collection(\"/db/sample/sluzbenik\")/Sluzbenik\n" + "where $x/korisnicko_ime/text()=\"%s\"\n"
             + "return $x";
 }

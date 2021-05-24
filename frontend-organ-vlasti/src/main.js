@@ -11,7 +11,9 @@ import axios from 'axios';
 Vue.config.productionTip = false
 
 axios.interceptors.request.use(function (config) {
-  config.headers['Content-Type'] = 'application/xml'; 
+  if (config.url != 'http://localhost:8080/auth/login') {
+    config.headers['Content-Type'] = 'application/xml'; 
+  }
   if(
     config.url == 'http://localhost:8080/auth/login' ||
     (config.url == 'http://localhost:8080/gradjanin' && config.method == 'POST') ||
@@ -25,7 +27,6 @@ axios.interceptors.request.use(function (config) {
   }
   return config;
 });
-axios.defaults.withCredentials = true;
 
 new Vue({
   render: h => h(App),

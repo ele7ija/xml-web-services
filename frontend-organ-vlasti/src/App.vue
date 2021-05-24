@@ -29,7 +29,7 @@
           </div>
         </ul>
 
-        <ul class="navbar-nav ml-auto mt-2">
+        <ul class="navbar-nav mt-2" :style="{'margin-left': 'auto', 'margin-right': '20px'}">
           <li v-if="loadingFlag" class="nav-item mt-n1">
             <div class="spinner-border spinner-border-sm mr-2 spinner2" role="status">
                 <span class="sr-only">Loading...</span>
@@ -40,6 +40,14 @@
           </li>
         </ul>
       </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" v-if="!role">
+      <h3 class="navbar-brand" :style="{'margin-left': '10px'}">Portal sluzbenika</h3>
+      <ul class="navbar-nav" :style="{'margin-left': 'auto', 'margin-right': '20px'}">
+        <router-link to="login" class="nav-link">Prijava</router-link>
+        <router-link to="register" class="nav-link">Registracija</router-link>
+      </ul>
     </nav>
 
     <router-view></router-view>
@@ -87,7 +95,6 @@ export default {
         },
         1000
       );
-      this.loadingFlag = false;
     }
   }
   

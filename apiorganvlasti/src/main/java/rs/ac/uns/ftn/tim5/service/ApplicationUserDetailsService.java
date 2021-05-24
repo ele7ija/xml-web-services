@@ -32,11 +32,11 @@ public class ApplicationUserDetailsService implements UserDetailsService {
                 throw new UsernameNotFoundException(String.format("No user found with username '%s'.", username));
             } else {
                 return new CustomUserDetails(
-                        gradjanin.getId(),
-                        gradjanin.getKorisnickoIme(),
-                        gradjanin.getLozinka(),
-                        new HashSet<>(Collections.singletonList(new SimpleGrantedAuthority(UserRole.GRADJANIN.name()))),
-                        UserRole.GRADJANIN,
+                        sluzbenik.getId(),
+                        sluzbenik.getKorisnickoIme(),
+                        sluzbenik.getLozinka(),
+                        new HashSet<>(Collections.singletonList(new SimpleGrantedAuthority(UserRole.SLUZBENIK.name()))),
+                        UserRole.SLUZBENIK,
                         true
                 );
             }
