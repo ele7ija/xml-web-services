@@ -80,7 +80,6 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
         } catch (JAXBException e) {
             throw new InvalidXmlException(Zahtev.class, e.getMessage());
         }
-        System.out.println(zahtev.ge);
         try {
             zahtev = zahtevAbstractXmlRepository.createEntity(zahtev);
         } catch (XMLDBException e) {
