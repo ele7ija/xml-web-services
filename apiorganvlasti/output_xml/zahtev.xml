@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:Zahtev xmlns="http://ftn.uns.ac.rs/tim5/model/util" xmlns:ns2="http://ftn.uns.ac.rs/tim5/model/zahtev" id="6300945450141504982">
+    <ns2:trazilac>
+        <Adresa>
+            <Mesto>Нови Сад</Mesto>
+            <Ulica>Владислава Каћанског</Ulica>
+            <Broj>6</Broj>
+        </Adresa>
+        <Ime>Милан</Ime>
+        <Prezime>Ђурић</Prezime>
+    </ns2:trazilac>
+    <ns2:organ>
+        <Adresa>
+            <Mesto>Нови Сад</Mesto>
+            <Ulica>Булевар Цара Лазара</Ulica>
+            <Broj>50</Broj>
+        </Adresa>
+        <Naziv>Народна банка Србије</Naziv>
+    </ns2:organ>
+    <ns2:pravni_osnov>
+        <Naziv>Закона о слободном приступу информацијама од јавног значаја</Naziv>
+        <Clan>15</Clan>
+        <Strana>1</Strana>
+        <Dopune>
+            <Dopuna>
+                <Broj_dopune>120</Broj_dopune>
+                <Godina>2004</Godina>
+            </Dopuna>
+        </Dopune>
+    </ns2:pravni_osnov>
+    <ns2:opis_zahteva>Pera Peric</ns2:opis_zahteva>
+    <ns2:elementi_zahteva>
+        <ns2:Element_Zahteva>
+            <Tekst>Obavestenje o posedovanju</Tekst>
+            <Metod_Dostave>bez dostave</Metod_Dostave>
+        </ns2:Element_Zahteva>
+    </ns2:elementi_zahteva>
+    <ns2:datum>
+        <dan>---25</dan>
+        <mesec>--05</mesec>
+        <godina>2021</godina>
+    </ns2:datum>
+    <ns2:mesto>Нови Сад</ns2:mesto>
+</ns2:Zahtev>

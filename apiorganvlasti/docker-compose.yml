@@ -26,3 +26,7 @@ services:
       RDF_DB_PORT: 3030
       RDF_DB_PASSWORD: password
       SPRING_PORT: 8080
+    volumes:
+      - ./output_html:/output_html
+      - ./output_pdf:/output_pdf
+      - ./output_xml:/output_xml

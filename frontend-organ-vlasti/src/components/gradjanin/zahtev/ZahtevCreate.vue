@@ -1,22 +1,22 @@
 <template>
   <div class="container-fluid my-4">
-    <div class="row">
-      <div class="col-6">
+    <div class="row is-table-row">
+      <div class="col-6 px-5">
         <div :id="zahtevGradjanaEditorIdWrapper"></div>
       </div>
-      <div class="col-6">
-        <div :id="zahtevGradjanaViewId"></div>
+      <div class="col-6 px-5">
+        <div :id="zahtevGradjanaViewIdWrapper"></div>
       </div>
     </div>
 
-    <div v-if="gradjaninLoading">
-      <div  class="spinner-border spinner-border-sm centered" role="status">
+    <div v-if="gradjaninLoading" class="centered">
+      <div  class="spinner-border spinner-border-sm" role="status" :style="{width: '10rem', height: '10rem'}">
         <span class="sr-only">Loading...</span>
       </div>
     </div>
 
     <button
-      class="btn btn-outline-primary my-4"
+      class="btn btn-outline-primary my-1"
       :style="{width: '100%'}"
       @click="submit"
       v-if="!gradjaninLoading"
@@ -34,6 +34,7 @@
 /*eslint no-unused-vars: "warn"*/
 import gradjaninApi from '../../../api/gradjanin';
 import zahtevApi from '../../../api/zahtev';
+import { zahtevXsl } from '../../../xsl-helper/index';
 import { constructGradjanin } from '../../../util';
 export default {
   name: 'ZahtevCreate',
@@ -41,6 +42,7 @@ export default {
     return {
       zahtevGradjanaEditorIdWrapper: "zahtevGradjanaEditorIdWrapper",
       zahtevGradjanaEditorId: 'zahtevGradjanaEditorId',
+      zahtevGradjanaViewIdWrapper: 'zahtevGradjanaViewIdWrapper',
       zahtevGradjanaViewId: 'zahtevGradjanaViewId',
       gradjanin: null,
       gradjaninLoading: true,
@@ -198,7 +200,7 @@ export default {
                 action: Xonomy.newElementChild,
                 actionParameter: '<util:Metod_Dostave xmlns:util="http://ftn.uns.ac.rs/tim5/model/util"></util:Metod_Dostave>',
                 hideIf: function (jsElement) {
-                  return jsElement.hasChildElement("util:Metod_Dostave");
+                  return jsElement.parent().children.filter(x => x.name == 'util:Metod_Dostave').length == 3;
                 }
               }
             ]
@@ -240,7 +242,6 @@ export default {
     if (sessionStorage.getItem('access_token')) {
       this.gradjaninLoading = true;
       this.gradjanin = constructGradjanin((await gradjaninApi.getAuthenticatedGradjanin()).data);
-      console.log(this.gradjanin);
       this.gradjaninLoading = false;
       this.renderEditor();
     }
@@ -249,8 +250,8 @@ export default {
     renderEditor() {
       const container = document.getElementById(this.zahtevGradjanaEditorIdWrapper);
       let page = document.createElement('div');
-      page.id = this.idEditorGradjanin;
-      page.classList.add('page');
+      page.id = this.zahtevGradjanaEditorId;
+      page.classList.add('page2');
       container.appendChild(page);
 
       const xmlString = 
@@ -306,10 +307,30 @@ export default {
         elements: this.zahtevSpec.elements,
         onchange: () => { this.onEditorChange() }
       });
-      this.onEditorChange()
+      this.onEditorChange();
     },
     onEditorChange() {
-      console.log('Should change xsl view');
+      const xsltProcessor = new XSLTProcessor();
+      const domParser = new DOMParser();
+      const xmlSerializer = new XMLSerializer();
+      
+      xsltProcessor.reset();
+      const stylesheetDocument = domParser.parseFromString(zahtevXsl, 'text/xml');
+      xsltProcessor.importStylesheet(stylesheetDocument);
+      const xmlDocument = domParser.parseFromString(Xonomy.harvest(), 'text/xml');
+      const convertedDocument = xsltProcessor.transformToDocument(xmlDocument);
+
+      const viewContainer = document.getElementById(this.zahtevGradjanaViewIdWrapper);
+      let viewElement = document.getElementById(this.zahtevGradjanaViewId);
+      if(!viewElement) {
+        let page = document.createElement('div');
+        page.id = this.zahtevGradjanaViewId;
+        page.classList.add('page3');
+        page.innerHTML = xmlSerializer.serializeToString(convertedDocument);
+        viewContainer.appendChild(page);
+      } else {
+        viewElement.innerHTML = xmlSerializer.serializeToString(convertedDocument);
+      }
     },
     getCurrentMonth() {
       const month = new Date().getMonth() + 1;

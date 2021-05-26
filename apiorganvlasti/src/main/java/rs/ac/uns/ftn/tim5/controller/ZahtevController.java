@@ -1,6 +1,8 @@
 package rs.ac.uns.ftn.tim5.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.tim5.model.zahtev.KolekcijaZahteva;
 import rs.ac.uns.ftn.tim5.model.zahtev.Zahtev;
 import rs.ac.uns.ftn.tim5.service.ZahtevService;
+
+import java.io.ByteArrayInputStream;
 
 @Controller
 @RequestMapping(value = "/zahtev")
@@ -43,6 +47,34 @@ public class ZahtevController {
     ResponseEntity<Void> delete(@PathVariable("id") Long id) {
         this.zahtevService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    @GetMapping(value = "/pdf/{id}", produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<InputStreamResource> pdf(@PathVariable Long id) {
+        ByteArrayInputStream bis = this.zahtevService.generatePdf(id);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=zahtev.pdf");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(bis));
+    }
+
+    @GetMapping(value = "/html/{id}")
+    public ResponseEntity<InputStreamResource> html(@PathVariable Long id) {
+        ByteArrayInputStream bis = this.zahtevService.generateHtml(id);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=zahtev.html");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .body(new InputStreamResource(bis));
     }
 
 }

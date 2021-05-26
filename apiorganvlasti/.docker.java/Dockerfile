@@ -34,6 +34,9 @@ RUN ./mvnw dependency:go-offline -B
 #Copy application code
 #---------------------------------------------------------------
 COPY src src
+COPY output_html output_html
+COPY output_pdf output_pdf
+COPY output_xml output_xml
 
 #--------------------------------------------------------------------
 #This will create the fat jar for my application, -DskipTests will skip the test for application during the building package
@@ -46,10 +49,18 @@ RUN ./mvnw package -DskipTests
 #--------------------------------------------------------------------
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
-
-
 # ***Production Stage for Spring boot application image**
 FROM openjdk:11-jre as production
+RUN echo "deb http://httpredir.debian.org/debian jessie main contrib" > /etc/apt/sources.list \
+    && echo "deb http://security.debian.org/ jessie/updates main contrib" >> /etc/apt/sources.list \
+    && echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections \
+    && apt-get update \
+    && apt-get install -y ttf-mscorefonts-installer \
+    && apt-get clean \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/
+
+
 ARG DEPENDENCY=/app/target/dependency
 
 # Copy the dependency application file from build stage artifact

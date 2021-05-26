@@ -1,8 +1,10 @@
 package rs.ac.uns.ftn.tim5.service;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.xml.sax.SAXException;
 import org.xmldb.api.base.XMLDBException;
 import rs.ac.uns.ftn.tim5.helper.XmlConversionAgent;
 import rs.ac.uns.ftn.tim5.model.exception.EntityNotFoundException;
@@ -11,9 +13,11 @@ import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlException;
 import rs.ac.uns.ftn.tim5.model.exception.XmlDatabaseException;
 import rs.ac.uns.ftn.tim5.model.zahtev.Zahtev;
 import rs.ac.uns.ftn.tim5.repository.AbstractXmlRepository;
+import rs.ac.uns.ftn.tim5.transofrmation.ZahtevXSLFOTransformer;
 
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
+import java.io.*;
 import java.util.List;
 
 import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_QUERY_FIND_ALL_ZAHTEVI_EXPRESSION;
@@ -26,6 +30,10 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
 
     private static final String SPARQL_NAMED_GRAPH_URI = "/zahtev/sparql/metadata";
 
+    public static final String OUTPUT_FOLDER_XML = "output_xml";
+    public static final String OUTPUT_FOLDER_PDF = "output_pdf";
+    public static final String OUTPUT_FOLDER_HTML = "output_html";
+
     @Autowired
     @Qualifier("zahtevRepository")
     private AbstractXmlRepository<Zahtev> zahtevAbstractXmlRepository;
@@ -35,6 +43,9 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
 
     @Autowired
     private RDFService rdfService;
+
+    @Autowired
+    private ZahtevXSLFOTransformer zahtevXSLFOTransformer;
 
     @PostConstruct
     public void injectRepositoryProperties() {
@@ -127,4 +138,61 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
         }
     }
 
+
+    public ByteArrayInputStream generatePdf(Long id) {
+        Zahtev zahtev = this.findById(id);
+        try {
+            this.zahtevXmlConversionAgent.marshallToFile(zahtev, this.jaxbContextPath,this.getXmlFilePath());
+            this.zahtevXSLFOTransformer.generatePDF(this.getXmlFilePath());
+
+        } catch (JAXBException | SAXException | FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Error converting document to pdf.");
+        }
+
+        try {
+            return new ByteArrayInputStream(FileUtils.readFileToByteArray(new File(this.getPdfFilePath())));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public ByteArrayInputStream generateHtml(Long id) {
+        Zahtev zahtev = this.findById(id);
+        try {
+            this.zahtevXmlConversionAgent.marshallToFile(zahtev, this.jaxbContextPath,this.getXmlFilePath());
+            this.zahtevXSLFOTransformer.generateHTML(this.getXmlFilePath());
+
+        } catch (JAXBException | SAXException | FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Error converting document to pdf.");
+        }
+
+        try {
+            return new ByteArrayInputStream(FileUtils.readFileToByteArray(new File(this.getHtmlFilePath())));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public String getXmlFilePath() {
+        String sep = System.getProperty("file.separator");
+        return String.format(".%s%s%szahtev.xml", sep, OUTPUT_FOLDER_XML, sep);
+    }
+
+    public String getPdfFilePath() {
+        String sep = System.getProperty("file.separator");
+        return String.format(".%s%s%szahtev.pdf", sep, OUTPUT_FOLDER_PDF, sep);
+    }
+
+    private String getHtmlFilePath() {
+        String sep = System.getProperty("file.separator");
+        return String.format(".%s%s%szahtev.html", sep, OUTPUT_FOLDER_HTML, sep);
+    }
 }
