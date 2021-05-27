@@ -36,7 +36,7 @@ public class OsnovnaPretragaService {
                 zahtevRet.add(z);
                 continue;
             }
-            if (PretrageHelper.sadrziRec(z.getMesto(), pretraga.getTermin())) {
+            if (PretrageHelper.sadrziRec(z.getMesto().getValue(), pretraga.getTermin())) {
                 zahtevRet.add(z);
                 // continue;
             }
