@@ -6,7 +6,7 @@
 //
 
 
-package rs.ac.uns.ftn.tim5.model.resenje;
+package rs.ac.uns.ftn.tim5.model.gradjanin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://ftn.uns.ac.rs/tim5/model/resenje}Resenje" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://ftn.uns.ac.rs/tim5/model/gradjanin}Gradjanin" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,44 +38,44 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "resenje"
+    "gradjanin"
 })
-@XmlRootElement(name = "Kolekcija_resenja")
-public class KolekcijaResenja {
+@XmlRootElement(name = "Kolekcija_Gradjana")
+public class KolekcijaGradjana {
 
-    @XmlElement(name = "Resenje")
-    protected List<Resenje> resenje;
+    @XmlElement(name = "Gradjanin")
+    protected List<Gradjanin> gradjanin;
 
     /**
-     * Gets the value of the resenje property.
+     * Gets the value of the gradjanin property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the resenje property.
+     * This is why there is not a <CODE>set</CODE> method for the gradjanin property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getResenje().add(newItem);
+     *    getGradjanin().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Resenje }
+     * {@link Gradjanin }
      * 
      * 
      */
-    public List<Resenje> getResenje() {
-        if (resenje == null) {
-            resenje = new ArrayList<Resenje>();
+    public List<Gradjanin> getGradjanin() {
+        if (gradjanin == null) {
+            gradjanin = new ArrayList<Gradjanin>();
         }
-        return this.resenje;
+        return this.gradjanin;
     }
 
-    public void setResenje(List<Resenje> resenje) {
-        this.resenje = resenje;
+    public void setGradjanin(List<Gradjanin> gradjanin) {
+        this.gradjanin = gradjanin;
     }
 }

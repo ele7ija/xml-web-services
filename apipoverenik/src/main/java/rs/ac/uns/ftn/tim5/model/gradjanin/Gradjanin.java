@@ -6,7 +6,7 @@
 //
 
 
-package rs.ac.uns.ftn.tim5.model.poverenik;
+package rs.ac.uns.ftn.tim5.model.gradjanin;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -31,7 +31,7 @@ import rs.ac.uns.ftn.tim5.model.util.TFizickoLice;
  *       &lt;sequence>
  *         &lt;element name="korisnicko_ime" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="lozinka" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="podaci" type="{http://ftn.uns.ac.rs/tim5/model/util}TFizicko_Lice"/>
+ *         &lt;element name="podaci" type="{http://ftn.uns.ac.rs/tim5/model/util}TFizicko_Lice" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" />
  *     &lt;/restriction>
@@ -47,14 +47,13 @@ import rs.ac.uns.ftn.tim5.model.util.TFizickoLice;
     "lozinka",
     "podaci"
 })
-@XmlRootElement(name = "Poverenik")
-public class Poverenik implements Identifiable {
+@XmlRootElement(name = "Gradjanin")
+public class Gradjanin implements Identifiable {
 
     @XmlElement(name = "korisnicko_ime", required = true)
     protected String korisnickoIme;
     @XmlElement(required = true)
     protected String lozinka;
-    @XmlElement(required = true)
     protected TFizickoLice podaci;
     @XmlAttribute(name = "id")
     protected Long id;

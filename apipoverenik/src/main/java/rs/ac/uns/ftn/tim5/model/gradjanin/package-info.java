@@ -5,5 +5,5 @@
 // Generated on: 2021.05.27 at 03:28:30 PM CEST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package rs.ac.uns.ftn.tim5.model.zalba_na_odluku;
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://ftn.uns.ac.rs/tim5/model/gradjanin", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+package rs.ac.uns.ftn.tim5.model.gradjanin;

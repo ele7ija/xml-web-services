@@ -1,10 +1,10 @@
 version: "3.7"
 services:
-  xml-db:
+  xml-db-organ-vlasti:
     image: existdb/existdb:latest
     ports:
       - "8081:8080"
-  rdf-db:
+  rdf-db-organ-vlasti:
     build:
       context: .
       dockerfile: .docker.fuseki/Dockerfile
@@ -19,10 +19,10 @@ services:
     ports:
       - "8080:8080"
     environment:
-      XML_DB_HOST: xml-db
+      XML_DB_HOST: xml-db-organ-vlasti
       XML_DB_USER: admin
       XML_DB_PORT: 8080
-      RDF_DB_HOST: rdf-db
+      RDF_DB_HOST: rdf-db-organ-vlasti
       RDF_DB_PORT: 3030
       RDF_DB_PASSWORD: password
       SPRING_PORT: 8080
