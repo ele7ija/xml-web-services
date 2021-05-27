@@ -1,7 +1,15 @@
 package rs.ac.uns.ftn.tim5.service;
 
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.Credentials;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.CredentialsProvider;
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.BasicCredentialsProvider;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.riot.web.HttpOp;
 import org.apache.jena.update.UpdateExecutionFactory;
 import org.apache.jena.update.UpdateFactory;
 import org.apache.jena.update.UpdateProcessor;
@@ -13,6 +21,7 @@ import rs.ac.uns.ftn.tim5.config.RDFDBConnectionProperties;
 import rs.ac.uns.ftn.tim5.helper.MetadataExtractor;
 import rs.ac.uns.ftn.tim5.util.SparqlUtil;
 
+import javax.annotation.PostConstruct;
 import javax.xml.transform.TransformerException;
 import java.io.*;
 
@@ -21,6 +30,17 @@ public class RDFService {
 
     @Autowired
     private RDFDBConnectionProperties rdfdbConnectionProperties;
+
+    @PostConstruct
+    public void initAuth(){
+        CredentialsProvider credsProvider = new BasicCredentialsProvider();
+        Credentials credentials = new UsernamePasswordCredentials("admin", System.getenv("RDF_DB_PASSWORD"));
+        credsProvider.setCredentials(AuthScope.ANY, credentials);
+        HttpClient httpclient = HttpClients.custom()
+                .setDefaultCredentialsProvider(credsProvider)
+                .build();
+        HttpOp.setDefaultHttpClient(httpclient);
+    }
 
     // From a RDFa XML file extracts RDF/XML
     public boolean save(String rdfa, String named_graph_uri) {
@@ -76,6 +96,9 @@ public class RDFService {
         UpdateRequest update = UpdateFactory.create(sparqlUpdate);
 
         UpdateProcessor processor = UpdateExecutionFactory.createRemote(update, rdfdbConnectionProperties.getUpdateEndpoint());
+
+        System.out.println(rdfdbConnectionProperties.getUpdateEndpoint());
+
         processor.execute();
 
         return true;

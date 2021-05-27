@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.tim5.helper;
 
 import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
+import org.springframework.util.ResourceUtils;
 import org.xml.sax.SAXException;
 
 import javax.xml.transform.OutputKeys;
@@ -25,7 +26,7 @@ public class MetadataExtractor {
 
     private TransformerFactory transformerFactory;
 
-    private static final String XSLT_FILE = "./data/grddl.xsl";
+    private static final String XSLT_FILE = "classpath:transformations/xsl/grddl.xsl";
 
     public MetadataExtractor() throws SAXException, IOException {
 
@@ -43,7 +44,7 @@ public class MetadataExtractor {
     public void extractMetadata(InputStream in, OutputStream out) throws FileNotFoundException, TransformerException {
 
         // Create transformation source
-        StreamSource transformSource = new StreamSource(new File(XSLT_FILE));
+        StreamSource transformSource = new StreamSource(ResourceUtils.getFile(XSLT_FILE));
 
         // Initialize GRDDL transformer object
         Transformer grddlTransformer = transformerFactory.newTransformer(transformSource);
