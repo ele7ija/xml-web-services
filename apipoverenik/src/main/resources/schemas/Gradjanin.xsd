@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://ftn.uns.ac.rs/tim5/model/gradjanin" elementFormDefault="qualified"
+           xmlns:gradjanin="http://ftn.uns.ac.rs/tim5/model/gradjanin"
+           xmlns:util="http://ftn.uns.ac.rs/tim5/model/util">
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util" schemaLocation="util.xsd"/>
+    <xs:element name="Gradjanin">
+        <xs:complexType>
+            <xs:sequence minOccurs="1">
+                <xs:element name="korisnicko_ime" type="xs:string"/>
+                <xs:element name="lozinka" type="xs:string"/>
+                <xs:element minOccurs="0" name="podaci" type="util:TFizicko_Lice"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:long"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Kolekcija_Gradjana">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="gradjanin:Gradjanin"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

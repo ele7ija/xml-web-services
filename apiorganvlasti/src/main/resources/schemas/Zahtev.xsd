@@ -2,13 +2,34 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="http://ftn.uns.ac.rs/tim5/model/zahtev"
     xmlns:util="http://ftn.uns.ac.rs/tim5/model/util"
-    xmlns:zahtev="http://ftn.uns.ac.rs/tim5/model/zahtev">
+    xmlns:zahtev="http://ftn.uns.ac.rs/tim5/model/zahtev"
+    xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate">
     <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util" schemaLocation="util.xsd"/>
     <xs:element name="Zahtev">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="trazilac" type="util:TFizicko_Lice"/>
-                <xs:element name="organ" type="util:TPravno_Lice"/>
+                <xs:element name="trazilac">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:extension base="util:TFizicko_Lice">
+                                <xs:attribute fixed="pred:email_trazioca" name="predicate"
+                                    type="xs:string"/>
+                                <xs:attribute name="content" type="xs:string"/>
+                            </xs:extension>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="organ">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:extension base="util:TPravno_Lice">
+                                <xs:attribute fixed="pred:naziv_organa_vlasti" name="predicate"
+                                    type="xs:string"/>
+                                <xs:attribute name="content" type="xs:string"/>
+                            </xs:extension>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="pravni_osnov" type="util:TPravni_Osnov" maxOccurs="unbounded"
                     minOccurs="0"/>
                 <xs:element name="opis_zahteva" type="xs:string"/>
@@ -20,11 +41,31 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="datum" type="util:Datum"/>
-                <xs:element name="mesto" type="xs:string"/>
+                <xs:element name="datum">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:extension base="util:Datum">
+                                <xs:attribute fixed="pred:datum" name="predicate" type="xs:string"/>
+                                <xs:attribute name="content" type="xs:string"/>
+                            </xs:extension>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="mesto">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute fixed="pred:mesto" name="predicate" type="xs:string"/>
+                                <xs:attribute name="content" type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
             <xs:attribute name="id" type="xs:long"/>
-            <xs:attribute name="id_gradjanina" type="xs:long"/>
+            <xs:attribute name="about" type="xs:anyURI"/>
+            <xs:attribute fixed="http://ftn.uns.ac.rs.tim5/model/predicate" name="vocab"
+                type="xs:string"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="Kolekcija_zahteva">

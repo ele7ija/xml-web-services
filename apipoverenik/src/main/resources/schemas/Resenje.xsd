@@ -2,22 +2,48 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="http://ftn.uns.ac.rs/tim5/model/resenje"
     xmlns:resenje="http://ftn.uns.ac.rs/tim5/model/resenje"
-    xmlns:util="http://ftn.uns.ac.rs/tim5/model/util">
+    xmlns:util="http://ftn.uns.ac.rs/tim5/model/util"
+    xmlns:pred="http://ftn.uns.ac.rs.tim5/model/predicate">
 
     <!-- RESENJE I ELEMENTI RESENJA -->
     <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util" schemaLocation="util.xsd"/>
     <xs:element name="Resenje">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="datum_resenja" type="util:Datum"/>
+                <xs:element name="datum_resenja">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:extension base="util:Datum">
+                                <xs:attribute default="pred:datum" name="predicate" type="xs:string"/>
+                                <xs:attribute name="content" type="xs:string"/>
+                            </xs:extension>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="broj_resenja"/>
                 <xs:element ref="resenje:Kontekst"/>
                 <xs:element ref="resenje:Odluka"/>
-                <xs:element name="Poverenik" type="resenje:TOsoba"/>
+                <xs:element name="Poverenik">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:extension base="util:TFizicko_Lice">
+                                <xs:attribute default="pred:poverenik" name="predicate"
+                                    type="xs:string"/>
+                                <xs:attribute name="content" type="xs:string"/>
+                            </xs:extension>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
             <xs:attribute name="id" type="xs:long"/>
             <xs:attribute name="id_zalbe" type="xs:long"/>
             <xs:attribute name="id_poverenika" type="xs:long"/>
+            <xs:attribute name="about" type="xs:anyURI"/>
+            <xs:attribute fixed="http://ftn.uns.ac.rs.tim5/model/predicate" name="vocab"
+                type="xs:string"/>
+            <xs:attribute fixed="pred:zalba_url" name="property" type="xs:string"/>
+            <xs:attribute name="content" type="xs:string"/>
+            <xs:attribute name="tip_zalbe" type="xs:string"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="Kontekst">

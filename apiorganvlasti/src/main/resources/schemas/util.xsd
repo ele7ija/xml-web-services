@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-           targetNamespace="http://ftn.uns.ac.rs/tim5/model/util"
-           xmlns:util="http://ftn.uns.ac.rs/tim5/model/util">
+    targetNamespace="http://ftn.uns.ac.rs/tim5/model/util"
+    xmlns:util="http://ftn.uns.ac.rs/tim5/model/util">
 
     <xs:complexType name="TLice">
         <xs:sequence>
@@ -46,7 +46,7 @@
                     </xs:element>
                     <xs:element name="Prezime">
                         <xs:simpleType>
-                            <xs:restriction base="xs:string"></xs:restriction>
+                            <xs:restriction base="xs:string"/>
                         </xs:simpleType>
                     </xs:element>
                 </xs:sequence>
@@ -57,11 +57,7 @@
         <xs:complexContent>
             <xs:extension base="util:TLice">
                 <xs:sequence>
-                    <xs:element name="Naziv">
-                        <xs:simpleType>
-                            <xs:restriction base="xs:string"/>
-                        </xs:simpleType>
-                    </xs:element>
+                    <xs:element name="Naziv" type="xs:string"> </xs:element>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -75,7 +71,7 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" name="Dopuna"
-                                    type="util:TDopuna_Pravnog_Osnova"/>
+                            type="util:TDopuna_Pravnog_Osnova"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>

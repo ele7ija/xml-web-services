@@ -2,12 +2,13 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     targetNamespace="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja"
     xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" elementFormDefault="qualified"
-    xmlns:zalba_cutanja="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja">
+    xmlns:zalba_cutanja="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja"
+    xmlns:pred="http://ftn.uns.ac.rs.tim5/model/predicate">
     <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util" schemaLocation="util.xsd"/>
     <xs:element name="Zalba_cutanja">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="poverenik" type="util:TFizicko_Lice"/>
+                <xs:element name="poverenik" type="util:Adresa"/>
                 <xs:element name="zalilac">
                     <xs:complexType>
                         <xs:sequence>
@@ -15,9 +16,22 @@
                             <xs:element name="drugi_podaci_za_kontakt" type="xs:string"
                                 minOccurs="0" maxOccurs="1"/>
                         </xs:sequence>
+                        <xs:attribute default="pred:email_trazioca" name="predicate"
+                            type="xs:string"/>
+                        <xs:attribute name="content" type="xs:string"/>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="organ_vlasti" type="util:TPravno_Lice"/>
+                <xs:element name="organ_vlasti">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:extension base="util:TPravno_Lice">
+                                <xs:attribute default="pred:naziv_organa_vlasti" name="predicate"
+                                    type="xs:string"/>
+                                <xs:attribute name="content" type="xs:string"/>
+                            </xs:extension>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="razlog_zalbe">
                     <xs:simpleType>
                         <xs:restriction base="xs:string">
@@ -29,12 +43,34 @@
                 </xs:element>
                 <xs:element name="datum_zahteva" type="util:Datum"/>
                 <xs:element name="zahtevana_informacije" type="xs:string"/>
-                <xs:element name="mesto_zalbe" type="xs:string"/>
-                <xs:element name="datum_zalbe" type="util:Datum"/>
+                <xs:element name="mesto_zalbe">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute fixed="pred:mesto" name="predicate" type="xs:string"/>
+                                <xs:attribute name="content" type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="datum_zalbe">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:extension base="util:Datum">
+                                <xs:attribute default="pred:datum" name="predicate" type="xs:string"/>
+                                <xs:attribute name="content" type="xs:string"/>
+                            </xs:extension>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
             <xs:attribute name="id" type="xs:long"/>
+            <xs:attribute name="about" type="xs:anyURI"/>
+            <xs:attribute fixed="http://ftn.uns.ac.rs.tim5/model/predicate" name="vocab"
+                type="xs:string"/>
+            <xs:attribute fixed="pred:zahtev_url" name="property" type="xs:string"/>
+            <xs:attribute name="content" type="xs:string"/>
             <xs:attribute name="id_zahteva" type="xs:long"/>
-            <xs:attribute name="id_poverenika" type="xs:long"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="Kolekcija_zalbi_cutanja">
