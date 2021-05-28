@@ -5,7 +5,9 @@ import Login from '@/components/Login';
 import Register from '@/components/Register';
 import ZahtevCreate from '@/components/gradjanin/zahtev/ZahtevCreate';
 import ZahtevAll from '@/components/gradjanin/zahtev/ZahtevAll';
+import Zahtev from '@/components/gradjanin/zahtev/Zahtev';
 import ObavestenjeAll from '@/components/gradjanin/obavestenje/ObavestenjeAll';
+import ObavestenjeCreate from '@/components/sluzbenik/obavestenje/ObavestenjeCreate';
 import ZahtevSluzbenik from '@/components/sluzbenik/zahtev/ZahtevSluzbenik';
 import Izvestaj from '@/components/sluzbenik/izvestaj/Izvestaj';
 import Pretrage from '@/components/sluzbenik/pretrage/Pretrage';
@@ -40,9 +42,19 @@ const router = new VueRouter({
       component: ZahtevAll
     },
     {
+      name: 'Zahtev',
+      path: '/zahtev/:id',
+      component: Zahtev
+    },
+    {
       name: 'ObavestenjeAll',
       path: '/obavestenje-all',
       component: ObavestenjeAll
+    },
+    {
+      name: 'ObavestenjeCreate',
+      path: '/obavestenje-create/:idZahteva',
+      component: ObavestenjeCreate
     },
     {
       name: 'ZahtevSluzbenik',
@@ -58,7 +70,8 @@ const router = new VueRouter({
       name: 'Pretrage',
       path: '/pretrage',
       component: Pretrage
-    }
+    },
+
   ]
 });
 

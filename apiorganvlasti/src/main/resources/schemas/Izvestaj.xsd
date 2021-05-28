@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://ftn.uns.ac.rs/tim5/model/izvestaj" elementFormDefault="qualified"
-           xmlns:izvestaj="http://ftn.uns.ac.rs/tim5/model/izvestaj"
-           xmlns:util="http://ftn.uns.ac.rs/tim5/model/util">
+    targetNamespace="http://ftn.uns.ac.rs/tim5/model/izvestaj" elementFormDefault="qualified"
+    xmlns:izvestaj="http://ftn.uns.ac.rs/tim5/model/izvestaj"
+    xmlns:util="http://ftn.uns.ac.rs/tim5/model/util"
+    xmlns:pred="http://ftn.uns.ac.rs.tim5/model/predicate">
     <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util" schemaLocation="util.xsd"/>
     <xs:element name="Izvestaj">
         <xs:complexType>
@@ -24,11 +25,11 @@
                                 <xs:complexType>
                                     <xs:sequence>
                                         <xs:element name="nije_postupio"
-                                                    type="xs:nonNegativeInteger"/>
+                                            type="xs:nonNegativeInteger"/>
                                         <xs:element name="nije_postupio_u_celosti"
-                                                    type="xs:nonNegativeInteger"/>
+                                            type="xs:nonNegativeInteger"/>
                                         <xs:element name="nije_postupio_u_zakonskom_roku"
-                                                    type="xs:nonNegativeInteger"/>
+                                            type="xs:nonNegativeInteger"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
@@ -36,8 +37,21 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="organ_vlasti" type="util:TPravno_Lice"/>
+                <xs:element name="datum_podnosenja">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:extension base="util:Datum">
+                                <xs:attribute default="pred:datum" name="property" type="xs:string"/>
+                                <xs:attribute name="content" type="xs:string"/>
+                            </xs:extension>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
             <xs:attribute name="id" type="xs:long"/>
+            <xs:attribute name="about" type="xs:anyURI"/>
+            <xs:attribute fixed="http://ftn.uns.ac.rs.tim5/model/predicate" name="vocab"
+                type="xs:string"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="Kolekcija_Izvestaja">

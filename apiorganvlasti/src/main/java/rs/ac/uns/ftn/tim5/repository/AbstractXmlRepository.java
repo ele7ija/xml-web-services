@@ -68,23 +68,11 @@ public class AbstractXmlRepository<T extends Identifiable> {
     }
 
     public T createEntity(T entity) throws XMLDBException, JAXBException {
-        Long id = UUID.randomUUID().getLeastSignificantBits() * -1;
-        entity.setId(id);
         Collection collection = this.dbConnection.getCollection(this.collectionId);
-        XMLResource xmlResource = (XMLResource) collection.createResource(id.toString() + ".xml", XMLResource.RESOURCE_TYPE);
-        xmlResource.setContent(this.xmlConversionAgent.marshallToOutputStream(entity, this.jaxbContextPath));
-        System.out.println(this.xmlConversionAgent.marshall(entity, this.jaxbContextPath));
-        collection.storeResource(xmlResource);
-        return this.getEntity(id);
-    }
-
-    public T createEntityWithGivenId(T entity, Long id) throws XMLDBException, JAXBException {
-        entity.setId(id);
-        Collection collection = this.dbConnection.getCollection(this.collectionId);
-        XMLResource xmlResource = (XMLResource) collection.createResource(id.toString() + ".xml", XMLResource.RESOURCE_TYPE);
+        XMLResource xmlResource = (XMLResource) collection.createResource(entity.getId().toString() + ".xml", XMLResource.RESOURCE_TYPE);
         xmlResource.setContent(this.xmlConversionAgent.marshallToOutputStream(entity, this.jaxbContextPath));
         collection.storeResource(xmlResource);
-        return this.getEntity(id);
+        return this.getEntity(entity.getId());
     }
 
     public boolean updateEntity(T entity) throws XMLDBException, JAXBException {
@@ -92,7 +80,7 @@ public class AbstractXmlRepository<T extends Identifiable> {
             return false;
         }
         this.deleteEntity(entity.getId());
-        this.createEntityWithGivenId(entity, entity.getId());
+        this.createEntity(entity);
         return true;
     }
 

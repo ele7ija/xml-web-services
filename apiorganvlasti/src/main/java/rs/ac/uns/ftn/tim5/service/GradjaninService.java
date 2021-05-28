@@ -38,6 +38,9 @@ public class GradjaninService implements AbstractXmlService<Gradjanin> {
     @Autowired
     private RDFService rdfService;
 
+    @Autowired
+    private UUIDHelper uuidHelper;
+
     @PostConstruct
     public void injectRepositoryProperties() {
         this.gradjaninAbstractXmlRepository.injectRepositoryProperties(
@@ -75,10 +78,10 @@ public class GradjaninService implements AbstractXmlService<Gradjanin> {
 
     @Override
     public Gradjanin create(String xmlEntity) {
-
         Gradjanin gradjanin;
         try {
             gradjanin = this.gradjaninXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
+            gradjanin.setId(this.uuidHelper.getUUID());
         } catch (JAXBException e) {
             throw new InvalidXmlException(Gradjanin.class, e.getMessage());
         }

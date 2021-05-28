@@ -6,6 +6,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.tim5.model.zahtev.KolekcijaZahteva;
@@ -75,6 +76,32 @@ public class ZahtevController {
                 .ok()
                 .headers(headers)
                 .body(new InputStreamResource(bis));
+    }
+
+    /**
+        Vraca sve zahteve na osnovu email-a ulogovanog korisnika
+        ID-evi zahteva se dobavljajue iz RDF baze, nakon cega se dobavljaju celi dokumenti
+        iz XML baze na osnovu prethodno dobijenih ID-eva
+     */
+    @GetMapping(value = "/by-gradjanin", produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<KolekcijaZahteva> getByGradjaninEmail() {
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        KolekcijaZahteva kolekcijaZahteva = new KolekcijaZahteva();
+        kolekcijaZahteva.setZahtev(this.zahtevService.findAllByGradjaninEmail(email));
+        return new ResponseEntity<>(kolekcijaZahteva, HttpStatus.OK);
+    }
+
+    /**
+     Vraca sve zahteve na osnovu naziva organa vlasti ulogovanog sluzbenika
+     ID-evi zahteva se dobavljajue iz RDF baze, nakon cega se dobavljaju celi dokumenti
+     iz XML baze na osnovu prethodno dobijenih ID-eva
+     */
+    @GetMapping(value = "/by-organ-vlasti", produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<KolekcijaZahteva> getByNazivOrganaVlasti() {
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        KolekcijaZahteva kolekcijaZahteva = new KolekcijaZahteva();
+        kolekcijaZahteva.setZahtev(this.zahtevService.findAllByNazivOrganaVlasti(email));
+        return new ResponseEntity<>(kolekcijaZahteva, HttpStatus.OK);
     }
 
 }

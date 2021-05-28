@@ -12,7 +12,7 @@
                     <xs:complexType>
                         <xs:complexContent>
                             <xs:extension base="util:TFizicko_Lice">
-                                <xs:attribute fixed="pred:email_trazioca" name="predicate"
+                                <xs:attribute fixed="pred:email_trazioca" name="property"
                                     type="xs:string"/>
                                 <xs:attribute name="content" type="xs:string"/>
                             </xs:extension>
@@ -23,7 +23,7 @@
                     <xs:complexType>
                         <xs:complexContent>
                             <xs:extension base="util:TPravno_Lice">
-                                <xs:attribute fixed="pred:naziv_organa_vlasti" name="predicate"
+                                <xs:attribute fixed="pred:naziv_organa_vlasti" name="property"
                                     type="xs:string"/>
                                 <xs:attribute name="content" type="xs:string"/>
                             </xs:extension>
@@ -45,7 +45,7 @@
                     <xs:complexType>
                         <xs:complexContent>
                             <xs:extension base="util:Datum">
-                                <xs:attribute fixed="pred:datum" name="predicate" type="xs:string"/>
+                                <xs:attribute fixed="pred:datum" name="property" type="xs:string"/>
                                 <xs:attribute name="content" type="xs:string"/>
                             </xs:extension>
                         </xs:complexContent>
@@ -55,7 +55,7 @@
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
-                                <xs:attribute fixed="pred:mesto" name="predicate" type="xs:string"/>
+                                <xs:attribute fixed="pred:mesto" name="property" type="xs:string"/>
                                 <xs:attribute name="content" type="xs:string"/>
                             </xs:extension>
                         </xs:simpleContent>

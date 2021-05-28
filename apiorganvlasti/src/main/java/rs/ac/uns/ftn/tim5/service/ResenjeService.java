@@ -11,11 +11,9 @@ import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlException;
 import rs.ac.uns.ftn.tim5.model.exception.XmlDatabaseException;
 import rs.ac.uns.ftn.tim5.model.resenje.Resenje;
 import rs.ac.uns.ftn.tim5.repository.AbstractXmlRepository;
-
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
 import java.util.List;
-
 import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_QUERY_FIND_ALL_RESENJA_EXPRESSION;
 import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_UPDATE_REMOVE_RESENJE_BY_ID_EXPRESSION;
 
@@ -35,6 +33,9 @@ public class ResenjeService implements AbstractXmlService<Resenje> {
 
     @Autowired
     private RDFService rdfService;
+
+    @Autowired
+    private UUIDHelper uuidHelper;
 
     @PostConstruct
     public void injectRepositoryProperties() {
@@ -77,6 +78,8 @@ public class ResenjeService implements AbstractXmlService<Resenje> {
         Resenje resenje;
         try {
             resenje = this.resenjeXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
+            resenje.setId(this.uuidHelper.getUUID());
+            this.handleMetadata(resenje);
         } catch (JAXBException e) {
             throw new InvalidXmlException(Resenje.class, e.getMessage());
         }
@@ -126,6 +129,17 @@ public class ResenjeService implements AbstractXmlService<Resenje> {
         } catch (XMLDBException e) {
             throw new XmlDatabaseException(e.getMessage());
         }
+    }
+
+    private void handleMetadata(Resenje resenje) {
+        resenje.setAbout(
+                String.format(
+                        "%s%s%s",
+                        System.getenv("FRONTEND_URL"),
+                        "/",
+                        resenje.getId()
+                )
+        );
     }
 
 }

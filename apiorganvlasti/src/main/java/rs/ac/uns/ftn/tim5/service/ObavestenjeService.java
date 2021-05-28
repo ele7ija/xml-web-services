@@ -11,11 +11,9 @@ import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlException;
 import rs.ac.uns.ftn.tim5.model.exception.XmlDatabaseException;
 import rs.ac.uns.ftn.tim5.model.obavestenje.Obavestenje;
 import rs.ac.uns.ftn.tim5.repository.AbstractXmlRepository;
-
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
 import java.util.List;
-
 import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_QUERY_FIND_ALL_OBAVESTENJA_EXPRESSION;
 import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_UPDATE_REMOVE_OBAVESTENJE_BY_ID_EXPRESSION;
 
@@ -35,6 +33,12 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
 
     @Autowired
     private RDFService rdfService;
+
+    @Autowired
+    private UUIDHelper uuidHelper;
+
+    @Autowired
+    private DateHelper dateHelper;
 
     @PostConstruct
     public void injectRepositoryProperties() {
@@ -73,10 +77,11 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
 
     @Override
     public Obavestenje create(String xmlEntity) {
-
         Obavestenje obavestenje;
         try {
             obavestenje = this.obavestenjeXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
+            obavestenje.setId(this.uuidHelper.getUUID());
+            this.handleMetadata(obavestenje);
         } catch (JAXBException e) {
             throw new InvalidXmlException(Obavestenje.class, e.getMessage());
         }
@@ -126,6 +131,30 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
         } catch (XMLDBException e) {
             throw new XmlDatabaseException(e.getMessage());
         }
+    }
+
+    private void handleMetadata(Obavestenje obavestenje) {
+        obavestenje.setAbout(
+                String.format(
+                        "%s%s%s",
+                        System.getenv("FRONTEND_URL"),
+                        "/",
+                        obavestenje.getId()
+                )
+        );
+        obavestenje.getTrazilac().setContent(null); //todo - postavi podatke ot traziocu (na osnovu RDF baze)
+        obavestenje.getOrgan().setContent(obavestenje.getOrgan().getNaziv());
+        obavestenje.getPredmet().getDatum().setContent(this.dateHelper.toDate(obavestenje.getPredmet().getDatum()));
+        obavestenje.getOdbijen().setContent(obavestenje.getOdbijen().isValue() ? "da" : "ne");
+        obavestenje.getIstekao().setContent(obavestenje.getIstekao().isValue() ? "da" : "ne");
+
+        obavestenje.setVocab("http://ftn.uns.ac.rs.tim5/model/predicate");
+        obavestenje.getOrgan().setProperty("pred:naziv_organa_vlasti");
+        obavestenje.getTrazilac().setProperty("pred:email_trazioca");
+        obavestenje.getPredmet().getDatum().setProperty("pred:datum");
+        obavestenje.getOdbijen().setProperty("pred:odbijen");
+        obavestenje.getIstekao().setProperty("pred:istekao");
+
     }
 
 }

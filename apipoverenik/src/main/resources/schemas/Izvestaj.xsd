@@ -41,7 +41,7 @@
                     <xs:complexType>
                         <xs:complexContent>
                             <xs:extension base="util:Datum">
-                                <xs:attribute default="pred:datum" name="predicate" type="xs:string"/>
+                                <xs:attribute default="pred:datum" name="property" type="xs:string"/>
                                 <xs:attribute name="content" type="xs:string"/>
                             </xs:extension>
                         </xs:complexContent>

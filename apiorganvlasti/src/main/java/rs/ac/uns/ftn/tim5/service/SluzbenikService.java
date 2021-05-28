@@ -36,6 +36,9 @@ public class SluzbenikService implements AbstractXmlService<Sluzbenik> {
     @Autowired
     private RDFService rdfService;
 
+    @Autowired
+    private UUIDHelper uuidHelper;
+
     @PostConstruct
     public void injectRepositoryProperties() {
         this.sluzbenikAbstractXmlRepository.injectRepositoryProperties(
@@ -77,6 +80,7 @@ public class SluzbenikService implements AbstractXmlService<Sluzbenik> {
         Sluzbenik sluzbenik;
         try {
             sluzbenik = this.sluzbenikXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
+            sluzbenik.setId(this.uuidHelper.getUUID());
         } catch (JAXBException e) {
             throw new InvalidXmlException(Sluzbenik.class, e.getMessage());
         }

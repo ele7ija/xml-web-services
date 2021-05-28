@@ -259,7 +259,8 @@ export default {
         <za:Zahtev
             xmlns:za="http://ftn.uns.ac.rs/tim5/model/zahtev"
             xmlns:util="http://ftn.uns.ac.rs/tim5/model/util"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate">
             <za:trazilac>
                 <util:Adresa>
                     <util:Mesto>${this.gradjanin.podaci.adresa.mesto}</util:Mesto>

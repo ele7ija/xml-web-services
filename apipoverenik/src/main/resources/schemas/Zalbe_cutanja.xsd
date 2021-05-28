@@ -16,8 +16,7 @@
                             <xs:element name="drugi_podaci_za_kontakt" type="xs:string"
                                 minOccurs="0" maxOccurs="1"/>
                         </xs:sequence>
-                        <xs:attribute default="pred:email_trazioca" name="predicate"
-                            type="xs:string"/>
+                        <xs:attribute default="pred:email_trazioca" name="property" type="xs:string"/>
                         <xs:attribute name="content" type="xs:string"/>
                     </xs:complexType>
                 </xs:element>
@@ -25,7 +24,7 @@
                     <xs:complexType>
                         <xs:complexContent>
                             <xs:extension base="util:TPravno_Lice">
-                                <xs:attribute default="pred:naziv_organa_vlasti" name="predicate"
+                                <xs:attribute default="pred:naziv_organa_vlasti" name="property"
                                     type="xs:string"/>
                                 <xs:attribute name="content" type="xs:string"/>
                             </xs:extension>
@@ -47,7 +46,7 @@
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
-                                <xs:attribute fixed="pred:mesto" name="predicate" type="xs:string"/>
+                                <xs:attribute fixed="pred:mesto" name="property" type="xs:string"/>
                                 <xs:attribute name="content" type="xs:string"/>
                             </xs:extension>
                         </xs:simpleContent>
@@ -57,7 +56,7 @@
                     <xs:complexType>
                         <xs:complexContent>
                             <xs:extension base="util:Datum">
-                                <xs:attribute default="pred:datum" name="predicate" type="xs:string"/>
+                                <xs:attribute default="pred:datum" name="property" type="xs:string"/>
                                 <xs:attribute name="content" type="xs:string"/>
                             </xs:extension>
                         </xs:complexContent>

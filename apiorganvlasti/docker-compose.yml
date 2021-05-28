@@ -26,6 +26,8 @@ services:
       RDF_DB_PORT: 3030
       RDF_DB_PASSWORD: password
       SPRING_PORT: 8080
+
+      FRONTEND_URL: http://localhost:8086
     volumes:
       - ./output_html:/output_html
       - ./output_pdf:/output_pdf

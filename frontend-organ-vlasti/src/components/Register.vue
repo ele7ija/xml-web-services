@@ -359,7 +359,8 @@ export default {
         `<?xml version="1.0" encoding="UTF-8"?>
         <sl:Sluzbenik xmlns:sl="http://ftn.uns.ac.rs/tim5/model/sluzbenik"
             xmlns:util="http://ftn.uns.ac.rs/tim5/model/util"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate">
             <sl:korisnicko_ime></sl:korisnicko_ime>
             <sl:lozinka></sl:lozinka>
             <sl:preduzece>

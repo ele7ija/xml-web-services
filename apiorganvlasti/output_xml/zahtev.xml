@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:Zahtev xmlns="http://ftn.uns.ac.rs/tim5/model/util" xmlns:ns2="http://ftn.uns.ac.rs/tim5/model/zahtev" id="6300945450141504982">
-    <ns2:trazilac>
-        <Adresa>
-            <Mesto>Нови Сад</Mesto>
-            <Ulica>Владислава Каћанског</Ulica>
-            <Broj>6</Broj>
-        </Adresa>
-        <Ime>Милан</Ime>
-        <Prezime>Ђурић</Prezime>
-    </ns2:trazilac>
-    <ns2:organ>
-        <Adresa>
-            <Mesto>Нови Сад</Mesto>
-            <Ulica>Булевар Цара Лазара</Ulica>
-            <Broj>50</Broj>
-        </Adresa>
-        <Naziv>Народна банка Србије</Naziv>
-    </ns2:organ>
-    <ns2:pravni_osnov>
-        <Naziv>Закона о слободном приступу информацијама од јавног значаја</Naziv>
-        <Clan>15</Clan>
-        <Strana>1</Strana>
-        <Dopune>
-            <Dopuna>
-                <Broj_dopune>120</Broj_dopune>
-                <Godina>2004</Godina>
-            </Dopuna>
-        </Dopune>
-    </ns2:pravni_osnov>
-    <ns2:opis_zahteva>Pera Peric</ns2:opis_zahteva>
-    <ns2:elementi_zahteva>
-        <ns2:Element_Zahteva>
-            <Tekst>Obavestenje o posedovanju</Tekst>
-            <Metod_Dostave>bez dostave</Metod_Dostave>
-        </ns2:Element_Zahteva>
-    </ns2:elementi_zahteva>
-    <ns2:datum>
-        <dan>---25</dan>
-        <mesec>--05</mesec>
-        <godina>2021</godina>
-    </ns2:datum>
-    <ns2:mesto>Нови Сад</ns2:mesto>
-</ns2:Zahtev>
+<za:Zahtev xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:za="http://ftn.uns.ac.rs/tim5/model/zahtev" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="6386891458843307372" about="http://localhost:8086/6386891458843307372" vocab="http://ftn.uns.ac.rs.tim5/model/predicate">
+    <za:trazilac property="pred:email_trazioca" content="millan.djuric@hotmail.com">
+        <util:Adresa>
+            <util:Mesto>Нови Сад</util:Mesto>
+            <util:Ulica>Владислава Каћанског</util:Ulica>
+            <util:Broj>6</util:Broj>
+        </util:Adresa>
+        <util:Ime>Милан</util:Ime>
+        <util:Prezime>Ђурић</util:Prezime>
+    </za:trazilac>
+    <za:organ property="pred:naziv_organa_vlasti" content="Народна банка Србије">
+        <util:Adresa>
+            <util:Mesto>Нови Сад</util:Mesto>
+            <util:Ulica>Булевар Цара Лазара</util:Ulica>
+            <util:Broj>50</util:Broj>
+        </util:Adresa>
+        <util:Naziv>Народна банка Србије</util:Naziv>
+    </za:organ>
+    <za:pravni_osnov>
+        <util:Naziv>Закона о слободном приступу информацијама од јавног значаја</util:Naziv>
+        <util:Clan>15</util:Clan>
+        <util:Strana>1</util:Strana>
+        <util:Dopune>
+            <util:Dopuna>
+                <util:Broj_dopune>120</util:Broj_dopune>
+                <util:Godina>2004</util:Godina>
+            </util:Dopuna>
+        </util:Dopune>
+    </za:pravni_osnov>
+    <za:opis_zahteva></za:opis_zahteva>
+    <za:elementi_zahteva>
+        <za:Element_Zahteva>
+            <util:Tekst>Obavestenje o posedovanju</util:Tekst>
+            <util:Metod_Dostave>bez dostave</util:Metod_Dostave>
+        </za:Element_Zahteva>
+    </za:elementi_zahteva>
+    <za:datum property="pred:datum" content="28.5.2021">
+        <util:dan>---28</util:dan>
+        <util:mesec>--05</util:mesec>
+        <util:godina>2021</util:godina>
+    </za:datum>
+    <za:mesto property="pred:mesto" content="Нови Сад">Нови Сад</za:mesto>
+</za:Zahtev>

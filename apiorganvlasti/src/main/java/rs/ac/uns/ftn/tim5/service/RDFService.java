@@ -7,8 +7,10 @@ import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.riot.web.HttpOp;
 import org.apache.jena.update.UpdateExecutionFactory;
 import org.apache.jena.update.UpdateFactory;
@@ -19,11 +21,15 @@ import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import rs.ac.uns.ftn.tim5.config.RDFDBConnectionProperties;
 import rs.ac.uns.ftn.tim5.helper.MetadataExtractor;
+import rs.ac.uns.ftn.tim5.helper.SparqlQueryResult;
 import rs.ac.uns.ftn.tim5.util.SparqlUtil;
 
 import javax.annotation.PostConstruct;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 @Service
 public class RDFService {
@@ -102,5 +108,48 @@ public class RDFService {
         processor.execute();
 
         return true;
+    }
+
+    public List<SparqlQueryResult> run(String queryString) throws IOException {
+
+        // Create a QueryExecution that will access a SPARQL service over HTTP
+        QueryExecution query = QueryExecutionFactory.sparqlService(this.rdfdbConnectionProperties.getQueryEndpoint(), queryString);
+        // Query the SPARQL endpoint, iterate over the result set...
+        ResultSet results = query.execSelect();
+
+        String varName;
+        RDFNode varValue;
+        List<SparqlQueryResult> retval = new ArrayList<>();
+
+        while(results.hasNext()) {
+
+            // A single answer from a SELECT query
+            QuerySolution querySolution = results.next() ;
+            Iterator<String> variableBindings = querySolution.varNames();
+
+            // Retrieve variable bindings
+            while (variableBindings.hasNext()) {
+
+                varName = variableBindings.next();
+                varValue = querySolution.get(varName);
+
+                System.out.println(varName + ": " + varValue);
+
+                SparqlQueryResult sparqlQueryResult = new SparqlQueryResult();
+                sparqlQueryResult.setVarName(varName);
+                sparqlQueryResult.setVarValue(varValue);
+                retval.add(sparqlQueryResult);
+            }
+        }
+        query.close();
+        return retval;
+    }
+
+    public RDFDBConnectionProperties getRdfdbConnectionProperties() {
+        return rdfdbConnectionProperties;
+    }
+
+    public void setRdfdbConnectionProperties(RDFDBConnectionProperties rdfdbConnectionProperties) {
+        this.rdfdbConnectionProperties = rdfdbConnectionProperties;
     }
 }
