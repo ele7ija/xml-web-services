@@ -23,7 +23,6 @@ export const constructKolekcijaZahteva = xml => {
 }
 
 export const constructZahtev = xml => {
-  console.log(xml);
   return {
     id: xml.getAttribute("id").value,
     about: xml.getAttribute("about").value,
@@ -61,9 +60,12 @@ const constructElementZahteva = elementZahteva => {
       metodDostave: elementZahteva.hasChildElement("util:Metod_Dostave") ? elementZahteva.getChildElements("util:Metod_Dostave")[0].getText() : null
   }
 };
+export const constructKolekcijaObavestenja = xml => {
+  xml = Xonomy.xml2js(xml);
+  return xml.getChildElements("ob:Obavestenje").map(x => constructObavestenje(x));
+};
 
 export const constructObavestenje = xml => {
-  xml = Xonomy.xml2js(xml);
   return {
     id: xml.getAttribute("id").value,
     about: xml.getAttribute("about").value,

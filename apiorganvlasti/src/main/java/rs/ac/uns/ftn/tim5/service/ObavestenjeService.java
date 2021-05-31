@@ -8,6 +8,7 @@ import org.springframework.core.io.InputStreamSource;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.XMLDBException;
+import rs.ac.uns.ftn.tim5.helper.SparqlQueryResult;
 import rs.ac.uns.ftn.tim5.helper.XmlConversionAgent;
 import rs.ac.uns.ftn.tim5.model.exception.EntityNotFoundException;
 import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlDatabaseException;
@@ -25,6 +26,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.*;
 
@@ -360,6 +362,46 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
         );
         try {
             return new ByteArrayInputStream(FileUtils.readFileToByteArray(new File(filePath)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<Obavestenje> findByUlogovaniTrazilac(String email) {
+        String query = this.sparqlUtil.selectData(
+                String.format(
+                        "%s%s",
+                        this.rdfService.getRdfdbConnectionProperties().getDataEndpoint(),
+                        SPARQL_NAMED_GRAPH_URI
+                ),
+                String.format(
+                        "?s <http://ftn.uns.ac.rs/tim5/model/predicate/email_trazioca> \"%s\"^^<http://www.w3.org/2000/01/rdf-schema#Literal>",
+                        email)
+        );
+        return this.sparqlQueryToObavestenjeList(query);
+    }
+
+    /**
+     * Helper metoda koja konvertuje listu SparqlQueryResult objekata u listu Obavestenje objekata
+     */
+    private List<Obavestenje> sparqlQueryToObavestenjeList(String query) {
+        try {
+            List<SparqlQueryResult> sparqlQueryResults = this.rdfService.run(query);
+            List<String> obavestenjaIds = sparqlQueryResults.stream().map(obavestenje -> {
+                String[] data = obavestenje.getVarValue().toString().split("/");
+                return data[data.length - 1];
+            }).collect(Collectors.toList());
+            return obavestenjaIds.stream().map(
+                    obavestenjeId -> {
+                        try {
+                            return this.obavestenjeAbstractXmlRepository.getEntity(Long.parseLong(obavestenjeId));
+                        } catch (XMLDBException | JAXBException e) {
+                            e.printStackTrace();
+                        }
+                        return null;
+                    }
+            ).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
         }

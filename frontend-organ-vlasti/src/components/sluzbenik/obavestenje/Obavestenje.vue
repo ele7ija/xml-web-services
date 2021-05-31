@@ -59,7 +59,7 @@
           <div :id="obavestenjeViewIdWrapper"></div>
         </div>
       </div>
-      <div class="row pb-4 pt-2">
+      <div class="row pb-4 pt-2" v-if="obavestenje">
         <div class="col-12">
           <button
             class="btn btn-sm btn-light mx-2"
@@ -117,7 +117,7 @@ export default {
       try {
         this.obavestenjeLoading = true;
         const xmlString = (await obavestenjeApi.getById(this.$route.params.id)).data;
-        this.obavestenje = constructObavestenje(xmlString);
+        this.obavestenje = constructObavestenje(Xonomy.xml2js(xmlString));
         if(!this.obavestenje.odbijen && !this.obavestenje.istekao) {
           //xsl transformation and dom construction
           const xsltProcessor = new XSLTProcessor();

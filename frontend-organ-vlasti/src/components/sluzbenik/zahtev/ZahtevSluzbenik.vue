@@ -180,6 +180,8 @@
 </template>
 
 <script>
+/*eslint no-undef: "warn"*/
+/*eslint no-unused-vars: "warn"*/
 const { Octicon, check, x, clippy, code } = require('octicons-vue');
 import zahtevApi from '../../../api/zahtev';
 import obavestenjeApi from '../../../api/obavestenje';
@@ -222,7 +224,7 @@ export default {
           this.obradjeniZahtevi.push(tempZahtevi[index]);
         }
       }
-      this.obavestenja = results.filter(x => x.data).map(x => constructObavestenje(x.data));
+      this.obavestenja = results.filter(x => x.data).map(x => constructObavestenje(Xonomy.xml2js(x.data)));
       this.zahteviLoading = false;
     }
   },
