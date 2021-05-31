@@ -57,4 +57,12 @@ public class EmailService {
         );
     }
 
+    public void istekaoZahtev(Zahtev zahtev) {
+        String datum = this.getDate(zahtev.getDatum());
+        EmailDTO emailDTO = new EmailDTO();
+        emailDTO.setRecipient(zahtev.getTrazilac().getContent());
+        emailDTO.setSubject(String.format("Обавештење - %s", zahtev.getOrgan().getNaziv()));
+        emailDTO.setMessage(String.format("Обавештавамо вас да је Ваш захтев за приступ информацији од јавног значаја, који сте поднели датума %s, истекао.", datum));
+        this.sendMail(emailDTO, "no-attach");
+    }
 }

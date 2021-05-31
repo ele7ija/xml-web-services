@@ -152,12 +152,53 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
         Zahtev zahtev = this.zahtevService.findById(obavestenje.getIdZahteva());
         if (obavestenje.getOdbijen().isValue()) {
             this.emailService.odbijZahtev(zahtev);
+        } else if(obavestenje.getIstekao().isValue()) {
+            this.emailService.istekaoZahtev(zahtev);
         } else {
            this.emailService.prihvatiZahtev(
                    zahtev,
                    this.generatePdf(obavestenje.getId()),
                    this.generateHtml(obavestenje.getId())
            );
+        }
+        return obavestenje;
+    }
+
+
+    public Obavestenje create(Obavestenje obavestenje) {
+        obavestenje.setId(this.uuidHelper.getUUID());
+        this.handleMetadata(obavestenje);
+
+        try {
+            obavestenje = obavestenjeAbstractXmlRepository.createEntity(obavestenje);
+        } catch (XMLDBException e) {
+            throw new XmlDatabaseException(e.getMessage());
+        } catch (JAXBException e) {
+            throw new InvalidXmlDatabaseException(Obavestenje.class, e.getMessage());
+        }
+
+        // Sacuvaj u RDF
+        try {
+            String xmlEntity = this.obavestenjeXmlConversionAgent.marshall(obavestenje, this.jaxbContextPath);
+            if (!rdfService.save(xmlEntity, SPARQL_NAMED_GRAPH_URI)) {
+                System.out.println("[ERROR] Neuspesno cuvanje metapodataka obavestenja u RDF DB.");
+            }
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
+        //posalji email
+        Zahtev zahtev = this.zahtevService.findById(obavestenje.getIdZahteva());
+        if (obavestenje.getOdbijen().isValue()) {
+            this.emailService.odbijZahtev(zahtev);
+        } else if(obavestenje.getIstekao().isValue()) {
+            this.emailService.istekaoZahtev(zahtev);
+        } else {
+            this.emailService.prihvatiZahtev(
+                    zahtev,
+                    this.generatePdf(obavestenje.getId()),
+                    this.generateHtml(obavestenje.getId())
+            );
         }
         return obavestenje;
     }

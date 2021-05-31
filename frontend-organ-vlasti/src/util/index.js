@@ -51,6 +51,9 @@ export const constructZahtev = xml => {
 }
 
 export const constructDatum = xml => {
+  console.log(xml.getChildElements("util:dan")[0].getText().substr(3));
+  console.log(xml.getChildElements("util:mesec")[0].getText().substr(2));
+  
   return `${xml.getChildElements("util:dan")[0].getText().substr(3)}.${xml.getChildElements("util:mesec")[0].getText().substr(2)}.${xml.getChildElements("util:godina")[0].getText()}`
 }
 
