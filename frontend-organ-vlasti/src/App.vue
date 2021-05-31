@@ -9,7 +9,7 @@
             :key="option.id"
           >
             <div v-if="!option.hasChildren">
-              <router-link :to="option.path" class="nav-link">{{option.displayName}}</router-link>
+              <router-link :to="{name: option.name}" class="nav-link">{{option.displayName}}</router-link>
             </div>
             <div v-else>
               <div class="btn-group">
@@ -20,7 +20,7 @@
                   <router-link
                     v-for="child in option.children"
                     :key="child.id"
-                    :to="child.path"
+                    :to="{name: child.name}"
                     class="dropdown-item"
                   >{{child.displayName}}</router-link>
                 </div>

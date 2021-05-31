@@ -67,6 +67,19 @@ public class AbstractXmlRepository<T extends Identifiable> {
         return null;
     }
 
+    public T findEntity(String query, Long param) throws XMLDBException, JAXBException {
+        Collection collection = this.dbConnection.getCollection(this.collectionId);
+        XQueryService xQueryService = (XQueryService) collection.getService("XQueryService", "1.0");
+        CompiledExpression compiledExpression = xQueryService.compile(String.format(query, param));
+        ResourceSet resourceSet = xQueryService.execute(compiledExpression);
+        ResourceIterator resourceIterator = resourceSet.getIterator();
+        while (resourceIterator.hasMoreResources()) {
+            XMLResource xmlResource = (XMLResource) resourceIterator.nextResource();
+            return (T) this.xmlConversionAgent.unmarshall(xmlResource.getContentAsDOM(), this.jaxbContextPath);
+        }
+        return null;
+    }
+
     public T createEntity(T entity) throws XMLDBException, JAXBException {
         Collection collection = this.dbConnection.getCollection(this.collectionId);
         XMLResource xmlResource = (XMLResource) collection.createResource(entity.getId().toString() + ".xml", XMLResource.RESOURCE_TYPE);

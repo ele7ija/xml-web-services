@@ -83,6 +83,7 @@ export const zahtevXsl = `<?xml version="1.0" encoding="UTF-8"?>
                             <xsl:attribute name="name">posedovanje</xsl:attribute>
                             <xsl:if test="za:Zahtev/za:elementi_zahteva/za:Element_Zahteva/util:Tekst='Obavestenje o posedovanju'">
                                 <xsl:attribute name="checked">true</xsl:attribute>
+                                <xsl:attribute name="disabled">true</xsl:attribute>
                             </xsl:if>
                         </xsl:element>
                         обавештење да ли поседује тражену информацију;
@@ -93,6 +94,7 @@ export const zahtevXsl = `<?xml version="1.0" encoding="UTF-8"?>
                             <xsl:attribute name="name">uvid</xsl:attribute>
                             <xsl:if test="za:Zahtev/za:elementi_zahteva/za:Element_Zahteva/util:Tekst='Uvid u dokument'">
                                 <xsl:attribute name="checked">true</xsl:attribute>
+                                <xsl:attribute name="disabled">true</xsl:attribute>
                             </xsl:if>
                         </xsl:element>
                         увид у документ који садржи тражену информацију;
@@ -103,6 +105,7 @@ export const zahtevXsl = `<?xml version="1.0" encoding="UTF-8"?>
                             <xsl:attribute name="name">kopija</xsl:attribute>
                             <xsl:if test="za:Zahtev/za:elementi_zahteva/za:Element_Zahteva/util:Tekst='Kopija dokumenta'">
                                 <xsl:attribute name="checked">true</xsl:attribute>
+                                <xsl:attribute name="disabled">true</xsl:attribute>
                             </xsl:if>
                         </xsl:element>
                         копију документа који садржи тражену информацију;
@@ -113,6 +116,7 @@ export const zahtevXsl = `<?xml version="1.0" encoding="UTF-8"?>
                             <xsl:attribute name="name">kopija</xsl:attribute>
                             <xsl:if test="za:Zahtev/za:elementi_zahteva/za:Element_Zahteva/util:Tekst='Dostavljanje kopije'">
                                 <xsl:attribute name="checked">true</xsl:attribute>
+                                <xsl:attribute name="disabled">true</xsl:attribute>
                             </xsl:if>
                         </xsl:element>
                         достављање копије документа који садржи тражену информацију:**
@@ -123,6 +127,7 @@ export const zahtevXsl = `<?xml version="1.0" encoding="UTF-8"?>
                             <xsl:attribute name="name">posta</xsl:attribute>
                             <xsl:if test="za:Zahtev/za:elementi_zahteva/za:Element_Zahteva/util:Metod_Dostave='posta'">
                                 <xsl:attribute name="checked">true</xsl:attribute>
+                                <xsl:attribute name="disabled">true</xsl:attribute>
                             </xsl:if>
                         </xsl:element>
                         поштом
@@ -133,6 +138,7 @@ export const zahtevXsl = `<?xml version="1.0" encoding="UTF-8"?>
                             <xsl:attribute name="name">elektronska</xsl:attribute>
                             <xsl:if test="za:Zahtev/za:elementi_zahteva/za:Element_Zahteva/util:Metod_Dostave='elektronska posta'">
                                 <xsl:attribute name="checked">true</xsl:attribute>
+                                <xsl:attribute name="disabled">true</xsl:attribute>
                             </xsl:if>
                         </xsl:element>
                         електронском поштом
@@ -143,6 +149,7 @@ export const zahtevXsl = `<?xml version="1.0" encoding="UTF-8"?>
                             <xsl:attribute name="name">faks</xsl:attribute>
                             <xsl:if test="za:Zahtev/za:elementi_zahteva/za:Element_Zahteva/util:Metod_Dostave='faks'">
                                 <xsl:attribute name="checked">true</xsl:attribute>
+                                <xsl:attribute name="disabled">true</xsl:attribute>
                             </xsl:if>
                         </xsl:element>
                         факсом

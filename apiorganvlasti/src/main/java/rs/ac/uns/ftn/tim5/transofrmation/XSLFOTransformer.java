@@ -5,7 +5,6 @@ import org.apache.fop.apps.FOUserAgent;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import org.xml.sax.SAXException;
@@ -26,8 +25,7 @@ import java.io.*;
  * renderovanje PDF-a primenom XSL-FO transformacije na XML dokumentu.
  *
  */
-@Service
-public class ZahtevXSLFOTransformer {
+public class XSLFOTransformer {
 	
 	private FopFactory fopFactory;
 	
@@ -35,14 +33,19 @@ public class ZahtevXSLFOTransformer {
 
 	private static DocumentBuilderFactory documentFactory;
 
-	public static final String XSLT_FILE = "classpath:transformations/xsl/zahtev.xsl";
-	public static final String XSL_FO_FILE = "classpath:transformations/xsl_fo/zahtev_fo.xsl";
-	public static final String OUTPUT_FILE_PDF = "output_pdf/zahtev.pdf";
-	public static final String OUTPUT_FILE_HTML = "output_html/zahtev.html";
+	private String XSLT_FILE;
+	private String XSL_FO_FILE;
+	private String OUTPUT_FILE_PDF;
+	private String OUTPUT_FILE_HTML;
+
 	public static final String FOP_CONF = "classpath:conf/fop.xconf";
-	
-	@PostConstruct
-	public void init() throws SAXException, IOException {
+
+	public void injectTransformerProperties(
+			String xsltFile,
+			String xslfoFile,
+			String outputFilePdf,
+			String outputFileHtml
+	)  throws SAXException, IOException {
 		documentFactory = DocumentBuilderFactory.newInstance();
 		documentFactory.setNamespaceAware(true);
 		documentFactory.setIgnoringComments(true);
@@ -51,14 +54,19 @@ public class ZahtevXSLFOTransformer {
 		fopFactory = FopFactory.newInstance(ResourceUtils.getFile(FOP_CONF));
 		// Setup the XSLT transformer factory
 		transformerFactory = new TransformerFactoryImpl();
+
+		this.XSLT_FILE = xsltFile;
+		this.XSL_FO_FILE = xslfoFile;
+		this.OUTPUT_FILE_PDF = outputFilePdf;
+		this.OUTPUT_FILE_HTML = outputFileHtml;
 	}
 
 	public void generatePDF(String inputFilePath) throws Exception {
 
-		System.out.println("[INFO] " + ZahtevXSLFOTransformer.class.getSimpleName());
+		System.out.println("[INFO] " + XSLFOTransformer.class.getSimpleName());
 
 		// Create transformation source
-		StreamSource transformSource = new StreamSource(ResourceUtils.getFile(XSL_FO_FILE));
+		StreamSource transformSource = new StreamSource(ResourceUtils.getFile(this.XSL_FO_FILE));
 		
 		// Initialize the transformation subject
 		StreamSource source = new StreamSource(inputFilePath);
@@ -82,7 +90,7 @@ public class ZahtevXSLFOTransformer {
 		xslFoTransformer.transform(source, res);
 
 		// Generate PDF file
-		File pdfFile = ResourceUtils.getFile(OUTPUT_FILE_PDF);
+		File pdfFile = ResourceUtils.getFile(this.OUTPUT_FILE_PDF);
 		if (!pdfFile.getParentFile().exists()) {
 			System.out.println("[INFO] A new directory is created: " + pdfFile.getParentFile().getAbsolutePath() + ".");
 			pdfFile.getParentFile().mkdir();
@@ -100,7 +108,7 @@ public class ZahtevXSLFOTransformer {
 	public void generateHTML(String inputFilePath) throws FileNotFoundException {
 		try {
 			// Initialize Transformer instance
-			StreamSource transformSource = new StreamSource(ResourceUtils.getFile(XSLT_FILE));
+			StreamSource transformSource = new StreamSource(ResourceUtils.getFile(this.XSLT_FILE));
 			Transformer transformer = transformerFactory.newTransformer(transformSource);
 			transformer.setOutputProperty("{http://xml.apache.org/xalan}indent-amount", "2");
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -110,7 +118,7 @@ public class ZahtevXSLFOTransformer {
 
 			// Transform DOM to HTML
 			DOMSource source = new DOMSource(buildDocument(inputFilePath));
-			StreamResult result = new StreamResult(new FileOutputStream(OUTPUT_FILE_HTML));
+			StreamResult result = new StreamResult(new FileOutputStream(this.OUTPUT_FILE_HTML));
 			transformer.transform(source, result);
 
 		} catch (TransformerConfigurationException e) {

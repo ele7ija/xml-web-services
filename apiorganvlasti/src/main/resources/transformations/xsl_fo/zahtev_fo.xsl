@@ -82,7 +82,7 @@
                         </fo:inline>
                     </fo:block>
 
-                    <fo:block font-family="Times New Roman" font-size="12pt"
+                    <fo:block font-size="12pt"
                               text-indent="30pt" margin-top="0pt" margin-bottom="0pt"
                     >
                         <xsl:choose>
@@ -98,10 +98,12 @@
                                 </fo:inline>
                             </xsl:otherwise>
                         </xsl:choose>
-                        увид у документ који садржи тражену информацију;
+                        <fo:inline font-family="Times New Roman" font-size="12pt">
+                            увид у документ који садржи тражену информацију;
+                        </fo:inline>
                     </fo:block>
 
-                    <fo:block font-family="Times New Roman" font-size="12pt"
+                    <fo:block font-size="12pt"
                               text-indent="30pt" margin-top="0pt" margin-bottom="0pt"
                     >
                         <xsl:choose>
@@ -117,10 +119,12 @@
                                 </fo:inline>
                             </xsl:otherwise>
                         </xsl:choose>
-                        увид у копију документа који садржи тражену информацију;
+                        <fo:inline font-family="Times New Roman" font-size="12pt">
+                            увид у копију документа који садржи тражену информацију;
+                        </fo:inline>
                     </fo:block>
 
-                    <fo:block font-family="Times New Roman" font-size="12pt"
+                    <fo:block font-size="12pt"
                               text-indent="30pt" margin-top="0pt" margin-bottom="0pt"
                     >
                         <xsl:choose>
@@ -136,10 +140,12 @@
                                 </fo:inline>
                             </xsl:otherwise>
                         </xsl:choose>
-                        достављање копије документа који садржи тражену информацију:**
+                        <fo:inline font-family="Times New Roman" font-size="12pt">
+                            достављање копије документа који садржи тражену информацију:**
+                        </fo:inline>
                     </fo:block>
 
-                    <fo:block font-family="Times New Roman" font-size="12pt"
+                    <fo:block font-size="12pt"
                               text-indent="90pt" margin-top="0pt" margin-bottom="0pt"
                     >
                         <xsl:choose>
@@ -155,10 +161,12 @@
                                 </fo:inline>
                             </xsl:otherwise>
                         </xsl:choose>
-                        поштом
+                        <fo:inline font-family="Times New Roman" font-size="12pt">
+                            поштом
+                        </fo:inline>
                     </fo:block>
 
-                    <fo:block font-family="Times New Roman" font-size="12pt"
+                    <fo:block font-size="12pt"
                               text-indent="90pt" margin-top="0pt" margin-bottom="0pt"
                     >
                         <xsl:choose>
@@ -174,10 +182,12 @@
                                 </fo:inline>
                             </xsl:otherwise>
                         </xsl:choose>
-                        електронском поштом
+                        <fo:inline font-family="Times New Roman" font-size="12pt">
+                            електронском поштом
+                        </fo:inline>
                     </fo:block>
 
-                    <fo:block font-family="Times New Roman" font-size="12pt"
+                    <fo:block font-size="12pt"
                               text-indent="90pt" margin-top="0pt" margin-bottom="0pt"
                     >
                         <xsl:choose>
@@ -193,7 +203,9 @@
                                 </fo:inline>
                             </xsl:otherwise>
                         </xsl:choose>
-                        факсом
+                        <fo:inline font-family="Times New Roman" font-size="12pt">
+                            факсом
+                        </fo:inline>
                     </fo:block>
 
                     <fo:block font-family="Times New Roman" font-size="12pt"

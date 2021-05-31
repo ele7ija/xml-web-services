@@ -78,6 +78,45 @@ public class ZahtevController {
                 .body(new InputStreamResource(bis));
     }
 
+    @GetMapping(value = "/metadata/json/{id}")
+    public ResponseEntity<InputStreamResource> jsonMetadata(@PathVariable Long id) {
+        ByteArrayInputStream bis = this.zahtevService.exportMetadataAsJson(id);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=zahtev.json");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .body(new InputStreamResource(bis));
+    }
+
+    @GetMapping(value = "/metadata/xml/{id}")
+    public ResponseEntity<InputStreamResource> xmlMetadata(@PathVariable Long id) {
+        ByteArrayInputStream bis = this.zahtevService.exportMetadataAsXml(id);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=zahtev.xml");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .body(new InputStreamResource(bis));
+    }
+
+    @GetMapping(value = "/metadata/rdf/{id}")
+    public ResponseEntity<InputStreamResource> rdfMetadata(@PathVariable Long id) {
+        ByteArrayInputStream bis = this.zahtevService.exportMetadataAsRdf(id);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=zahtev.ttl");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .body(new InputStreamResource(bis));
+    }
+
     /**
         Vraca sve zahteve na osnovu email-a ulogovanog korisnika
         ID-evi zahteva se dobavljajue iz RDF baze, nakon cega se dobavljaju celi dokumenti

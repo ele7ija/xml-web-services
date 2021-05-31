@@ -3,7 +3,7 @@
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje"
         xmlns:util="http://ftn.uns.ac.rs/tim5/model/util"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
     <xsl:template match="/">
         <html>
             <head>
@@ -43,7 +43,7 @@
             </head>
             <body>
                 <div>
-                    <p class="normal-text left-text" style="margin-top: 15pt; margin-bottom: 0pt; padding-bottom: 0pt;">
+                    <p class="normal-text left-text" style="margin-top: 35pt; margin-bottom: 0pt; padding-top: 35pt; padding-bottom: 0pt;">
                         <xsl:value-of select="/ob:Obavestenje/ob:Organ/util:Naziv" />
                     </p>
                     <p class="normal-text left-text" style="margin-top: 0pt; padding-top: 0pt; margin-bottom: 0pt; padding-bottom: 0pt;">

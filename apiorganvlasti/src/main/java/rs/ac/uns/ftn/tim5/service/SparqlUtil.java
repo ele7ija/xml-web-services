@@ -24,7 +24,12 @@ public class SparqlUtil {
 
 	/* Simple SPARQL query on a named graph */
 	private final String SELECT_NAMED_GRAPH_TEMPLATE = "SELECT * FROM <%1$s> WHERE { %2$s }";
-	
+
+	private final String SELECT_OBJECT_ONLY_NAMED_GRAPH_TEMPLATE = "SELECT ?o FROM <%1$s> WHERE { %2$s }";
+
+	private final String SELECT_PREDICATE_AND_OBJECT_NAMED_GRAPH_TEMPLATE = "SELECT ?p ?o FROM <%1$s> WHERE { %2$s }";
+
+	private static final String DESCRIBE_NAMED_GRAPH_TEMPLATE = "DESCRIBE <%1$s> FROM <%2$s> WHERE { %3$s }";
 	
 	/* Plain text RDF serialization format */
 	public final String NTRIPLES = "N-TRIPLES";
@@ -52,5 +57,16 @@ public class SparqlUtil {
 	public String selectData(String graphURI, String sparqlCondition) {
 		return String.format(SELECT_NAMED_GRAPH_TEMPLATE, graphURI, sparqlCondition);
 	}
-	
+
+	public String selectObjectOnly(String graphURI, String sparqlCondition) {
+		return String.format(SELECT_OBJECT_ONLY_NAMED_GRAPH_TEMPLATE, graphURI, sparqlCondition);
+	}
+
+	public String selectPredicateAndObject(String graphURI, String sparqlCondition) {
+		return String.format(SELECT_PREDICATE_AND_OBJECT_NAMED_GRAPH_TEMPLATE, graphURI, sparqlCondition);
+	}
+
+	public String describe(String type, String graphURI, String sparqlCondition) {
+		return String.format(DESCRIBE_NAMED_GRAPH_TEMPLATE, type, graphURI, sparqlCondition);
+	}
 }

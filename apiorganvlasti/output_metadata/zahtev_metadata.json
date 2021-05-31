@@ -1,0 +1,24 @@
+{ "head": {
+    "vars": [ "p" , "o" ]
+  } ,
+  "results": {
+    "bindings": [
+      { 
+        "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/mesto" } ,
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Нови Сад" }
+      } ,
+      { 
+        "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/datum" } ,
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "31.5.2021" }
+      } ,
+      { 
+        "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/naziv_organa_vlasti" } ,
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Народна банка Србије" }
+      } ,
+      { 
+        "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/email_trazioca" } ,
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "millan.djuric@hotmail.com" }
+      }
+    ]
+  }
+}

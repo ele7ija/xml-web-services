@@ -16,7 +16,7 @@
               <p class="card-text">{{col.description}}</p>
             </div>
             <div class="card-footer m-0 p-1">
-                <a class="btn btn-link btn-sm mr-2" :style="{'float': 'right'}" @click="navigate(col.path)">Continue</a>
+                <a class="btn btn-link btn-sm mr-2" :style="{'float': 'right'}" @click="navigate(col.name)">Continue</a>
             </div>
           </div>
         </div>
@@ -62,8 +62,8 @@ export default {
     }
   },
   methods: {
-    navigate (path) {
-      router.push({path});
+    navigate (name) {
+      router.push({name});
     }
 
   }

@@ -1,6 +1,9 @@
 package rs.ac.uns.ftn.tim5.service;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.jena.query.ResultSet;
+import org.apache.jena.query.ResultSetFormatter;
+import org.apache.jena.sparql.resultset.ResultsFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -15,7 +18,7 @@ import rs.ac.uns.ftn.tim5.model.exception.XmlDatabaseException;
 import rs.ac.uns.ftn.tim5.model.sluzbenik.Sluzbenik;
 import rs.ac.uns.ftn.tim5.model.zahtev.Zahtev;
 import rs.ac.uns.ftn.tim5.repository.AbstractXmlRepository;
-import rs.ac.uns.ftn.tim5.transofrmation.ZahtevXSLFOTransformer;
+import rs.ac.uns.ftn.tim5.transofrmation.XSLFOTransformer;
 
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
@@ -36,6 +39,7 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
     public static final String OUTPUT_FOLDER_XML = "output_xml";
     public static final String OUTPUT_FOLDER_PDF = "output_pdf";
     public static final String OUTPUT_FOLDER_HTML = "output_html";
+    public static final String OUTPUT_FOLDER_METADATA = "output_metadata";
 
     @Autowired
     @Qualifier("zahtevRepository")
@@ -46,9 +50,6 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
 
     @Autowired
     private RDFService rdfService;
-
-    @Autowired
-    private ZahtevXSLFOTransformer zahtevXSLFOTransformer;
 
     @Autowired
     private UUIDHelper uuidHelper;
@@ -65,6 +66,8 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
     @Autowired
     private SluzbenikService sluzbenikService;
 
+    private XSLFOTransformer XSLFOTransformer;
+
     @PostConstruct
     public void injectRepositoryProperties() {
         this.zahtevAbstractXmlRepository.injectRepositoryProperties(
@@ -73,6 +76,21 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
                 X_QUERY_FIND_ALL_ZAHTEVI_EXPRESSION,
                 X_UPDATE_REMOVE_ZAHTEV_BY_ID_EXPRESSION
         );
+
+
+        this.XSLFOTransformer = new XSLFOTransformer();
+        try {
+            this.XSLFOTransformer.injectTransformerProperties(
+                    "classpath:transformations/xsl/zahtev.xsl",
+                    "classpath:transformations/xsl_fo/zahtev_fo.xsl",
+                    "output_pdf/zahtev.pdf",
+                    "output_html/zahtev.html"
+            );
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -180,7 +198,7 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
         Zahtev zahtev = this.findById(id);
         try {
             this.zahtevXmlConversionAgent.marshallToFile(zahtev, this.jaxbContextPath,this.getXmlFilePath());
-            this.zahtevXSLFOTransformer.generatePDF(this.getXmlFilePath());
+            this.XSLFOTransformer.generatePDF(this.getXmlFilePath());
 
         } catch (JAXBException | SAXException | FileNotFoundException e) {
             e.printStackTrace();
@@ -201,7 +219,7 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
         Zahtev zahtev = this.findById(id);
         try {
             this.zahtevXmlConversionAgent.marshallToFile(zahtev, this.jaxbContextPath,this.getXmlFilePath());
-            this.zahtevXSLFOTransformer.generateHTML(this.getXmlFilePath());
+            this.XSLFOTransformer.generateHTML(this.getXmlFilePath());
 
         } catch (JAXBException | SAXException | FileNotFoundException e) {
             e.printStackTrace();
@@ -238,7 +256,7 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
                 String.format(
                         "%s%s%s",
                         System.getenv("FRONTEND_URL"),
-                        "/",
+                        "/zahtev/",
                         zahtev.getId()
                 )
         );
@@ -305,6 +323,98 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
                         return null;
                     }
             ).collect(Collectors.toList());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String findGradjaninEmailFromZahtevId(Long zahtevId) {
+        String query = this.sparqlUtil.selectObjectOnly(
+                String.format(
+                        "%s%s",
+                        this.rdfService.getRdfdbConnectionProperties().getDataEndpoint(),
+                        SPARQL_NAMED_GRAPH_URI
+                ),
+                String.format(
+                        "?s ?p ?o\nFILTER (?s=<%s/zahtev/%d> && ?p=<http://ftn.uns.ac.rs/tim5/model/predicate/email_trazioca>)",
+                        System.getenv("FRONTEND_URL"),
+                        zahtevId
+                )
+        );
+        try {
+            List<SparqlQueryResult> sparqlQueryResults = this.rdfService.run(query);
+            String temp = sparqlQueryResults.get(0).getVarValue().toString();
+            return temp.substring(0, temp.indexOf('^')); //remove ^^ characters
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ByteArrayInputStream exportMetadataAsJson(Long zahtevId) {
+        String sparqlQuery = this.sparqlUtil.selectPredicateAndObject(
+                String.format(
+                        "%s%s",
+                        this.rdfService.getRdfdbConnectionProperties().getDataEndpoint(),
+                        SPARQL_NAMED_GRAPH_URI
+                ),
+                String.format("<%s/zahtev/%d>  ?p  ?o", System.getenv("FRONTEND_URL"), zahtevId));
+        String sep = System.getProperty("file.separator");
+        String filePath = String.format(".%s%s%szahtev_metadata.json", sep, OUTPUT_FOLDER_METADATA, sep);
+        this.rdfService.runAndExportInGivenFormat(
+                sparqlQuery,
+                filePath,
+                ResultsFormat.FMT_RS_JSON
+        );
+        try {
+            return new ByteArrayInputStream(FileUtils.readFileToByteArray(new File(filePath)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ByteArrayInputStream exportMetadataAsXml(Long zahtevId) {
+        String sparqlQuery = this.sparqlUtil.selectPredicateAndObject(
+                String.format(
+                        "%s%s",
+                        this.rdfService.getRdfdbConnectionProperties().getDataEndpoint(),
+                        SPARQL_NAMED_GRAPH_URI
+                ),
+                String.format("<%s/zahtev/%d>  ?p  ?o", System.getenv("FRONTEND_URL"), zahtevId));
+        String sep = System.getProperty("file.separator");
+        String filePath = String.format(".%s%s%szahtev_metadata.xml", sep, OUTPUT_FOLDER_METADATA, sep);
+        this.rdfService.runAndExportInGivenFormat(
+                sparqlQuery,
+                filePath,
+                ResultsFormat.FMT_RS_XML
+        );
+        try {
+            return new ByteArrayInputStream(FileUtils.readFileToByteArray(new File(filePath)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ByteArrayInputStream exportMetadataAsRdf(Long zahtevId) {
+        String sparqlQuery = this.sparqlUtil.describe(
+                String.format("%s/zahtev/%d", System.getenv("FRONTEND_URL"), zahtevId),
+                String.format(
+                        "%s%s",
+                        this.rdfService.getRdfdbConnectionProperties().getDataEndpoint(),
+                        SPARQL_NAMED_GRAPH_URI
+                ),
+                String.format("<%s/zahtev/%d>  ?p  ?o", System.getenv("FRONTEND_URL"), zahtevId));
+        String sep = System.getProperty("file.separator");
+        String filePath = String.format(".%s%s%szahtev_metadata.ttl", sep, OUTPUT_FOLDER_METADATA, sep);
+        this.rdfService.runAndExportInNativeFormat(
+                sparqlQuery,
+                filePath
+        );
+        try {
+            return new ByteArrayInputStream(FileUtils.readFileToByteArray(new File(filePath)));
         } catch (IOException e) {
             e.printStackTrace();
         }

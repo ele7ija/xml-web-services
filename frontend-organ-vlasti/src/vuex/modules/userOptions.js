@@ -13,14 +13,14 @@ const state = {
             displayName: 'Podnesi',
             fullName: "Podnesi Novi Zahtev",
             description: 'Podnesi novi zahtev za pristup informaciji od javnog znacaja. Zahtev ce biti poslat sluzbeniku organa vlasti koji ce vas potom kontaktirati kada donese odluku po pitanju pristupa informaciji.',
-            path: 'zahtev-create',
+            name: 'ZahtevCreate',
             id: 2
           },
           {
             displayName: 'Pregled',
             fullName: "Pregled Podnetih Zahteva",
             description: 'Pregledaj sve zahteve koje ste podneli ovom organu vlasti u proteklom periodu.',
-            path: 'zahtev-all',
+            name: 'ZahtevAll',
             id: 3
           }
         ]
@@ -29,7 +29,7 @@ const state = {
         displayName: 'Obavestenje',
         fullName: "Pregled Svih Obavestenja",
         description: 'Pregledaj sva obavestenja o odlukama sluzbenika po pitanju Vasih podnetih zahteva za pristup informacijama od javnog znacaja',
-        path: 'obavestenje-all',
+        name: 'ObavestenjeAll',
         hasChildren: false,
         id: 4
       }
@@ -39,7 +39,7 @@ const state = {
         displayName: 'Zahtevi',
         fullName: "Pregled Svih Zahteva",
         description: 'Odabirom odredjenog zahteva mozete da ga prihvatite ili odbijete',
-        path: 'sluzbenik-zahtev',
+        name: 'ZahtevSluzbenik',
         hasChildren: false,
         id: 5
       },
@@ -47,7 +47,7 @@ const state = {
         displayName: 'Izvestaj',
         fullName: "Godisnji izvestaj",
         description: 'Podnesite godisnji izvestaj o broju podnetih i odbijenih zahteva, kao i broju i sadrzini zalbi protiv obavestenja. Uzvestaj se podnosi povereniku.',
-        path: 'izvestaj',
+        name: 'Izvestaj',
         hasChildren: false,
         id: 6
       },
@@ -55,7 +55,7 @@ const state = {
         displayName: 'Pretraga',
         fullName: "Pretrage",
         description: 'Pretrage svih dokumenata po tekstualnom sadrzaju i po metapodacima.',
-        path: 'pretrage',
+        name: 'Pretrage',
         hasChildren: false,
         id: 7
       }

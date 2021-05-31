@@ -5,10 +5,10 @@
           <h3 class="my-3 text-center">Registracija</h3>
           <ul class="nav nav-pills nav-fill my-5">
             <li class="nav-item">
-              <a :class="'nav-link '+(registerGradjanin ? 'active' : '')" href="#" @click="switchToGradjaninView">Gradjanin</a>
+              <span :class="'nav-link '+(registerGradjanin ? 'active' : '')" @click="switchToGradjaninView" :style="{cursor: 'pointer'}">Gradjanin</span>
             </li>
             <li class="nav-item">
-              <a :class="'nav-link '+(registerGradjanin ? '' : 'active')" href="#" @click="switchToSluzbenikView">Sluzbenik</a>
+              <span :class="'nav-link '+(registerGradjanin ? '' : 'active')" @click="switchToSluzbenikView" :style="{cursor: 'pointer'}">Sluzbenik</span>
             </li>
           </ul>
           <div :id="idEditorGradjaninWrapper"></div>

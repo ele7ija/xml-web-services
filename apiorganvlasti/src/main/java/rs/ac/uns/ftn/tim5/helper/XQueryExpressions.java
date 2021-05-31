@@ -26,6 +26,11 @@ public class XQueryExpressions {
             "xquery version \"3.1\";\n" +
                     "xmldb:remove('/db/sample/obavestenje', '%s')";
 
+    public static final String X_QUERY_FIND_OBAVESTENJE_BY_ID_ZAHTEVA_EXPRESSION = "xquery version \"3.1\";\n" +
+            "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/obavestenje\";\n" +
+            "for $x in collection(\"/db/sample/obavestenje\")/Obavestenje[@id_zahteva=%d]\n" +
+            "return $x";
+
 
     //XQUERY I XUPDATE ZA RESENJE
 

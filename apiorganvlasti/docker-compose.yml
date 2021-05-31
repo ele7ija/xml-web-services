@@ -4,6 +4,8 @@ services:
     image: existdb/existdb:latest
     ports:
       - "8081:8080"
+    networks:
+      - api-organ-vlasti-network
   rdf-db-organ-vlasti:
     build:
       context: .
@@ -12,6 +14,9 @@ services:
       - "8082:3030"
     environment:
       - ADMIN_PASSWORD=password
+      - FUSEKI_DATASET_1=organvlasti
+    networks:
+      - api-organ-vlasti-network
   organ-vlasti:
     build:
       context: .
@@ -28,7 +33,19 @@ services:
       SPRING_PORT: 8080
 
       FRONTEND_URL: http://localhost:8086
+      EMAIL_SERVICE_ENDPOINT: http://emailservice:8080
     volumes:
       - ./output_html:/output_html
       - ./output_pdf:/output_pdf
       - ./output_xml:/output_xml
+      - ./output_metadata:/output_metadata
+    networks:
+      - api-organ-vlasti-network
+      - email-service-netowrk
+
+networks:
+  api-organ-vlasti-network:
+    name: api-organ-vlasti-network
+  email-service-netowrk:
+    external:
+      name: email-service-netowrk

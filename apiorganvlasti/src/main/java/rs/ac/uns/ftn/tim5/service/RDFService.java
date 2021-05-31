@@ -12,6 +12,7 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.riot.web.HttpOp;
+import org.apache.jena.sparql.resultset.ResultsFormat;
 import org.apache.jena.update.UpdateExecutionFactory;
 import org.apache.jena.update.UpdateFactory;
 import org.apache.jena.update.UpdateProcessor;
@@ -151,5 +152,32 @@ public class RDFService {
 
     public void setRdfdbConnectionProperties(RDFDBConnectionProperties rdfdbConnectionProperties) {
         this.rdfdbConnectionProperties = rdfdbConnectionProperties;
+    }
+
+    public void runAndExportInGivenFormat(String sparqlQuery, String outputFilePath, ResultsFormat resultsFormat) {
+        // Create a QueryExecution that will access a SPARQL service over HTTP
+        QueryExecution query = QueryExecutionFactory.sparqlService(this.rdfdbConnectionProperties.getQueryEndpoint(), sparqlQuery);
+        // Query the SPARQL endpoint, iterate over the result set...
+        ResultSet results = query.execSelect();
+
+        OutputStream output = null;
+        try {
+            output = new FileOutputStream(outputFilePath);
+            ResultSetFormatter.output(output, results, resultsFormat);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        query.close();
+    }
+
+    public void runAndExportInNativeFormat(String sparqlQuery, String filePath) {
+        QueryExecution query = QueryExecutionFactory.sparqlService(this.rdfdbConnectionProperties.getQueryEndpoint(), sparqlQuery);
+        Model model = query.execDescribe();
+        try {
+            model.write(new FileOutputStream(filePath), "TURTLE");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        query.close();
     }
 }

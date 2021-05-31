@@ -198,7 +198,8 @@ export default {
         <ob:Obavestenje
             xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje"
             xmlns:util="http://ftn.uns.ac.rs/tim5/model/util"
-            xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+            xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+            id_zahteva="${this.zahtev.id}">
             <ob:odbijen>false</ob:odbijen>
             <ob:istekao>false</ob:istekao>
             <ob:Trazilac>
@@ -323,6 +324,8 @@ export default {
       const month = new Date().getMonth() + 1;
       if(month < 10) {
         return '0' + month;
+      } else {
+        return month;
       }
     },
     async submit() {
