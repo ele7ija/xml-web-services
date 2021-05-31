@@ -25,8 +25,8 @@ public class IstekliZahteviManager {
     @Autowired
     private ObavestenjeService obavestenjeService;
 
-    //broj dana pre nego sto zahtev istekne
-    private final int X = 0;
+    //broj dana pre nego sto zahtev istekne (za testiranje staviti na 0)
+    private final int X = 1;
 
     /**
      * Proverava svaki minut da li je odredjeni zahtev istekao
@@ -89,12 +89,14 @@ public class IstekliZahteviManager {
         date.set(Calendar.MINUTE, 0);
         date.set(Calendar.SECOND, 0);
         date.set(Calendar.MILLISECOND, 0);
-        date.set(Calendar.DAY_OF_MONTH, datum.getDan().getDay());
-        date.set(Calendar.MONTH, datum.getMesec().getMonth());
+        date.set(Calendar.DATE, datum.getDan().getDay());
+        date.set(Calendar.MONTH, datum.getMesec().getMonth() - 1);
         date.set(Calendar.YEAR, datum.getGodina().getYear());
-        Date d = Date.from(date.toInstant());
 
-        Date xDaysAgo = Date.from(Instant.now().minus(Duration.ofDays( this.X)));
-        return d.after(xDaysAgo);
+        Date dateTreshold = Date.from(date.toInstant().plus(Duration.ofDays(this.X)));
+        Date dateCurrent = new Date();
+        System.out.println(dateCurrent.getTime());
+        System.out.println(dateTreshold.getTime());
+        return dateCurrent.getTime() >= dateTreshold.getTime();
     }
 }
