@@ -2,15 +2,13 @@ package rs.ac.uns.ftn.tim5.helper;
 
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.StringReader;
-import java.io.StringWriter;
+import java.io.*;
 
 @Component
 public class XmlConversionAgent<T> {
@@ -44,5 +42,21 @@ public class XmlConversionAgent<T> {
         OutputStream os = new ByteArrayOutputStream();
         marshaller.marshal(entity, os);
         return os;
+    }
+
+    public void marshallToFile(T entity, String contextPath, String filePath)
+            throws JAXBException, SAXException, FileNotFoundException {
+        JAXBContext context = JAXBContext.newInstance(contextPath);
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        System.out.println(System.getProperty("user.dir"));
+        OutputStream os = new FileOutputStream(filePath);
+        marshaller.marshal(entity, os);
+        try {
+            os.flush();
+            os.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

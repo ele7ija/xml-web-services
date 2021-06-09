@@ -27,7 +27,7 @@ public class XQueryExpressions {
                     "xmldb:remove('/db/sample/zalba_cutanja', '%s')";
 
 
-    //XQUERY I XUPDATE ZA RESENJE
+    //XQUERY I XUPDATE ZA POVERENIKE
 
     public static final String X_QUERY_FIND_ALL_POVERENICI_EXPRESSION = "xquery version \"3.1\";\n" +
             "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/poverenik\";\n" +
@@ -37,6 +37,40 @@ public class XQueryExpressions {
     public static final String X_UPDATE_REMOVE_POVERENIK_BY_ID_EXPRESSION =
             "xquery version \"3.1\";\n" +
                     "xmldb:remove('/db/sample/poverenik', '%s')";
+
+    public static final String X_QUERY_FIND_POVERENIK_BY_KORISNICKO_IME = "xquery version \"3.1\";\n"
+            + "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/poverenik\";\n"
+            + "for $x in collection(\"/db/sample/poverenik\")/Poverenik\n" + "where $x/korisnicko_ime/text()=\"%s\"\n"
+            + "return $x";
+
+
+    //XQUERY I XUPDATE ZA IZVESTAJ
+
+    public static final String X_QUERY_FIND_ALL_IZVESTAJI_EXPRESSION = "xquery version \"3.1\";\n" +
+            "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/izvestaj\";\n" +
+            "for $x in collection(\"/db/sample/izvestaj\")\n" +
+            "return $x";
+
+    public static final String X_UPDATE_REMOVE_IZVESTAJ_BY_ID_EXPRESSION =
+            "xquery version \"3.1\";\n" +
+                    "xmldb:remove('/db/sample/izvestaj', '%s')";
+
+
+    //XQUERY I XUPDATE ZA GRADJANINA
+
+    public static final String X_QUERY_FIND_ALL_GRADJANI_EXPRESSION = "xquery version \"3.1\";\n" +
+            "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/gradjanin\";\n" +
+            "for $x in collection(\"/db/sample/gradjanin\")\n" +
+            "return $x";
+
+    public static final String X_UPDATE_REMOVE_GRADJANIN_BY_ID_EXPRESSION =
+            "xquery version \"3.1\";\n" +
+                    "xmldb:remove('/db/sample/gradjanin', '%s')";
+
+    public static final String X_QUERY_FIND_GRADJANIN_BY_KORISNICKO_IME = "xquery version \"3.1\";\n"
+            + "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/gradjanin\";\n"
+            + "for $x in collection(\"/db/sample/gradjanin\")/Gradjanin\n" + "where $x/korisnicko_ime/text()=\"%s\"\n"
+            + "return $x";
 
 
     //XQUERY I XUPDATE ZA RESENJE

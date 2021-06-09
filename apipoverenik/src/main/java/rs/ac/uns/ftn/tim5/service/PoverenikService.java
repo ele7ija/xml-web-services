@@ -16,8 +16,7 @@ import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
 import java.util.List;
 
-import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_QUERY_FIND_ALL_POVERENICI_EXPRESSION;
-import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_UPDATE_REMOVE_POVERENIK_BY_ID_EXPRESSION;
+import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.*;
 
 @Service
 public class PoverenikService implements AbstractXmlService<Poverenik> {
@@ -35,6 +34,9 @@ public class PoverenikService implements AbstractXmlService<Poverenik> {
 
     @Autowired
     private RDFService rdfService;
+
+    @Autowired
+    private UUIDHelper uuidHelper;
 
     @PostConstruct
     public void injectRepositoryProperties() {
@@ -77,6 +79,7 @@ public class PoverenikService implements AbstractXmlService<Poverenik> {
         Poverenik poverenik;
         try {
             poverenik = this.poverenikXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
+            poverenik.setId(this.uuidHelper.getUUID());
         } catch (JAXBException e) {
             throw new InvalidXmlException(Poverenik.class, e.getMessage());
         }
@@ -126,6 +129,17 @@ public class PoverenikService implements AbstractXmlService<Poverenik> {
         } catch (XMLDBException e) {
             throw new XmlDatabaseException(e.getMessage());
         }
+    }
+
+    public Poverenik findByUsername(String username) {
+        try {
+            return this.poverenikAbstractXmlRepository.findEntity(X_QUERY_FIND_POVERENIK_BY_KORISNICKO_IME, username);
+        } catch (XMLDBException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

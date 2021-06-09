@@ -2,6 +2,8 @@ package rs.ac.uns.ftn.tim5.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import rs.ac.uns.ftn.tim5.model.gradjanin.Gradjanin;
+import rs.ac.uns.ftn.tim5.model.izvestaj.Izvestaj;
 import rs.ac.uns.ftn.tim5.model.poverenik.Poverenik;
 import rs.ac.uns.ftn.tim5.model.resenje.Resenje;
 import rs.ac.uns.ftn.tim5.model.zalba_na_odluku.ZalbaNaOdluku;
@@ -27,7 +29,17 @@ public class AutowireConfig {
     }
 
     @Bean
+    public AbstractXmlRepository<Izvestaj> izvestajRepository() {
+        return new AbstractXmlRepository<Izvestaj>();
+    }
+
+    @Bean
     public AbstractXmlRepository<Poverenik> poverenikRepository() {
         return new AbstractXmlRepository<Poverenik>();
+    }
+
+    @Bean
+    public AbstractXmlRepository<Gradjanin> gradjaninRepository() {
+        return new AbstractXmlRepository<Gradjanin>();
     }
 }
