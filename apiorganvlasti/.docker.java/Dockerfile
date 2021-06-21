@@ -52,6 +52,7 @@ RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 # ***Production Stage for Spring boot application image**
 FROM openjdk:11-jre as production
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8B48AD6246925553 7638D0442B90D010 CBF8D6FD518E17E1
 RUN echo "deb http://httpredir.debian.org/debian jessie main contrib" > /etc/apt/sources.list \
     && echo "deb http://security.debian.org/ jessie/updates main contrib" >> /etc/apt/sources.list \
     && echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections \
