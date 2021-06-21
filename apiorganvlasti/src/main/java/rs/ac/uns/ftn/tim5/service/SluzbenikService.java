@@ -44,8 +44,8 @@ public class SluzbenikService implements AbstractXmlService<Sluzbenik> {
         this.sluzbenikAbstractXmlRepository.injectRepositoryProperties(
                 "/db/sample/sluzbenik",
                 jaxbContextPath,
-                X_QUERY_FIND_ALL_ZAHTEVI_EXPRESSION,
-                X_UPDATE_REMOVE_ZAHTEV_BY_ID_EXPRESSION
+                X_QUERY_FIND_ALL_SLUZBENICI_EXPRESSION,
+                X_UPDATE_REMOVE_SLUZBENIK_BY_ID_EXPRESSION
         );
     }
 
