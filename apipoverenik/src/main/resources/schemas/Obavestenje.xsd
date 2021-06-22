@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://ftn.uns.ac.rs/tim5/model/obavestenje"
+    xmlns:obavestenje="http://ftn.uns.ac.rs/tim5/model/obavestenje"
+    xmlns:util="http://ftn.uns.ac.rs/tim5/model/util"
+    xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate">
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util" schemaLocation="util.xsd"/>
+    <xs:element name="Obavestenje">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="odbijen">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:boolean">
+                                <xs:attribute default="pred:odbijen" name="property"
+                                    type="xs:string"/>
+                                <xs:attribute name="content" type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="istekao">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:boolean">
+                                <xs:attribute default="pred:istekao" name="property"
+                                    type="xs:string"/>
+                                <xs:attribute name="content" type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Trazilac">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:extension base="util:TFizicko_Lice">
+                                <xs:attribute default="pred:email_trazioca" name="property"
+                                    type="xs:string"/>
+                                <xs:attribute name="content" type="xs:string"/>
+                            </xs:extension>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Organ">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:extension base="util:TPravno_Lice">
+                                <xs:attribute default="pred:naziv_organa_vlasti" name="property"
+                                    type="xs:string"/>
+                                <xs:attribute name="content" type="xs:string"/>
+                            </xs:extension>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Predmet">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Broj_Predmeta" type="xs:int"/>
+                            <xs:element name="Datum">
+                                <xs:complexType>
+                                    <xs:complexContent>
+                                        <xs:extension base="util:Datum">
+                                            <xs:attribute default="pred:datum" name="property"
+                                                type="xs:string"/>
+                                            <xs:attribute name="content" type="xs:string"/>
+                                        </xs:extension>
+                                    </xs:complexContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Opis_Trazene_Informacije" type="xs:string"/>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="Pravni_Osnov"
+                                type="util:TPravni_Osnov"/>
+                            <xs:element maxOccurs="unbounded" name="Odgovor"
+                                type="util:TOdgovor_Na_Zahtev"/>
+                            <xs:element minOccurs="0" name="Uplata" type="util:TUplata"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:long"/>
+            <xs:attribute name="id_zahteva" type="xs:long"/>
+            <xs:attribute name="about" type="xs:anyURI"/>
+            <xs:attribute fixed="http://ftn.uns.ac.rs.tim5/model/predicate" name="vocab"
+                type="xs:string"/>
+            <xs:attribute fixed="pred:zahtev_url" name="property" type="xs:string"/>
+            <xs:attribute name="content" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Kolekcija_Obavestenja">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="obavestenje:Obavestenje"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
