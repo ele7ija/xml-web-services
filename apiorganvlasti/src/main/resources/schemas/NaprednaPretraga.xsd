@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           targetNamespace="http://ftn.uns.ac.rs/tim5/model/naprednaPretraga">
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util" schemaLocation="util.xsd"/>
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/zahtev" schemaLocation="Zahtev.xsd"/>
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/resenje" schemaLocation="Resenje.xsd"/>
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/izvestaj" schemaLocation="Izvestaj.xsd"/>
+    <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/osnovnaPretraga" schemaLocation="OsnovnaPretraga.xsd"/>
+    <xs:element name="Napredna_Pretraga">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Metapodatak">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Naziv_Metapodatka" type="xs:string"/>
+                            <xs:element name="Vrednost_Metapodatka" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+<!--    Koristiti Rezultat Osnovne Pretrage kao rezultat pretrage-->
+</xs:schema>
