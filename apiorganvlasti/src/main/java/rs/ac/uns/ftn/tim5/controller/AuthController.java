@@ -21,6 +21,7 @@ public class AuthController
     @PostMapping(value = "/login")
     public ResponseEntity<LoginDTO> login(HttpServletResponse response) {
         String jwt = response.getHeader(jwtConfig.getAuthorizationHeader()).replace(jwtConfig.getTokenPrefix(), "");
+        System.out.println("Uradi ispis");
         return new ResponseEntity<>(
                 new LoginDTO(jwt),
                 HttpStatus.OK
