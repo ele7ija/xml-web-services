@@ -80,6 +80,8 @@ public class IstekliZahteviManager {
                 obavestenje1.setPredmet(p1);
 
                 this.obavestenjeService.create(obavestenje1);
+
+                //TODO ovde soap logika mozda ne
             }
         }
     }

@@ -8,6 +8,7 @@ import org.springframework.core.io.InputStreamSource;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.XMLDBException;
+import rs.ac.uns.ftn.tim5.SOAP.client.ObavestenjeClient;
 import rs.ac.uns.ftn.tim5.helper.SparqlQueryResult;
 import rs.ac.uns.ftn.tim5.helper.XmlConversionAgent;
 import rs.ac.uns.ftn.tim5.model.exception.EntityNotFoundException;
@@ -69,6 +70,9 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
     private SparqlUtil sparqlUtil;
 
     private XSLFOTransformer XSLFOTransformer;
+
+    @Autowired
+    private ObavestenjeClient client;
 
     @PostConstruct
     public void injectRepositoryProperties() {
@@ -152,8 +156,10 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
         Zahtev zahtev = this.zahtevService.findById(obavestenje.getIdZahteva());
         if (obavestenje.getOdbijen().isValue()) {
             this.emailService.odbijZahtev(zahtev);
+            this.client.sendObavestenje(obavestenje);
         } else if(obavestenje.getIstekao().isValue()) {
             this.emailService.istekaoZahtev(zahtev);
+            this.client.sendObavestenje(obavestenje);
         } else {
            this.emailService.prihvatiZahtev(
                    zahtev,
@@ -191,8 +197,12 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
         Zahtev zahtev = this.zahtevService.findById(obavestenje.getIdZahteva());
         if (obavestenje.getOdbijen().isValue()) {
             this.emailService.odbijZahtev(zahtev);
+            this.client.sendObavestenje(obavestenje);
+            //TODO soap ovde
         } else if(obavestenje.getIstekao().isValue()) {
             this.emailService.istekaoZahtev(zahtev);
+            this.client.sendObavestenje(obavestenje);
+            //TODO soap ovde mozda ovde
         } else {
             this.emailService.prihvatiZahtev(
                     zahtev,

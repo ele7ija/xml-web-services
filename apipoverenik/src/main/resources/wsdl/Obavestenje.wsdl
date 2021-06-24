@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ObavestenjeService" targetNamespace="http://www.project.org/ws/obavestenje" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.project.org/ws/obavestenje" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:ns1="http://ftn.uns.ac.rs/tim5/model/util" xmlns:tns="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku" version="1.0">
+
+  <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util"/>
+
+  <xs:element name="Kolekcija_zalbi_na_Odluku">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:Zalba_na_odluku"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Zalba_na_odluku">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="poverenik" type="ns1:Adresa"/>
+        <xs:element name="zalilac">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="osnovni_podaci" type="ns1:TFizicko_Lice"/>
+              <xs:element minOccurs="0" name="drugi_podaci_za_kontakt" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="property" type="xs:string"/>
+            <xs:attribute name="content" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="organ_vlasti">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="ns1:TPravno_Lice">
+                <xs:sequence/>
+                <xs:attribute name="property" type="xs:string"/>
+                <xs:attribute name="content" type="xs:string"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="datum_zahteva" type="ns1:Datum"/>
+        <xs:element name="odluka">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element default="1" name="broj_odluke" type="xs:integer"/>
+              <xs:element default="2020" name="godina" type="xs:anySimpleType"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="osnova_za_zaljenje" type="xs:string"/>
+        <xs:element name="mesto_zalbe">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="property" type="xs:string"/>
+                <xs:attribute name="content" type="xs:string"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="datum_zalbe">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="ns1:Datum">
+                <xs:sequence/>
+                <xs:attribute name="property" type="xs:string"/>
+                <xs:attribute name="content" type="xs:string"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:long"/>
+      <xs:attribute name="about" type="xs:anyURI"/>
+      <xs:attribute name="vocab" type="xs:string"/>
+      <xs:attribute name="property" type="xs:string"/>
+      <xs:attribute name="content" type="xs:string"/>
+      <xs:attribute name="id_zahteva" type="xs:long"/>
+      <xs:attribute name="id_obavestenja" type="xs:long"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+<xs:schema xmlns:ns1="http://ftn.uns.ac.rs/tim5/model/util" xmlns:tns="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja" version="1.0">
+
+  <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util"/>
+
+  <xs:element name="Kolekcija_zalbi_cutanja">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:Zalba_cutanja"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Zalba_cutanja">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="poverenik" type="ns1:Adresa"/>
+        <xs:element name="zalilac">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="osnovni_podaci" type="ns1:TFizicko_Lice"/>
+              <xs:element minOccurs="0" name="drugi_podaci_za_kontakt" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="property" type="xs:string"/>
+            <xs:attribute name="content" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="organ_vlasti">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="ns1:TPravno_Lice">
+                <xs:sequence/>
+                <xs:attribute name="property" type="xs:string"/>
+                <xs:attribute name="content" type="xs:string"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="razlog_zalbe" type="xs:string"/>
+        <xs:element name="datum_zahteva" type="ns1:Datum"/>
+        <xs:element name="zahtevana_informacije" type="xs:string"/>
+        <xs:element name="mesto_zalbe">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="property" type="xs:string"/>
+                <xs:attribute name="content" type="xs:string"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="datum_zalbe">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="ns1:Datum">
+                <xs:sequence/>
+                <xs:attribute name="property" type="xs:string"/>
+                <xs:attribute name="content" type="xs:string"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:long"/>
+      <xs:attribute name="about" type="xs:anyURI"/>
+      <xs:attribute name="vocab" type="xs:string"/>
+      <xs:attribute name="property" type="xs:string"/>
+      <xs:attribute name="content" type="xs:string"/>
+      <xs:attribute name="id_zahteva" type="xs:long"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+<xs:schema xmlns:tns="http://ftn.uns.ac.rs/tim5/model/util" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ftn.uns.ac.rs/tim5/model/util" version="1.0">
+
+  <xs:complexType name="TFizicko_Lice">
+    <xs:complexContent>
+      <xs:extension base="tns:TLice">
+        <xs:sequence>
+          <xs:element name="Ime" type="xs:string"/>
+          <xs:element name="Prezime" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="TLice">
+    <xs:sequence>
+      <xs:element name="Adresa" type="tns:Adresa"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Adresa">
+    <xs:sequence>
+      <xs:element name="Mesto" type="xs:string"/>
+      <xs:element minOccurs="0" name="Postanski_broj" type="xs:int"/>
+      <xs:element name="Ulica" type="xs:string"/>
+      <xs:element name="Broj" type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TPravno_Lice">
+    <xs:complexContent>
+      <xs:extension base="tns:TLice">
+        <xs:sequence>
+          <xs:element name="Naziv" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Datum">
+    <xs:sequence>
+      <xs:element default="---01" name="dan" type="xs:gDay"/>
+      <xs:element default="--01" name="mesec" type="xs:gMonth"/>
+      <xs:element default="2020" name="godina" type="xs:gYear"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TPravni_Osnov">
+    <xs:sequence>
+      <xs:element name="Naziv" type="xs:string"/>
+      <xs:element minOccurs="0" name="Clan" type="xs:positiveInteger"/>
+      <xs:element minOccurs="0" name="Strana" type="xs:positiveInteger"/>
+      <xs:element minOccurs="0" name="Dopune">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Dopuna" type="tns:TDopuna_Pravnog_Osnova"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TDopuna_Pravnog_Osnova">
+    <xs:sequence>
+      <xs:element name="Broj_dopune" type="xs:positiveInteger"/>
+      <xs:element name="Godina" type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TOdgovor_Na_Zahtev">
+    <xs:sequence>
+      <xs:element name="Odobren" type="xs:boolean"/>
+      <xs:element name="Element_Zahteva" type="tns:TElement_Zahteva"/>
+      <xs:element minOccurs="0" name="Uvid">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Datum_Uvida" type="tns:Datum"/>
+            <xs:element name="Vreme_Uvida" type="tns:TVreme"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Trosak">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Iznos" type="xs:nonNegativeInteger"/>
+            <xs:element name="Valuta" type="xs:string"/>
+            <xs:element minOccurs="0" name="Pravni_Osnov" type="tns:TPravni_Osnov"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TElement_Zahteva">
+    <xs:sequence>
+      <xs:element name="Tekst" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Metod_Dostave" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TVreme">
+    <xs:sequence>
+      <xs:element name="Sat" type="xs:int"/>
+      <xs:element name="Minut" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TUplata">
+    <xs:sequence>
+      <xs:element name="Racun" type="tns:TRacun"/>
+      <xs:element name="Iznos" type="xs:nonNegativeInteger"/>
+      <xs:element name="Poziv_Na_Broj" type="xs:nonNegativeInteger"/>
+      <xs:element minOccurs="0" name="Pravni_Osnov" type="tns:TPravni_Osnov"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TRacun">
+    <xs:sequence>
+      <xs:element name="Broj_Racuna" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+<xs:schema xmlns:ns1="http://ftn.uns.ac.rs/tim5/model/util" xmlns:tns="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ftn.uns.ac.rs/tim5/model/resenje" version="1.0">
+
+  <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util"/>
+
+  <xs:element name="Kolekcija_resenja">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:Resenje"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Kontekst">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Tekst_konteksta">
+          <xs:complexType mixed="true">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="Pravni_osnov" type="ns1:TPravni_Osnov"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Zalba">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Datum_podnosenja_zahteva" type="ns1:Datum"/>
+              <xs:element name="Tip_zalbe" type="tns:TTip_zalbe"/>
+              <xs:element name="Podnosilac" type="tns:TOsoba"/>
+              <xs:element name="Organ_vlasti" type="ns1:TPravno_Lice"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Odluka">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+          <xs:element name="Obrazlozenje">
+            <xs:complexType mixed="true">
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Pravni_osnov" type="ns1:TPravni_Osnov"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Ishod" type="tns:TIshod_odluke"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Resenje">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="datum_resenja">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="ns1:Datum">
+                <xs:sequence/>
+                <xs:attribute name="property" type="xs:string"/>
+                <xs:attribute name="content" type="xs:string"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="broj_resenja" type="xs:anyType"/>
+        <xs:element ref="tns:Kontekst"/>
+        <xs:element ref="tns:Odluka"/>
+        <xs:element name="Poverenik">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="ns1:TFizicko_Lice">
+                <xs:sequence/>
+                <xs:attribute name="property" type="xs:string"/>
+                <xs:attribute name="content" type="xs:string"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:long"/>
+      <xs:attribute name="id_zalbe" type="xs:long"/>
+      <xs:attribute name="id_poverenika" type="xs:long"/>
+      <xs:attribute name="about" type="xs:anyURI"/>
+      <xs:attribute name="vocab" type="xs:string"/>
+      <xs:attribute name="property" type="xs:string"/>
+      <xs:attribute name="content" type="xs:string"/>
+      <xs:attribute name="tip_zalbe" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="TOsoba">
+    <xs:sequence>
+      <xs:element name="Ime" type="xs:string"/>
+      <xs:element name="Prezime" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="TIshod_odluke">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="osnovana_zalba"/>
+      <xs:enumeration value="neosnovana_zalba"/>
+      <xs:enumeration value="ponistena_zalba"/>
+      <xs:enumeration value="odbijen_zahtev"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TTip_zalbe">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="odbacivanje"/>
+      <xs:enumeration value="nepostupanje"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+<ns1:schema xmlns:ns1="http://www.w3.org/2001/XMLSchema" xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:tns="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:xs="http://www.w3.org/2001/XMLSchema#" elementFormDefault="qualified" targetNamespace="http://ftn.uns.ac.rs/tim5/model/obavestenje" version="1.0">
+
+  <ns1:import namespace="http://ftn.uns.ac.rs/tim5/model/util"/>
+
+  <ns1:element name="Kolekcija_Obavestenja">
+    <ns1:complexType>
+      <ns1:sequence>
+        <ns1:element maxOccurs="unbounded" minOccurs="0" ref="tns:Obavestenje"/>
+      </ns1:sequence>
+    </ns1:complexType>
+  </ns1:element>
+
+  <ns1:element name="Obavestenje">
+    <ns1:complexType>
+      <ns1:sequence>
+        <ns1:element name="odbijen">
+          <ns1:complexType>
+            <ns1:simpleContent>
+              <ns1:extension base="ns1:boolean">
+                <ns1:attribute name="property" type="ns1:string"/>
+                <ns1:attribute name="content" type="ns1:string"/>
+              </ns1:extension>
+            </ns1:simpleContent>
+          </ns1:complexType>
+        </ns1:element>
+        <ns1:element name="istekao">
+          <ns1:complexType>
+            <ns1:simpleContent>
+              <ns1:extension base="ns1:boolean">
+                <ns1:attribute name="property" type="ns1:string"/>
+                <ns1:attribute name="content" type="ns1:string"/>
+              </ns1:extension>
+            </ns1:simpleContent>
+          </ns1:complexType>
+        </ns1:element>
+        <ns1:element name="Trazilac">
+          <ns1:complexType>
+            <ns1:complexContent>
+              <ns1:extension base="util:TFizicko_Lice">
+                <ns1:sequence/>
+                <ns1:attribute name="property" type="ns1:string"/>
+                <ns1:attribute name="content" type="ns1:string"/>
+              </ns1:extension>
+            </ns1:complexContent>
+          </ns1:complexType>
+        </ns1:element>
+        <ns1:element name="Organ">
+          <ns1:complexType>
+            <ns1:complexContent>
+              <ns1:extension base="util:TPravno_Lice">
+                <ns1:sequence/>
+                <ns1:attribute name="property" type="ns1:string"/>
+                <ns1:attribute name="content" type="ns1:string"/>
+              </ns1:extension>
+            </ns1:complexContent>
+          </ns1:complexType>
+        </ns1:element>
+        <ns1:element name="Predmet">
+          <ns1:complexType>
+            <ns1:sequence>
+              <ns1:element name="Broj_Predmeta" type="ns1:int"/>
+              <ns1:element name="Datum">
+                <ns1:complexType>
+                  <ns1:complexContent>
+                    <ns1:extension base="util:Datum">
+                      <ns1:sequence/>
+                      <ns1:attribute name="property" type="ns1:string"/>
+                      <ns1:attribute name="content" type="ns1:string"/>
+                    </ns1:extension>
+                  </ns1:complexContent>
+                </ns1:complexType>
+              </ns1:element>
+              <ns1:element name="Opis_Trazene_Informacije" type="ns1:string"/>
+              <ns1:element maxOccurs="unbounded" minOccurs="0" name="Pravni_Osnov" type="util:TPravni_Osnov"/>
+              <ns1:element maxOccurs="unbounded" name="Odgovor" type="util:TOdgovor_Na_Zahtev"/>
+              <ns1:element minOccurs="0" name="Uplata" type="util:TUplata"/>
+            </ns1:sequence>
+          </ns1:complexType>
+        </ns1:element>
+      </ns1:sequence>
+      <ns1:attribute name="id" type="ns1:long"/>
+      <ns1:attribute name="id_zahteva" type="ns1:long"/>
+      <ns1:attribute name="about" type="ns1:anyURI"/>
+      <ns1:attribute name="vocab" type="ns1:string"/>
+      <ns1:attribute name="property" type="ns1:string"/>
+      <ns1:attribute name="content" type="ns1:string"/>
+    </ns1:complexType>
+  </ns1:element>
+
+</ns1:schema>
+<xs:schema xmlns:ns1="http://ftn.uns.ac.rs/tim5/model/util" xmlns:tns="http://ftn.uns.ac.rs/tim5/model/izvestaj" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ftn.uns.ac.rs/tim5/model/izvestaj" version="1.0">
+
+  <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util"/>
+
+  <xs:element name="Izvestaj">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="statistika_zahteva">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="broj_prihvacenih" type="xs:nonNegativeInteger"/>
+              <xs:element name="broj_odbijenih" type="xs:nonNegativeInteger"/>
+              <xs:element name="broj_isteklih" type="xs:nonNegativeInteger"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="statistika_zalbi">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="broj_zalbi_na_odluku" type="xs:nonNegativeInteger"/>
+              <xs:element name="zalbe_cutanja">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="nije_postupio" type="xs:nonNegativeInteger"/>
+                    <xs:element name="nije_postupio_u_celosti" type="xs:nonNegativeInteger"/>
+                    <xs:element name="nije_postupio_u_zakonskom_roku" type="xs:nonNegativeInteger"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="organ_vlasti" type="ns1:TPravno_Lice"/>
+        <xs:element name="datum_podnosenja">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="ns1:Datum">
+                <xs:sequence/>
+                <xs:attribute name="property" type="xs:string"/>
+                <xs:attribute name="content" type="xs:string"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:long"/>
+      <xs:attribute name="about" type="xs:anyURI"/>
+      <xs:attribute name="vocab" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Kolekcija_Izvestaja">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:Izvestaj"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="sendObavestenjeResponse">
+  </wsdl:message>
+  <wsdl:message name="sendObavestenje">
+    <wsdl:part name="obavestenje">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Obavestenje">
+    <wsdl:operation name="sendObavestenje">
+      <wsdl:input name="sendObavestenje" message="tns:sendObavestenje">
+    </wsdl:input>
+      <wsdl:output name="sendObavestenjeResponse" message="tns:sendObavestenjeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ObavestenjeServiceSoapBinding" type="tns:Obavestenje">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sendObavestenje">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="sendObavestenje">
+        <soap:body use="literal" namespace="http://www.project.org/ws/obavestenje"/>
+      </wsdl:input>
+      <wsdl:output name="sendObavestenjeResponse">
+        <soap:body use="literal" namespace="http://www.project.org/ws/obavestenje"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ObavestenjeService">
+    <wsdl:port name="ObavestenjePort" binding="tns:ObavestenjeServiceSoapBinding">
+      <soap:address location="http://localhost:9090/ObavestenjePort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
