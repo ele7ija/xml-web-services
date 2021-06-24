@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions name="ObavestenjeService" targetNamespace="http://www.sistem.org/ws/obavestenje" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.sistem.org/ws/obavestenje" xmlns:ns1="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<wsdl:definitions name="IzvestajService" targetNamespace="http://www.sistem.org/ws/izvestaj" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.sistem.org/ws/izvestaj" xmlns:ns1="http://ftn.uns.ac.rs/tim5/model/izvestaj" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <wsdl:types>
 <xs:schema xmlns:ns1="http://ftn.uns.ac.rs/tim5/model/util" xmlns:tns="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku" version="1.0">
 
@@ -155,12 +155,11 @@
 </xs:schema>
 <xs:schema xmlns:tns="http://ftn.uns.ac.rs/tim5/model/util" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ftn.uns.ac.rs/tim5/model/util" version="1.0">
 
-  <xs:complexType name="TFizicko_Lice">
+  <xs:complexType name="TPravno_Lice">
     <xs:complexContent>
       <xs:extension base="tns:TLice">
         <xs:sequence>
-          <xs:element name="Ime" type="xs:string"/>
-          <xs:element name="Prezime" type="xs:string"/>
+          <xs:element name="Naziv" type="xs:string"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -181,11 +180,12 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="TPravno_Lice">
+  <xs:complexType name="TFizicko_Lice">
     <xs:complexContent>
       <xs:extension base="tns:TLice">
         <xs:sequence>
-          <xs:element name="Naziv" type="xs:string"/>
+          <xs:element name="Ime" type="xs:string"/>
+          <xs:element name="Prezime" type="xs:string"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -259,18 +259,18 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="TRacun">
+    <xs:sequence>
+      <xs:element name="Broj_Racuna" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="TUplata">
     <xs:sequence>
       <xs:element name="Racun" type="tns:TRacun"/>
       <xs:element name="Iznos" type="xs:nonNegativeInteger"/>
       <xs:element name="Poziv_Na_Broj" type="xs:nonNegativeInteger"/>
       <xs:element minOccurs="0" name="Pravni_Osnov" type="tns:TPravni_Osnov"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="TRacun">
-    <xs:sequence>
-      <xs:element name="Broj_Racuna" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -392,96 +392,6 @@
   </xs:simpleType>
 
 </xs:schema>
-<ns1:schema xmlns:ns1="http://www.w3.org/2001/XMLSchema" xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:tns="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:xs="http://www.w3.org/2001/XMLSchema#" elementFormDefault="qualified" targetNamespace="http://ftn.uns.ac.rs/tim5/model/obavestenje" version="1.0">
-
-  <ns1:import namespace="http://ftn.uns.ac.rs/tim5/model/util"/>
-
-  <ns1:element name="Kolekcija_Obavestenja">
-    <ns1:complexType>
-      <ns1:sequence>
-        <ns1:element maxOccurs="unbounded" minOccurs="0" ref="tns:Obavestenje"/>
-      </ns1:sequence>
-    </ns1:complexType>
-  </ns1:element>
-
-  <ns1:element name="Obavestenje" type="tns:obavestenje"/>
-
-  <ns1:complexType name="obavestenje">
-    <ns1:sequence>
-      <ns1:element name="odbijen">
-        <ns1:complexType>
-          <ns1:simpleContent>
-            <ns1:extension base="ns1:boolean">
-              <ns1:attribute name="property" type="ns1:string"/>
-              <ns1:attribute name="content" type="ns1:string"/>
-            </ns1:extension>
-          </ns1:simpleContent>
-        </ns1:complexType>
-      </ns1:element>
-      <ns1:element name="istekao">
-        <ns1:complexType>
-          <ns1:simpleContent>
-            <ns1:extension base="ns1:boolean">
-              <ns1:attribute name="property" type="ns1:string"/>
-              <ns1:attribute name="content" type="ns1:string"/>
-            </ns1:extension>
-          </ns1:simpleContent>
-        </ns1:complexType>
-      </ns1:element>
-      <ns1:element name="Trazilac">
-        <ns1:complexType>
-          <ns1:complexContent>
-            <ns1:extension base="util:TFizicko_Lice">
-              <ns1:sequence/>
-              <ns1:attribute name="property" type="ns1:string"/>
-              <ns1:attribute name="content" type="ns1:string"/>
-            </ns1:extension>
-          </ns1:complexContent>
-        </ns1:complexType>
-      </ns1:element>
-      <ns1:element name="Organ">
-        <ns1:complexType>
-          <ns1:complexContent>
-            <ns1:extension base="util:TPravno_Lice">
-              <ns1:sequence/>
-              <ns1:attribute name="property" type="ns1:string"/>
-              <ns1:attribute name="content" type="ns1:string"/>
-            </ns1:extension>
-          </ns1:complexContent>
-        </ns1:complexType>
-      </ns1:element>
-      <ns1:element name="Predmet">
-        <ns1:complexType>
-          <ns1:sequence>
-            <ns1:element name="Broj_Predmeta" type="ns1:int"/>
-            <ns1:element name="Datum">
-              <ns1:complexType>
-                <ns1:complexContent>
-                  <ns1:extension base="util:Datum">
-                    <ns1:sequence/>
-                    <ns1:attribute name="property" type="ns1:string"/>
-                    <ns1:attribute name="content" type="ns1:string"/>
-                  </ns1:extension>
-                </ns1:complexContent>
-              </ns1:complexType>
-            </ns1:element>
-            <ns1:element name="Opis_Trazene_Informacije" type="ns1:string"/>
-            <ns1:element maxOccurs="unbounded" minOccurs="0" name="Pravni_Osnov" type="util:TPravni_Osnov"/>
-            <ns1:element maxOccurs="unbounded" name="Odgovor" type="util:TOdgovor_Na_Zahtev"/>
-            <ns1:element minOccurs="0" name="Uplata" type="util:TUplata"/>
-          </ns1:sequence>
-        </ns1:complexType>
-      </ns1:element>
-    </ns1:sequence>
-    <ns1:attribute name="id" type="ns1:long"/>
-    <ns1:attribute name="id_zahteva" type="ns1:long"/>
-    <ns1:attribute name="about" type="ns1:anyURI"/>
-    <ns1:attribute name="vocab" type="ns1:string"/>
-    <ns1:attribute name="property" type="ns1:string"/>
-    <ns1:attribute name="content" type="ns1:string"/>
-  </ns1:complexType>
-
-</ns1:schema>
 <xs:schema xmlns:ns1="http://ftn.uns.ac.rs/tim5/model/util" xmlns:tns="http://ftn.uns.ac.rs/tim5/model/izvestaj" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ftn.uns.ac.rs/tim5/model/izvestaj" version="1.0">
 
   <xs:import namespace="http://ftn.uns.ac.rs/tim5/model/util"/>
@@ -543,35 +453,35 @@
 
 </xs:schema>
   </wsdl:types>
-  <wsdl:message name="sendObavestenje">
-    <wsdl:part name="obavestenje" type="ns1:obavestenje">
+  <wsdl:message name="sendIzvestaj">
+    <wsdl:part name="izvestaj" type="ns1:izvestaj">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="sendObavestenjeResponse">
+  <wsdl:message name="sendIzvestajResponse">
   </wsdl:message>
-  <wsdl:portType name="Obavestenje">
-    <wsdl:operation name="sendObavestenje">
-      <wsdl:input name="sendObavestenje" message="tns:sendObavestenje">
+  <wsdl:portType name="Izvestaj">
+    <wsdl:operation name="sendIzvestaj">
+      <wsdl:input name="sendIzvestaj" message="tns:sendIzvestaj">
     </wsdl:input>
-      <wsdl:output name="sendObavestenjeResponse" message="tns:sendObavestenjeResponse">
+      <wsdl:output name="sendIzvestajResponse" message="tns:sendIzvestajResponse">
     </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="ObavestenjeServiceSoapBinding" type="tns:Obavestenje">
+  <wsdl:binding name="IzvestajServiceSoapBinding" type="tns:Izvestaj">
     <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="sendObavestenje">
+    <wsdl:operation name="sendIzvestaj">
       <soap:operation soapAction="" style="rpc"/>
-      <wsdl:input name="sendObavestenje">
-        <soap:body use="literal" namespace="http://www.sistem.org/ws/obavestenje"/>
+      <wsdl:input name="sendIzvestaj">
+        <soap:body use="literal" namespace="http://www.sistem.org/ws/izvestaj"/>
       </wsdl:input>
-      <wsdl:output name="sendObavestenjeResponse">
-        <soap:body use="literal" namespace="http://www.sistem.org/ws/obavestenje"/>
+      <wsdl:output name="sendIzvestajResponse">
+        <soap:body use="literal" namespace="http://www.sistem.org/ws/izvestaj"/>
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="ObavestenjeService">
-    <wsdl:port name="ObavestenjePort" binding="tns:ObavestenjeServiceSoapBinding">
-      <soap:address location="http://localhost:9090/ObavestenjePort"/>
+  <wsdl:service name="IzvestajService">
+    <wsdl:port name="IzvestajPort" binding="tns:IzvestajServiceSoapBinding">
+      <soap:address location="http://localhost:9090/IzvestajPort"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -10,6 +10,7 @@ import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlDatabaseException;
 import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlException;
 import rs.ac.uns.ftn.tim5.model.exception.XmlDatabaseException;
 import rs.ac.uns.ftn.tim5.model.izvestaj.Izvestaj;
+import rs.ac.uns.ftn.tim5.model.obavestenje.Obavestenje;
 import rs.ac.uns.ftn.tim5.repository.AbstractXmlRepository;
 
 import javax.annotation.PostConstruct;
@@ -35,6 +36,9 @@ public class IzvestajService implements AbstractXmlService<Izvestaj> {
 
     @Autowired
     private RDFService rdfService;
+
+    @Autowired
+    private UUIDHelper uuidHelper;
 
     @PostConstruct
     public void injectRepositoryProperties() {
@@ -92,6 +96,31 @@ public class IzvestajService implements AbstractXmlService<Izvestaj> {
         // Sacuvaj u RDF
         if (!rdfService.save(xmlEntity, SPARQL_NAMED_GRAPH_URI)) {
             System.out.println("[ERROR] Neuspesno cuvanje metapodataka izvestaja u RDF DB.");
+        }
+
+        return izvestaj;
+    }
+
+    public Izvestaj create(Izvestaj izvestaj) {
+        izvestaj.setId(this.uuidHelper.getUUID());
+        //this.handleMetadata(obavestenje);
+
+        try {
+            izvestaj = izvestajAbstractXmlRepository.createEntity(izvestaj);
+        } catch (XMLDBException e) {
+            throw new XmlDatabaseException(e.getMessage());
+        } catch (JAXBException e) {
+            throw new InvalidXmlDatabaseException(Obavestenje.class, e.getMessage());
+        }
+
+        // Sacuvaj u RDF
+        try {
+            String xmlEntity = this.izvestajXmlConversionAgent.marshall(izvestaj, this.jaxbContextPath);
+            if (!rdfService.save(xmlEntity, SPARQL_NAMED_GRAPH_URI)) {
+                System.out.println("[ERROR] Neuspesno cuvanje metapodataka obavestenja u RDF DB.");
+            }
+        } catch (JAXBException e) {
+            e.printStackTrace();
         }
 
         return izvestaj;

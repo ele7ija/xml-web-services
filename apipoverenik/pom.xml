@@ -149,7 +149,19 @@
                             <goal>java2ws</goal>
                         </goals>
                     </execution>
-
+                    <execution>
+                        <id>process-classes2</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <className>rs.ac.uns.ftn.tim5.SOAP.izvestaj.IzvestajPortImpl</className>
+                            <genWsdl>true</genWsdl>
+                            <verbose>false</verbose>
+                            <outputFile>${project.basedir}/src/main/resources/wsdl/Izvestaj.wsdl</outputFile>
+                        </configuration>
+                        <goals>
+                            <goal>java2ws</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
 

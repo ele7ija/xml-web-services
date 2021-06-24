@@ -106,7 +106,7 @@ import java.util.List;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "obavestenje", propOrder = {
     "odbijen",
     "istekao",
     "trazilac",

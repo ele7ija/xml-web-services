@@ -22,6 +22,7 @@ public class ObavestenjeClient {
             System.out.println("pre");
             Service service = Service.create(wsdlLocation, serviceName);
             System.out.println("posle service");
+            System.out.println(service.getPorts().next().getNamespaceURI());
             ObavestenjeInterface obavestenjeInterface = service.getPort(portName, ObavestenjeInterface.class);
             System.out.println("posle int");
             obavestenjeInterface.sendObavestenje(obavestenje);
