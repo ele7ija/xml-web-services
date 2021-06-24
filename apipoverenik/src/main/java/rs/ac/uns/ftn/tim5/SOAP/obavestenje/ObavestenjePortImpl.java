@@ -8,7 +8,7 @@ import rs.ac.uns.ftn.tim5.service.ObavestenjeService;
 @javax.jws.WebService(
         serviceName = "ObavestenjeService",
         portName = "ObavestenjePort",
-        targetNamespace = "http://www.project.org/ws/obavestenje",
+        targetNamespace = "http://www.sistem.org/ws/obavestenje",
         // wsdlLocation = "classpath:wsdl/Izvestaj.wsdl",
         endpointInterface = "rs.ac.uns.ftn.tim5.SOAP.obavestenje.ObavestenjePort")
 @Service

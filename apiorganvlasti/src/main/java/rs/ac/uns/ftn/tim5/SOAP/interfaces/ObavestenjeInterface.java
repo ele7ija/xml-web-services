@@ -8,7 +8,7 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-@WebService(targetNamespace = "http://www.project.org/ws/obavestenje", name = "Obavestenje")
+@WebService(targetNamespace = "http://www.sistem.org/ws/obavestenje", name = "Obavestenje")
 @XmlSeeAlso({rs.ac.uns.ftn.tim5.model.obavestenje.ObjectFactory.class})
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public interface ObavestenjeInterface {

@@ -4,6 +4,8 @@ services:
     image: existdb/existdb:latest
     ports:
       - "8084:8080"
+    networks:
+      - api-poverenik-network
   rdf-db-poverenik:
     build:
       context: .
@@ -12,6 +14,8 @@ services:
       - "8085:3030"
     environment:
       - ADMIN_PASSWORD=password
+    networks:
+      - api-poverenik-network
   poverenik:
     build:
       context: .
@@ -26,3 +30,12 @@ services:
       RDF_DB_PORT: 3030
       RDF_DB_PASSWORD: password
       SPRING_PORT: 8080
+    networks:
+      - api-poverenik-network
+      - api-organ-vlasti-network
+networks:
+  api-poverenik-network:
+    name: api-poverenik-network
+  api-organ-vlasti-network:
+    external:
+      name: api-organ-vlasti-network

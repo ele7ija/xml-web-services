@@ -9,13 +9,13 @@ import java.net.URL;
 
 @WebServiceClient(name = "ObavestenjeService",
         wsdlLocation = "classpath:wsdl/Obavestenje.wsdl",
-        targetNamespace = "http://www.project.org/ws/obavestenje")
+        targetNamespace = "http://www.sistem.org/ws/obavestenje")
 public class ObavestenjeService extends Service {
 
     public final static URL WSDL_LOCATION;
 
-    public final static QName SERVICE = new QName("http://www.project.org/ws/obavestenje", "ObavestenjeService");
-    public final static QName ObavestenjePort = new QName("http://www.project.org/ws/obavestenje", "ObavestenjePort");
+    public final static QName SERVICE = new QName("http://www.sistem.org/ws/obavestenje", "ObavestenjeService");
+    public final static QName ObavestenjePort = new QName("http://www.sistem.org/ws/obavestenje", "ObavestenjePort");
     static {
         URL url = ObavestenjeService.class.getClassLoader().getResource("wsdl/Obavestenje.wsdl");
         if (url == null) {

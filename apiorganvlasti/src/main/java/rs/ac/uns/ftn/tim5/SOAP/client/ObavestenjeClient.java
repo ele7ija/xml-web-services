@@ -15,9 +15,9 @@ public class ObavestenjeClient {
 
     public void sendObavestenje(Obavestenje obavestenje) {
         try {
-            URL wsdlLocation = new URL("http://localhost:8083/ws/zalbaObavestenja?wsdl");
-            QName serviceName = new QName("http://www.project.org/ws/obavestenje", "ObavestenjeService");
-            QName portName = new QName("http://www.project.org/ws/obavestenje", "ObavestenjePort");
+            URL wsdlLocation = new URL("http://poverenik:8080/ws/zalbaObavestenja?wsdl");
+            QName serviceName = new QName("http://www.sistem.org/ws/obavestenje", "ObavestenjeService");
+            QName portName = new QName("http://www.sistem.org/ws/obavestenje", "ObavestenjePort");
 
             System.out.println("pre");
             Service service = Service.create(wsdlLocation, serviceName);
@@ -27,6 +27,9 @@ public class ObavestenjeClient {
             obavestenjeInterface.sendObavestenje(obavestenje);
             System.out.println("zavrsio");
         } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        catch (Exception e){
             e.printStackTrace();
         }
     }
