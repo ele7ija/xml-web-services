@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="<%= BASE_URL %>xonomy.css" rel="stylesheet">
+    <script src="<%= BASE_URL %>xonomy.js"></script>
+    <script src="<%= BASE_URL %>jquery-3.5.1.min.js"></script>
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      body {
+        background: rgb(204,204,204); 
+      }
+      .page {
+        background: white;
+        width: 100%;
+        height: min-content;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+        padding: 20px !important;
+      }
+      .page2 {
+        background: white;
+        width: 100%;
+        height: 830px;
+        overflow: auto;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+        padding: 20px !important;
+      }
+      .page3 {
+        background: white;
+        width: 100%;
+        height: 830px;
+        overflow: auto;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+        padding: 20px !important;
+      }
+      @media print {
+        body, .page {
+          margin: 0;
+          box-shadow: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

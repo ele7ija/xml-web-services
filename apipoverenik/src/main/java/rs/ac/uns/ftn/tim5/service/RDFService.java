@@ -40,7 +40,7 @@ public class RDFService {
     @Autowired
     private RDFDBConnectionProperties rdfdbConnectionProperties;
 
-    /*@PostConstruct
+    @PostConstruct
     public void initAuth(){
         CredentialsProvider credsProvider = new BasicCredentialsProvider();
         Credentials credentials = new UsernamePasswordCredentials("admin", System.getenv("RDF_DB_PASSWORD"));
@@ -49,7 +49,7 @@ public class RDFService {
                 .setDefaultCredentialsProvider(credsProvider)
                 .build();
         HttpOp.setDefaultHttpClient(httpclient);
-    }*/
+    }
 
     // From a RDFa XML file extracts RDF/XML
     public boolean save(String rdfa, String named_graph_uri) {

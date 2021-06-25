@@ -34,6 +34,10 @@ RUN ./mvnw dependency:go-offline -B
 #Copy application code
 #---------------------------------------------------------------
 COPY src src
+COPY output_html output_html
+COPY output_pdf output_pdf
+COPY output_xml output_xml
+COPY output_metadata output_metadata
 
 #--------------------------------------------------------------------
 #This will create the fat jar for my application, -DskipTests will skip the test for application during the building package
