@@ -8,6 +8,8 @@ import rs.ac.uns.ftn.tim5.model.obavestenje.Obavestenje;
 import rs.ac.uns.ftn.tim5.model.resenje.Resenje;
 import rs.ac.uns.ftn.tim5.model.sluzbenik.Sluzbenik;
 import rs.ac.uns.ftn.tim5.model.zahtev.Zahtev;
+import rs.ac.uns.ftn.tim5.model.zalba_cutanja.ZalbaCutanja;
+import rs.ac.uns.ftn.tim5.model.zalba_na_odluku.ZalbaNaOdluku;
 import rs.ac.uns.ftn.tim5.repository.AbstractXmlRepository;
 
 @Configuration
@@ -41,5 +43,15 @@ public class AutowireConfig {
     @Bean
     public AbstractXmlRepository<Gradjanin> gradjaninRepository() {
         return new AbstractXmlRepository<Gradjanin>();
+    }
+
+    @Bean
+    public AbstractXmlRepository<ZalbaNaOdluku> zalbaNaOdlukuRepository() {
+        return new AbstractXmlRepository<ZalbaNaOdluku>();
+    }
+
+    @Bean
+    public AbstractXmlRepository<ZalbaCutanja> zalbaCutanjaRepository() {
+        return new AbstractXmlRepository<ZalbaCutanja>();
     }
 }

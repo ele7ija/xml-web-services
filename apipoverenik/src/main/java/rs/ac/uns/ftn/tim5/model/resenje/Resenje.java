@@ -71,7 +71,7 @@ import rs.ac.uns.ftn.tim5.model.util.TFizickoLice;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "resenje", propOrder = {
     "datumResenja",
     "brojResenja",
     "kontekst",

@@ -135,7 +135,7 @@ import rs.ac.uns.ftn.tim5.model.util.TPravnoLice;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "zalbaCutanje", propOrder = {
     "poverenik",
     "zalilac",
     "organVlasti",

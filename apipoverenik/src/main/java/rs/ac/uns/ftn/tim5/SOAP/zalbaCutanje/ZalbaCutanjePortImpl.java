@@ -1,0 +1,19 @@
+package rs.ac.uns.ftn.tim5.SOAP.zalbaCutanje;
+
+import org.apache.jena.base.Sys;
+import org.springframework.stereotype.Service;
+import rs.ac.uns.ftn.tim5.model.zalba_cutanja.ZalbaCutanja;
+
+@javax.jws.WebService(
+        serviceName = "ZalbaCutanjeService",
+        portName = "ZalbaCutanjePort",
+        targetNamespace = "http://www.sistem.org/ws/zalba_cutanje",
+        endpointInterface = "rs.ac.uns.ftn.tim5.SOAP.zalbaCutanje.ZalbaCutanjePort")
+@Service
+public class ZalbaCutanjePortImpl implements ZalbaCutanjePort {
+    @Override
+    public void sendZalba(ZalbaCutanja zalbaCutanja) {
+        //TODO update zalbe ako organ vlasti odbije
+        System.out.println("Ulazi zalba cutanje");
+    }
+}

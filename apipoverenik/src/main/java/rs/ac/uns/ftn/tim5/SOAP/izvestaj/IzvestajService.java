@@ -22,7 +22,7 @@ public class IzvestajService extends Service {
     static {
         URL url = IzvestajService.class.getClassLoader().getResource("wsdl/Izvestaj.wsdl");
         if (url == null) {
-            java.util.logging.Logger.getLogger(ObavestenjeService.class.getName())
+            java.util.logging.Logger.getLogger(IzvestajService.class.getName())
                     .log(java.util.logging.Level.INFO,
                             "Can not initialize the default wsdl from {0}", "classpath:wsdl/Izvestaj.wsdl");
         }

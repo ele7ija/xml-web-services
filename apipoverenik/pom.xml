@@ -143,7 +143,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!--<plugin>
+            <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-java2ws-plugin</artifactId>
                 <version>${cxf.version}</version>
@@ -186,8 +186,34 @@
                             <goal>java2ws</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>process-classes3</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <className>rs.ac.uns.ftn.tim5.SOAP.zalbaCutanje.ZalbaCutanjePortImpl</className>
+                            <genWsdl>true</genWsdl>
+                            <verbose>false</verbose>
+                            <outputFile>${project.basedir}/src/main/resources/wsdl/ZalbaCutanje.wsdl</outputFile>
+                        </configuration>
+                        <goals>
+                            <goal>java2ws</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>process-classes4</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <className>rs.ac.uns.ftn.tim5.SOAP.zalbaOdluka.ZalbaOdlukaPortImpl</className>
+                            <genWsdl>true</genWsdl>
+                            <verbose>false</verbose>
+                            <outputFile>${project.basedir}/src/main/resources/wsdl/ZalbaOdluka.wsdl</outputFile>
+                        </configuration>
+                        <goals>
+                            <goal>java2ws</goal>
+                        </goals>
+                    </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
 
             <!--<plugin>
                 <groupId>org.codehaus.mojo</groupId>
