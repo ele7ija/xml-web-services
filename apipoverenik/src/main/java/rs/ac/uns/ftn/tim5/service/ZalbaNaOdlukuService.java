@@ -126,4 +126,16 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
             throw new XmlDatabaseException(e.getMessage());
         }
     }
+
+    public ZalbaNaOdluku findByIdZahteva(Long idZahteva) {
+        try {
+            return this.zalbaNaOdlukuAbstractXmlRepository.findEntity(
+                    X_QUERY_FIND_ZALBA_NA_ODLUKU_BY_ID_ZAHTEVA_EXPRESSION,
+                    idZahteva
+            );
+        } catch (XMLDBException | JAXBException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

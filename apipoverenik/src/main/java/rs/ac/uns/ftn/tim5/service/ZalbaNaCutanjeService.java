@@ -129,4 +129,16 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
             throw new XmlDatabaseException(e.getMessage());
         }
     }
+
+    public ZalbaCutanja findByIdZahteva(Long idZahteva) {
+        try {
+            return this.zalbaCutanjaAbstractXmlRepository.findEntity(
+                    X_QUERY_FIND_ZALBA_CUTANJA_BY_ID_ZAHTEVA_EXPRESSION,
+                    idZahteva
+            );
+        } catch (XMLDBException | JAXBException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

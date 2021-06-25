@@ -1,5 +1,5 @@
 <template>
-  <div class="container centered">
+  <div class="container centered2">
     <div class="row">
       <div class="col-12">
         <h2 class="text-center mb-4">Prijava</h2>
@@ -67,7 +67,7 @@ export default {
 </script>
 
 <style>
-.centered {
+.centered2 {
   position: fixed; /* or absolute */
   top: 40%;
   left: 50%;
