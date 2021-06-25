@@ -86,10 +86,12 @@ export default {
   },
   async mounted() {
     if (sessionStorage.getItem('access_token')) {
-      this.zahteviLoading = true;
+      this.obavestenjaLoading = true;
       this.obavestenja = constructKolekcijaObavestenja((await obavestenjeApi.getByUlogovaniTrazilac()).data);
+      console.log(this.obavestenja.map(x => x.odbijen))
       this.obavestenja = this.obavestenja.filter(x => !x.odbijen && !x.istekao);
-      this.zahteviLoading = false;
+      console.log(this.obavestenja)
+      this.obavestenjaLoading = false;
     }
   },
   methods: {

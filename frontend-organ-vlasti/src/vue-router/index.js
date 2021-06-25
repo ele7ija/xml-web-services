@@ -12,6 +12,7 @@ import Obavestenje from '@/components/sluzbenik/obavestenje/Obavestenje';
 import ZahtevSluzbenik from '@/components/sluzbenik/zahtev/ZahtevSluzbenik';
 import Izvestaj from '@/components/sluzbenik/izvestaj/Izvestaj';
 import Pretrage from '@/components/sluzbenik/pretrage/Pretrage';
+import store from '../vuex';
 
 Vue.use(VueRouter);
 
@@ -88,6 +89,7 @@ router.beforeEach((to, from, next) => {
     for example, prevent navigation to login component if user is logged in
   */
   if (to.name != 'Login' && to.name != 'Register' && !sessionStorage.getItem('access_token')) {
+    store.commit('userOptions/setRedirectUri', to.fullPath, {root: true});
     next({name: 'Login'});
   }
   next();
