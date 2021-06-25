@@ -151,11 +151,12 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-
+        System.out.println(obavestenje.getOdbijen().isValue());
         //posalji email
         Zahtev zahtev = this.zahtevService.findById(obavestenje.getIdZahteva());
         if (obavestenje.getOdbijen().isValue()) {
             this.emailService.odbijZahtev(zahtev);
+            System.out.println("SALJEM");
             this.client.sendObavestenje(obavestenje);
         } else if(obavestenje.getIstekao().isValue()) {
             this.emailService.istekaoZahtev(zahtev);
@@ -198,11 +199,9 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
         if (obavestenje.getOdbijen().isValue()) {
             this.emailService.odbijZahtev(zahtev);
             this.client.sendObavestenje(obavestenje);
-            //TODO soap ovde
         } else if(obavestenje.getIstekao().isValue()) {
             this.emailService.istekaoZahtev(zahtev);
             this.client.sendObavestenje(obavestenje);
-            //TODO soap ovde mozda ovde
         } else {
             this.emailService.prihvatiZahtev(
                     zahtev,

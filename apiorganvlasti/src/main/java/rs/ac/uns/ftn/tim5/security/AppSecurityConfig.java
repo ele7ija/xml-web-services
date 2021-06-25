@@ -55,6 +55,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth/login").permitAll()
                 .antMatchers(HttpMethod.POST, "/gradjanin").permitAll()
                 .antMatchers(HttpMethod.POST,"/sluzbenik").permitAll()
+                .antMatchers("/ws/**").permitAll()
                 
                 .anyRequest().authenticated()
 
@@ -73,8 +74,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         /*
             Custom filters will ignore register endpoint
          */
-        web.ignoring().antMatchers(HttpMethod.POST,
-                "/gradjanin", "/sluzbenik");
+        web.ignoring()
+                .antMatchers(HttpMethod.POST,"/gradjanin", "/sluzbenik")
+                .antMatchers("/ws/**");
     }
 
     @Override
