@@ -221,7 +221,8 @@ export const constructRezultatPretrage = str => {
   let xml = Xonomy.xml2js(str)
   return {
     zahtevi: constructKolekcijaZahtevaXML(xml.getChildElements("zahtevi")[0]),
-    resenja: xml.getChildElements("resenja"),
-    izvestaji: xml.getChildElements("izvestaji")
+    resenja: [],
+    izvestaji: []
+    // constructKolekcijaResenja(xml.getChildElements("resenja")[0])
   };
 }

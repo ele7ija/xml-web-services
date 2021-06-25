@@ -1,24 +1,24 @@
 <template>
 <div class='container-fluid'>
-  <div v-if='zahtevi.length == 0 && resenja.length == 0 && izvestaji.length == 0' class="row m-5">
+  <div v-if='zahtevi.length != 0 || resenja.length != 0 && izvestaji.length != 0' class="row ml-5 mr-5 mt-4">
     <div class="col-12">
-      <div class="alert alert-info" role="alert">
-        Search for something.
+      <div class="alert alert-success" role="alert">
+        Prikazuje se {{zahtevi.length + resenja.length + izvestaji.length}} rezultata.
       </div>
     </div>
   </div>
-  <div class="row m-5">
+  <div class="row ml-5 mr-5 mt-0">
     <div class="col-4">
       <div class="card">
         
         <div class="card-body">
         <div class="form-group">
-          <label>Search Term</label>
+          <label>Termin</label>
           <input type="text" class="form-control form-control-sm" v-model="search.term">
           <small class="form-text text-muted">e.g. "zahtev"</small>
         </div>
         <div class="form-group">
-          <label>Metadata</label>
+          <label>Metapodaci</label>
           <input type="text" class="form-control form-control-sm" v-model="search.metadata">
           <small class="form-text text-muted">e.g. "22.6.2021*AND*НОВИ САД"<br>e.g. "22.6.2021*OR*25.6.2021"</small>
         </div>
@@ -31,8 +31,7 @@
       <table class="table table-sm table-bordered my-4">
         <thead>
           <tr>
-            <th class="text-center">Zahtev</th>
-            
+            <th class="text-center">URL zahteva</th>
           </tr>
         </thead>
         <tbody v-if="!loading">
@@ -41,6 +40,56 @@
             :key="index"
           >
             <td class="text-center"><a :href="zahtev.about">{{zahtev.about}}</a></td>
+          </tr>  
+        </tbody>
+        <tbody v-else>
+          <tr>
+            <td colspan="9">
+              <div class="spinner-border" role="status" :style="{width: '2rem', height: '2rem', 'font-size': '10px', left: '50%', position: 'relative'}">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 class="text-center">Resenja</h3>
+      <table class="table table-sm table-bordered my-4">
+        <thead>
+          <tr>
+            <th class="text-center">URL resenja</th>
+          </tr>
+        </thead>
+        <tbody v-if="!loading">
+          <tr
+            v-for="(resenje, index) in resenja"
+            :key="index"
+          >
+            <td class="text-center"><a :href="resenje.about">{{resenje.about}}</a></td>
+          </tr>  
+        </tbody>
+        <tbody v-else>
+          <tr>
+            <td colspan="9">
+              <div class="spinner-border" role="status" :style="{width: '2rem', height: '2rem', 'font-size': '10px', left: '50%', position: 'relative'}">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 class="text-center">Izvestaji</h3>
+      <table class="table table-sm table-bordered my-4">
+        <thead>
+          <tr>
+            <th class="text-center">URL izvestaja</th>
+          </tr>
+        </thead>
+        <tbody v-if="!loading">
+          <tr
+            v-for="(izvestaj, index) in izvestaji"
+            :key="index"
+          >
+            <td class="text-center"><a :href="izvestaj.about">{{izvestaj.about}}</a></td>
           </tr>  
         </tbody>
         <tbody v-else>
