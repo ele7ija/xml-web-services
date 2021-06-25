@@ -76,19 +76,19 @@ import rs.ac.uns.ftn.tim5.model.util.TPravnoLice;
 public class Kontekst {
 
     @XmlElement(name = "Tekst_konteksta", required = true)
-    protected Kontekst.TekstKonteksta tekstKonteksta;
+    protected TekstKonteksta tekstKonteksta;
     @XmlElement(name = "Zalba", required = true)
-    protected Kontekst.Zalba zalba;
+    protected Zalba zalba;
 
     /**
      * Gets the value of the tekstKonteksta property.
      * 
      * @return
      *     possible object is
-     *     {@link Kontekst.TekstKonteksta }
+     *     {@link TekstKonteksta }
      *     
      */
-    public Kontekst.TekstKonteksta getTekstKonteksta() {
+    public TekstKonteksta getTekstKonteksta() {
         return tekstKonteksta;
     }
 
@@ -97,10 +97,10 @@ public class Kontekst {
      * 
      * @param value
      *     allowed object is
-     *     {@link Kontekst.TekstKonteksta }
+     *     {@link TekstKonteksta }
      *     
      */
-    public void setTekstKonteksta(Kontekst.TekstKonteksta value) {
+    public void setTekstKonteksta(TekstKonteksta value) {
         this.tekstKonteksta = value;
     }
 
@@ -109,10 +109,10 @@ public class Kontekst {
      * 
      * @return
      *     possible object is
-     *     {@link Kontekst.Zalba }
+     *     {@link Zalba }
      *     
      */
-    public Kontekst.Zalba getZalba() {
+    public Zalba getZalba() {
         return zalba;
     }
 
@@ -121,10 +121,10 @@ public class Kontekst {
      * 
      * @param value
      *     allowed object is
-     *     {@link Kontekst.Zalba }
+     *     {@link Zalba }
      *     
      */
-    public void setZalba(Kontekst.Zalba value) {
+    public void setZalba(Zalba value) {
         this.zalba = value;
     }
 

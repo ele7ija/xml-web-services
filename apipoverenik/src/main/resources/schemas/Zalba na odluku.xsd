@@ -75,6 +75,34 @@
                     </xs:complexType>
                 </xs:element>
 
+                <xs:element name="odgovor_organa_vlasti">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element default="ne" name="prihvatio">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute default="pred:prihvatio" name="property"
+                                                type="xs:string"/>
+                                            <xs:attribute name="content" type="xs:string"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element default="ne" name="odbio">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute default="pred:odbio" name="property"
+                                                type="xs:string"/>
+                                            <xs:attribute name="content" type="xs:string"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
 
             <xs:attribute name="id" type="xs:long"/>

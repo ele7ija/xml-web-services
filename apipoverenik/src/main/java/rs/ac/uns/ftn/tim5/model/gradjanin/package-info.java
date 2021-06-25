@@ -5,5 +5,16 @@
 // Generated on: 2021.05.27 at 08:07:47 PM CEST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://ftn.uns.ac.rs/tim5/model/gradjanin", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(
+        namespace = "http://ftn.uns.ac.rs/tim5/model/gradjanin",
+        elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED,
+        xmlns={
+                @XmlNs(prefix="xs", namespaceURI="http://www.w3.org/2001/XMLSchema#"),
+                @XmlNs(prefix="pred", namespaceURI="http://ftn.uns.ac.rs/tim5/model/predicate/"),
+                @XmlNs(prefix="util", namespaceURI = "http://ftn.uns.ac.rs/tim5/model/util"),
+                @XmlNs(prefix="gr", namespaceURI = "http://ftn.uns.ac.rs/tim5/model/gradjanin")
+        }
+)
 package rs.ac.uns.ftn.tim5.model.gradjanin;
+
+import javax.xml.bind.annotation.XmlNs;

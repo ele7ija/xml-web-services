@@ -82,7 +82,7 @@ import rs.ac.uns.ftn.tim5.model.util.TFizickoLice;
 public class Resenje implements Identifiable {
 
     @XmlElement(name = "datum_resenja", required = true)
-    protected Resenje.DatumResenja datumResenja;
+    protected DatumResenja datumResenja;
     @XmlElement(name = "broj_resenja", required = true)
     protected Object brojResenja;
     @XmlElement(name = "Kontekst", required = true)
@@ -90,7 +90,7 @@ public class Resenje implements Identifiable {
     @XmlElement(name = "Odluka", required = true)
     protected Odluka odluka;
     @XmlElement(name = "Poverenik", required = true)
-    protected Resenje.Poverenik poverenik;
+    protected Poverenik poverenik;
     @XmlAttribute(name = "id")
     protected Long id;
     @XmlAttribute(name = "id_zalbe")
@@ -114,10 +114,10 @@ public class Resenje implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link Resenje.DatumResenja }
+     *     {@link DatumResenja }
      *     
      */
-    public Resenje.DatumResenja getDatumResenja() {
+    public DatumResenja getDatumResenja() {
         return datumResenja;
     }
 
@@ -126,10 +126,10 @@ public class Resenje implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link Resenje.DatumResenja }
+     *     {@link DatumResenja }
      *     
      */
-    public void setDatumResenja(Resenje.DatumResenja value) {
+    public void setDatumResenja(DatumResenja value) {
         this.datumResenja = value;
     }
 
@@ -210,10 +210,10 @@ public class Resenje implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link Resenje.Poverenik }
+     *     {@link Poverenik }
      *     
      */
-    public Resenje.Poverenik getPoverenik() {
+    public Poverenik getPoverenik() {
         return poverenik;
     }
 
@@ -222,10 +222,10 @@ public class Resenje implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link Resenje.Poverenik }
+     *     {@link Poverenik }
      *     
      */
-    public void setPoverenik(Resenje.Poverenik value) {
+    public void setPoverenik(Poverenik value) {
         this.poverenik = value;
     }
 

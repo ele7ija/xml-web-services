@@ -84,7 +84,7 @@ public class Odluka {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link Odluka.Obrazlozenje }{@code >}
+     * {@link JAXBElement }{@code <}{@link Obrazlozenje }{@code >}
      * {@link String }
      * {@link JAXBElement }{@code <}{@link TIshodOdluke }{@code >}
      * 

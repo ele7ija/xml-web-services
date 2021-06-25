@@ -75,9 +75,9 @@ public class TOdgovorNaZahtev {
     @XmlElement(name = "Element_Zahteva", required = true)
     protected TElementZahteva elementZahteva;
     @XmlElement(name = "Uvid")
-    protected TOdgovorNaZahtev.Uvid uvid;
+    protected Uvid uvid;
     @XmlElement(name = "Trosak")
-    protected TOdgovorNaZahtev.Trosak trosak;
+    protected Trosak trosak;
 
     /**
      * Gets the value of the odobren property.
@@ -124,10 +124,10 @@ public class TOdgovorNaZahtev {
      * 
      * @return
      *     possible object is
-     *     {@link TOdgovorNaZahtev.Uvid }
+     *     {@link Uvid }
      *     
      */
-    public TOdgovorNaZahtev.Uvid getUvid() {
+    public Uvid getUvid() {
         return uvid;
     }
 
@@ -136,10 +136,10 @@ public class TOdgovorNaZahtev {
      * 
      * @param value
      *     allowed object is
-     *     {@link TOdgovorNaZahtev.Uvid }
+     *     {@link Uvid }
      *     
      */
-    public void setUvid(TOdgovorNaZahtev.Uvid value) {
+    public void setUvid(Uvid value) {
         this.uvid = value;
     }
 
@@ -148,10 +148,10 @@ public class TOdgovorNaZahtev {
      * 
      * @return
      *     possible object is
-     *     {@link TOdgovorNaZahtev.Trosak }
+     *     {@link Trosak }
      *     
      */
-    public TOdgovorNaZahtev.Trosak getTrosak() {
+    public Trosak getTrosak() {
         return trosak;
     }
 
@@ -160,10 +160,10 @@ public class TOdgovorNaZahtev {
      * 
      * @param value
      *     allowed object is
-     *     {@link TOdgovorNaZahtev.Trosak }
+     *     {@link Trosak }
      *     
      */
-    public void setTrosak(TOdgovorNaZahtev.Trosak value) {
+    public void setTrosak(Trosak value) {
         this.trosak = value;
     }
 
