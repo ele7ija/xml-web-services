@@ -180,4 +180,51 @@ public class RDFService {
         }
         query.close();
     }
+
+    /**
+     * Pretraga metapodataka*/
+    public ArrayList<String> search(String collection, String text) {
+        String sparqlQuery = SparqlUtil.selectDistinctData(
+                rdfdbConnectionProperties.getDataEndpoint() + collection,
+                String.format("?s ?p ?o . filter (LCASE(str(?o))=%s)", text));
+
+        return getDocumentsId(sparqlQuery);
+    }
+
+    public ArrayList<String> getDocumentsId(String sparqlQuery) {
+        ArrayList<String> ids = new ArrayList<String>();
+
+        System.out.println("Query: " + sparqlQuery);
+
+        QueryExecution queryExecution = QueryExecutionFactory
+                .sparqlService(this.rdfdbConnectionProperties.getQueryEndpoint(), sparqlQuery);
+
+        ResultSet results = queryExecution.execSelect();
+
+        String varName;
+        RDFNode varValue;
+
+        while (results.hasNext()) {
+
+
+            // A single answer from a SELECT query
+            QuerySolution querySolution = results.next();
+            java.util.Iterator<String> variableBindings = querySolution.varNames();
+            System.out.println("Result: " + querySolution);
+
+            // Retrieve variable bindings
+            while (variableBindings.hasNext()) {
+
+                varName = variableBindings.next();
+                varValue = querySolution.get(varName);
+
+                System.out.println("variable binding: " + varName + varValue);
+                String[] tokens = varValue.toString().split("/");
+                ids.add(tokens[4]);
+            }
+        }
+
+        queryExecution.close();
+        return ids;
+    }
 }

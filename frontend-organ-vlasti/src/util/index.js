@@ -22,6 +22,10 @@ export const constructKolekcijaZahteva = xml => {
   return xml.getChildElements("za:Zahtev").map(x => constructZahtev(x));
 }
 
+export const constructKolekcijaZahtevaXML = xml => {
+  return xml.getChildElements("za:Zahtev").map(x => constructZahtev(x));
+}
+
 export const constructZahtev = xml => {
   return {
     id: xml.getAttribute("id").value,
@@ -204,4 +208,20 @@ const getCurrentMonth = () => {
   } else {
     return month;
   }
+}
+
+export const pretragaXML = pretraga =>
+        `<?xml version="1.0" encoding="UTF-8"?>
+        <pretraga>
+          <term>${pretraga.term}</term>
+          <metadata>${pretraga.metadata}</metadata>
+        </pretraga>`;
+
+export const constructRezultatPretrage = str => {
+  let xml = Xonomy.xml2js(str)
+  return {
+    zahtevi: constructKolekcijaZahtevaXML(xml.getChildElements("zahtevi")[0]),
+    resenja: xml.getChildElements("resenja"),
+    izvestaji: xml.getChildElements("izvestaji")
+  };
 }

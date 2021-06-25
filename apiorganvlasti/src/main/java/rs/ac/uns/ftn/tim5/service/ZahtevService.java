@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.XMLDBException;
+import rs.ac.uns.ftn.tim5.helper.PretrageHelper;
 import rs.ac.uns.ftn.tim5.helper.SparqlQueryResult;
+import rs.ac.uns.ftn.tim5.helper.XQueryExpressions;
 import rs.ac.uns.ftn.tim5.helper.XmlConversionAgent;
 import rs.ac.uns.ftn.tim5.model.exception.EntityNotFoundException;
 import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlDatabaseException;
@@ -23,7 +25,7 @@ import rs.ac.uns.ftn.tim5.transofrmation.XSLFOTransformer;
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
 import java.io.*;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_QUERY_FIND_ALL_ZAHTEVI_EXPRESSION;
@@ -62,6 +64,9 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
 
     @Autowired
     private SparqlUtil sparqlUtil;
+
+    @Autowired
+    private PretrageHelper pretrageHelper;
 
     @Autowired
     private SluzbenikService sluzbenikService;
@@ -419,5 +424,38 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<Zahtev> pronadjiTerm(String term) {
+
+        try {
+            return this.zahtevAbstractXmlRepository.findEntities(String.format(XQueryExpressions.SEARCH_ZAHTEVI, term));
+        } catch (XMLDBException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<Zahtev> pronadjiMetadata(String metadata) {
+
+        String[] sts = metadata.split("\\*OR\\*");
+        Set<Zahtev> retval = new HashSet<>();
+        for (String andsubstr : sts) {
+            String[] andsubstrtokens = andsubstr.split("\\*AND\\*");
+            System.out.println("Search by metadata AND substring: " + Arrays.toString(andsubstrtokens));
+            Set<String> ids = pretrageHelper.searchMetadata(andsubstrtokens, SPARQL_NAMED_GRAPH_URI);
+
+            ids.forEach((String s) -> {
+                try {
+                    retval.add(zahtevAbstractXmlRepository.getEntity(Long.parseLong(s)));
+                } catch (XMLDBException | JAXBException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+
+        return new ArrayList<>(retval);
     }
 }

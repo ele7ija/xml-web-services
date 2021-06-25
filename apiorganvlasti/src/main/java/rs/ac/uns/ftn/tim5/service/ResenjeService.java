@@ -4,16 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.xmldb.api.base.XMLDBException;
+import rs.ac.uns.ftn.tim5.helper.PretrageHelper;
+import rs.ac.uns.ftn.tim5.helper.XQueryExpressions;
 import rs.ac.uns.ftn.tim5.helper.XmlConversionAgent;
 import rs.ac.uns.ftn.tim5.model.exception.EntityNotFoundException;
 import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlDatabaseException;
 import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlException;
 import rs.ac.uns.ftn.tim5.model.exception.XmlDatabaseException;
 import rs.ac.uns.ftn.tim5.model.resenje.Resenje;
+import rs.ac.uns.ftn.tim5.model.zahtev.Zahtev;
 import rs.ac.uns.ftn.tim5.repository.AbstractXmlRepository;
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
-import java.util.List;
+import java.util.*;
+
 import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_QUERY_FIND_ALL_RESENJA_EXPRESSION;
 import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_UPDATE_REMOVE_RESENJE_BY_ID_EXPRESSION;
 
@@ -36,6 +40,9 @@ public class ResenjeService implements AbstractXmlService<Resenje> {
 
     @Autowired
     private UUIDHelper uuidHelper;
+
+    @Autowired
+    private PretrageHelper pretrageHelper;
 
     @PostConstruct
     public void injectRepositoryProperties() {
@@ -142,4 +149,34 @@ public class ResenjeService implements AbstractXmlService<Resenje> {
         );
     }
 
+    public List<Resenje> pronadjiTerm(String term) {
+        try {
+            return this.resenjeAbstractXmlRepository.findEntities(String.format(XQueryExpressions.SEARCH_RESENJE, term));
+        } catch (XMLDBException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<Resenje> pronadjiMetadata(String metadata) {
+        String[] sts = metadata.split("\\*OR\\*");
+        Set<Resenje> retval = new HashSet<>();
+        for (String andsubstr : sts) {
+            String[] andsubstrtokens = andsubstr.split("\\*AND\\*");
+            System.out.println("Search by metadata AND substring: " + Arrays.toString(andsubstrtokens));
+            Set<String> ids = pretrageHelper.searchMetadata(andsubstrtokens, SPARQL_NAMED_GRAPH_URI);
+
+            ids.forEach((String s) -> {
+                try {
+                    retval.add(resenjeAbstractXmlRepository.getEntity(Long.parseLong(s)));
+                } catch (XMLDBException | JAXBException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+
+        return new ArrayList<>(retval);
+    }
 }

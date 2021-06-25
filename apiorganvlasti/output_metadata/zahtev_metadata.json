@@ -9,7 +9,7 @@
       } ,
       { 
         "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/datum" } ,
-        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "31.5.2021" }
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "22.6.2021" }
       } ,
       { 
         "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/naziv_organa_vlasti" } ,
@@ -17,7 +17,7 @@
       } ,
       { 
         "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/email_trazioca" } ,
-        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "millan.djuric@hotmail.com" }
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "password" }
       }
     ]
   }
