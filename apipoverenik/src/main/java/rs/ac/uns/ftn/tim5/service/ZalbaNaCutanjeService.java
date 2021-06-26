@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.XMLDBException;
 
+import rs.ac.uns.ftn.tim5.SOAP.client.ZalbaCutanjeClient;
 import rs.ac.uns.ftn.tim5.helper.SparqlQueryResult;
 import rs.ac.uns.ftn.tim5.helper.XmlConversionAgent;
 import rs.ac.uns.ftn.tim5.model.exception.EntityNotFoundException;
@@ -63,6 +64,9 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
 
     @Autowired
     private DateHelper dateHelper;
+
+    @Autowired
+    private ZalbaCutanjeClient zalbaCutanjeClient;
 
     private XSLFOTransformer xslfoTransformer;
 
@@ -142,6 +146,9 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+
+        this.zalbaCutanjeClient.sendZalba(zalbaCutanja);
+
         return zalbaCutanja;
     }
 
