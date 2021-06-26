@@ -219,8 +219,7 @@ public class RDFService {
                 varValue = querySolution.get(varName);
 
                 System.out.println("variable binding: " + varName + varValue);
-                String[] tokens = varValue.toString().split("/");
-                ids.add(tokens[4]);
+                ids.add(varValue.toString());
             }
         }
 

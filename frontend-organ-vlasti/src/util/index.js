@@ -226,3 +226,14 @@ export const constructRezultatPretrage = str => {
     // constructKolekcijaResenja(xml.getChildElements("resenja")[0])
   };
 }
+
+export const constructReferencedBy = str => {
+  let xml = Xonomy.xml2js(str);
+  return xml.getChildElements("dokument").map(x => x.getText())
+}
+
+export const referencedByXML = about =>
+  `<?xml version="1.0" encoding="UTF-8"?>
+        <referenced-by-search>
+          <about>${about}</about>
+        </referenced-by-search>`;

@@ -153,4 +153,8 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
             throw new XmlDatabaseException(e.getMessage());
         }
     }
+
+    public List<String> getRefers(String about) {
+        return rdfService.search(SPARQL_NAMED_GRAPH_URI, about);
+    }
 }

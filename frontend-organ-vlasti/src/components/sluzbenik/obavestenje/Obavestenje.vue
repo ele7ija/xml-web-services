@@ -1,5 +1,16 @@
 <template>
-  <div class="wrapper">
+  <div>
+    <div v-if='zahtevOdbijen' class="col-4 my-4">
+      <div class="alert alert-warning" role="alert">
+        Zahtev ovog obavestenja je Odbijen.
+      </div>
+    </div>
+    <div v-if='zahtevIstekao' class="col-4 my-4">
+      <div class="alert alert-warning" role="alert">
+        Zahtev ovog obavestenja je Istekao.
+      </div>
+    </div>
+  <div class="wrapper" v-if='!zahtevOdbijen && !zahtevIstekao'>
     <div class="container px-5">
       <div class="row">
         <div class="col-4 my-4" v-if="obavestenje">
@@ -80,6 +91,7 @@
       <h1 class="text-center centered">Not found 404</h1>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -108,7 +120,10 @@ export default {
 
       jsonMetadataLoading: false,
       xmlMetadataLoading: false,
-      rdfMetadataLoading: false
+      rdfMetadataLoading: false,
+
+      zahtevOdbijen: false,
+      zahtevIstekao: false,
     }
   },
   async mounted() {
@@ -142,8 +157,11 @@ export default {
           } else {
             viewElement.innerHTML = xmlSerializer.serializeToString(convertedDocument);
           }
-        } else {
-          this.obavestenje = null;
+        } else if (this.obavestenje.odbijen) {
+          this.zahtevOdbijen = true;
+        }
+        else {
+          this.zahtevIstekao = true;
         }
       } catch(error) {
         this.obavestenje = null;

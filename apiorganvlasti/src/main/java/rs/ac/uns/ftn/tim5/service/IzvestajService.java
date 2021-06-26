@@ -165,4 +165,8 @@ public class IzvestajService implements AbstractXmlService<Izvestaj> {
 
         return new ArrayList<>(retval);
     }
+
+    public List<String> getRefers(String about) {
+        return rdfService.search(SPARQL_NAMED_GRAPH_URI, about);
+    }
 }

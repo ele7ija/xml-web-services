@@ -34,14 +34,18 @@ public class PretrageHelper {
                 word = word + "\"";
             }
              if (!flag) {
-                 ids.addAll(rdfService.search(collection, word.toLowerCase()));
+                 for (String url : rdfService.search(collection, word.toLowerCase())) {
+                     String[] tokens = url.split("/");
+                     ids.add(tokens[4]);
+                 }
                  flag = true;
              }
              else {
                  List<String> newlist = new ArrayList<>();
-                 for (String id : rdfService.search(collection, word.toLowerCase())) {
-                     if (ids.contains(id)) {
-                         newlist.add(id);
+                 for (String url : rdfService.search(collection, word.toLowerCase())) {
+                     String[] tokens = url.split("/");
+                     if (ids.contains(tokens[4])) {
+                         newlist.add(tokens[4]);
                      }
                  }
                  ids = newlist;

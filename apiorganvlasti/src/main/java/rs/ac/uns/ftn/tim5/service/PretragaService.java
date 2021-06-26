@@ -3,6 +3,7 @@ package rs.ac.uns.ftn.tim5.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.ac.uns.ftn.tim5.dto.PretragaDTO;
+import rs.ac.uns.ftn.tim5.dto.ReferencedByDTO;
 import rs.ac.uns.ftn.tim5.dto.RezultatPretrageDTO;
 import rs.ac.uns.ftn.tim5.helper.PretrageHelper;
 import rs.ac.uns.ftn.tim5.model.izvestaj.Izvestaj;
@@ -30,6 +31,15 @@ public class PretragaService {
 
     @Autowired
     private IzvestajService izvestajService;
+
+    @Autowired
+    private ZalbaNaCutanjeService zalbaNaCutanjeService;
+
+    @Autowired
+    private ZalbaNaOdlukuService zalbaNaOdlukuService;
+
+    @Autowired
+    private ObavestenjeService obavestenjeService;
 
     // TODO IZVESTAJE UKLJUCITI
     public RezultatPretrageDTO pronadji(PretragaDTO pretraga) {
@@ -71,5 +81,27 @@ public class PretragaService {
         ki.setIzvestaj(new ArrayList<>(izvestaji));
         return new RezultatPretrageDTO(kz, kr, ki);
 
+    }
+
+    public ReferencedByDTO referencedBy(String about) {
+
+        about = "\"" + about + "\"";
+        ReferencedByDTO retval = new ReferencedByDTO(about, new ArrayList<>());
+
+        List<String> zahtevi = zahtevService.getRefers(about);
+        List<String> resenja = resenjeService.getRefers(about);
+        List<String> izvestaji = izvestajService.getRefers(about);
+        List<String> zalbeodluka = zalbaNaOdlukuService.getRefers(about);
+        List<String> zalbecutanje = zalbaNaCutanjeService.getRefers(about);
+        List<String> obavestenja = obavestenjeService.getRefers(about);
+
+        retval.getDokument().addAll(zahtevi);
+        retval.getDokument().addAll(resenja);
+        retval.getDokument().addAll(izvestaji);
+        retval.getDokument().addAll(zalbeodluka);
+        retval.getDokument().addAll(zalbecutanje);
+        retval.getDokument().addAll(obavestenja);
+
+        return retval;
     }
 }

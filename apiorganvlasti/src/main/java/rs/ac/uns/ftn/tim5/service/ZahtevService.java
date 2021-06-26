@@ -458,4 +458,9 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
 
         return new ArrayList<>(retval);
     }
+
+    public List<String> getRefers(String about) {
+
+        return rdfService.search(SPARQL_NAMED_GRAPH_URI, about);
+    }
 }

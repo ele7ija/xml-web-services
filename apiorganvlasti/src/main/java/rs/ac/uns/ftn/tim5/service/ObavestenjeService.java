@@ -457,4 +457,8 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
         }
         return null;
     }
+
+    public List<String> getRefers(String about) {
+        return rdfService.search(SPARQL_NAMED_GRAPH_URI, about);
+    }
 }

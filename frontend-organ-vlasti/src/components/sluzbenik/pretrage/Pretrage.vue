@@ -7,7 +7,7 @@
       </div>
     </div>
   </div>
-  <div class="row ml-5 mr-5 mt-0">
+  <div class="row ml-5 mr-5 mt-4">
     <div class="col-4">
       <div class="card">
         
@@ -32,6 +32,7 @@
         <thead>
           <tr>
             <th class="text-center">URL zahteva</th>
+            <th class="text-center">Akcije</th>
           </tr>
         </thead>
         <tbody v-if="!loading">
@@ -40,6 +41,20 @@
             :key="index"
           >
             <td class="text-center"><a :href="zahtev.about">{{zahtev.about}}</a></td>
+            <td class="text-center">
+              <a class="btn btn-primary" data-toggle="collapse" :href="'#collapsezahtevi'+getId(zahtev.about)" role="button" aria-expanded="false" :aria-controls="'collapsezahtevi'+getId(zahtev.about)"
+                @click="getReferencedBy(zahtev.about)">
+                Referenced By
+              </a>
+              <div class="collapse mt-1" :id="'collapsezahtevi'+getId(zahtev.about)">
+                  <ul class='list-group' v-if='referencedBy.length != 0'>
+                    <li v-for='id of referencedBy' v-bind:key='id' class='list-group-item'>
+                      <a :href="id">{{id}}</a>
+                    </li>
+                  </ul>
+                  <div v-else>Nijedan dokument ne referencira</div>
+              </div>
+            </td>
           </tr>  
         </tbody>
         <tbody v-else>
@@ -57,6 +72,7 @@
         <thead>
           <tr>
             <th class="text-center">URL resenja</th>
+            <th class="text-center">Akcije</th>
           </tr>
         </thead>
         <tbody v-if="!loading">
@@ -65,6 +81,20 @@
             :key="index"
           >
             <td class="text-center"><a :href="resenje.about">{{resenje.about}}</a></td>
+            <td class="text-center">
+              <a class="btn btn-primary" data-toggle="collapse" :href="'#collapseresenja'+getId(resenje.about)" role="button" aria-expanded="false" :aria-controls="'collapseresenja'+getId(resenje.about)"
+                @click="getReferencedBy(resenje.about)">
+                Referenced By
+              </a>
+              <div class="collapse mt-1" :id="'collapseresenja'+getId(resenje.about)">
+                  <ul class='list-group' v-if='referencedBy.length != 0'>
+                    <li v-for='id of referencedBy' v-bind:key='id' class='list-group-item'>
+                      <a :href="id">{{id}}</a>
+                    </li>
+                  </ul>
+                  <div v-else>Nijedan dokument ne referencira</div>
+              </div>
+            </td>
           </tr>  
         </tbody>
         <tbody v-else>
@@ -82,6 +112,7 @@
         <thead>
           <tr>
             <th class="text-center">URL izvestaja</th>
+            <th class="text-center">Akcije</th>
           </tr>
         </thead>
         <tbody v-if="!loading">
@@ -90,6 +121,20 @@
             :key="index"
           >
             <td class="text-center"><a :href="izvestaj.about">{{izvestaj.about}}</a></td>
+            <td class="text-center">
+              <a class="btn btn-primary" data-toggle="collapse" :href="'#collapseizvestaji'+getId(izvestaj.about)" role="button" aria-expanded="false" :aria-controls="'collapseizvestaji'+getId(izvestaj.about)"
+                @click="getReferencedBy(izvestaj.about)">
+                Referenced By
+              </a>
+              <div class="collapse mt-1" :id="'collapseizvestaji'+getId(izvestaj.about)">
+                  <ul class='list-group' v-if='referencedBy.length != 0'>
+                    <li v-for='id of referencedBy' v-bind:key='id' class='list-group-item'>
+                      <a :href="id">{{id}}</a>
+                    </li>
+                  </ul>
+                  <div v-else>Nijedan dokument ne referencira</div>
+              </div>
+            </td>
           </tr>  
         </tbody>
         <tbody v-else>
@@ -114,7 +159,7 @@
 import zahtevApi from '../../../api/zahtev';
 import obavestenjeApi from '../../../api/obavestenje';
 import pretragaApi from '../../../api/pretraga';
-import { constructKolekcijaZahteva, constructRezultatPretrage, pretragaXML } from '../../../util';
+import { constructKolekcijaZahteva, constructRezultatPretrage, pretragaXML, constructReferencedBy, referencedByXML } from '../../../util';
 export default {
   name: 'Pretrage',
   components: {
@@ -131,7 +176,11 @@ export default {
       search: {
         term: '',
         metadata: ''
-      }
+      },
+
+      referencedBy: [],
+      flag: false
+
     };
   },
   async mounted() {
@@ -139,7 +188,10 @@ export default {
   },
   methods: {
     
-    
+    getId(url) {
+      let tokens = url.split("/")
+      return tokens[4]
+    },
 
 
     async doSearch() {
@@ -157,6 +209,22 @@ export default {
       this.resenja = rezultatPretrage.resenja.length != 0 ? rezultatPretrage.resenja : [];
       this.izvestaji = rezultatPretrage.izvestaji.length != 0 ? rezultatPretrage.izvestaji : [];
       this.loading = false;
+    },
+
+    async getReferencedBy(about) {
+      if (this.flag) {
+        this.flag = false;
+        this.referencedBy = [];
+        return;
+      }
+      this.flag = true;
+
+      let aboutxml = referencedByXML(about);
+      console.log('aboutxml' + aboutxml)
+      const referencedBy = constructReferencedBy((await pretragaApi.getReferencedBy(aboutxml)).data);
+      console.log('ref by: ' + referencedBy)
+
+      this.referencedBy = referencedBy;
     }
   }
 }
