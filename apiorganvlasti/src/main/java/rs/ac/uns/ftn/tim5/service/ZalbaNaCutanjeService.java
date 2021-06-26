@@ -148,6 +148,7 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
     }
 
     public ZalbaCutanja create(ZalbaCutanja zalbaCutanja) {
+        this.handleMetadata(zalbaCutanja);
         try {
             zalbaCutanja = zalbaCutanjaAbstractXmlRepository.createEntity(zalbaCutanja);
         } catch (XMLDBException e) {
@@ -214,6 +215,9 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
     }
 
     private void handleMetadata(ZalbaCutanja zalbaCutanja) {
+        /**
+         * Izmeni ako da se slaze sa portom frontenda organa vlasti (neophodno za rdf pretrage)
+         */
         zalbaCutanja.setAbout(
                 String.format(
                         "%s%s%s",
@@ -222,26 +226,6 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
                         zalbaCutanja.getId()
                 )
         );
-        zalbaCutanja.setContent(
-                String.format(
-                        "%s%s%s",
-                        "http://localhost:8086",
-                        "/zahtev/",
-                        zalbaCutanja.getIdZahteva()
-                )
-        );
-        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        zalbaCutanja.getZalilac().setContent(email);
-        zalbaCutanja.getOrganVlasti().setContent(zalbaCutanja.getOrganVlasti().getNaziv());
-        zalbaCutanja.getMestoZalbe().setContent(zalbaCutanja.getMestoZalbe().getValue());
-        zalbaCutanja.getDatumZalbe().setContent(this.dateHelper.toDate(zalbaCutanja.getDatumZalbe()));
-
-        zalbaCutanja.setVocab("http://ftn.uns.ac.rs.tim5/model/predicate");
-        zalbaCutanja.setProperty("pred:zahtev_url");
-        zalbaCutanja.getZalilac().setProperty("pred:email_trazioca");
-        zalbaCutanja.getOrganVlasti().setProperty("pred:naziv_organa_vlasti");
-        zalbaCutanja.getMestoZalbe().setProperty("pred:mesto");
-        zalbaCutanja.getDatumZalbe().setProperty("pred:datum_zalbe");
     }
 
     public byte[] generatePdf(Long id) {

@@ -149,6 +149,7 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
     }
 
     public ZalbaNaOdluku create(ZalbaNaOdluku zalbaNaOdluku) {
+        this.handleMetadata(zalbaNaOdluku);
         try {
             zalbaNaOdluku = zalbaNaOdlukuAbstractXmlRepository.createEntity(zalbaNaOdluku);
         } catch (XMLDBException e) {
@@ -202,6 +203,9 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
     }
 
     private void handleMetadata(ZalbaNaOdluku zalbaNaOdluku) {
+        /**
+         * Izmeni tako da se port slaze sa frontendom organa vlasti (neophodno za rdf pretrage)
+         */
         zalbaNaOdluku.setAbout(
                 String.format(
                         "%s%s%s",
@@ -210,28 +214,6 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
                         zalbaNaOdluku.getId()
                 )
         );
-        zalbaNaOdluku.setContent(
-                String.format(
-                        "%s%s%s",
-                        System.getenv("FRONTEND_URL"),
-                        "/obavestenje/",
-                        zalbaNaOdluku.getIdObavestenja()
-                )
-        );
-        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        zalbaNaOdluku.getZalilac().setContent(email);
-        zalbaNaOdluku.getOrganVlasti().setContent(zalbaNaOdluku.getOrganVlasti().getNaziv());
-        zalbaNaOdluku.getOdluka().getDatumOdluke().setContent(this.dateHelper.toDate(zalbaNaOdluku.getOdluka().getDatumOdluke()));
-        zalbaNaOdluku.getMestoZalbe().setContent(zalbaNaOdluku.getMestoZalbe().getValue());
-        zalbaNaOdluku.getDatumZalbe().setContent(this.dateHelper.toDate(zalbaNaOdluku.getDatumZalbe()));
-
-        zalbaNaOdluku.setVocab("http://ftn.uns.ac.rs.tim5/model/predicate");
-        zalbaNaOdluku.setProperty("pred:obavestenje_url");
-        zalbaNaOdluku.getZalilac().setProperty("pred:email_trazioca");
-        zalbaNaOdluku.getOrganVlasti().setProperty("pred:naziv_organa_vlasti");
-        zalbaNaOdluku.getOdluka().getDatumOdluke().setProperty("pred:datum_odluke");
-        zalbaNaOdluku.getMestoZalbe().setProperty("pred:mesto");
-        zalbaNaOdluku.getDatumZalbe().setProperty("pred:datum_zalbe");
     }
 
     public ZalbaNaOdluku findByIdZahteva(Long idZahteva) {
