@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<zc:Zalba_cutanja xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:zc="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:zo="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="5676735869818689442" about="http://localhost:8087/zalba_cutanja/5676735869818689442" vocab="http://ftn.uns.ac.rs.tim5/model/predicate" property="pred:zahtev_url" content="http://localhost:8086/zahtev/5498313905624395829" id_zahteva="5498313905624395829">
+    <zc:poverenik>
+        <util:Mesto>Београд</util:Mesto>
+        <util:Postanski_broj>11000</util:Postanski_broj>
+        <util:Ulica>Булевар Краља Александра</util:Ulica>
+        <util:Broj>15</util:Broj>
+    </zc:poverenik>
+    <zc:zalilac property="pred:email_trazioca" content="millan.djuric@hotmail.com">
+        <zc:osnovni_podaci>
+            <util:Adresa>
+                <util:Mesto>Novi Sad</util:Mesto>
+                <util:Ulica>Zeleznicka</util:Ulica>
+                <util:Broj>50</util:Broj>
+            </util:Adresa>
+            <util:Ime>Milan</util:Ime>
+            <util:Prezime>Djuric</util:Prezime>
+        </zc:osnovni_podaci>
+        <zc:drugi_podaci_za_kontakt>nema bre</zc:drugi_podaci_za_kontakt>
+    </zc:zalilac>
+    <zc:organ_vlasti property="pred:naziv_organa_vlasti" content="Народна банка Србије">
+        <util:Adresa>
+            <util:Mesto>Нови Сад</util:Mesto>
+            <util:Ulica>Булевар Цара Лазара</util:Ulica>
+            <util:Broj>50</util:Broj>
+        </util:Adresa>
+        <util:Naziv>Народна банка Србије</util:Naziv>
+    </zc:organ_vlasti>
+    <zc:razlog_zalbe>није поступио у целости</zc:razlog_zalbe>
+    <zc:datum_zahteva>
+        <util:dan>---26</util:dan>
+        <util:mesec>--06</util:mesec>
+        <util:godina>2021</util:godina>
+    </zc:datum_zahteva>
+    <zc:zahtevana_informacije>ETO TAKO.</zc:zahtevana_informacije>
+    <zc:mesto_zalbe property="pred:mesto" content="Novi Sad">Novi Sad</zc:mesto_zalbe>
+    <zc:datum_zalbe property="pred:datum_zalbe" content="26.6.2021">
+        <util:dan>---26</util:dan>
+        <util:mesec>--06</util:mesec>
+        <util:godina>2021</util:godina>
+    </zc:datum_zalbe>
+    <zc:odgovor_organa_vlasti>
+        <zc:prihvatio>ne</zc:prihvatio>
+        <zc:odbio>ne</zc:odbio>
+    </zc:odgovor_organa_vlasti>
+</zc:Zalba_cutanja>

@@ -1,0 +1,28 @@
+{ "head": {
+    "vars": [ "p" , "o" ]
+  } ,
+  "results": {
+    "bindings": [
+      { 
+        "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/naziv_organa_vlasti" } ,
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Народна банка Србије" }
+      } ,
+      { 
+        "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/email_trazioca" } ,
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "millan.djuric@hotmail.com" }
+      } ,
+      { 
+        "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/zahtev_url" } ,
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "http://localhost:8086/zahtev/5498313905624395829" }
+      } ,
+      { 
+        "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/datum_zalbe" } ,
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "26.6.2021" }
+      } ,
+      { 
+        "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/mesto" } ,
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Novi Sad" }
+      }
+    ]
+  }
+}

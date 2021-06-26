@@ -171,21 +171,21 @@ public class ZalbaNaOdluku implements Identifiable {
     @XmlElement(required = true)
     protected Adresa poverenik;
     @XmlElement(required = true)
-    protected ZalbaNaOdluku.Zalilac zalilac;
+    protected Zalilac zalilac;
     @XmlElement(name = "organ_vlasti", required = true)
-    protected ZalbaNaOdluku.OrganVlasti organVlasti;
+    protected OrganVlasti organVlasti;
     @XmlElement(name = "datum_zahteva", required = true)
     protected Datum datumZahteva;
     @XmlElement(required = true)
-    protected ZalbaNaOdluku.Odluka odluka;
+    protected Odluka odluka;
     @XmlElement(name = "osnova_za_zaljenje", required = true)
     protected String osnovaZaZaljenje;
     @XmlElement(name = "mesto_zalbe", required = true)
-    protected ZalbaNaOdluku.MestoZalbe mestoZalbe;
+    protected MestoZalbe mestoZalbe;
     @XmlElement(name = "datum_zalbe", required = true)
-    protected ZalbaNaOdluku.DatumZalbe datumZalbe;
+    protected DatumZalbe datumZalbe;
     @XmlElement(name = "odgovor_organa_vlasti", required = true)
-    protected ZalbaNaOdluku.OdgovorOrganaVlasti odgovorOrganaVlasti;
+    protected OdgovorOrganaVlasti odgovorOrganaVlasti;
     @XmlAttribute(name = "id")
     protected Long id;
     @XmlAttribute(name = "about")
@@ -231,10 +231,10 @@ public class ZalbaNaOdluku implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaNaOdluku.Zalilac }
+     *     {@link Zalilac }
      *     
      */
-    public ZalbaNaOdluku.Zalilac getZalilac() {
+    public Zalilac getZalilac() {
         return zalilac;
     }
 
@@ -243,10 +243,10 @@ public class ZalbaNaOdluku implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaNaOdluku.Zalilac }
+     *     {@link Zalilac }
      *     
      */
-    public void setZalilac(ZalbaNaOdluku.Zalilac value) {
+    public void setZalilac(Zalilac value) {
         this.zalilac = value;
     }
 
@@ -255,10 +255,10 @@ public class ZalbaNaOdluku implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaNaOdluku.OrganVlasti }
+     *     {@link OrganVlasti }
      *     
      */
-    public ZalbaNaOdluku.OrganVlasti getOrganVlasti() {
+    public OrganVlasti getOrganVlasti() {
         return organVlasti;
     }
 
@@ -267,10 +267,10 @@ public class ZalbaNaOdluku implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaNaOdluku.OrganVlasti }
+     *     {@link OrganVlasti }
      *     
      */
-    public void setOrganVlasti(ZalbaNaOdluku.OrganVlasti value) {
+    public void setOrganVlasti(OrganVlasti value) {
         this.organVlasti = value;
     }
 
@@ -303,10 +303,10 @@ public class ZalbaNaOdluku implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaNaOdluku.Odluka }
+     *     {@link Odluka }
      *     
      */
-    public ZalbaNaOdluku.Odluka getOdluka() {
+    public Odluka getOdluka() {
         return odluka;
     }
 
@@ -315,10 +315,10 @@ public class ZalbaNaOdluku implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaNaOdluku.Odluka }
+     *     {@link Odluka }
      *     
      */
-    public void setOdluka(ZalbaNaOdluku.Odluka value) {
+    public void setOdluka(Odluka value) {
         this.odluka = value;
     }
 
@@ -351,10 +351,10 @@ public class ZalbaNaOdluku implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaNaOdluku.MestoZalbe }
+     *     {@link MestoZalbe }
      *     
      */
-    public ZalbaNaOdluku.MestoZalbe getMestoZalbe() {
+    public MestoZalbe getMestoZalbe() {
         return mestoZalbe;
     }
 
@@ -363,10 +363,10 @@ public class ZalbaNaOdluku implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaNaOdluku.MestoZalbe }
+     *     {@link MestoZalbe }
      *     
      */
-    public void setMestoZalbe(ZalbaNaOdluku.MestoZalbe value) {
+    public void setMestoZalbe(MestoZalbe value) {
         this.mestoZalbe = value;
     }
 
@@ -375,10 +375,10 @@ public class ZalbaNaOdluku implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaNaOdluku.DatumZalbe }
+     *     {@link DatumZalbe }
      *     
      */
-    public ZalbaNaOdluku.DatumZalbe getDatumZalbe() {
+    public DatumZalbe getDatumZalbe() {
         return datumZalbe;
     }
 
@@ -387,10 +387,10 @@ public class ZalbaNaOdluku implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaNaOdluku.DatumZalbe }
+     *     {@link DatumZalbe }
      *     
      */
-    public void setDatumZalbe(ZalbaNaOdluku.DatumZalbe value) {
+    public void setDatumZalbe(DatumZalbe value) {
         this.datumZalbe = value;
     }
 
@@ -399,10 +399,10 @@ public class ZalbaNaOdluku implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaNaOdluku.OdgovorOrganaVlasti }
+     *     {@link OdgovorOrganaVlasti }
      *     
      */
-    public ZalbaNaOdluku.OdgovorOrganaVlasti getOdgovorOrganaVlasti() {
+    public OdgovorOrganaVlasti getOdgovorOrganaVlasti() {
         return odgovorOrganaVlasti;
     }
 
@@ -411,10 +411,10 @@ public class ZalbaNaOdluku implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaNaOdluku.OdgovorOrganaVlasti }
+     *     {@link OdgovorOrganaVlasti }
      *     
      */
-    public void setOdgovorOrganaVlasti(ZalbaNaOdluku.OdgovorOrganaVlasti value) {
+    public void setOdgovorOrganaVlasti(OdgovorOrganaVlasti value) {
         this.odgovorOrganaVlasti = value;
     }
 
@@ -835,19 +835,19 @@ public class ZalbaNaOdluku implements Identifiable {
     public static class OdgovorOrganaVlasti {
 
         @XmlElement(required = true, defaultValue = "ne")
-        protected ZalbaNaOdluku.OdgovorOrganaVlasti.Prihvatio prihvatio;
+        protected Prihvatio prihvatio;
         @XmlElement(required = true, defaultValue = "ne")
-        protected ZalbaNaOdluku.OdgovorOrganaVlasti.Odbio odbio;
+        protected Odbio odbio;
 
         /**
          * Gets the value of the prihvatio property.
          * 
          * @return
          *     possible object is
-         *     {@link ZalbaNaOdluku.OdgovorOrganaVlasti.Prihvatio }
+         *     {@link Prihvatio }
          *     
          */
-        public ZalbaNaOdluku.OdgovorOrganaVlasti.Prihvatio getPrihvatio() {
+        public Prihvatio getPrihvatio() {
             return prihvatio;
         }
 
@@ -856,10 +856,10 @@ public class ZalbaNaOdluku implements Identifiable {
          * 
          * @param value
          *     allowed object is
-         *     {@link ZalbaNaOdluku.OdgovorOrganaVlasti.Prihvatio }
+         *     {@link Prihvatio }
          *     
          */
-        public void setPrihvatio(ZalbaNaOdluku.OdgovorOrganaVlasti.Prihvatio value) {
+        public void setPrihvatio(Prihvatio value) {
             this.prihvatio = value;
         }
 
@@ -868,10 +868,10 @@ public class ZalbaNaOdluku implements Identifiable {
          * 
          * @return
          *     possible object is
-         *     {@link ZalbaNaOdluku.OdgovorOrganaVlasti.Odbio }
+         *     {@link Odbio }
          *     
          */
-        public ZalbaNaOdluku.OdgovorOrganaVlasti.Odbio getOdbio() {
+        public Odbio getOdbio() {
             return odbio;
         }
 
@@ -880,10 +880,10 @@ public class ZalbaNaOdluku implements Identifiable {
          * 
          * @param value
          *     allowed object is
-         *     {@link ZalbaNaOdluku.OdgovorOrganaVlasti.Odbio }
+         *     {@link Odbio }
          *     
          */
-        public void setOdbio(ZalbaNaOdluku.OdgovorOrganaVlasti.Odbio value) {
+        public void setOdbio(Odbio value) {
             this.odbio = value;
         }
 
@@ -1154,7 +1154,7 @@ public class ZalbaNaOdluku implements Identifiable {
         @XmlElement(name = "broj_odluke", required = true, defaultValue = "1")
         protected BigInteger brojOdluke;
         @XmlElement(name = "datum_odluke", required = true)
-        protected ZalbaNaOdluku.Odluka.DatumOdluke datumOdluke;
+        protected DatumOdluke datumOdluke;
 
         /**
          * Gets the value of the brojOdluke property.
@@ -1185,10 +1185,10 @@ public class ZalbaNaOdluku implements Identifiable {
          * 
          * @return
          *     possible object is
-         *     {@link ZalbaNaOdluku.Odluka.DatumOdluke }
+         *     {@link DatumOdluke }
          *     
          */
-        public ZalbaNaOdluku.Odluka.DatumOdluke getDatumOdluke() {
+        public DatumOdluke getDatumOdluke() {
             return datumOdluke;
         }
 
@@ -1197,10 +1197,10 @@ public class ZalbaNaOdluku implements Identifiable {
          * 
          * @param value
          *     allowed object is
-         *     {@link ZalbaNaOdluku.Odluka.DatumOdluke }
+         *     {@link DatumOdluke }
          *     
          */
-        public void setDatumOdluke(ZalbaNaOdluku.Odluka.DatumOdluke value) {
+        public void setDatumOdluke(DatumOdluke value) {
             this.datumOdluke = value;
         }
 

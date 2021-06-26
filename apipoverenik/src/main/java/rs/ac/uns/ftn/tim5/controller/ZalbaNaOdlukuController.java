@@ -90,7 +90,7 @@ public class ZalbaNaOdlukuController {
         ByteArrayInputStream bis = this.zalbaNaOdlukuService.exportMetadataAsJson(id);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline; filename=zahtev.json");
+        headers.add("Content-Disposition", "inline; filename=zalba_na_odluku.json");
 
         return ResponseEntity
                 .ok()
@@ -103,7 +103,7 @@ public class ZalbaNaOdlukuController {
         ByteArrayInputStream bis = this.zalbaNaOdlukuService.exportMetadataAsXml(id);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline; filename=zahtev.xml");
+        headers.add("Content-Disposition", "inline; filename=zalba_na_odluku.xml");
 
         return ResponseEntity
                 .ok()
@@ -116,7 +116,7 @@ public class ZalbaNaOdlukuController {
         ByteArrayInputStream bis = this.zalbaNaOdlukuService.exportMetadataAsRdf(id);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline; filename=zahtev.ttl");
+        headers.add("Content-Disposition", "inline; filename=zalba_na_odluku.ttl");
 
         return ResponseEntity
                 .ok()

@@ -26,7 +26,10 @@
                   class="btn btn-sm btn-outline-primary ml-1"
                   @click="getPdf(zahtev.id)"
                 >
-                  <Octicon :icon="clippy"/>
+                  <div v-if="zahtevPdfLoadingId==zahtev.id" class="spinner-border mr-2 pb-1" role="status" :style="{width: '0.9rem', height: '0.9rem', 'font-size': '10px'}">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <Octicon v-else :icon="clippy"/>
                   <span>Preuzmi PDF</span>
                 </button>
               </td>
@@ -35,7 +38,10 @@
                   class="btn btn-sm btn-outline-primary ml-1"
                   @click="getHtml(zahtev.id)"
                 >
-                  <Octicon :icon="code"/>
+                  <div v-if="zahtevHtmlLoadingId==zahtev.id" class="spinner-border mr-2 pb-1" role="status" :style="{width: '0.9rem', height: '0.9rem', 'font-size': '10px'}">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <Octicon v-else :icon="code"/>
                   <span>Preuzmi HTML</span>
                 </button>
               </td>
@@ -72,23 +78,20 @@ export default {
       code,
       zahtevi: [],
       zahteviLoading: false,
-      pdfLoading: {},
-      htmlLoading: {}
+      zahtevPdfLoadingId: null,
+      zahtevHtmlLoadingId: null,
     };
   },
   async mounted() {
     if (sessionStorage.getItem('access_token')) {
       this.zahteviLoading = true;
       this.zahtevi = constructKolekcijaZahteva((await zahtevApi.getByGradjanin()).data);
-      for(const zahtev of this.zahtevi) {
-        this.pdfLoading[zahtev.id] = false;
-        this.htmlLoading[zahtev.id] = false;
-      }
       this.zahteviLoading = false;
     }
   },
   methods: {
     async getPdf(idZahteva) {
+      this.zahtevPdfLoadingId = idZahteva;
       const response = await zahtevApi.getPdf(idZahteva);
       const link = document.createElement('a');
       link.href = window.URL.createObjectURL(
@@ -97,8 +100,10 @@ export default {
       link.setAttribute('download', `zahtev-${idZahteva}.pdf`);
       document.body.appendChild(link);
       link.click();
+      this.zahtevPdfLoadingId = null;
     },
     async getHtml(idZahteva) {
+      this.zahtevHtmlLoadingId = idZahteva;
       const response = await zahtevApi.getHtml(idZahteva);
       const link = document.createElement('a');
       link.href = window.URL.createObjectURL(
@@ -107,6 +112,7 @@ export default {
       link.setAttribute('download', `zahtev-${idZahteva}.html`);
       document.body.appendChild(link);
       link.click();
+      this.zahtevHtmlLoadingId = null;
     }
   }
 }

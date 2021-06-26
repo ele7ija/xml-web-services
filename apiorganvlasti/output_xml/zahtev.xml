@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<za:Zahtev xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:za="http://ftn.uns.ac.rs/tim5/model/zahtev" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="8529249741008360414" about="http://localhost:8086/zahtev/8529249741008360414" vocab="http://ftn.uns.ac.rs.tim5/model/predicate">
+<za:Zahtev xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:za="http://ftn.uns.ac.rs/tim5/model/zahtev" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="5498313905624395829" about="http://localhost:8086/zahtev/5498313905624395829" vocab="http://ftn.uns.ac.rs.tim5/model/predicate">
     <za:trazilac property="pred:email_trazioca" content="millan.djuric@hotmail.com">
         <util:Adresa>
             <util:Mesto>Novi Sad</util:Mesto>
@@ -28,15 +28,15 @@
             </util:Dopuna>
         </util:Dopune>
     </za:pravni_osnov>
-    <za:opis_zahteva></za:opis_zahteva>
+    <za:opis_zahteva>ETO TAKO.</za:opis_zahteva>
     <za:elementi_zahteva>
         <za:Element_Zahteva>
             <util:Tekst>Obavestenje o posedovanju</util:Tekst>
             <util:Metod_Dostave>bez dostave</util:Metod_Dostave>
         </za:Element_Zahteva>
     </za:elementi_zahteva>
-    <za:datum property="pred:datum" content="25.6.2021">
-        <util:dan>---25</util:dan>
+    <za:datum property="pred:datum" content="26.6.2021">
+        <util:dan>---26</util:dan>
         <util:mesec>--06</util:mesec>
         <util:godina>2021</util:godina>
     </za:datum>

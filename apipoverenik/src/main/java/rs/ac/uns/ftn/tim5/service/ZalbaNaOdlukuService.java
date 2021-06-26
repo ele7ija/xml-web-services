@@ -198,7 +198,7 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
         zalbaNaOdluku.getOrganVlasti().setContent(zalbaNaOdluku.getOrganVlasti().getNaziv());
         zalbaNaOdluku.getOdluka().getDatumOdluke().setContent(this.dateHelper.toDate(zalbaNaOdluku.getOdluka().getDatumOdluke()));
         zalbaNaOdluku.getMestoZalbe().setContent(zalbaNaOdluku.getMestoZalbe().getValue());
-        zalbaNaOdluku.getDatumZalbe().setContent(this.dateHelper.toDate(zalbaNaOdluku.getDatumZahteva()));
+        zalbaNaOdluku.getDatumZalbe().setContent(this.dateHelper.toDate(zalbaNaOdluku.getDatumZalbe()));
 
         zalbaNaOdluku.setVocab("http://ftn.uns.ac.rs.tim5/model/predicate");
         zalbaNaOdluku.setProperty("pred:obavestenje_url");

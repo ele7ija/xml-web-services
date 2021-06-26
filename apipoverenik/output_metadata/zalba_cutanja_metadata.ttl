@@ -1,0 +1,11 @@
+<http://localhost:8087/zalba_cutanja/5676735869818689442>
+        <http://ftn.uns.ac.rs/tim5/model/predicate/datum_zalbe>
+                "26.6.2021"^^<http://www.w3.org/2000/01/rdf-schema#Literal> ;
+        <http://ftn.uns.ac.rs/tim5/model/predicate/email_trazioca>
+                "millan.djuric@hotmail.com"^^<http://www.w3.org/2000/01/rdf-schema#Literal> ;
+        <http://ftn.uns.ac.rs/tim5/model/predicate/mesto>
+                "Novi Sad"^^<http://www.w3.org/2000/01/rdf-schema#Literal> ;
+        <http://ftn.uns.ac.rs/tim5/model/predicate/naziv_organa_vlasti>
+                "Народна банка Србије"^^<http://www.w3.org/2000/01/rdf-schema#Literal> ;
+        <http://ftn.uns.ac.rs/tim5/model/predicate/zahtev_url>
+                "http://localhost:8086/zahtev/5498313905624395829"^^<http://www.w3.org/2000/01/rdf-schema#Literal> .

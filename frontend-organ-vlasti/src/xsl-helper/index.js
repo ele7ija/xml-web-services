@@ -9,8 +9,8 @@ export const zahtevXsl = `<?xml version="1.0" encoding="UTF-8"?>
             <head>
                 <style>
                     p {
-                    padding-left: 80pt;
-                    padding-right: 80pt;
+                    padding-left: 50pt;
+                    padding-right: 50pt;
                     font-family: "Times New Roman";
                     }
                     p.normal-text {
@@ -163,25 +163,28 @@ export const zahtevXsl = `<?xml version="1.0" encoding="UTF-8"?>
                     </p>
                 </div>
 
-                <div style="margin-top: 30pt;">
-                    <div style="float: left;">
+                <div style="margin-top: 30pt;" class="row justify-content-between">
+                    <div class="col-6">
                         <p class="normal-text centered-text" style="margin-bottom: 0pt; ">
                             <xsl:value-of select="concat(' ', /za:Zahtev/za:trazilac/util:Adresa/util:Mesto)" /><br/>
                             <xsl:value-of select="concat(/za:Zahtev/za:trazilac/util:Adresa/util:Ulica,' ',/za:Zahtev/za:trazilac/util:Adresa/util:Broj)" />
                         </p>
                         <p class="small-text centered-text" style="margin-top: 0pt; margin-bottom: 0pt;">место и адреса</p>
                     </div>
-                    <div style="float: right; ">
+                    <div class="col-6">
                         <p class="normal-text centered-text" style="margin-right: 25pt; margin-bottom: 0pt;">
                             <xsl:value-of select="concat(/za:Zahtev/za:trazilac/util:Ime,' ',/za:Zahtev/za:trazilac/util:Prezime)" />
                         </p>
                         <p class="small-text centered-text" style="margin-right: 25pt; margin-top: 0pt; margin-bottom: 0pt;">Тражилац информације/Име и презиме</p>
                     </div>
-
-                    <p class="normal-text" style="overflow: auto; float: right; margin-right: 25pt; margin-top: 30pt;">
-                        дана&#160;<xsl:value-of select="substring(/za:Zahtev/za:datum/util:dan,4)" />.<xsl:value-of select="substring(/za:Zahtev/za:datum/util:mesec,3)" />.<xsl:value-of select="/za:Zahtev/za:datum/util:godina" />. године
-                    </p>
-
+                </div>
+                <div class="row" style="margin-top: 15pt;">
+                    <div class="col-6"></div>
+                    <div class="col-6">
+                        <p class="normal-text centered-text" style="margin-right: 25pt;">
+                            дана&#160;<xsl:value-of select="substring(/za:Zahtev/za:datum/util:dan,4)" />.<xsl:value-of select="substring(/za:Zahtev/za:datum/util:mesec,3)" />.<xsl:value-of select="/za:Zahtev/za:datum/util:godina" />. године
+                        </p>
+                    </div>
                 </div>
             </body>
         </html>
