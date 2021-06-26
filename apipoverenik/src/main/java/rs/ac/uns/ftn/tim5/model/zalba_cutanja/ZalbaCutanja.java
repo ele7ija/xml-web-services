@@ -144,9 +144,9 @@ public class ZalbaCutanja implements Identifiable {
     @XmlElement(required = true)
     protected Adresa poverenik;
     @XmlElement(required = true)
-    protected ZalbaCutanja.Zalilac zalilac;
+    protected Zalilac zalilac;
     @XmlElement(name = "organ_vlasti", required = true)
-    protected ZalbaCutanja.OrganVlasti organVlasti;
+    protected OrganVlasti organVlasti;
     @XmlElement(name = "razlog_zalbe", required = true)
     protected String razlogZalbe;
     @XmlElement(name = "datum_zahteva", required = true)
@@ -154,11 +154,11 @@ public class ZalbaCutanja implements Identifiable {
     @XmlElement(name = "zahtevana_informacije", required = true)
     protected String zahtevanaInformacije;
     @XmlElement(name = "mesto_zalbe", required = true)
-    protected ZalbaCutanja.MestoZalbe mestoZalbe;
+    protected MestoZalbe mestoZalbe;
     @XmlElement(name = "datum_zalbe", required = true)
-    protected ZalbaCutanja.DatumZalbe datumZalbe;
+    protected DatumZalbe datumZalbe;
     @XmlElement(name = "odgovor_organa_vlasti", required = true)
-    protected ZalbaCutanja.OdgovorOrganaVlasti odgovorOrganaVlasti;
+    protected OdgovorOrganaVlasti odgovorOrganaVlasti;
     @XmlAttribute(name = "id")
     protected Long id;
     @XmlAttribute(name = "about")
@@ -202,10 +202,10 @@ public class ZalbaCutanja implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaCutanja.Zalilac }
+     *     {@link Zalilac }
      *     
      */
-    public ZalbaCutanja.Zalilac getZalilac() {
+    public Zalilac getZalilac() {
         return zalilac;
     }
 
@@ -214,10 +214,10 @@ public class ZalbaCutanja implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaCutanja.Zalilac }
+     *     {@link Zalilac }
      *     
      */
-    public void setZalilac(ZalbaCutanja.Zalilac value) {
+    public void setZalilac(Zalilac value) {
         this.zalilac = value;
     }
 
@@ -226,10 +226,10 @@ public class ZalbaCutanja implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaCutanja.OrganVlasti }
+     *     {@link OrganVlasti }
      *     
      */
-    public ZalbaCutanja.OrganVlasti getOrganVlasti() {
+    public OrganVlasti getOrganVlasti() {
         return organVlasti;
     }
 
@@ -238,10 +238,10 @@ public class ZalbaCutanja implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaCutanja.OrganVlasti }
+     *     {@link OrganVlasti }
      *     
      */
-    public void setOrganVlasti(ZalbaCutanja.OrganVlasti value) {
+    public void setOrganVlasti(OrganVlasti value) {
         this.organVlasti = value;
     }
 
@@ -322,10 +322,10 @@ public class ZalbaCutanja implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaCutanja.MestoZalbe }
+     *     {@link MestoZalbe }
      *     
      */
-    public ZalbaCutanja.MestoZalbe getMestoZalbe() {
+    public MestoZalbe getMestoZalbe() {
         return mestoZalbe;
     }
 
@@ -334,10 +334,10 @@ public class ZalbaCutanja implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaCutanja.MestoZalbe }
+     *     {@link MestoZalbe }
      *     
      */
-    public void setMestoZalbe(ZalbaCutanja.MestoZalbe value) {
+    public void setMestoZalbe(MestoZalbe value) {
         this.mestoZalbe = value;
     }
 
@@ -346,10 +346,10 @@ public class ZalbaCutanja implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaCutanja.DatumZalbe }
+     *     {@link DatumZalbe }
      *     
      */
-    public ZalbaCutanja.DatumZalbe getDatumZalbe() {
+    public DatumZalbe getDatumZalbe() {
         return datumZalbe;
     }
 
@@ -358,10 +358,10 @@ public class ZalbaCutanja implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaCutanja.DatumZalbe }
+     *     {@link DatumZalbe }
      *     
      */
-    public void setDatumZalbe(ZalbaCutanja.DatumZalbe value) {
+    public void setDatumZalbe(DatumZalbe value) {
         this.datumZalbe = value;
     }
 
@@ -370,10 +370,10 @@ public class ZalbaCutanja implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaCutanja.OdgovorOrganaVlasti }
+     *     {@link OdgovorOrganaVlasti }
      *     
      */
-    public ZalbaCutanja.OdgovorOrganaVlasti getOdgovorOrganaVlasti() {
+    public OdgovorOrganaVlasti getOdgovorOrganaVlasti() {
         return odgovorOrganaVlasti;
     }
 
@@ -382,10 +382,10 @@ public class ZalbaCutanja implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaCutanja.OdgovorOrganaVlasti }
+     *     {@link OdgovorOrganaVlasti }
      *     
      */
-    public void setOdgovorOrganaVlasti(ZalbaCutanja.OdgovorOrganaVlasti value) {
+    public void setOdgovorOrganaVlasti(OdgovorOrganaVlasti value) {
         this.odgovorOrganaVlasti = value;
     }
 
@@ -782,19 +782,19 @@ public class ZalbaCutanja implements Identifiable {
     public static class OdgovorOrganaVlasti {
 
         @XmlElement(required = true, defaultValue = "ne")
-        protected ZalbaCutanja.OdgovorOrganaVlasti.Prihvatio prihvatio;
+        protected Prihvatio prihvatio;
         @XmlElement(required = true, defaultValue = "ne")
-        protected ZalbaCutanja.OdgovorOrganaVlasti.Odbio odbio;
+        protected Odbio odbio;
 
         /**
          * Gets the value of the prihvatio property.
          * 
          * @return
          *     possible object is
-         *     {@link ZalbaCutanja.OdgovorOrganaVlasti.Prihvatio }
+         *     {@link Prihvatio }
          *     
          */
-        public ZalbaCutanja.OdgovorOrganaVlasti.Prihvatio getPrihvatio() {
+        public Prihvatio getPrihvatio() {
             return prihvatio;
         }
 
@@ -803,10 +803,10 @@ public class ZalbaCutanja implements Identifiable {
          * 
          * @param value
          *     allowed object is
-         *     {@link ZalbaCutanja.OdgovorOrganaVlasti.Prihvatio }
+         *     {@link Prihvatio }
          *     
          */
-        public void setPrihvatio(ZalbaCutanja.OdgovorOrganaVlasti.Prihvatio value) {
+        public void setPrihvatio(Prihvatio value) {
             this.prihvatio = value;
         }
 
@@ -815,10 +815,10 @@ public class ZalbaCutanja implements Identifiable {
          * 
          * @return
          *     possible object is
-         *     {@link ZalbaCutanja.OdgovorOrganaVlasti.Odbio }
+         *     {@link Odbio }
          *     
          */
-        public ZalbaCutanja.OdgovorOrganaVlasti.Odbio getOdbio() {
+        public Odbio getOdbio() {
             return odbio;
         }
 
@@ -827,10 +827,10 @@ public class ZalbaCutanja implements Identifiable {
          * 
          * @param value
          *     allowed object is
-         *     {@link ZalbaCutanja.OdgovorOrganaVlasti.Odbio }
+         *     {@link Odbio }
          *     
          */
-        public void setOdbio(ZalbaCutanja.OdgovorOrganaVlasti.Odbio value) {
+        public void setOdbio(Odbio value) {
             this.odbio = value;
         }
 
