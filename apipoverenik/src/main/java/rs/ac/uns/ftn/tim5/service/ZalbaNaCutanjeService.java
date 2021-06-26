@@ -26,6 +26,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -378,5 +379,13 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
                         email)
         );
         return this.sparqlQueryToZalbaNaOdlukuList(query);
+    }
+
+    public List<ZalbaCutanja> findAllNeobradjene() {
+        List<ZalbaCutanja> zalbeCutanja = this.findAll();
+        //TODO: Zalbe koje se filtriraju ispod dodatno isfiltrirati po nepostojanju resenja za zalbu sa datim ID-jem
+        return zalbeCutanja.stream().filter(
+                x -> x.getOdgovorOrganaVlasti().getPrihvatio().getValue().equals("ne")
+        ).collect(Collectors.toList());
     }
 }

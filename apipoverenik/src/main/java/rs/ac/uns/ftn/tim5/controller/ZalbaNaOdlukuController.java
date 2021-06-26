@@ -42,6 +42,13 @@ public class ZalbaNaOdlukuController {
         return new ResponseEntity<>(kolekcijaZalbiNaOdluku, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/neobradjene/get", produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<KolekcijaZalbiNaOdluku> getNeobradjene() {
+        KolekcijaZalbiNaOdluku kolekcijaZalbiNaOdluku = new KolekcijaZalbiNaOdluku();
+        kolekcijaZalbiNaOdluku.setZalbaNaOdluku(this.zalbaNaOdlukuService.findAllNeobradjene());
+        return new ResponseEntity<>(kolekcijaZalbiNaOdluku, HttpStatus.OK);
+    }
+
     @PostMapping(produces = MediaType.APPLICATION_XML_VALUE)
     ResponseEntity<ZalbaNaOdluku> create(@RequestBody String body){
         return new ResponseEntity<>(this.zalbaNaOdlukuService.create(body), HttpStatus.OK);

@@ -11,9 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.tim5.model.zalba_cutanja.KolekcijaZalbiCutanja;
 import rs.ac.uns.ftn.tim5.model.zalba_cutanja.ZalbaCutanja;
-import rs.ac.uns.ftn.tim5.model.zalba_na_odluku.KolekcijaZalbiNaOdluku;
 import rs.ac.uns.ftn.tim5.service.ZalbaNaCutanjeService;
-
 import java.io.ByteArrayInputStream;
 
 @Controller
@@ -40,6 +38,13 @@ public class ZalbaNaCutanjeController {
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         KolekcijaZalbiCutanja kolekcijaZalbiCutanja = new KolekcijaZalbiCutanja();
         kolekcijaZalbiCutanja.setZalbaCutanja(zalbaNaCutanjeService.findAllByGradjaninEmail(email));
+        return new ResponseEntity<>(kolekcijaZalbiCutanja, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/neobradjene/get", produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<KolekcijaZalbiCutanja> getNeobradjene() {
+        KolekcijaZalbiCutanja kolekcijaZalbiCutanja = new KolekcijaZalbiCutanja();
+        kolekcijaZalbiCutanja.setZalbaCutanja(this.zalbaNaCutanjeService.findAllNeobradjene());
         return new ResponseEntity<>(kolekcijaZalbiCutanja, HttpStatus.OK);
     }
 

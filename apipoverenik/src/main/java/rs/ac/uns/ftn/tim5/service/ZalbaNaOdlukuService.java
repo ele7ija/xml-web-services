@@ -383,4 +383,12 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
         );
         return this.sparqlQueryToZalbaNaOdlukuList(query);
     }
+
+    public List<ZalbaNaOdluku> findAllNeobradjene() {
+        List<ZalbaNaOdluku> zalbeNaOdluku = this.findAll();
+        //TODO: Zalbe koje se filtriraju ispod dodatno isfiltrirati po nepostojanju resenja za zalbu sa datim ID-jem
+        return zalbeNaOdluku.stream().filter(
+                x -> x.getOdgovorOrganaVlasti().getPrihvatio().getValue().equals("ne")
+        ).collect(Collectors.toList());
+    }
 }

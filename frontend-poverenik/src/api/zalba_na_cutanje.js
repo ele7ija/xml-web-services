@@ -3,6 +3,7 @@ import axios from "axios";
 export default {
   create: xml => axios.post(`${process.env.VUE_APP_BACKEND_ROOT}/zalba-na-cutanje`, xml),
   getAllUlogovanogKorisnika: () => axios.get(`${process.env.VUE_APP_BACKEND_ROOT}/zalba-na-cutanje/by-gradjanin/get`),
+  getAllNeobradjeneZalbeNaCutanje: () => axios.get(`${process.env.VUE_APP_BACKEND_ROOT}/zalba-na-cutanje/neobradjene/get`),
   getById: idZalbe => axios.get(`${process.env.VUE_APP_BACKEND_ROOT}/zalba-na-cutanje/${idZalbe}`),
   getPdf: idZalbe => axios.get(`${process.env.VUE_APP_BACKEND_ROOT}/zalba-na-cutanje/pdf/${idZalbe}`, {responseType: 'blob'}),
   getHtml: idZalbe => axios.get(`${process.env.VUE_APP_BACKEND_ROOT}/zalba-na-cutanje/html/${idZalbe}`, {responseType: 'blob'}),
