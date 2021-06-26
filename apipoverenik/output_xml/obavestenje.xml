@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ob:Obavestenje xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:za="http://ftn.uns.ac.rs/tim5/model/zahtev" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="6599836877585929557" id_zahteva="8529249741008360414" about="http://localhost:8086/obavestenje/6599836877585929557" vocab="http://ftn.uns.ac.rs.tim5/model/predicate" property="pred:zahtev_url" content="http://localhost:8086/zahtev/8529249741008360414">
+    <ob:odbijen property="pred:odbijen" content="ne">false</ob:odbijen>
+    <ob:istekao property="pred:istekao" content="ne">false</ob:istekao>
+    <ob:Trazilac property="pred:email_trazioca" content="millan.djuric@hotmail.com">
+        <util:Adresa>
+            <util:Mesto>Novi Sad</util:Mesto>
+            <util:Ulica>Zeleznicka</util:Ulica>
+            <util:Broj>50</util:Broj>
+        </util:Adresa>
+        <util:Ime>Milan</util:Ime>
+        <util:Prezime>Djuric</util:Prezime>
+    </ob:Trazilac>
+    <ob:Organ property="pred:naziv_organa_vlasti" content="Народна банка Србије">
+        <util:Adresa>
+            <util:Mesto>Нови Сад</util:Mesto>
+            <util:Ulica>Булевар Цара Лазара</util:Ulica>
+            <util:Broj>50</util:Broj>
+        </util:Adresa>
+        <util:Naziv>Народна банка Србије</util:Naziv>
+    </ob:Organ>
+    <ob:Predmet>
+        <ob:Broj_Predmeta>1</ob:Broj_Predmeta>
+        <ob:Datum property="pred:datum" content="25.6.2021">
+            <util:dan>---25</util:dan>
+            <util:mesec>--06</util:mesec>
+            <util:godina>2021</util:godina>
+        </ob:Datum>
+        <ob:Opis_Trazene_Informacije></ob:Opis_Trazene_Informacije>
+        <ob:Pravni_Osnov>
+            <util:Naziv>Закона о слободном приступу информацијама од јавног значаја</util:Naziv>
+            <util:Clan>16</util:Clan>
+            <util:Strana>1</util:Strana>
+            <util:Dopune>
+                <util:Dopuna>
+                    <util:Broj_dopune>16</util:Broj_dopune>
+                    <util:Godina>2020</util:Godina>
+                </util:Dopuna>
+            </util:Dopune>
+        </ob:Pravni_Osnov>
+        <ob:Odgovor>
+            <util:Odobren>true</util:Odobren>
+            <util:Element_Zahteva>
+                <util:Tekst>Obavestenje o posedovanju</util:Tekst>
+                <util:Metod_Dostave>bez dostave</util:Metod_Dostave>
+            </util:Element_Zahteva>
+            <util:Uvid>
+                <util:Datum_Uvida>
+                    <util:dan>---25</util:dan>
+                    <util:mesec>--06</util:mesec>
+                    <util:godina>2021</util:godina>
+                </util:Datum_Uvida>
+                <util:Vreme_Uvida>
+                    <util:Sat>15</util:Sat>
+                    <util:Minut>30</util:Minut>
+                </util:Vreme_Uvida>
+            </util:Uvid>
+        </ob:Odgovor>
+        <ob:Uplata>
+            <util:Racun>
+                <util:Broj_Racuna>840-742328843-30</util:Broj_Racuna>
+            </util:Racun>
+            <util:Iznos>0</util:Iznos>
+            <util:Poziv_Na_Broj>97</util:Poziv_Na_Broj>
+            <util:Pravni_Osnov>
+                <util:Naziv>Правилника о условима и начину вођења рачуна</util:Naziv>
+                <util:Dopune>
+                    <util:Dopuna>
+                        <util:Broj_dopune>20</util:Broj_dopune>
+                        <util:Godina>2007</util:Godina>
+                    </util:Dopuna>
+                    <util:Dopuna>
+                        <util:Broj_dopune>40</util:Broj_dopune>
+                        <util:Godina>2010</util:Godina>
+                    </util:Dopuna>
+                </util:Dopune>
+            </util:Pravni_Osnov>
+        </ob:Uplata>
+    </ob:Predmet>
+</ob:Obavestenje>
