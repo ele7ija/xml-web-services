@@ -156,7 +156,6 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
         Zahtev zahtev = this.zahtevService.findById(obavestenje.getIdZahteva());
         if (obavestenje.getOdbijen().isValue()) {
             this.emailService.odbijZahtev(zahtev);
-            System.out.println("SALJEM");
             this.client.sendObavestenje(obavestenje);
         } else if(obavestenje.getIstekao().isValue()) {
             this.emailService.istekaoZahtev(zahtev);

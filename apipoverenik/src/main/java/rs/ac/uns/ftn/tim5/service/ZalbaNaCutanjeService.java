@@ -22,7 +22,7 @@ import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.*;
 @Service
 public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
 
-    private final String jaxbContextPath = "rs.ac.uns.ftn.tim5.apipoverenik.model.zalba_cutanja";
+    private final String jaxbContextPath = "rs.ac.uns.ftn.tim5.model.zalba_cutanja";
 
     private static final String SPARQL_NAMED_GRAPH_URI = "/zalba_cutanja/sparql/metadata";
 
