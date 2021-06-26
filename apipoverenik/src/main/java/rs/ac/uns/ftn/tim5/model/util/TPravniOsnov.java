@@ -68,7 +68,7 @@ public class TPravniOsnov {
     @XmlSchemaType(name = "positiveInteger")
     protected BigInteger strana;
     @XmlElement(name = "Dopune")
-    protected TPravniOsnov.Dopune dopune;
+    protected Dopune dopune;
 
     /**
      * Gets the value of the naziv property.
@@ -147,10 +147,10 @@ public class TPravniOsnov {
      * 
      * @return
      *     possible object is
-     *     {@link TPravniOsnov.Dopune }
+     *     {@link Dopune }
      *     
      */
-    public TPravniOsnov.Dopune getDopune() {
+    public Dopune getDopune() {
         return dopune;
     }
 
@@ -159,10 +159,10 @@ public class TPravniOsnov {
      * 
      * @param value
      *     allowed object is
-     *     {@link TPravniOsnov.Dopune }
+     *     {@link Dopune }
      *     
      */
-    public void setDopune(TPravniOsnov.Dopune value) {
+    public void setDopune(Dopune value) {
         this.dopune = value;
     }
 

@@ -92,7 +92,7 @@ import rs.ac.uns.ftn.tim5.model.util.TPravnoLice;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "izvestaj", propOrder = {
     "statistikaZahteva",
     "statistikaZalbi",
     "organVlasti",
@@ -102,13 +102,13 @@ import rs.ac.uns.ftn.tim5.model.util.TPravnoLice;
 public class Izvestaj implements Identifiable {
 
     @XmlElement(name = "statistika_zahteva", required = true)
-    protected Izvestaj.StatistikaZahteva statistikaZahteva;
+    protected StatistikaZahteva statistikaZahteva;
     @XmlElement(name = "statistika_zalbi", required = true)
-    protected Izvestaj.StatistikaZalbi statistikaZalbi;
+    protected StatistikaZalbi statistikaZalbi;
     @XmlElement(name = "organ_vlasti", required = true)
     protected TPravnoLice organVlasti;
     @XmlElement(name = "datum_podnosenja", required = true)
-    protected Izvestaj.DatumPodnosenja datumPodnosenja;
+    protected DatumPodnosenja datumPodnosenja;
     @XmlAttribute(name = "id")
     protected Long id;
     @XmlAttribute(name = "about")
@@ -122,10 +122,10 @@ public class Izvestaj implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link Izvestaj.StatistikaZahteva }
+     *     {@link StatistikaZahteva }
      *     
      */
-    public Izvestaj.StatistikaZahteva getStatistikaZahteva() {
+    public StatistikaZahteva getStatistikaZahteva() {
         return statistikaZahteva;
     }
 
@@ -134,10 +134,10 @@ public class Izvestaj implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link Izvestaj.StatistikaZahteva }
+     *     {@link StatistikaZahteva }
      *     
      */
-    public void setStatistikaZahteva(Izvestaj.StatistikaZahteva value) {
+    public void setStatistikaZahteva(StatistikaZahteva value) {
         this.statistikaZahteva = value;
     }
 
@@ -146,10 +146,10 @@ public class Izvestaj implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link Izvestaj.StatistikaZalbi }
+     *     {@link StatistikaZalbi }
      *     
      */
-    public Izvestaj.StatistikaZalbi getStatistikaZalbi() {
+    public StatistikaZalbi getStatistikaZalbi() {
         return statistikaZalbi;
     }
 
@@ -158,10 +158,10 @@ public class Izvestaj implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link Izvestaj.StatistikaZalbi }
+     *     {@link StatistikaZalbi }
      *     
      */
-    public void setStatistikaZalbi(Izvestaj.StatistikaZalbi value) {
+    public void setStatistikaZalbi(StatistikaZalbi value) {
         this.statistikaZalbi = value;
     }
 
@@ -194,10 +194,10 @@ public class Izvestaj implements Identifiable {
      * 
      * @return
      *     possible object is
-     *     {@link Izvestaj.DatumPodnosenja }
+     *     {@link DatumPodnosenja }
      *     
      */
-    public Izvestaj.DatumPodnosenja getDatumPodnosenja() {
+    public DatumPodnosenja getDatumPodnosenja() {
         return datumPodnosenja;
     }
 
@@ -206,10 +206,10 @@ public class Izvestaj implements Identifiable {
      * 
      * @param value
      *     allowed object is
-     *     {@link Izvestaj.DatumPodnosenja }
+     *     {@link DatumPodnosenja }
      *     
      */
-    public void setDatumPodnosenja(Izvestaj.DatumPodnosenja value) {
+    public void setDatumPodnosenja(DatumPodnosenja value) {
         this.datumPodnosenja = value;
     }
 
@@ -531,7 +531,7 @@ public class Izvestaj implements Identifiable {
         @XmlSchemaType(name = "nonNegativeInteger")
         protected BigInteger brojZalbiNaOdluku;
         @XmlElement(name = "zalbe_cutanja", required = true)
-        protected Izvestaj.StatistikaZalbi.ZalbeCutanja zalbeCutanja;
+        protected ZalbeCutanja zalbeCutanja;
 
         /**
          * Gets the value of the brojZalbiNaOdluku property.
@@ -562,10 +562,10 @@ public class Izvestaj implements Identifiable {
          * 
          * @return
          *     possible object is
-         *     {@link Izvestaj.StatistikaZalbi.ZalbeCutanja }
+         *     {@link ZalbeCutanja }
          *     
          */
-        public Izvestaj.StatistikaZalbi.ZalbeCutanja getZalbeCutanja() {
+        public ZalbeCutanja getZalbeCutanja() {
             return zalbeCutanja;
         }
 
@@ -574,10 +574,10 @@ public class Izvestaj implements Identifiable {
          * 
          * @param value
          *     allowed object is
-         *     {@link Izvestaj.StatistikaZalbi.ZalbeCutanja }
+         *     {@link ZalbeCutanja }
          *     
          */
-        public void setZalbeCutanja(Izvestaj.StatistikaZalbi.ZalbeCutanja value) {
+        public void setZalbeCutanja(ZalbeCutanja value) {
             this.zalbeCutanja = value;
         }
 

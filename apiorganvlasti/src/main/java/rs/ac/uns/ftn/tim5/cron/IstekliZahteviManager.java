@@ -34,8 +34,6 @@ public class IstekliZahteviManager {
      */
     @Scheduled(cron = "0 * * * * ?")
     public void scheduleTaskWithFixedRate() throws DatatypeConfigurationException {
-        System.out.println("Usao");
-        System.out.println("Uradi ispis");
         List<Zahtev> zahtevi = this.zahtevService.findAll();
         for(Zahtev zahtev : zahtevi) {
             Obavestenje o = this.obavestenjeService.findByZahtevId(zahtev.getId());
@@ -80,6 +78,8 @@ public class IstekliZahteviManager {
                 obavestenje1.setPredmet(p1);
 
                 this.obavestenjeService.create(obavestenje1);
+
+                //TODO ovde soap logika mozda ne
             }
         }
     }

@@ -15,6 +15,7 @@ import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlException;
 import rs.ac.uns.ftn.tim5.model.exception.XmlDatabaseException;
 import rs.ac.uns.ftn.tim5.model.obavestenje.Obavestenje;
 import rs.ac.uns.ftn.tim5.repository.AbstractXmlRepository;
+import rs.ac.uns.ftn.tim5.transformation.XSLFOTransformer;
 
 
 import javax.annotation.PostConstruct;
@@ -57,16 +58,16 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
     @Autowired
     private DateHelper dateHelper;
 
-    /*@Autowired
-    private ZahtevService zahtevService;
-
-    @Autowired
-    private EmailService emailService;*/
-
     @Autowired
     private SparqlUtil sparqlUtil;
 
-    //private XSLFOTransformer XSLFOTransformer;
+    @Autowired
+    private ZalbaNaCutanjeService zalbaNaCutanjeService;
+
+    @Autowired
+    private ZalbaNaOdlukuService zalbaNaOdlukuService;
+
+    private XSLFOTransformer XSLFOTransformer;
 
     @PostConstruct
     public void injectRepositoryProperties() {
@@ -119,53 +120,14 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
 
     @Override
     public Obavestenje create(String xmlEntity) {
-        Obavestenje obavestenje;
-        try {
-            obavestenje = this.obavestenjeXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
-            obavestenje.setId(this.uuidHelper.getUUID());
-            //this.handleMetadata(obavestenje);
-        } catch (JAXBException e) {
-            throw new InvalidXmlException(Obavestenje.class, e.getMessage());
-        }
-
-        try {
-            obavestenje = obavestenjeAbstractXmlRepository.createEntity(obavestenje);
-        } catch (XMLDBException e) {
-            throw new XmlDatabaseException(e.getMessage());
-        } catch (JAXBException e) {
-            throw new InvalidXmlDatabaseException(Obavestenje.class, e.getMessage());
-        }
-
-        // Sacuvaj u RDF
-        try {
-            xmlEntity = this.obavestenjeXmlConversionAgent.marshall(obavestenje, this.jaxbContextPath);
-            if (!rdfService.save(xmlEntity, SPARQL_NAMED_GRAPH_URI)) {
-                System.out.println("[ERROR] Neuspesno cuvanje metapodataka obavestenja u RDF DB.");
-            }
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-
-        //posalji email
-        /*Zahtev zahtev = this.zahtevService.findById(obavestenje.getIdZahteva());
-        if (obavestenje.getOdbijen().isValue()) {
-            this.emailService.odbijZahtev(zahtev);
-        } else if(obavestenje.getIstekao().isValue()) {
-            this.emailService.istekaoZahtev(zahtev);
-        } else {
-           this.emailService.prihvatiZahtev(
-                   zahtev,
-                   this.generatePdf(obavestenje.getId()),
-                   this.generateHtml(obavestenje.getId())
-           );
-        }*/
-        return obavestenje;
+        //hook method
+        return null;
     }
 
 
     public Obavestenje create(Obavestenje obavestenje) {
         obavestenje.setId(this.uuidHelper.getUUID());
-        //this.handleMetadata(obavestenje);
+        this.handleMetadata(obavestenje);
 
         try {
             obavestenje = obavestenjeAbstractXmlRepository.createEntity(obavestenje);
@@ -185,42 +147,13 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
             e.printStackTrace();
         }
 
-        //posalji email
-        /*Zahtev zahtev = this.zahtevService.findById(obavestenje.getIdZahteva());
-        if (obavestenje.getOdbijen().isValue()) {
-            this.emailService.odbijZahtev(zahtev);
-        } else if(obavestenje.getIstekao().isValue()) {
-            this.emailService.istekaoZahtev(zahtev);
-        } else {
-            this.emailService.prihvatiZahtev(
-                    zahtev,
-                    this.generatePdf(obavestenje.getId()),
-                    this.generateHtml(obavestenje.getId())
-            );
-        }*/
         return obavestenje;
     }
 
     @Override
     public Obavestenje update(String xmlEntity) {
-        Obavestenje obavestenje;
-        try {
-            obavestenje = this.obavestenjeXmlConversionAgent.unmarshall(xmlEntity, this.jaxbContextPath);
-        } catch (JAXBException e) {
-            throw new InvalidXmlException(Obavestenje.class, e.getMessage());
-        }
-
-        try {
-            if (!this.obavestenjeAbstractXmlRepository.updateEntity(obavestenje)) {
-                throw new EntityNotFoundException(obavestenje.getId(), Obavestenje.class);
-            }
-            return obavestenje;
-        } catch (XMLDBException e) {
-            throw new XmlDatabaseException(e.getMessage());
-        } catch (JAXBException e) {
-            throw new InvalidXmlDatabaseException(Obavestenje.class, e.getMessage());
-        }
-
+        //hook method
+        return null;
     }
 
     @Override
@@ -232,7 +165,9 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
         }
     }
 
-    /*private void handleMetadata(Obavestenje obavestenje) {
+    private void handleMetadata(Obavestenje obavestenje) {
+        //azuriraj samo url do obavestenja tako da ima port koji se odnosi na frontend poverenika
+        //svi ostali metapodaci su vec postavljeni
         obavestenje.setAbout(
                 String.format(
                         "%s%s%s",
@@ -241,34 +176,7 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
                         obavestenje.getId()
                 )
         );
-        obavestenje.setContent(
-                String.format(
-                        "%s%s%s",
-                        System.getenv("FRONTEND_URL"),
-                        "/zahtev/",
-                        obavestenje.getIdZahteva()
-                )
-        );
-
-           Dobavi email trazioca
-            Iz RDF baze procitaj subjekat koji u svom identifikatoru sadrzi id zahteva na koje se obavestenje odnosi
-            Taj subjekat ima za objekat email podnosioca
-            U
-
-        obavestenje.getTrazilac().setContent(this.zahtevService.findGradjaninEmailFromZahtevId(obavestenje.getIdZahteva()));
-        obavestenje.getOrgan().setContent(obavestenje.getOrgan().getNaziv());
-        obavestenje.getPredmet().getDatum().setContent(this.dateHelper.toDate(obavestenje.getPredmet().getDatum()));
-        obavestenje.getOdbijen().setContent(obavestenje.getOdbijen().isValue() ? "da" : "ne");
-        obavestenje.getIstekao().setContent(obavestenje.getIstekao().isValue() ? "da" : "ne");
-
-        obavestenje.setVocab("http://ftn.uns.ac.rs.tim5/model/predicate");
-        obavestenje.setProperty("pred:zahtev_url");
-        obavestenje.getTrazilac().setProperty("pred:email_trazioca");
-        obavestenje.getOrgan().setProperty("pred:naziv_organa_vlasti");
-        obavestenje.getPredmet().getDatum().setProperty("pred:datum");
-        obavestenje.getOdbijen().setProperty("pred:odbijen");
-        obavestenje.getIstekao().setProperty("pred:istekao");
-    }*/
+    }
 
 
     public String getXmlFilePath() {
@@ -286,18 +194,8 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
         return String.format(".%s%s%sobavestenje.html", sep, OUTPUT_FOLDER_HTML, sep);
     }
 
-    public Obavestenje findByZahtevId(Long id) {
-        try {
-            return this.obavestenjeAbstractXmlRepository.findEntity(X_QUERY_FIND_OBAVESTENJE_BY_ID_ZAHTEVA_EXPRESSION, id);
-        } catch (XMLDBException e) {
-            e.printStackTrace();
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
-    /*public ByteArrayInputStream exportMetadataAsJson(Long zahtevId) {
+    public ByteArrayInputStream exportMetadataAsJson(Long zahtevId) {
         String sparqlQuery = this.sparqlUtil.selectPredicateAndObject(
                 String.format(
                         "%s%s",
@@ -318,9 +216,9 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
             e.printStackTrace();
         }
         return null;
-    }*/
+    }
 
-    /*public ByteArrayInputStream exportMetadataAsXml(Long zahtevId) {
+    public ByteArrayInputStream exportMetadataAsXml(Long zahtevId) {
         String sparqlQuery = this.sparqlUtil.selectPredicateAndObject(
                 String.format(
                         "%s%s",
@@ -341,9 +239,9 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
             e.printStackTrace();
         }
         return null;
-    }*/
+    }
 
-    /*public ByteArrayInputStream exportMetadataAsRdf(Long zahtevId) {
+    public ByteArrayInputStream exportMetadataAsRdf(Long zahtevId) {
         String sparqlQuery = this.sparqlUtil.describe(
                 String.format("%s/obavestenje/%d", System.getenv("FRONTEND_URL"), zahtevId),
                 String.format(
@@ -364,23 +262,7 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
             e.printStackTrace();
         }
         return null;
-    }*/
-
-
-    //TODO kad dodam logovanje onda ovo ima smila
-    /*public List<Obavestenje> findByUlogovaniTrazilac(String email) {
-        String query = this.sparqlUtil.selectData(
-                String.format(
-                        "%s%s",
-                        this.rdfService.getRdfdbConnectionProperties().getDataEndpoint(),
-                        SPARQL_NAMED_GRAPH_URI
-                ),
-                String.format(
-                        "?s <http://ftn.uns.ac.rs/tim5/model/predicate/email_trazioca> \"%s\"^^<http://www.w3.org/2000/01/rdf-schema#Literal>",
-                        email)
-        );
-        return this.sparqlQueryToObavestenjeList(query);
-    }*/
+    }
 
     /**
      * Helper metoda koja konvertuje listu SparqlQueryResult objekata u listu Obavestenje objekata
@@ -406,5 +288,49 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * Pronalazi sva obavestenja koja su odbijena upitom nad RDF bazom
+     */
+    public List<Obavestenje> findOdbijena(String email) {
+        String query = this.sparqlUtil.selectData(
+                String.format(
+                        "%s%s",
+                        this.rdfService.getRdfdbConnectionProperties().getDataEndpoint(),
+                        SPARQL_NAMED_GRAPH_URI
+                ),
+                String.format(
+                        "?s <http://ftn.uns.ac.rs/tim5/model/predicate/email_trazioca> \"%s\"^^<http://www.w3.org/2000/01/rdf-schema#Literal>" +
+                                " . " +
+                                "?s <http://ftn.uns.ac.rs/tim5/model/predicate/odbijen> \"%s\"^^<http://www.w3.org/2000/01/rdf-schema#Literal>",
+                        email, "da")
+        );
+        List<Obavestenje> retval = this.sparqlQueryToObavestenjeList(query);
+        return retval.stream().filter(
+                x -> this.zalbaNaOdlukuService.findByIdZahteva(x.getIdZahteva()) == null
+        ).collect(Collectors.toList());
+    }
+
+    /**
+     * Pronalazi sva obavestenja koja su istekla upitom nad RDF bazom
+     */
+    public List<Obavestenje> findIstekla(String email) {
+        String query = this.sparqlUtil.selectData(
+                String.format(
+                        "%s%s",
+                        this.rdfService.getRdfdbConnectionProperties().getDataEndpoint(),
+                        SPARQL_NAMED_GRAPH_URI
+                ),
+                String.format(
+                        "?s <http://ftn.uns.ac.rs/tim5/model/predicate/email_trazioca> \"%s\"^^<http://www.w3.org/2000/01/rdf-schema#Literal>" +
+                                " . " +
+                                "?s <http://ftn.uns.ac.rs/tim5/model/predicate/istekao> \"%s\"^^<http://www.w3.org/2000/01/rdf-schema#Literal>",
+                        email, "da")
+        );
+        List<Obavestenje> retval = this.sparqlQueryToObavestenjeList(query);
+        return retval.stream().filter(
+                x -> this.zalbaNaCutanjeService.findByIdZahteva(x.getIdZahteva()) == null
+        ).collect(Collectors.toList());
     }
 }

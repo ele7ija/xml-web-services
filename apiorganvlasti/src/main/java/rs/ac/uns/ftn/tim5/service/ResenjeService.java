@@ -107,6 +107,31 @@ public class ResenjeService implements AbstractXmlService<Resenje> {
         return resenje;
     }
 
+
+    public Resenje create(Resenje resenje) {
+
+        try {
+            resenje = resenjeAbstractXmlRepository.createEntity(resenje);
+        } catch (XMLDBException e) {
+            throw new XmlDatabaseException(e.getMessage());
+        } catch (JAXBException e) {
+            throw new InvalidXmlDatabaseException(Resenje.class, e.getMessage());
+        }
+
+        // Sacuvaj u RDF
+
+        try {
+            String xmlEntity = this.resenjeXmlConversionAgent.marshall(resenje, this.jaxbContextPath);
+            if (!rdfService.save(xmlEntity, SPARQL_NAMED_GRAPH_URI)) {
+                System.out.println("[ERROR] Neuspesno cuvanje metapodataka obavestenja u RDF DB.");
+            }
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
+        return resenje;
+    }
+
     @Override
     public Resenje update(String xmlEntity) {
         Resenje resenje;

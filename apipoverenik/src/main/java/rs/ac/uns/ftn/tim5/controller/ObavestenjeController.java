@@ -6,6 +6,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.tim5.model.obavestenje.KolekcijaObavestenja;
@@ -49,21 +50,26 @@ public class ObavestenjeController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
-    /*@GetMapping(value = "/by-zahtev/{id}", produces = MediaType.APPLICATION_XML_VALUE)
-    ResponseEntity<Obavestenje> findByZahtevId(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(this.obavestenjeService.findByZahtevId(id), HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/by-trazilac", produces = MediaType.APPLICATION_ATOM_XML_VALUE)
-    ResponseEntity<KolekcijaObavestenja> findByUlogovaniTrazilac() {
+    @GetMapping(value = "/odbijena", produces = MediaType.APPLICATION_ATOM_XML_VALUE)
+    ResponseEntity<KolekcijaObavestenja> findOdbijena() {
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         KolekcijaObavestenja kolekcijaObavestenja = new KolekcijaObavestenja();
-        kolekcijaObavestenja.setObavestenje(this.obavestenjeService.findByUlogovaniTrazilac(email));
+        kolekcijaObavestenja.setObavestenje(this.obavestenjeService.findOdbijena(email));
         return new ResponseEntity<>(
                 kolekcijaObavestenja,
                 HttpStatus.OK
         );
-    }*/
+    }
+
+    @GetMapping(value = "/istekla", produces = MediaType.APPLICATION_ATOM_XML_VALUE)
+    ResponseEntity<KolekcijaObavestenja> findIstekla() {
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        KolekcijaObavestenja kolekcijaObavestenja = new KolekcijaObavestenja();
+        kolekcijaObavestenja.setObavestenje(this.obavestenjeService.findIstekla(email));
+        return new ResponseEntity<>(
+                kolekcijaObavestenja,
+                HttpStatus.OK
+        );
+    }
 
 }
