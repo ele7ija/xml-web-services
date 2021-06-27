@@ -54,7 +54,7 @@
                   <div v-if="htmlZalbeLoading==zalba.id" class="spinner-border mr-2 pb-1" role="status" :style="{width: '0.9rem', height: '0.9rem', 'font-size': '10px'}">
                     <span class="sr-only">Loading...</span>
                   </div>
-                  <Octicon v-else :icon="x"/>
+                  <Octicon v-else :icon="check"/>
                   <span class="pl-2">Obradi</span>
                 </button>
               </td>

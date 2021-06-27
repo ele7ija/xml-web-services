@@ -26,7 +26,7 @@ public class IstekliZahteviManager {
     private ObavestenjeService obavestenjeService;
 
     //broj dana pre nego sto zahtev istekne (za testiranje staviti na 0)
-    private final int X = 1;
+    private final int X = 0;
 
     /**
      * Proverava svaki minut da li je odredjeni zahtev istekao
