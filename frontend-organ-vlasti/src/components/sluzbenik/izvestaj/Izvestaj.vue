@@ -2,6 +2,9 @@
   <div>
     Prihvacenih: {{getStatistikaZahteva().brojPrihvacenih}}
     Odbijenih: {{getStatistikaZahteva().brojOdbijenih}}
+    br zalbi na odluku: {{getBrojZalbiNaOdluku()}}
+    br nije postupio: {{getStatistikaZalbiNaCutanje().brNijePostupio}}
+    br nije postupio u celosti: {{getStatistikaZalbiNaCutanje().brNijePostupioUCelosti}}
   </div>
 </template>
 
@@ -11,7 +14,9 @@
 const { Octicon, check, x, clippy, code } = require('octicons-vue');
 import zahtevApi from '../../../api/zahtev';
 import obavestenjeApi from '../../../api/obavestenje';
-import { constructKolekcijaZahteva, odbijObavestenjeXml, constructObavestenje } from '../../../util';
+import zalbaNaCutanjeApi from '../../../api/zalba_cutanje';
+import zalbaNaOdlukuApi from '../../../api/zalba_odluka';
+import { constructKolekcijaZahteva, odbijObavestenjeXml, constructObavestenje, constructKolekcijaZalbiNaOdluku, constructKolekcijaZalbiNaCutanje } from '../../../util';
 export default {
   name: 'Izvestaj',
   data: () => {
@@ -30,7 +35,10 @@ export default {
 
       obradjeniZahtevi: [],
       obavestenja: [],
-      idObavestenjaSelected: null
+      idObavestenjaSelected: null,
+
+      zalbe_cutanje: [],
+      zalbe_odluka: []
     };
   },
   async mounted() {
@@ -49,6 +57,17 @@ export default {
       }
       this.obavestenja = results.filter(x => x.data).map(x => constructObavestenje(Xonomy.xml2js(x.data)));
       this.loading = false;
+
+      // get zalbe
+      const zalbe_odluka = (await zalbaNaOdlukuApi.getAll()).data;
+      console.log('zalbe_odluka: ' + zalbe_odluka);
+      this.zalbe_odluka = constructKolekcijaZalbiNaOdluku(zalbe_odluka);
+      console.log('zalbe_odluka (formatirano): ' + JSON.stringify(this.zalbe_odluka));
+
+      const zalbe_cutanje = (await zalbaNaCutanjeApi.getAll()).data;
+      console.log('zalbe_cutanje: ' + zalbe_cutanje);
+      this.zalbe_cutanje = constructKolekcijaZalbiNaCutanje(zalbe_cutanje);
+      console.log('zalbe_cutanje (formatirano): ' + JSON.stringify(this.zalbe_cutanje));
     }
   },
   methods: {
@@ -70,6 +89,25 @@ export default {
         }
       }
       return statistika
+    },
+    getBrojZalbiNaOdluku() {
+      return this.zalbe_odluka.length
+    },
+    getStatistikaZalbiNaCutanje() {
+      let brNijePostupio = 0;
+      let brNijePostupioUCelosti = 0;
+      for (let zalba_cutanje of this.zalbe_cutanje) {
+        if (zalba_cutanje.razlog_zalbe == 'није поступио') {
+          brNijePostupio++;
+        }
+        else {
+          brNijePostupioUCelosti++;
+        }
+      }
+      return {
+        brNijePostupio,
+        brNijePostupioUCelosti
+      }
     }
   }
 }

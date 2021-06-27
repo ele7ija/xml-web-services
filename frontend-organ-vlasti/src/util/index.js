@@ -202,3 +202,147 @@ const getCurrentMonth = () => {
     return month;
   }
 }
+
+export const constructKolekcijaZalbiNaOdluku = (xml) => {
+  xml = Xonomy.xml2js(xml);
+  let mapa = xml.getChildElements("zo:Zalba_na_odluku").map(x => constructZalbaNaOdluku(x))
+  return mapa;
+}
+// @XmlElement(required = true)
+//     protected Adresa poverenik;
+//     @XmlElement(required = true)
+//     protected Zalilac zalilac;
+//     @XmlElement(name = "organ_vlasti", required = true)
+//     protected OrganVlasti organVlasti;
+//     @XmlElement(name = "datum_zahteva", required = true)
+//     protected Datum datumZahteva;
+//     @XmlElement(required = true)
+//     protected Odluka odluka;
+//     @XmlElement(name = "osnova_za_zaljenje", required = true)
+//     protected String osnovaZaZaljenje;
+//     @XmlElement(name = "mesto_zalbe", required = true)
+//     protected MestoZalbe mestoZalbe;
+//     @XmlElement(name = "datum_zalbe", required = true)
+//     protected DatumZalbe datumZalbe;
+//     @XmlElement(name = "odgovor_organa_vlasti", required = true)
+//     protected OdgovorOrganaVlasti odgovorOrganaVlasti;
+//     @XmlAttribute(name = "id")
+//     protected Long id;
+//     @XmlAttribute(name = "about")
+//     @XmlSchemaType(name = "anyURI")
+//     protected String about;
+//     @XmlAttribute(name = "vocab")
+//     protected String vocab;
+//     @XmlAttribute(name = "property")
+//     protected String property;
+//     @XmlAttribute(name = "content")
+//     protected String content;
+//     @XmlAttribute(name = "id_zahteva")
+//     protected Long idZahteva;
+//     @XmlAttribute(name = "id_obavestenja")
+//     protected Long idObavestenja;
+export const constructZalbaNaOdluku = xml => {
+  return {
+    id: xml.getAttribute("id").value,
+    about: xml.getAttribute("about").value,
+    id_zahteva: xml.getAttribute("id_zahteva").value,
+    id_obavestenja: xml.getAttribute("id_obavestenja").value,
+    // zahtev_url: xml.getAttribute("content").value,
+    // odbijen: xml.getChildElements("ob:odbijen")[0].getText() == 'true' ? true : false,
+    // istekao: xml.getChildElements("ob:istekao")[0].getText() == 'true' ? true : false,
+    // organ: {
+    //   naziv: xml.getChildElements("ob:Organ")[0].getChildElements("util:Naziv")[0].getText(),
+    //   adresa: {
+    //     mesto: `${xml.getChildElements("ob:Organ")[0].getChildElements("util:Adresa")[0].getChildElements("util:Mesto")[0].getText()}`,
+    //     ulica: `${xml.getChildElements("ob:Organ")[0].getChildElements("util:Adresa")[0].getChildElements("util:Ulica")[0].getText()}`,
+    //     broj: `${xml.getChildElements("ob:Organ")[0].getChildElements("util:Adresa")[0].getChildElements("util:Broj")[0].getText()}`
+    //   },
+    // },
+    // trazilac: {
+    //   imePrezime: `${xml.getChildElements("ob:Trazilac")[0].getChildElements("util:Ime")[0].getText()} ${xml.getChildElements("ob:Trazilac")[0].getChildElements("util:Prezime")[0].getText()}`,
+    //   ime: `${xml.getChildElements("ob:Trazilac")[0].getChildElements("util:Ime")[0].getText()}`,
+    //   prezime: `${xml.getChildElements("ob:Trazilac")[0].getChildElements("util:Prezime")[0].getText()}`,
+    //   adresa: {
+    //     mesto: `${xml.getChildElements("ob:Trazilac")[0].getChildElements("util:Adresa")[0].getChildElements("util:Mesto")[0].getText()}`,
+    //     ulica: `${xml.getChildElements("ob:Trazilac")[0].getChildElements("util:Adresa")[0].getChildElements("util:Ulica")[0].getText()}`,
+    //     broj: `${xml.getChildElements("ob:Trazilac")[0].getChildElements("util:Adresa")[0].getChildElements("util:Broj")[0].getText()}`
+    //   },
+    // },
+    // predmet: {
+    //   datum: constructDatum(xml.getChildElements("ob:Predmet")[0].getChildElements("ob:Datum")[0]),
+    //   opisZahteva: xml.getChildElements("ob:Predmet")[0].getChildElements("ob:Opis_Trazene_Informacije")[0]
+    // }
+  };
+};
+
+export const constructKolekcijaZalbiNaCutanje = (xml) => {
+  xml = Xonomy.xml2js(xml);
+  let mapa = xml.getChildElements("zc:Zalba_cutanja").map(x => constructZalbaNaCutanje(x))
+  console.log('mapa: ' + mapa)
+  return mapa;
+}
+    // @XmlElement(required = true)
+    // protected Adresa poverenik;
+    // @XmlElement(required = true)
+    // protected Zalilac zalilac;
+    // @XmlElement(name = "organ_vlasti", required = true)
+    // protected OrganVlasti organVlasti;
+    // @XmlElement(name = "razlog_zalbe", required = true)
+    // protected String razlogZalbe;
+    // @XmlElement(name = "datum_zahteva", required = true)
+    // protected Datum datumZahteva;
+    // @XmlElement(name = "zahtevana_informacije", required = true)
+    // protected String zahtevanaInformacije;
+    // @XmlElement(name = "mesto_zalbe", required = true)
+    // protected MestoZalbe mestoZalbe;
+    // @XmlElement(name = "datum_zalbe", required = true)
+    // protected DatumZalbe datumZalbe;
+    // @XmlElement(name = "odgovor_organa_vlasti", required = true)
+    // protected OdgovorOrganaVlasti odgovorOrganaVlasti;
+    // @XmlAttribute(name = "id")
+    // protected Long id;
+    // @XmlAttribute(name = "about")
+    // @XmlSchemaType(name = "anyURI")
+    // protected String about;
+    // @XmlAttribute(name = "vocab")
+    // protected String vocab;
+    // @XmlAttribute(name = "property")
+    // protected String property;
+    // @XmlAttribute(name = "content")
+    // protected String content;
+    // @XmlAttribute(name = "id_zahteva")
+    // protected Long idZahteva;
+export const constructZalbaNaCutanje = xml => {
+  return {
+    id: xml.getAttribute("id").value,
+    about: xml.getAttribute("about").value,
+    id_zahteva: xml.getAttribute("id_zahteva").value,
+    razlog_zalbe: xml.getChildElements("zc:razlog_zalbe")[0].getText()
+    // zahtev_url: xml.getAttribute("content").value,
+    // odbijen: xml.getChildElements("ob:odbijen")[0].getText() == 'true' ? true : false,
+    // istekao: xml.getChildElements("ob:istekao")[0].getText() == 'true' ? true : false,
+    // organ: {
+    //   naziv: xml.getChildElements("ob:Organ")[0].getChildElements("util:Naziv")[0].getText(),
+    //   adresa: {
+    //     mesto: `${xml.getChildElements("ob:Organ")[0].getChildElements("util:Adresa")[0].getChildElements("util:Mesto")[0].getText()}`,
+    //     ulica: `${xml.getChildElements("ob:Organ")[0].getChildElements("util:Adresa")[0].getChildElements("util:Ulica")[0].getText()}`,
+    //     broj: `${xml.getChildElements("ob:Organ")[0].getChildElements("util:Adresa")[0].getChildElements("util:Broj")[0].getText()}`
+    //   },
+    // },
+    // trazilac: {
+    //   imePrezime: `${xml.getChildElements("ob:Trazilac")[0].getChildElements("util:Ime")[0].getText()} ${xml.getChildElements("ob:Trazilac")[0].getChildElements("util:Prezime")[0].getText()}`,
+    //   ime: `${xml.getChildElements("ob:Trazilac")[0].getChildElements("util:Ime")[0].getText()}`,
+    //   prezime: `${xml.getChildElements("ob:Trazilac")[0].getChildElements("util:Prezime")[0].getText()}`,
+    //   adresa: {
+    //     mesto: `${xml.getChildElements("ob:Trazilac")[0].getChildElements("util:Adresa")[0].getChildElements("util:Mesto")[0].getText()}`,
+    //     ulica: `${xml.getChildElements("ob:Trazilac")[0].getChildElements("util:Adresa")[0].getChildElements("util:Ulica")[0].getText()}`,
+    //     broj: `${xml.getChildElements("ob:Trazilac")[0].getChildElements("util:Adresa")[0].getChildElements("util:Broj")[0].getText()}`
+    //   },
+    // },
+    // predmet: {
+    //   datum: constructDatum(xml.getChildElements("ob:Predmet")[0].getChildElements("ob:Datum")[0]),
+    //   opisZahteva: xml.getChildElements("ob:Predmet")[0].getChildElements("ob:Opis_Trazene_Informacije")[0]
+    // }
+  };
+};
+

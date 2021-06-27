@@ -92,16 +92,16 @@ public class XQueryExpressions {
     //XQUERY I XUPDATE ZA ZALBU NA ODLUKU
     public static final String X_QUERY_FIND_ALL_ZALBE_NA_ODLUKU_EXPRESSION = "xquery version \"3.1\";\n" +
             "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku\";\n" +
-            "for $x in collection(\"/db/sample/zalbe_na_odluku\")\n" +
+            "for $x in collection(\"/db/sample/zalba_na_odluku\")\n" +
             "return $x";
 
     public static final String X_UPDATE_REMOVE_ZALBA_NA_ODLUKU_BY_ID_EXPRESSION =
             "xquery version \"3.1\";\n" +
-                    "xmldb:remove('/db/sample/zalbe_na_odluku', '%s')";
+                    "xmldb:remove('/db/sample/zalba_na_odluku', '%s')";
 
     public static final String X_QUERY_FIND_ZALBA_NA_ODLUKU_BY_ID_ZAHTEVA_EXPRESSION = "xquery version \"3.1\";\n" +
             "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku\";\n" +
-            "for $x in collection(\"/db/sample/zalbe_na_odluku\")/Zalba_na_odluku[@id_zahteva=%d]\n" +
+            "for $x in collection(\"/db/sample/zalba_na_odluku\")/Zalba_na_odluku[@id_zahteva=%d]\n" +
             "return $x";
 
 
