@@ -308,7 +308,10 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
         );
         List<Obavestenje> retval = this.sparqlQueryToObavestenjeList(query);
         return retval.stream().filter(
-                x -> this.zalbaNaOdlukuService.findByIdZahteva(x.getIdZahteva()) == null
+                x -> {
+                    System.out.println(x);
+                    return this.zalbaNaOdlukuService.findByIdZahteva(x.getIdZahteva()) == null;
+                }
         ).collect(Collectors.toList());
     }
 

@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.XMLDBException;
+import rs.ac.uns.ftn.tim5.SOAP.client.ZalbaOdlukaClient;
 import rs.ac.uns.ftn.tim5.helper.SparqlQueryResult;
 import rs.ac.uns.ftn.tim5.helper.XmlConversionAgent;
 import rs.ac.uns.ftn.tim5.model.exception.EntityNotFoundException;
@@ -64,6 +65,9 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
 
     @Autowired
     private DateHelper dateHelper;
+
+    @Autowired
+    private ZalbaOdlukaClient zalbaOdlukaClient;
 
     private XSLFOTransformer xslfoTransformer;
 
@@ -142,6 +146,8 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+
+        zalbaOdlukaClient.sendZalba(zalbaNaOdluku);
 
         return zalbaNaOdluku;
     }

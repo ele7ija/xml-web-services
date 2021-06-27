@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.tim5.SOAP.client;
 
+import org.springframework.scheduling.annotation.Async;
 import rs.ac.uns.ftn.tim5.SOAP.zalbaCutanje.ZalbaCutanjePort;
 import rs.ac.uns.ftn.tim5.model.zalba_cutanja.ZalbaCutanja;
 
@@ -10,6 +11,8 @@ import java.net.URL;
 
 @org.springframework.stereotype.Service
 public class ZalbaCutanjeClient {
+
+    @Async
     public void sendZalba(ZalbaCutanja zalbaCutanja) {
         try {
             URL wsdlLocation = new URL("http://organ-vlasti:8080/ws/zalba_cutanje?wsdl");
