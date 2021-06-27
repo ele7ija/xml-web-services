@@ -17,7 +17,8 @@ public class ZalbaOdlukaPortImpl implements ZalbaOdlukaPort {
 
     @Override
     public void sendZalba(ZalbaNaOdluku zalbaNaOdluku) {
-
+        System.out.println("Stigao");
+        System.out.println(zalbaNaOdluku.getId());
         service.create(zalbaNaOdluku);
     }
 }

@@ -142,7 +142,7 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
             e.printStackTrace();
         }
 
-        this.zalbaCutanjeClient.sendZalba(zalbaCutanja);
+        //this.zalbaCutanjeClient.sendZalba(zalbaCutanja);
 
         return zalbaCutanja;
     }
@@ -167,7 +167,7 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
             e.printStackTrace();
         }
 
-        this.zalbaCutanjeClient.sendZalba(zalbaCutanja);
+        //this.zalbaCutanjeClient.sendZalba(zalbaCutanja);
 
         return zalbaCutanja;
     }
@@ -180,6 +180,38 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
         }catch(JAXBException e){
             throw new InvalidXmlException(ZalbaCutanja.class, e.getMessage());
         }
+
+        try {
+            if (!this.zalbaCutanjaAbstractXmlRepository.updateEntity(zalbaCutanja)) {
+                throw new EntityNotFoundException(zalbaCutanja.getId(), ZalbaCutanja.class);
+            }
+            return zalbaCutanja;
+        } catch (XMLDBException e) {
+            throw new XmlDatabaseException(e.getMessage());
+        } catch (JAXBException e) {
+            throw new InvalidXmlDatabaseException(ZalbaCutanja.class, e.getMessage());
+        }
+    }
+
+    public ZalbaCutanja accept(Long id){
+        ZalbaCutanja zalbaCutanja = this.findById(id);
+        zalbaCutanja.getOdgovorOrganaVlasti().getPrihvatio().setValue("da");
+
+        zalbaCutanja = update(zalbaCutanja);
+        zalbaCutanjeClient.sendZalba(zalbaCutanja);
+        return zalbaCutanja;
+    }
+
+    public ZalbaCutanja decline(Long id){
+        ZalbaCutanja zalbaCutanja = this.findById(id);
+        zalbaCutanja.getOdgovorOrganaVlasti().getOdbio().setValue("da");
+
+        zalbaCutanja = update(zalbaCutanja);
+        zalbaCutanjeClient.sendZalba(zalbaCutanja);
+        return zalbaCutanja;
+    }
+
+    public ZalbaCutanja update(ZalbaCutanja zalbaCutanja) {
 
         try {
             if (!this.zalbaCutanjaAbstractXmlRepository.updateEntity(zalbaCutanja)) {
@@ -395,7 +427,8 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
         List<ZalbaCutanja> zalbeCutanja = this.findAll();
         //TODO: Zalbe koje se filtriraju ispod dodatno isfiltrirati po nepostojanju resenja za zalbu sa datim ID-jem
         return zalbeCutanja.stream().filter(
-                x -> x.getOdgovorOrganaVlasti().getPrihvatio().getValue().equals("ne")
+                x -> x.getOdgovorOrganaVlasti().getPrihvatio().getValue().equals("ne") &&
+                     x.getOdgovorOrganaVlasti().getOdbio().getValue().equals("ne")
         ).collect(Collectors.toList());
     }
 }

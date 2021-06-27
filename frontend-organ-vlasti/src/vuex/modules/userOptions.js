@@ -58,6 +58,14 @@ const state = {
         name: 'Pretrage',
         hasChildren: false,
         id: 7
+      },
+      {
+        displayName: 'Zalbe',
+        fullName: "Zalbe",
+        description: 'Odabirom odredjenog zalbe mozete da ga prihvatite ili odbijete.',
+        name: 'Zalbe',
+        hasChildren: false,
+        id: 8
       }
     ]
   },

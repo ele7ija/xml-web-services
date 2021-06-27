@@ -143,7 +143,7 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
             e.printStackTrace();
         }
 
-        zalbaOdlukaClient.sendZalba(zalbaNaOdluku);
+        //zalbaOdlukaClient.sendZalba(zalbaNaOdluku);
 
         return zalbaNaOdluku;
     }
@@ -167,7 +167,7 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
             e.printStackTrace();
         }
 
-        zalbaOdlukaClient.sendZalba(zalbaNaOdluku);
+        //zalbaOdlukaClient.sendZalba(zalbaNaOdluku);
 
         return zalbaNaOdluku;
     }
@@ -192,6 +192,41 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
             throw new InvalidXmlDatabaseException(ZalbaNaOdluku.class, e.getMessage());
         }
     }
+
+    public ZalbaNaOdluku update(ZalbaNaOdluku zalbaNaOdluku) {
+
+
+        try {
+            if (!this.zalbaNaOdlukuAbstractXmlRepository.updateEntity(zalbaNaOdluku)) {
+                throw new EntityNotFoundException(zalbaNaOdluku.getId(), ZalbaCutanja.class);
+            }
+            return zalbaNaOdluku;
+        } catch (XMLDBException e) {
+            throw new XmlDatabaseException(e.getMessage());
+        } catch (JAXBException e) {
+            throw new InvalidXmlDatabaseException(ZalbaNaOdluku.class, e.getMessage());
+        }
+    }
+
+    public ZalbaNaOdluku accept(Long id){
+        ZalbaNaOdluku zalbaNaOdluku = this.findById(id);
+        zalbaNaOdluku.getOdgovorOrganaVlasti().getPrihvatio().setValue("da");
+
+        zalbaNaOdluku = update(zalbaNaOdluku);
+        zalbaOdlukaClient.sendZalba(zalbaNaOdluku);
+        return zalbaNaOdluku;
+    }
+
+    public ZalbaNaOdluku decline(Long id){
+        ZalbaNaOdluku zalbaNaOdluku = this.findById(id);
+        zalbaNaOdluku.getOdgovorOrganaVlasti().getOdbio().setValue("da");
+
+        zalbaNaOdluku = update(zalbaNaOdluku);
+        zalbaOdlukaClient.sendZalba(zalbaNaOdluku);
+        return zalbaNaOdluku;
+    }
+
+
 
     @Override
     public boolean deleteById(Long entityId) {
@@ -395,7 +430,8 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
         List<ZalbaNaOdluku> zalbeNaOdluku = this.findAll();
         //TODO: Zalbe koje se filtriraju ispod dodatno isfiltrirati po nepostojanju resenja za zalbu sa datim ID-jem
         return zalbeNaOdluku.stream().filter(
-                x -> x.getOdgovorOrganaVlasti().getPrihvatio().getValue().equals("ne")
+                x -> x.getOdgovorOrganaVlasti().getPrihvatio().getValue().equals("ne") &&
+                     x.getOdgovorOrganaVlasti().getOdbio().getValue().equals("ne")
         ).collect(Collectors.toList());
     }
 }

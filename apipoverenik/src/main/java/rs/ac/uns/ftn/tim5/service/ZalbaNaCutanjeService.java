@@ -178,6 +178,20 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
         }
     }
 
+    public ZalbaCutanja update(ZalbaCutanja zalbaCutanja) {
+
+        try {
+            if (!this.zalbaCutanjaAbstractXmlRepository.updateEntity(zalbaCutanja)) {
+                throw new EntityNotFoundException(zalbaCutanja.getId(), ZalbaCutanja.class);
+            }
+            return zalbaCutanja;
+        } catch (XMLDBException e) {
+            throw new XmlDatabaseException(e.getMessage());
+        } catch (JAXBException e) {
+            throw new InvalidXmlDatabaseException(ZalbaCutanja.class, e.getMessage());
+        }
+    }
+
     @Override
     public boolean deleteById(Long entityId) {
         try {
