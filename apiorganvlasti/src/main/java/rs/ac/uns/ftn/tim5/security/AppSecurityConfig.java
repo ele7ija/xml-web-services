@@ -56,7 +56,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/gradjanin").permitAll()
                 .antMatchers(HttpMethod.POST,"/sluzbenik").permitAll()
                 .antMatchers("/ws/**").permitAll()
-                
+                .antMatchers("/zalba-na-cutanje/**").permitAll()
+                .antMatchers("/zalba-na-odluku/**").permitAll()
+
                 .anyRequest().authenticated()
 
                 .and()

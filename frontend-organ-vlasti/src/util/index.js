@@ -202,3 +202,49 @@ const getCurrentMonth = () => {
     return month;
   }
 }
+
+export const constructKolekcijaZalbi = xml => {
+  xml = Xonomy.xml2js(xml);
+  return xml.getChildElements("zo:Zalba_na_odluku").map(x => constructZalbaNaOdluku(x));
+};
+
+export const constructZalbaNaOdluku = xml => {
+  return {
+    id: xml.getAttribute("id").value,
+    about: xml.getAttribute("about").value,
+    zahtev_url: "http://localhost:8086/zahtev/" + xml.getAttribute("id_zahteva").value,
+    status: 
+      xml.getChildElements("zo:odgovor_organa_vlasti")[0].getChildElements("zo:prihvatio")[0].getText() == 'da' ? 
+        'prihvaceno' :
+        xml.getChildElements("zo:odgovor_organa_vlasti")[0].getChildElements("zo:prihvatio")[0].getText() == 'da' ?
+          'odbijeno' :
+          'na cekanju...',
+    organVlasti: {
+      naziv: xml.getChildElements("zo:organ_vlasti")[0].getChildElements("util:Naziv")[0].getText(),
+    },
+    datum: constructDatum(xml.getChildElements("zo:datum_zalbe")[0]),
+  };
+};
+
+export const constructKolekcijaZalbiNaCutanje = xml => {
+  xml = Xonomy.xml2js(xml);
+  return xml.getChildElements("zc:Zalba_cutanja").map(x => constructZalbaNaCutanje(x));
+};
+
+export const constructZalbaNaCutanje = xml => {
+  return {
+    id: xml.getAttribute("id").value,
+    about: xml.getAttribute("about").value,
+    zahtev_url: xml.getAttribute("content").value,
+    status: 
+      xml.getChildElements("zc:odgovor_organa_vlasti")[0].getChildElements("zc:prihvatio")[0].getText() == 'da' ? 
+        'prihvaceno' :
+        xml.getChildElements("zc:odgovor_organa_vlasti")[0].getChildElements("zc:prihvatio")[0].getText() == 'da' ?
+          'odbijeno' :
+          'na cekanju...',
+    organVlasti: {
+      naziv: xml.getChildElements("zc:organ_vlasti")[0].getChildElements("util:Naziv")[0].getText(),
+    },
+    datum: constructDatum(xml.getChildElements("zc:datum_zalbe")[0]),
+  };
+};

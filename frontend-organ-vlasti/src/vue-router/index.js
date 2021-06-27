@@ -13,6 +13,7 @@ import ZahtevSluzbenik from '@/components/sluzbenik/zahtev/ZahtevSluzbenik';
 import Izvestaj from '@/components/sluzbenik/izvestaj/Izvestaj';
 import Pretrage from '@/components/sluzbenik/pretrage/Pretrage';
 import store from '../vuex';
+import Zalbe from '@/components/zalbe/Zalbe'
 
 Vue.use(VueRouter);
 
@@ -78,6 +79,11 @@ const router = new VueRouter({
       name: 'Pretrage',
       path: '/pretrage',
       component: Pretrage
+    },
+    {
+      name: 'Zalbe',
+      path: '/zalbe',
+      component: Zalbe
     },
 
   ]

@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.tim5.SOAP.client;
 
+import org.apache.jena.base.Sys;
 import org.springframework.scheduling.annotation.Async;
 import rs.ac.uns.ftn.tim5.SOAP.zalbaOdluka.ZalbaOdlukaPort;
 import rs.ac.uns.ftn.tim5.model.zalba_na_odluku.ZalbaNaOdluku;
@@ -18,11 +19,12 @@ public class ZalbaOdlukaClient {
             URL wsdlLocation = new URL("http://organ-vlasti:8080/ws/zalba_odluka?wsdl");
             QName serviceName = new QName("http://www.sistem.org/ws/zalba_odluka", "ZalbaOdlukaService");
             QName portName = new QName("http://www.sistem.org/ws/zalba_odluka", "ZalbaOdlukaPort");
-
+            System.out.println("dosao");
             Service service = Service.create(wsdlLocation, serviceName);
             ZalbaOdlukaPort zalbaOdlukaPort = service.getPort(portName, ZalbaOdlukaPort.class);
 
             zalbaOdlukaPort.sendZalba(zalbaNaOdluku);
+            System.out.println("ispisao");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

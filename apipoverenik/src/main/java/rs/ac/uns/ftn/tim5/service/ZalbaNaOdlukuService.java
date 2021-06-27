@@ -173,6 +173,21 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
         }
     }
 
+    public ZalbaNaOdluku update(ZalbaNaOdluku zalbaNaOdluku) {
+
+
+        try {
+            if (!this.zalbaNaOdlukuAbstractXmlRepository.updateEntity(zalbaNaOdluku)) {
+                throw new EntityNotFoundException(zalbaNaOdluku.getId(), ZalbaCutanja.class);
+            }
+            return zalbaNaOdluku;
+        } catch (XMLDBException e) {
+            throw new XmlDatabaseException(e.getMessage());
+        } catch (JAXBException e) {
+            throw new InvalidXmlDatabaseException(ZalbaNaOdluku.class, e.getMessage());
+        }
+    }
+
     @Override
     public boolean deleteById(Long entityId) {
         try {
