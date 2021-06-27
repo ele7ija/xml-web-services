@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<iz:Izvestaj
+        xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj"
+        xmlns:util="http://ftn.uns.ac.rs/tim5/model/util">
+    <iz:statistika_zahteva>
+        <iz:broj_prihvacenih>0</iz:broj_prihvacenih>
+        <iz:broj_odbijenih>1</iz:broj_odbijenih>
+        <iz:broj_isteklih>1</iz:broj_isteklih>
+    </iz:statistika_zahteva>
+    <iz:statistika_zalbi>
+        <iz:broj_zalbi_na_odluku>10</iz:broj_zalbi_na_odluku>
+        <iz:zalbe_cutanja>
+            <iz:nije_postupio>1</iz:nije_postupio>
+            <iz:nije_postupio_u_celosti>1</iz:nije_postupio_u_celosti>
+        </iz:zalbe_cutanja>
+    </iz:statistika_zalbi>
+    <iz:organ_vlasti>
+        <util:Adresa>
+            <util:Mesto>ss</util:Mesto>
+            <util:Ulica>s</util:Ulica>
+            <util:Broj>12</util:Broj>
+        </util:Adresa>
+        <util:Naziv>as</util:Naziv>
+    </iz:organ_vlasti>
+    <iz:datum_podnosenja>
+        <util:dan>---21</util:dan>
+        <util:mesec>--01</util:mesec>
+        <util:godina>2020</util:godina>
+    </iz:datum_podnosenja>
+</iz:Izvestaj>

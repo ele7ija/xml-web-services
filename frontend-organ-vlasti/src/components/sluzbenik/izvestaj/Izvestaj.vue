@@ -1,10 +1,6 @@
 <template>
-  <div>
-    Prihvacenih: {{getStatistikaZahteva().brojPrihvacenih}}
-    Odbijenih: {{getStatistikaZahteva().brojOdbijenih}}
-    br zalbi na odluku: {{getBrojZalbiNaOdluku()}}
-    br nije postupio: {{getStatistikaZalbiNaCutanje().brNijePostupio}}
-    br nije postupio u celosti: {{getStatistikaZalbiNaCutanje().brNijePostupioUCelosti}}
+  <div class="container-fluid my-4">
+    <button class="btn btn-primary" @click='kreiraj()'>KREIRAJ</button>
   </div>
 </template>
 
@@ -60,14 +56,10 @@ export default {
 
       // get zalbe
       const zalbe_odluka = (await zalbaNaOdlukuApi.getAll()).data;
-      console.log('zalbe_odluka: ' + zalbe_odluka);
       this.zalbe_odluka = constructKolekcijaZalbiNaOdluku(zalbe_odluka);
-      console.log('zalbe_odluka (formatirano): ' + JSON.stringify(this.zalbe_odluka));
 
       const zalbe_cutanje = (await zalbaNaCutanjeApi.getAll()).data;
-      console.log('zalbe_cutanje: ' + zalbe_cutanje);
       this.zalbe_cutanje = constructKolekcijaZalbiNaCutanje(zalbe_cutanje);
-      console.log('zalbe_cutanje (formatirano): ' + JSON.stringify(this.zalbe_cutanje));
     }
   },
   methods: {
@@ -108,6 +100,9 @@ export default {
         brNijePostupio,
         brNijePostupioUCelosti
       }
+    },
+    kreiraj() {
+      this.$router.push('/izvestaj-create')
     }
   }
 }

@@ -11,6 +11,7 @@ import ObavestenjeCreate from '@/components/sluzbenik/obavestenje/ObavestenjeCre
 import Obavestenje from '@/components/sluzbenik/obavestenje/Obavestenje';
 import ZahtevSluzbenik from '@/components/sluzbenik/zahtev/ZahtevSluzbenik';
 import Izvestaj from '@/components/sluzbenik/izvestaj/Izvestaj';
+import IzvestajCreate from '@/components/sluzbenik/izvestaj/IzvestajCreate';
 import Pretrage from '@/components/sluzbenik/pretrage/Pretrage';
 import store from '../vuex';
 
@@ -73,6 +74,11 @@ const router = new VueRouter({
       name: 'Izvestaj',
       path: '/izvestaj',
       component: Izvestaj
+    },
+    {
+      name: 'Izvestaj',
+      path: '/izvestaj-create',
+      component: IzvestajCreate
     },
     {
       name: 'Pretrage',
