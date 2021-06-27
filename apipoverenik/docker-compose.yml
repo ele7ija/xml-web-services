@@ -42,9 +42,14 @@ services:
     networks:
       - api-poverenik-network
       - api-organ-vlasti-network
+      - email-service-netowrk
+
 networks:
   api-poverenik-network:
     name: api-poverenik-network
   api-organ-vlasti-network:
     external:
       name: api-organ-vlasti-network
+  email-service-netowrk:
+    external:
+      name: email-service-netowrk

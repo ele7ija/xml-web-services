@@ -8,18 +8,12 @@
 
 package rs.ac.uns.ftn.tim5.model.resenje;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
-
 import rs.ac.uns.ftn.tim5.interfaces.Identifiable;
 import rs.ac.uns.ftn.tim5.model.util.Datum;
 import rs.ac.uns.ftn.tim5.model.util.TFizickoLice;
 import rs.ac.uns.ftn.tim5.model.util.TPravnoLice;
+
+import javax.xml.bind.annotation.*;
 
 
 /**
@@ -112,17 +106,17 @@ import rs.ac.uns.ftn.tim5.model.util.TPravnoLice;
 public class Resenje implements Identifiable {
 
     @XmlElement(name = "datum_resenja", required = true)
-    protected Resenje.DatumResenja datumResenja;
+    protected DatumResenja datumResenja;
     @XmlElement(name = "broj_resenja", required = true)
     protected String brojResenja;
     @XmlElement(required = true)
-    protected Resenje.Zalba zalba;
+    protected Zalba zalba;
     @XmlElement(required = true)
-    protected Resenje.Odluka odluka;
+    protected Odluka odluka;
     @XmlElement(required = true)
     protected String obrazlozenje;
     @XmlElement(required = true)
-    protected Resenje.Poverenik poverenik;
+    protected Poverenik poverenik;
     @XmlAttribute(name = "id")
     protected Long id;
     @XmlAttribute(name = "id_zalbe")
@@ -143,35 +137,35 @@ public class Resenje implements Identifiable {
 
     /**
      * Gets the value of the datumResenja property.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link Resenje.DatumResenja }
-     *     
+     *     {@link DatumResenja }
+     *
      */
-    public Resenje.DatumResenja getDatumResenja() {
+    public DatumResenja getDatumResenja() {
         return datumResenja;
     }
 
     /**
      * Sets the value of the datumResenja property.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link Resenje.DatumResenja }
-     *     
+     *     {@link DatumResenja }
+     *
      */
-    public void setDatumResenja(Resenje.DatumResenja value) {
+    public void setDatumResenja(DatumResenja value) {
         this.datumResenja = value;
     }
 
     /**
      * Gets the value of the brojResenja property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getBrojResenja() {
         return brojResenja;
@@ -179,11 +173,11 @@ public class Resenje implements Identifiable {
 
     /**
      * Sets the value of the brojResenja property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setBrojResenja(String value) {
         this.brojResenja = value;
@@ -191,59 +185,59 @@ public class Resenje implements Identifiable {
 
     /**
      * Gets the value of the zalba property.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link Resenje.Zalba }
-     *     
+     *     {@link Zalba }
+     *
      */
-    public Resenje.Zalba getZalba() {
+    public Zalba getZalba() {
         return zalba;
     }
 
     /**
      * Sets the value of the zalba property.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link Resenje.Zalba }
-     *     
+     *     {@link Zalba }
+     *
      */
-    public void setZalba(Resenje.Zalba value) {
+    public void setZalba(Zalba value) {
         this.zalba = value;
     }
 
     /**
      * Gets the value of the odluka property.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link Resenje.Odluka }
-     *     
+     *     {@link Odluka }
+     *
      */
-    public Resenje.Odluka getOdluka() {
+    public Odluka getOdluka() {
         return odluka;
     }
 
     /**
      * Sets the value of the odluka property.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link Resenje.Odluka }
-     *     
+     *     {@link Odluka }
+     *
      */
-    public void setOdluka(Resenje.Odluka value) {
+    public void setOdluka(Odluka value) {
         this.odluka = value;
     }
 
     /**
      * Gets the value of the obrazlozenje property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getObrazlozenje() {
         return obrazlozenje;
@@ -251,11 +245,11 @@ public class Resenje implements Identifiable {
 
     /**
      * Sets the value of the obrazlozenje property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setObrazlozenje(String value) {
         this.obrazlozenje = value;
@@ -263,25 +257,25 @@ public class Resenje implements Identifiable {
 
     /**
      * Gets the value of the poverenik property.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link Resenje.Poverenik }
-     *     
+     *     {@link Poverenik }
+     *
      */
-    public Resenje.Poverenik getPoverenik() {
+    public Poverenik getPoverenik() {
         return poverenik;
     }
 
     /**
      * Sets the value of the poverenik property.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link Resenje.Poverenik }
-     *     
+     *     {@link Poverenik }
+     *
      */
-    public void setPoverenik(Resenje.Poverenik value) {
+    public void setPoverenik(Poverenik value) {
         this.poverenik = value;
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ob:Obavestenje xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:za="http://ftn.uns.ac.rs/tim5/model/zahtev" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="4850014363505799305" id_zahteva="8907230199681182664" about="http://localhost:8086/obavestenje/4850014363505799305" vocab="http://ftn.uns.ac.rs.tim5/model/predicate" property="pred:zahtev_url" content="http://localhost:8086/zahtev/8907230199681182664">
+<ob:Obavestenje xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:za="http://ftn.uns.ac.rs/tim5/model/zahtev" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="7284435081221011416" id_zahteva="8774739758807991824" about="http://localhost:8086/obavestenje/7284435081221011416" vocab="http://ftn.uns.ac.rs.tim5/model/predicate" property="pred:zahtev_url" content="http://localhost:8086/zahtev/8774739758807991824">
     <ob:odbijen property="pred:odbijen" content="ne">false</ob:odbijen>
     <ob:istekao property="pred:istekao" content="ne">false</ob:istekao>
     <ob:Trazilac property="pred:email_trazioca" content="millan.djuric@hotmail.com">
@@ -20,13 +20,13 @@
         <util:Naziv>Народна банка Србије</util:Naziv>
     </ob:Organ>
     <ob:Predmet>
-        <ob:Broj_Predmeta>0</ob:Broj_Predmeta>
-        <ob:Datum property="pred:datum" content="26.6.2021">
-            <util:dan>---26</util:dan>
+        <ob:Broj_Predmeta>12</ob:Broj_Predmeta>
+        <ob:Datum property="pred:datum" content="27.6.2021">
+            <util:dan>---27</util:dan>
             <util:mesec>--06</util:mesec>
             <util:godina>2021</util:godina>
         </ob:Datum>
-        <ob:Opis_Trazene_Informacije>T1</ob:Opis_Trazene_Informacije>
+        <ob:Opis_Trazene_Informacije>1</ob:Opis_Trazene_Informacije>
         <ob:Pravni_Osnov>
             <util:Naziv>Закона о слободном приступу информацијама од јавног значаја</util:Naziv>
             <util:Clan>16</util:Clan>
@@ -46,7 +46,7 @@
             </util:Element_Zahteva>
             <util:Uvid>
                 <util:Datum_Uvida>
-                    <util:dan>---26</util:dan>
+                    <util:dan>---27</util:dan>
                     <util:mesec>--06</util:mesec>
                     <util:godina>2021</util:godina>
                 </util:Datum_Uvida>

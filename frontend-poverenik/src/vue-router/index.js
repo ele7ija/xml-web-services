@@ -11,6 +11,10 @@ import ZalbaNaCutanjeView from '@/components/gradjanin/zalbe/ZalbaNaCutanjeView'
 import ZalbaNaCutanjeCreate from '@/components/gradjanin/zalbe/ZalbaNaCutanjeCreate';
 import ZalbeNaOdlukuPoverenik from '@/components/poverenik/zalbe/ZalbeNaOdlukuPoverenik';
 import ZalbeNaCutanjePoverenik from '@/components/poverenik/zalbe/ZalbeNaCutanjePoverenik';
+import ResenjeZalbaCutanjaCreate from '@/components/poverenik/resenje/ResenjeZalbaCutanjaCreate';
+import ResenjeZalbaNaOdlukuCreate from '@/components/poverenik/resenje/ResenjeZalbaNaOdlukuCreate';
+import ResenjaAll from '@/components/poverenik/resenje/ResenjaAll';
+import ResenjeView from '@/components/poverenik/resenje/ResenjeView';
 import Izvestaji from '@/components/poverenik/izvestaj/Izvestaji';
 
 Vue.use(VueRouter);
@@ -72,6 +76,26 @@ const router = new VueRouter({
       name: 'ZalbeNaCutanjePoverenik',
       path: 'zalbe-na-cutanje-poverenik',
       component: ZalbeNaCutanjePoverenik
+    },
+    {
+      name: 'ResenjeZalbaNaOdlukuCreate',
+      path: '/resenje-zalba-na-odluku-create/:idZalbe',
+      component: ResenjeZalbaNaOdlukuCreate
+    },
+    {
+      name: 'ResenjeZalbaCutanjaCreate',
+      path: '/resenje-zalba-cutanja-create/:idZalbe',
+      component: ResenjeZalbaCutanjaCreate
+    },
+    {
+      name: 'ResenjaAll',
+      path: '/resenja',
+      component: ResenjaAll
+    },
+    {
+      name: 'ResenjeView',
+      path: '/resenje/:id',
+      component: ResenjeView
     },
     {
       name: 'Izvestaji',

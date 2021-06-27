@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h3 class="text-center mt-5 mb-4">Neobradjene zalbe na odluku</h3>
+        <h3 class="text-center mt-5 mb-4">Neobradjene zalbe na cutanje</h3>
         <table class="table table-sm table-bordered">
           <thead>
             <th class="text-center">Zalba</th>
@@ -11,8 +11,7 @@
             <th class="text-center">Datum</th>
             <th class="text-center" :style="{width: '12%'}">PDF</th>
             <th class="text-center" :style="{width: '14%'}">HTML</th>
-            <th class="text-center" :style="{width: '10%'}">Prihvati</th>
-            <th class="text-center" :style="{width: '10%'}">Odbi</th>
+            <th class="text-center" :style="{width: '10%'}">Obradi</th>
           </thead>
           <tbody v-if="!zalbeLoading">
             <tr
@@ -50,25 +49,13 @@
               <td>
                 <button
                   class="btn btn-sm btn-outline-primary ml-1"
-                  @click="odbi(zalba.id)"
-                >
-                  <div v-if="htmlZalbeLoading==zalba.id" class="spinner-border mr-2 pb-1" role="status" :style="{width: '0.9rem', height: '0.9rem', 'font-size': '10px'}">
-                    <span class="sr-only">Loading...</span>
-                  </div>
-                  <Octicon v-else :icon="x"/>
-                  <span class="pl-2">Odbi</span>
-                </button>
-              </td>
-              <td>
-                <button
-                  class="btn btn-sm btn-outline-primary ml-1"
-                  @click="prihvati(zalba.id)"
+                  @click="obradi(zalba.id)"
                 >
                   <div v-if="htmlZalbeLoading==zalba.id" class="spinner-border mr-2 pb-1" role="status" :style="{width: '0.9rem', height: '0.9rem', 'font-size': '10px'}">
                     <span class="sr-only">Loading...</span>
                   </div>
                   <Octicon v-else :icon="check"/>
-                  <span class="pl-2">Prihvati</span>
+                  <span class="pl-2">Obradi</span>
                 </button>
               </td>
             </tr>
@@ -141,11 +128,8 @@ export default {
       link.click();
       this.htmlZalbeLoading = null;
     },
-    prihvati(idZalbe) {
-      console.log("Prihvati zalbu " + idZalbe);
-    },
-    odbi(idZalbe) {
-      console.log("Odbi zalbu " + idZalbe);
+    obradi(idZalbe) {
+      this.$router.push({path: `resenje-zalba-cutanja-create/${idZalbe}`});
     }
   }
 }

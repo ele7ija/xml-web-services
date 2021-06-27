@@ -112,7 +112,6 @@ public class ResenjeService implements AbstractXmlService<Resenje> {
         }
 
         // Sacuvaj u RDF
-
         try {
             String xmlEntity = this.resenjeXmlConversionAgent.marshall(resenje, this.jaxbContextPath);
             if (!rdfService.save(xmlEntity, SPARQL_NAMED_GRAPH_URI)) {

@@ -32,11 +32,19 @@ const state = {
       },
       {
         displayName: 'Zalbe na cutanje',
-        fullName: "Pregled svih zalbi",
+        fullName: "Pregled svih zalbi na cutanje",
         description: 'Pregledaj sve zalbe na cutanje protiv organa vlasti',
         name: 'ZalbeNaCutanjePoverenik',
         hasChildren: false,
         id: 4
+      },
+      {
+        displayName: 'Resenja',
+        fullName: "Resenja",
+        description: 'Pregledaj izdata resenja na sve vrste zalbi.',
+        name: 'ResenjaAll',
+        hasChildren: false,
+        id: 5
       },
       {
         displayName: 'Izvestaj',
@@ -44,7 +52,7 @@ const state = {
         description: 'Pregledaj godisnji izvestaj organa vlasti.',
         name: 'Izvestaji',
         hasChildren: false,
-        id: 5
+        id: 6
       }
     ]
   },

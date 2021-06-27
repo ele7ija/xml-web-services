@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.tim5.SOAP.client;
 
+import org.springframework.scheduling.annotation.Async;
 import rs.ac.uns.ftn.tim5.SOAP.intefaces.ResenjeInterface;
 import rs.ac.uns.ftn.tim5.model.izvestaj.Izvestaj;
 import rs.ac.uns.ftn.tim5.model.resenje.Resenje;
@@ -13,7 +14,8 @@ import java.net.URL;
 @org.springframework.stereotype.Service
 public class ResenjeClient {
 
-    public void sendIzvestaj(Resenje resenje) {
+    @Async
+    public void sendResenje(Resenje resenje) {
         try {
             URL wsdlLocation = new URL("http://organ-vlasti:8080/ws/resenje?wsdl");
             QName serviceName = new QName("http://www.sistem.org/ws/resenje", "ResenjeService");

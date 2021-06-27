@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<zo:Zalba_na_odluku xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:zc="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:zo="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="7074795823872241353" about="http://localhost:8087/zalba_na_odluku/7074795823872241353" vocab="http://ftn.uns.ac.rs.tim5/model/predicate" property="pred:obavestenje_url" content="http://localhost:8087/obavestenje/5054911216135674266" id_zahteva="5130195952724341700" id_obavestenja="5054911216135674266">
+<zo:Zalba_na_odluku xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:zc="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:zo="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="5219098399027188977" about="http://localhost:8087/zalba_na_odluku/5219098399027188977" vocab="http://ftn.uns.ac.rs.tim5/model/predicate" property="pred:obavestenje_url" content="http://localhost:8087/obavestenje/7252244873459227579" id_zahteva="7100396148557692217" id_obavestenja="7252244873459227579">
     <zo:poverenik>
         <util:Mesto>Београд</util:Mesto>
         <util:Postanski_broj>11000</util:Postanski_broj>
@@ -16,7 +16,7 @@
             <util:Ime>Milan</util:Ime>
             <util:Prezime>Djuric</util:Prezime>
         </zo:osnovni_podaci>
-        <zo:drugi_podaci_za_kontakt>nema</zo:drugi_podaci_za_kontakt>
+        <zo:drugi_podaci_za_kontakt></zo:drugi_podaci_za_kontakt>
     </zo:zalilac>
     <zo:organ_vlasti property="pred:naziv_organa_vlasti" content="Народна банка Србије">
         <util:Adresa>
@@ -27,22 +27,22 @@
         <util:Naziv>Народна банка Србије</util:Naziv>
     </zo:organ_vlasti>
     <zo:datum_zahteva>
-        <util:dan>---25</util:dan>
+        <util:dan>---27</util:dan>
         <util:mesec>--06</util:mesec>
         <util:godina>2021</util:godina>
     </zo:datum_zahteva>
     <zo:odluka>
         <zo:broj_odluke>0</zo:broj_odluke>
-        <zo:datum_odluke property="pred:datum_odluke" content="25.6.2021">
-            <util:dan>---25</util:dan>
+        <zo:datum_odluke property="pred:datum_odluke" content="27.6.2021">
+            <util:dan>---27</util:dan>
             <util:mesec>--06</util:mesec>
             <util:godina>2021</util:godina>
         </zo:datum_odluke>
     </zo:odluka>
-    <zo:osnova_za_zaljenje>eto tako!!!</zo:osnova_za_zaljenje>
+    <zo:osnova_za_zaljenje></zo:osnova_za_zaljenje>
     <zo:mesto_zalbe property="pred:mesto" content="Novi Sad">Novi Sad</zo:mesto_zalbe>
-    <zo:datum_zalbe property="pred:datum_zalbe" content="25.6.2021">
-        <util:dan>---25</util:dan>
+    <zo:datum_zalbe property="pred:datum_zalbe" content="27.6.2021">
+        <util:dan>---27</util:dan>
         <util:mesec>--06</util:mesec>
         <util:godina>2021</util:godina>
     </zo:datum_zalbe>

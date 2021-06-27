@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.jena.sparql.resultset.ResultsFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
@@ -68,6 +69,10 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
 
     @Autowired
     private ZalbaOdlukaClient zalbaOdlukaClient;
+
+    @Autowired
+    @Lazy
+    private ResenjeService resenjeService;
 
     private XSLFOTransformer xslfoTransformer;
 
@@ -392,9 +397,38 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
 
     public List<ZalbaNaOdluku> findAllNeobradjene() {
         List<ZalbaNaOdluku> zalbeNaOdluku = this.findAll();
-        //TODO: Zalbe koje se filtriraju ispod dodatno isfiltrirati po nepostojanju resenja za zalbu sa datim ID-jem
         return zalbeNaOdluku.stream().filter(
-                x -> x.getOdgovorOrganaVlasti().getPrihvatio().getValue().equals("ne")
+                x -> x.getOdgovorOrganaVlasti().getPrihvatio().getValue().equals("ne") && this.resenjeService.findByIdZalbe(x.getId()) == null
         ).collect(Collectors.toList());
+    }
+
+    public String findEmailGradjaninaByIdZalbe(Long idZalbe) {
+        String zalbaUrl = String.format(
+                "<%s%s%s>",
+                System.getenv("FRONTEND_URL"),
+                "/zalba_na_odluku/",
+                idZalbe
+        );
+        String query = this.sparqlUtil.selectObjectOnly(
+                String.format(
+                        "%s%s",
+                        this.rdfService.getRdfdbConnectionProperties().getDataEndpoint(),
+                        SPARQL_NAMED_GRAPH_URI
+                ),
+                String.format(
+                        "%s <http://ftn.uns.ac.rs/tim5/model/predicate/email_trazioca> ?o",
+                        zalbaUrl)
+        );
+        try {
+            List<SparqlQueryResult> sparqlQueryResults = this.rdfService.run(query);
+            String[] tmp = sparqlQueryResults.get(0).getVarValue().toString().split("\\^");
+            for(String t : tmp) {
+                System.out.println(t);
+            }
+            return sparqlQueryResults.get(0).getVarValue().toString().split("\\^")[0];
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

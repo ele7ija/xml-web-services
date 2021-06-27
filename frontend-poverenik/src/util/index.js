@@ -17,6 +17,24 @@ export const constructGradjanin = xml => {
   };
 };
 
+export const constructPoverenik = xml => {
+  xml = Xonomy.xml2js(xml);
+  console.log(xml);
+  return {
+    korisnicko_ime: xml.getChildElements('pv:korisnicko_ime')[0].getText(),
+    lozinka: xml.getChildElements('pv:lozinka')[0].getText(),
+    podaci: {
+      adresa: {
+        mesto: xml.getChildElements('pv:podaci')[0].getChildElements('util:Adresa')[0].getChildElements('util:Mesto')[0].getText(),
+        ulica: xml.getChildElements('pv:podaci')[0].getChildElements('util:Adresa')[0].getChildElements('util:Ulica')[0].getText(),
+        broj: xml.getChildElements('pv:podaci')[0].getChildElements('util:Adresa')[0].getChildElements('util:Broj')[0].getText(), 
+      },
+      ime: xml.getChildElements('pv:podaci')[0].getChildElements('util:Ime')[0].getText(),
+      prezime: xml.getChildElements('pv:podaci')[0].getChildElements('util:Prezime')[0].getText(),
+    }
+  };
+};
+
 export const constructDatum = xml => {
   return `${xml.getChildElements("util:dan")[0].getText().substr(3)}.${xml.getChildElements("util:mesec")[0].getText().substr(2)}.${xml.getChildElements("util:godina")[0].getText()}`
 };
@@ -80,8 +98,18 @@ export const constructZalbaNaOdluku = xml => {
           'na cekanju...',
     organVlasti: {
       naziv: xml.getChildElements("zo:organ_vlasti")[0].getChildElements("util:Naziv")[0].getText(),
+      adresa: {
+        mesto: `${xml.getChildElements("zo:organ_vlasti")[0].getChildElements("util:Adresa")[0].getChildElements("util:Mesto")[0].getText()}`,
+        ulica: `${xml.getChildElements("zo:organ_vlasti")[0].getChildElements("util:Adresa")[0].getChildElements("util:Ulica")[0].getText()}`,
+        broj: `${xml.getChildElements("zo:organ_vlasti")[0].getChildElements("util:Adresa")[0].getChildElements("util:Broj")[0].getText()}`
+      }
+    },
+    zalilac: {
+      ime: xml.getChildElements("zo:zalilac")[0].getChildElements("zo:osnovni_podaci")[0].getChildElements("util:Ime")[0].getText(),
+      prezime: xml.getChildElements("zo:zalilac")[0].getChildElements("zo:osnovni_podaci")[0].getChildElements("util:Prezime")[0].getText()
     },
     datum: constructDatum(xml.getChildElements("zo:datum_zalbe")[0]),
+    datumZahteva: constructDatum(xml.getChildElements("zo:datum_zahteva")[0])
   };
 };
 
@@ -103,8 +131,18 @@ export const constructZalbaNaCutanje = xml => {
           'na cekanju...',
     organVlasti: {
       naziv: xml.getChildElements("zc:organ_vlasti")[0].getChildElements("util:Naziv")[0].getText(),
+      adresa: {
+        mesto: `${xml.getChildElements("zc:organ_vlasti")[0].getChildElements("util:Adresa")[0].getChildElements("util:Mesto")[0].getText()}`,
+        ulica: `${xml.getChildElements("zc:organ_vlasti")[0].getChildElements("util:Adresa")[0].getChildElements("util:Ulica")[0].getText()}`,
+        broj: `${xml.getChildElements("zc:organ_vlasti")[0].getChildElements("util:Adresa")[0].getChildElements("util:Broj")[0].getText()}`
+      }
+    },
+    zalilac: {
+      ime: xml.getChildElements("zc:zalilac")[0].getChildElements("zc:osnovni_podaci")[0].getChildElements("util:Ime")[0].getText(),
+      prezime: xml.getChildElements("zc:zalilac")[0].getChildElements("zc:osnovni_podaci")[0].getChildElements("util:Prezime")[0].getText()
     },
     datum: constructDatum(xml.getChildElements("zc:datum_zalbe")[0]),
+    datumZahteva: constructDatum(xml.getChildElements("zc:datum_zahteva")[0])
   };
 };
 
@@ -113,5 +151,25 @@ export const constructZahtev = xml => {
     id: xml.getAttribute("id").value,
     about: xml.getAttribute("about").value,
     datum: constructDatum(xml.getChildElements("za:datum")[0])
+  };
+};
+
+export const constructKolekcijaResenja = xml => {
+  xml = Xonomy.xml2js(xml);
+  return xml.getChildElements("re:Resenje").map(x => constructResenje(x));
+};
+
+export const constructResenje = xml => {
+  return {
+    id: xml.getAttribute("id").value,
+    about: xml.getAttribute("about").value,
+    zalba_url: xml.getAttribute("content").value,
+    zalilac: xml.getChildElements("re:zalba")[0].getChildElements("re:Podnosilac")[0].getText(),
+    organVlasti: {
+      naziv: xml.getChildElements("re:zalba")[0].getChildElements("re:Organ_vlasti")[0].getChildElements("util:Naziv")[0].getText(),
+    },
+    poverenik: {
+      imePrezime: xml.getChildElements("re:poverenik")[0].getChildElements("util:Ime")[0].getText() + " " + xml.getChildElements("re:poverenik")[0].getChildElements("util:Prezime")[0].getText()
+    }
   };
 };
