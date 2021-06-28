@@ -173,3 +173,25 @@ export const constructResenje = xml => {
     }
   };
 };
+
+export const constructKolekcijaIzvestaja = xml => {
+  xml = Xonomy.xml2js(xml);
+  let mapa = xml.getChildElements("iz:Izvestaj").map(x => constructIzvestaj(x))
+  return mapa;
+}
+
+export const constructIzvestaj = xml => {
+  return {
+    id: xml.getAttribute("id").value,
+    about: xml.getAttribute("about").value,
+    organ_vlasti: {
+      naziv: xml.getChildElements("iz:organ_vlasti")[0].getChildElements("util:Naziv")[0].getText(),
+      adresa: {
+        mesto: `${xml.getChildElements("iz:organ_vlasti")[0].getChildElements("util:Adresa")[0].getChildElements("util:Mesto")[0].getText()}`,
+        ulica: `${xml.getChildElements("iz:organ_vlasti")[0].getChildElements("util:Adresa")[0].getChildElements("util:Ulica")[0].getText()}`,
+        broj: `${xml.getChildElements("iz:organ_vlasti")[0].getChildElements("util:Adresa")[0].getChildElements("util:Broj")[0].getText()}`
+      },
+    },
+    datum_podnosenja: constructDatum(xml.getChildElements("iz:datum_podnosenja")[0]),
+  };
+}

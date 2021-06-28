@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<sparql xmlns="http://www.w3.org/2005/sparql-results#">
+  <head>
+    <variable name="p"/>
+    <variable name="o"/>
+  </head>
+  <results>
+    <result>
+      <binding name="p">
+        <uri>http://ftn.uns.ac.rs/tim5/model/predicate/datum</uri>
+      </binding>
+      <binding name="o">
+        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">28.6.2021</literal>
+      </binding>
+    </result>
+  </results>
+</sparql>

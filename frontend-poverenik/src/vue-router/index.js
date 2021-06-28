@@ -16,6 +16,8 @@ import ResenjeZalbaNaOdlukuCreate from '@/components/poverenik/resenje/ResenjeZa
 import ResenjaAll from '@/components/poverenik/resenje/ResenjaAll';
 import ResenjeView from '@/components/poverenik/resenje/ResenjeView';
 import Izvestaji from '@/components/poverenik/izvestaj/Izvestaji';
+import Izvestaj from '@/components/poverenik/izvestaj/Izvestaj';
+
 
 Vue.use(VueRouter);
 
@@ -101,7 +103,12 @@ const router = new VueRouter({
       name: 'Izvestaji',
       path: '/izvestaji',
       component: Izvestaji
-    }
+    },
+    {
+      name: 'Izvestaj',
+      path: '/izvestaj/:id',
+      component: Izvestaj
+    },
   ]
 });
 

@@ -97,6 +97,8 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
     @Override
     public List<ZalbaNaOdluku> findAll() {
         try {
+            List<ZalbaNaOdluku> l = this.zalbaNaOdlukuAbstractXmlRepository.getAllEntities();
+            System.out.println("Rez findAll: " + l);
             return this.zalbaNaOdlukuAbstractXmlRepository.getAllEntities();
         } catch (XMLDBException e) {
             throw new XmlDatabaseException(e.getMessage());

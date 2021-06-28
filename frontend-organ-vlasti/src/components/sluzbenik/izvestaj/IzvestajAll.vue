@@ -1,5 +1,8 @@
 <template>
   <div class="container-fluid my-4">
+    <div class="row">
+      <div class="col-4">    <button class="btn btn-primary" @click='kreiraj()'>KREIRAJ</button></div>
+    </div>
     <div class="row mx-5">
       <div class="col-12">
         <h3 class="text-center my-3">Izvestaji</h3>
@@ -70,7 +73,7 @@ const { Octicon, check, x, clippy, code } = require('octicons-vue');
 import izvestajApi from '../../../api/izvestaj';
 import { constructKolekcijaIzvestaja } from '../../../util';
 export default {
-  name: 'Izvestaji',
+  name: 'IzvestajAll',
   components: {
     Octicon
   },
@@ -134,6 +137,9 @@ export default {
         brNijePostupio,
         brNijePostupioUCelosti
       }
+    },
+    kreiraj() {
+      this.$router.push('/izvestaj-create')
     },
     async getPdf(idZahteva) {
       this.izvestajPdfLoadingId = idZahteva;
