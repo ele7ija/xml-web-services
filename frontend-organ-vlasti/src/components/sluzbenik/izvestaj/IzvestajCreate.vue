@@ -31,7 +31,7 @@ import obavestenjeApi from '../../../api/obavestenje';
 import zalbaNaCutanjeApi from '../../../api/zalba_cutanje';
 import zalbaNaOdlukuApi from '../../../api/zalba_odluka';
 import { izvestajXSL } from '../../../xsl-helper/izvestaj';
-import { constructKolekcijaZahteva, odbijObavestenjeXml, constructObavestenje, constructKolekcijaZalbiNaOdluku, constructKolekcijaZalbiNaCutanje } from '../../../util';
+import { constructKolekcijaZahteva, odbijObavestenjeXml, constructObavestenje, constructKolekcijaZalbi, constructKolekcijaZalbiNaCutanje } from '../../../util';
 export default {
   name: 'IzvestajCreate',
   data: () => {
@@ -170,7 +170,7 @@ export default {
 
       // get zalbe
       const zalbe_odluka = (await zalbaNaOdlukuApi.getAll()).data;
-      this.zalbe_odluka = constructKolekcijaZalbiNaOdluku(zalbe_odluka);
+      this.zalbe_odluka = constructKolekcijaZalbi(zalbe_odluka);
 
       const zalbe_cutanje = (await zalbaNaCutanjeApi.getAll()).data;
       this.zalbe_cutanje = constructKolekcijaZalbiNaCutanje(zalbe_cutanje);
