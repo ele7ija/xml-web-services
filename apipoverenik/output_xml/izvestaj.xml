@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<iz:Izvestaj xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:zc="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:zo="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="5028017938535872535" about="http://localhost:8087/izvestaj/5028017938535872535" vocab="http://ftn.uns.ac.rs.tim5/model/predicate">
+    <iz:statistika_zahteva>
+        <iz:broj_prihvacenih>0</iz:broj_prihvacenih>
+        <iz:broj_odbijenih>2</iz:broj_odbijenih>
+        <iz:broj_isteklih>2</iz:broj_isteklih>
+    </iz:statistika_zahteva>
+    <iz:statistika_zalbi>
+        <iz:broj_zalbi_na_odluku>1</iz:broj_zalbi_na_odluku>
+        <iz:zalbe_cutanja>
+            <iz:nije_postupio>1</iz:nije_postupio>
+            <iz:nije_postupio_u_celosti>1</iz:nije_postupio_u_celosti>
+        </iz:zalbe_cutanja>
+    </iz:statistika_zalbi>
+    <iz:organ_vlasti>
+        <util:Adresa>
+            <util:Mesto>Нови Сад</util:Mesto>
+            <util:Ulica>Булевар Цара Лазара</util:Ulica>
+            <util:Broj>50</util:Broj>
+        </util:Adresa>
+        <util:Naziv>Народна банка Србије</util:Naziv>
+    </iz:organ_vlasti>
+    <iz:datum_podnosenja property="pred:datum" content="28.6.2021">
+        <util:dan>---28</util:dan>
+        <util:mesec>--06</util:mesec>
+        <util:godina>2021</util:godina>
+    </iz:datum_podnosenja>
+</iz:Izvestaj>

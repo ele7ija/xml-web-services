@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ob:Obavestenje xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:za="http://ftn.uns.ac.rs/tim5/model/zahtev" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="5609579806136851015" id_zahteva="7623473908931218196" about="http://localhost:8086/obavestenje/5609579806136851015" vocab="http://ftn.uns.ac.rs.tim5/model/predicate" property="pred:zahtev_url" content="http://localhost:8086/zahtev/7623473908931218196">
+<ob:Obavestenje xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:za="http://ftn.uns.ac.rs/tim5/model/zahtev" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="6402980715901584447" id_zahteva="5273043348847112254" about="http://localhost:8086/obavestenje/6402980715901584447" vocab="http://ftn.uns.ac.rs.tim5/model/predicate" property="pred:zahtev_url" content="http://localhost:8086/zahtev/5273043348847112254">
     <ob:odbijen property="pred:odbijen" content="ne">false</ob:odbijen>
     <ob:istekao property="pred:istekao" content="ne">false</ob:istekao>
-    <ob:Trazilac property="pred:email_trazioca" content="gradjanin">
+    <ob:Trazilac property="pred:email_trazioca" content="millan.djuric@hotmail.com">
         <util:Adresa>
-            <util:Mesto>NS</util:Mesto>
-            <util:Ulica>CD</util:Ulica>
-            <util:Broj>45</util:Broj>
+            <util:Mesto>Novi Sad</util:Mesto>
+            <util:Ulica>Zeleznicka</util:Ulica>
+            <util:Broj>1</util:Broj>
         </util:Adresa>
-        <util:Ime>Bojan</util:Ime>
-        <util:Prezime>Poprzen</util:Prezime>
+        <util:Ime>Marko</util:Ime>
+        <util:Prezime>Markovic</util:Prezime>
     </ob:Trazilac>
     <ob:Organ property="pred:naziv_organa_vlasti" content="Народна банка Србије">
         <util:Adresa>
@@ -21,12 +21,12 @@
     </ob:Organ>
     <ob:Predmet>
         <ob:Broj_Predmeta>0</ob:Broj_Predmeta>
-        <ob:Datum property="pred:datum" content="26.6.2021">
-            <util:dan>---26</util:dan>
+        <ob:Datum property="pred:datum" content="27.6.2021">
+            <util:dan>---27</util:dan>
             <util:mesec>--06</util:mesec>
             <util:godina>2021</util:godina>
         </ob:Datum>
-        <ob:Opis_Trazene_Informacije>Nesto</ob:Opis_Trazene_Informacije>
+        <ob:Opis_Trazene_Informacije>Z2</ob:Opis_Trazene_Informacije>
         <ob:Pravni_Osnov>
             <util:Naziv>Закона о слободном приступу информацијама од јавног значаја</util:Naziv>
             <util:Clan>16</util:Clan>
@@ -46,7 +46,7 @@
             </util:Element_Zahteva>
             <util:Uvid>
                 <util:Datum_Uvida>
-                    <util:dan>---26</util:dan>
+                    <util:dan>---27</util:dan>
                     <util:mesec>--06</util:mesec>
                     <util:godina>2021</util:godina>
                 </util:Datum_Uvida>

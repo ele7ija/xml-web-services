@@ -43,11 +43,16 @@
                                     <xs:restriction base="xs:positiveInteger"/>
                                 </xs:simpleType>
                             </xs:element>
-
-                            <xs:element name="godina" default="2020">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:gYear"/>
-                                </xs:simpleType>
+                            <xs:element name="datum_odluke">
+                                <xs:complexType>
+                                    <xs:complexContent>
+                                        <xs:extension base="util:Datum">
+                                            <xs:attribute default="pred:datum_odluke"
+                                                name="property" type="xs:string"/>
+                                            <xs:attribute name="content" type="xs:string"/>
+                                        </xs:extension>
+                                    </xs:complexContent>
+                                </xs:complexType>
                             </xs:element>
                         </xs:sequence>
                     </xs:complexType>
@@ -68,7 +73,8 @@
                     <xs:complexType>
                         <xs:complexContent>
                             <xs:extension base="util:Datum">
-                                <xs:attribute default="pred:datum" name="property" type="xs:string"/>
+                                <xs:attribute default="pred:datum_zalbe" name="property"
+                                    type="xs:string"/>
                                 <xs:attribute name="content" type="xs:string"/>
                             </xs:extension>
                         </xs:complexContent>

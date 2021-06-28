@@ -10,8 +10,13 @@ import ObavestenjeAll from '@/components/gradjanin/obavestenje/ObavestenjeAll';
 import ObavestenjeCreate from '@/components/sluzbenik/obavestenje/ObavestenjeCreate';
 import Obavestenje from '@/components/sluzbenik/obavestenje/Obavestenje';
 import ZahtevSluzbenik from '@/components/sluzbenik/zahtev/ZahtevSluzbenik';
+import IzvestajAll from '@/components/sluzbenik/izvestaj/IzvestajAll';
 import Izvestaj from '@/components/sluzbenik/izvestaj/Izvestaj';
+import IzvestajCreate from '@/components/sluzbenik/izvestaj/IzvestajCreate';
 import Pretrage from '@/components/sluzbenik/pretrage/Pretrage';
+import store from '../vuex';
+import Zalbe from '@/components/zalbe/Zalbe'
+import ResenjaAll from '@/components/sluzbenik/resenje/ResenjaAll';
 
 Vue.use(VueRouter);
 
@@ -70,15 +75,34 @@ const router = new VueRouter({
     },
     {
       name: 'Izvestaj',
-      path: '/izvestaj',
+      path: '/izvestaj/:id',
       component: Izvestaj
+    },
+    {
+      name: 'IzvestajCreate',
+      path: '/izvestaj-create',
+      component: IzvestajCreate
+    },
+    {
+      name: 'IzvestajAll',
+      path: '/izvestaj-all',
+      component: IzvestajAll
     },
     {
       name: 'Pretrage',
       path: '/pretrage',
       component: Pretrage
     },
-
+    {
+      name: 'Zalbe',
+      path: '/zalbe',
+      component: Zalbe
+    },
+    {
+      name: 'ResenjaAll',
+      path: '/resenja',
+      component: ResenjaAll
+    },
   ]
 });
 
@@ -88,6 +112,7 @@ router.beforeEach((to, from, next) => {
     for example, prevent navigation to login component if user is logged in
   */
   if (to.name != 'Login' && to.name != 'Register' && !sessionStorage.getItem('access_token')) {
+    store.commit('userOptions/setRedirectUri', to.fullPath, {root: true});
     next({name: 'Login'});
   }
   next();

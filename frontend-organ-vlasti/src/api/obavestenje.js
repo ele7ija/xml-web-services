@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   create: xml => axios.post(`${process.env.VUE_APP_BACKEND_ROOT}/obavestenje`, xml),
-  getById: idZahteva => axios.get(`${process.env.VUE_APP_BACKEND_ROOT}/obavestenje/${idZahteva}`),
+  getById: idObavestenja => axios.get(`${process.env.VUE_APP_BACKEND_ROOT}/obavestenje/${idObavestenja}`),
   getObavestenjeByIdZahteva: idZahteva => axios.get(`${process.env.VUE_APP_BACKEND_ROOT}/obavestenje/by-zahtev/${idZahteva}`),
   getByUlogovaniTrazilac: () => axios.get(`${process.env.VUE_APP_BACKEND_ROOT}/obavestenje/by-trazilac`),
   getPdf: idObavestenja => axios.get(`${process.env.VUE_APP_BACKEND_ROOT}/obavestenje/pdf/${idObavestenja}`, {responseType: 'blob'}),

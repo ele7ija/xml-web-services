@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<sparql xmlns="http://www.w3.org/2005/sparql-results#">
+  <head>
+    <variable name="p"/>
+    <variable name="o"/>
+  </head>
+  <results>
+    <result>
+      <binding name="p">
+        <uri>http://ftn.uns.ac.rs/tim5/model/predicate/naziv_organa_vlasti</uri>
+      </binding>
+      <binding name="o">
+        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Народна банка Србије</literal>
+      </binding>
+    </result>
+    <result>
+      <binding name="p">
+        <uri>http://ftn.uns.ac.rs/tim5/model/predicate/email_trazioca</uri>
+      </binding>
+      <binding name="o">
+        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">millan.djuric@hotmail.com</literal>
+      </binding>
+    </result>
+    <result>
+      <binding name="p">
+        <uri>http://ftn.uns.ac.rs/tim5/model/predicate/datum_zalbe</uri>
+      </binding>
+      <binding name="o">
+        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">25.6.2021</literal>
+      </binding>
+    </result>
+    <result>
+      <binding name="p">
+        <uri>http://ftn.uns.ac.rs/tim5/model/predicate/mesto</uri>
+      </binding>
+      <binding name="o">
+        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Novi Sad</literal>
+      </binding>
+    </result>
+    <result>
+      <binding name="p">
+        <uri>http://ftn.uns.ac.rs/tim5/model/predicate/datum_odluke</uri>
+      </binding>
+      <binding name="o">
+        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">25.6.2021</literal>
+      </binding>
+    </result>
+    <result>
+      <binding name="p">
+        <uri>http://ftn.uns.ac.rs/tim5/model/predicate/obavestenje_url</uri>
+      </binding>
+      <binding name="o">
+        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">http://localhost:8087/obavestenje/5054911216135674266</literal>
+      </binding>
+    </result>
+  </results>
+</sparql>

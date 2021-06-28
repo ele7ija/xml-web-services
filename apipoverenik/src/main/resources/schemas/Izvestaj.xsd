@@ -28,8 +28,6 @@
                                             type="xs:nonNegativeInteger"/>
                                         <xs:element name="nije_postupio_u_celosti"
                                             type="xs:nonNegativeInteger"/>
-                                        <xs:element name="nije_postupio_u_zakonskom_roku"
-                                            type="xs:nonNegativeInteger"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>

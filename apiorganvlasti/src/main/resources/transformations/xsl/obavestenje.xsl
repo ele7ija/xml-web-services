@@ -12,9 +12,10 @@
                     background-color: gray;
                     }
                     body {
-                    margin-left: 400pt;
-                    margin-right: 400pt;
+                    margin-left: 200pt;
+                    margin-right: 200pt;
                     background-color: white;
+                    min-height: 800px;
                     }
                     p {
                     padding-left: 80pt;

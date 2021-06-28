@@ -44,10 +44,10 @@ const state = {
         id: 5
       },
       {
-        displayName: 'Izvestaj',
-        fullName: "Godisnji izvestaj",
+        displayName: 'Izvestaji',
+        fullName: "Godisnji izvestaji",
         description: 'Podnesite godisnji izvestaj o broju podnetih i odbijenih zahteva, kao i broju i sadrzini zalbi protiv obavestenja. Uzvestaj se podnosi povereniku.',
-        name: 'Izvestaj',
+        name: 'IzvestajAll',
         hasChildren: false,
         id: 6
       },
@@ -58,15 +58,33 @@ const state = {
         name: 'Pretrage',
         hasChildren: false,
         id: 7
+      },
+      {
+        displayName: 'Zalbe',
+        fullName: "Zalbe",
+        description: 'Odabirom odredjenog zalbe mozete da ga prihvatite ili odbijete.',
+        name: 'Zalbe',
+        hasChildren: false,
+        id: 8
+      },
+      {
+        displayName: 'Resenja',
+        fullName: "Resenja",
+        description: 'Pregledaj izdata resenja na sve vrste zalbi.',
+        name: 'ResenjaAll',
+        hasChildren: false,
+        id: 9
       }
     ]
   },
-  role: ''
+  role: '',
+  redirectUri: ''
 };
 
 const getters = {
   getOptions: state => state.options,
-  getRole: state => state.role
+  getRole: state => state.role,
+  getRedirectUri: state => state.redirectUri
 };
 
 const actions = {
@@ -79,7 +97,8 @@ const actions = {
 };
 
 const mutations = {
-  setRole: (state, role) => state.role = role
+  setRole: (state, role) => state.role = role,
+  setRedirectUri: (state, redirectUri) => state.redirectUri = redirectUri
 };
 
 export default {

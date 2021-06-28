@@ -1,10 +1,10 @@
 <template>
   <div class="container-fluid my-4">
     <div class="row is-table-row">
-      <div class="col-6 px-5">
+      <div class="col-6 px-4">
         <div :id="zahtevGradjanaEditorIdWrapper"></div>
       </div>
-      <div class="col-6 px-5">
+      <div class="col-6 px-4">
         <div :id="zahtevGradjanaViewIdWrapper"></div>
       </div>
     </div>

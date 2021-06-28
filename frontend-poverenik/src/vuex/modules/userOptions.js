@@ -23,12 +23,28 @@ const state = {
     ],
     POVERENIK: [
       {
-        displayName: 'Zalbe',
-        fullName: "Pregled svih zalbi",
-        description: 'Pregledaj sve zalbe na odluku i na cutanje protiv organa vlasti',
-        name: 'ZalbePoverenik',
+        displayName: 'Zalbe na odluku',
+        fullName: "Pregled svih zalbi na odluku",
+        description: 'Pregledaj sve zalbe na odluku protiv organa vlasti',
+        name: 'ZalbeNaOdlukuPoverenik',
         hasChildren: false,
         id: 3
+      },
+      {
+        displayName: 'Zalbe na cutanje',
+        fullName: "Pregled svih zalbi na cutanje",
+        description: 'Pregledaj sve zalbe na cutanje protiv organa vlasti',
+        name: 'ZalbeNaCutanjePoverenik',
+        hasChildren: false,
+        id: 4
+      },
+      {
+        displayName: 'Resenja',
+        fullName: "Resenja",
+        description: 'Pregledaj izdata resenja na sve vrste zalbi.',
+        name: 'ResenjaAll',
+        hasChildren: false,
+        id: 5
       },
       {
         displayName: 'Izvestaj',
@@ -36,7 +52,7 @@ const state = {
         description: 'Pregledaj godisnji izvestaj organa vlasti.',
         name: 'Izvestaji',
         hasChildren: false,
-        id: 4
+        id: 6
       }
     ]
   },
