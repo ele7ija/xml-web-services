@@ -1,108 +1,202 @@
 <template>
-  <div class="container-fluid my-4">
-    <button class="btn btn-primary" @click='kreiraj()'>KREIRAJ</button>
+  <div class="wrapper">
+    <div class="container px-5">
+      <div class="row">
+        <div class="col-4 my-4" v-if="izvestaj">
+          <button
+            class="btn btn-sm btn-light mx-2"
+            @click="getPdf"
+          >
+            <div v-if="pdfLoading" class="spinner-border mr-2 pb-1" role="status" :style="{width: '0.9rem', height: '0.9rem', 'font-size': '10px'}">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <Octicon v-else :icon="clippy"/>
+            <span class="text-dark">Preuzmi PDF</span>
+          </button>
+          <button
+              class="btn btn-sm btn-light ml-1 mx-2"
+              @click="getHtml"
+            >
+              <div v-if="htmlLoading" class="spinner-border mr-2 pb-1" role="status" :style="{width: '0.9rem', height: '0.9rem', 'font-size': '10px'}">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <Octicon v-else :icon="code"/>
+              <span class="text-dark">Preuzmi HTML</span>
+            </button>
+        </div>
+        <div class="col-8 my-4 pl-5" v-if="izvestaj">
+            <button
+              class="btn btn-sm btn-light mx-2"
+              @click="getJsonMetadata"
+            >
+              <div v-if="jsonMetadataLoading" class="spinner-border mr-2 pb-1" role="status" :style="{width: '0.9rem', height: '0.9rem', 'font-size': '10px'}">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <span class="text-dark">Preuzmi JSON metapodatke</span>
+            </button>
+            <button
+              class="btn btn-sm btn-light ml-1 mx-2"
+              @click="getXmlMetadata"
+            >
+              <div v-if="xmlMetadataLoading" class="spinner-border mr-2 pb-1" role="status" :style="{width: '0.9rem', height: '0.9rem', 'font-size': '10px'}">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <span class="text-dark">Preuzmi XML metapodatke</span>
+            </button>
+            <button
+              class="btn btn-sm btn-light ml-1 mx-2"
+              @click="getRdfMetadata"
+            >
+              <div v-if="rdfMetadataLoading" class="spinner-border mr-2 pb-1" role="status" :style="{width: '0.9rem', height: '0.9rem', 'font-size': '10px'}">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <span class="text-dark">Preuzmi RDF metapodatke</span>
+            </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div :id="izvestajGradjanaViewIdWrapper"></div>
+        </div>
+      </div>
+    </div>
+    <div v-if="izvestajLoading" class="centered">
+      <div  class="spinner-border spinner-border-sm" role="status" :style="{width: '10rem', height: '10rem'}">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <div v-else-if="!izvestajLoading && !izvestaj" :style="{height: '100%'}">
+      <h1 class="text-center centered">Not found 404</h1>
+    </div>
   </div>
 </template>
 
 <script>
 /*eslint no-undef: "warn"*/
 /*eslint no-unused-vars: "warn"*/
-const { Octicon, check, x, clippy, code } = require('octicons-vue');
-import zahtevApi from '../../../api/zahtev';
-import obavestenjeApi from '../../../api/obavestenje';
-import zalbaNaCutanjeApi from '../../../api/zalba_cutanje';
-import zalbaNaOdlukuApi from '../../../api/zalba_odluka';
-import { constructKolekcijaZahteva, odbijObavestenjeXml, constructObavestenje, constructKolekcijaZalbiNaOdluku, constructKolekcijaZalbiNaCutanje } from '../../../util';
+const { Octicon, clippy, code } = require('octicons-vue');
+import izvestajApi from '../../../api/izvestaj';
+import { constructIzvestaj } from '../../../util';
+import { izvestajXSL } from '../../../xsl-helper/izvestaj';
 export default {
   name: 'Izvestaj',
+  components: {
+    Octicon
+  },
   data: () => {
     return {
-      check,
-      x,
       clippy,
       code,
-      zahtevi: [],
-      loading: false,
-
-      idZahtevaSelected: null,
-      odbijLoading: false,
+      izvestaj: null,
+      izvestajLoading: false,
       pdfLoading: false,
       htmlLoading: false,
+      izvestajGradjanaViewIdWrapper: 'izvestajGradjanaViewIdWrapper',
+      izvestajGradjanaViewId: 'izvestajGradjanaViewId',
 
-      obradjeniZahtevi: [],
-      obavestenja: [],
-      idObavestenjaSelected: null,
-
-      zalbe_cutanje: [],
-      zalbe_odluka: []
-    };
+      jsonMetadataLoading: false,
+      xmlMetadataLoading: false,
+      rdfMetadataLoading: false
+    }
   },
   async mounted() {
     if (sessionStorage.getItem('access_token')) {
-      this.loading = true;
-      const tempZahtevi = constructKolekcijaZahteva((await zahtevApi.getByNazivOrganaVlasti()).data);
-      const results = await Promise.all(
-        tempZahtevi.map(zahtev => obavestenjeApi.getObavestenjeByIdZahteva(zahtev.id))
-      );
-      for(const index in results) {
-        if (!results[index].data) {
-          this.zahtevi.push(tempZahtevi[index]);
+      //fetch izvestaj
+      try {
+        this.izvestajLoading = true;
+        const xmlString = (await izvestajApi.getById(this.$route.params.id)).data;
+        this.izvestaj = constructIzvestaj(Xonomy.xml2js(xmlString));
+
+        //xsl transformation and dom construction
+        const xsltProcessor = new XSLTProcessor();
+        const domParser = new DOMParser();
+        const xmlSerializer = new XMLSerializer();
+        
+        xsltProcessor.reset();
+        const stylesheetDocument = domParser.parseFromString(izvestajXSL, 'text/xml');
+        xsltProcessor.importStylesheet(stylesheetDocument);
+        const xmlDocument = domParser.parseFromString(xmlString, 'text/xml');
+        const convertedDocument = xsltProcessor.transformToDocument(xmlDocument);
+
+        const viewContainer = document.getElementById(this.izvestajGradjanaViewIdWrapper);
+        let viewElement = document.getElementById(this.izvestajGradjanaViewId);
+        if(!viewElement) {
+          let page = document.createElement('div');
+          page.id = this.izvestajGradjanaViewId;
+          page.classList.add('page3');
+          page.innerHTML = xmlSerializer.serializeToString(convertedDocument);
+          viewContainer.appendChild(page);
         } else {
-          this.obradjeniZahtevi.push(tempZahtevi[index]);
+          viewElement.innerHTML = xmlSerializer.serializeToString(convertedDocument);
         }
+      } catch (error) {
+        console.log(error);
+        this.izvestaj = null;
       }
-      this.obavestenja = results.filter(x => x.data).map(x => constructObavestenje(Xonomy.xml2js(x.data)));
-      this.loading = false;
-
-      // get zalbe
-      const zalbe_odluka = (await zalbaNaOdlukuApi.getAll()).data;
-      this.zalbe_odluka = constructKolekcijaZalbiNaOdluku(zalbe_odluka);
-
-      const zalbe_cutanje = (await zalbaNaCutanjeApi.getAll()).data;
-      this.zalbe_cutanje = constructKolekcijaZalbiNaCutanje(zalbe_cutanje);
+      this.izvestajLoading = false;
     }
+      
   },
   methods: {
-    getStatistikaZahteva() {
-      let statistika = {
-        brojPrihvacenih: 0,
-        brojOdbijenih: 0,
-        brojIsteklih: 0
-      }
-      for (let obavestenje of this.obavestenja) {
-        if (obavestenje.odbijen) {
-          statistika.brojOdbijenih += 1
-        }
-        else if (obavestenje.istekao) {
-          statistika.brojIsteklih += 1
-        }
-        else {
-          statistika.brojPrihvacenih += 1
-        }
-      }
-      return statistika
+    async getPdf() {
+      this.pdfLoading = true;
+      const response = await izvestajApi.getPdf(this.izvestaj.id);
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(
+          new Blob([response.data])
+      );
+      link.setAttribute('download', `izvestaj-${this.izvestaj.id}.pdf`);
+      document.body.appendChild(link);
+      link.click();
+      this.pdfLoading = false;
     },
-    getBrojZalbiNaOdluku() {
-      return this.zalbe_odluka.length
+    async getHtml() {
+      this.htmlLoading = true;
+      const response = await izvestajApi.getHtml(this.izvestaj.id);
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(
+          new Blob([response.data])
+      );
+      link.setAttribute('download', `izvestaj-${this.izvestaj.id}.html`);
+      document.body.appendChild(link);
+      link.click();
+      this.htmlLoading = false;
     },
-    getStatistikaZalbiNaCutanje() {
-      let brNijePostupio = 0;
-      let brNijePostupioUCelosti = 0;
-      for (let zalba_cutanje of this.zalbe_cutanje) {
-        if (zalba_cutanje.razlog_zalbe == 'није поступио') {
-          brNijePostupio++;
-        }
-        else {
-          brNijePostupioUCelosti++;
-        }
-      }
-      return {
-        brNijePostupio,
-        brNijePostupioUCelosti
-      }
+    async getJsonMetadata() {
+      this.jsonMetadataLoading = true;
+      const response = await izvestajApi.getJsonMetadata(this.izvestaj.id);
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(
+          new Blob([response.data])
+      );
+      link.setAttribute('download', `izvestaj-${this.izvestaj.id}-metadata.json`);
+      document.body.appendChild(link);
+      link.click();
+      this.jsonMetadataLoading = false;
     },
-    kreiraj() {
-      this.$router.push('/izvestaj-create')
+    async getXmlMetadata() {
+      this.xmlMetadataLoading = true;
+      const response = await izvestajApi.getXmlMetadata(this.izvestaj.id);
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(
+          new Blob([response.data])
+      );
+      link.setAttribute('download', `izvestaj-${this.izvestaj.id}-metadata.xml`);
+      document.body.appendChild(link);
+      link.click();
+      this.xmlMetadataLoading = false;
+    },
+    async getRdfMetadata() {
+      this.rdfMetadataLoading = true;
+      const response = await izvestajApi.getRdfMetadata(this.izvestaj.id);
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(
+          new Blob([response.data])
+      );
+      link.setAttribute('download', `izvestaj-${this.izvestaj.id}-metadata.ttl`);
+      document.body.appendChild(link);
+      link.click();
+      this.rdfMetadataLoading = false;
     }
   }
 }

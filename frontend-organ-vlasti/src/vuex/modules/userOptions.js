@@ -44,10 +44,10 @@ const state = {
         id: 5
       },
       {
-        displayName: 'Izvestaj',
-        fullName: "Godisnji izvestaj",
+        displayName: 'Izvestaji',
+        fullName: "Godisnji izvestaji",
         description: 'Podnesite godisnji izvestaj o broju podnetih i odbijenih zahteva, kao i broju i sadrzini zalbi protiv obavestenja. Uzvestaj se podnosi povereniku.',
-        name: 'Izvestaj',
+        name: 'IzvestajAll',
         hasChildren: false,
         id: 6
       },

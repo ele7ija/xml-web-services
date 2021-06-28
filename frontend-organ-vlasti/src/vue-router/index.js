@@ -10,6 +10,7 @@ import ObavestenjeAll from '@/components/gradjanin/obavestenje/ObavestenjeAll';
 import ObavestenjeCreate from '@/components/sluzbenik/obavestenje/ObavestenjeCreate';
 import Obavestenje from '@/components/sluzbenik/obavestenje/Obavestenje';
 import ZahtevSluzbenik from '@/components/sluzbenik/zahtev/ZahtevSluzbenik';
+import IzvestajAll from '@/components/sluzbenik/izvestaj/IzvestajAll';
 import Izvestaj from '@/components/sluzbenik/izvestaj/Izvestaj';
 import IzvestajCreate from '@/components/sluzbenik/izvestaj/IzvestajCreate';
 import Pretrage from '@/components/sluzbenik/pretrage/Pretrage';
@@ -72,13 +73,18 @@ const router = new VueRouter({
     },
     {
       name: 'Izvestaj',
-      path: '/izvestaj',
+      path: '/izvestaj/:id',
       component: Izvestaj
     },
     {
-      name: 'Izvestaj',
+      name: 'IzvestajCreate',
       path: '/izvestaj-create',
       component: IzvestajCreate
+    },
+    {
+      name: 'IzvestajAll',
+      path: '/izvestaj-all',
+      component: IzvestajAll
     },
     {
       name: 'Pretrage',

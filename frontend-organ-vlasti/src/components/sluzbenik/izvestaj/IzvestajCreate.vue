@@ -24,6 +24,8 @@
 /*eslint no-undef: "warn"*/
 /*eslint no-unused-vars: "warn"*/
 const { Octicon, check, x, clippy, code } = require('octicons-vue');
+import izvestajApi from '../../../api/izvestaj';
+
 import zahtevApi from '../../../api/zahtev';
 import obavestenjeApi from '../../../api/obavestenje';
 import zalbaNaCutanjeApi from '../../../api/zalba_cutanje';
@@ -264,9 +266,7 @@ export default {
       const xmlSerializer = new XMLSerializer();
       
       xsltProcessor.reset();
-            console.log('usao1')
       const stylesheetDocument = domParser.parseFromString(izvestajXSL, 'text/xml');
-                  console.log('usao2')
 
       xsltProcessor.importStylesheet(stylesheetDocument);
 
@@ -294,8 +294,10 @@ export default {
       }
     },
 
-    submit() {
-        console.log('submit')
+    async submit() {
+      await izvestajApi.create(Xonomy.harvest())
+      this.$router.push({path: '/'});
+      
     }
   }
 }

@@ -58,7 +58,9 @@ export const izvestajXSL = `<?xml version="1.0" encoding="UTF-8"?>
                         <strong>И З В Е Ш Т А Ј</strong>
                     </p>
                     <p class="normal-text indented" style = "margin-top: -10pt">
-                        Органа власти: <xsl:value-of select="iz:Izvestaj/iz:organ_vlasti/util:Naziv"/>.
+                        Органа власти: <xsl:value-of select="iz:Izvestaj/iz:organ_vlasti/util:Naziv"/>,
+                        <xsl:value-of select="concat(/iz:Izvestaj/iz:organ_vlasti/util:Adresa/util:Ulica,' ',/iz:Izvestaj/iz:organ_vlasti/util:Adresa/util:Broj)" />,
+                        <xsl:value-of select="/iz:Izvestaj/iz:organ_vlasti/util:Adresa/util:Mesto" />.
                     </p>
                 </div>
                 <div>

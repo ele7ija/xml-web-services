@@ -69,7 +69,9 @@
                     </p>
                     <p class="normal-text indented" style = "margin-top: -10pt">
 <!--                        ubaciti adresu-->
-                        Органа власти: <xsl:value-of select="iz:Izvestaj/iz:organ_vlasti/util:Naziv"/>.
+                        Органа власти: <xsl:value-of select="iz:Izvestaj/iz:organ_vlasti/util:Naziv"/>,
+                        <xsl:value-of select="concat(/iz:Izvestaj/iz:organ_vlasti/util:Adresa/util:Ulica,' ',/iz:Izvestaj/iz:organ_vlasti/util:Adresa/util:Broj)" />,
+                        <xsl:value-of select="/iz:Izvestaj/iz:organ_vlasti/util:Adresa/util:Mesto" />.
                     </p>
                 </div>
                 <div>
