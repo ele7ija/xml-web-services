@@ -33,6 +33,10 @@ public class XQueryExpressions {
             "for $x in collection(\"/db/sample/zalba_na_odluku\")/Zalba_na_odluku[@id_zahteva=%d]\n" +
             "return $x";
 
+    public static final String SEARCH_ZALBA_ODLUKE= "xquery version \"3.1\";\n"
+            + "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku\";\n"
+            + "for $x in collection(\"/db/sample/zalba_na_odluku\")\n"
+            + "where $x//*/text()[contains(lower-case(.) ,%s)]\n" + "return $x";
 
 
     //XQUERY I XUPDATE ZA ZALBU NA CUTANJE
@@ -50,6 +54,11 @@ public class XQueryExpressions {
             "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/zalba_cutanja\";\n" +
             "for $x in collection(\"/db/sample/zalba_cutanja\")/Zalba_cutanja[@id_zahteva=%d]\n" +
             "return $x";
+
+    public static final String SEARCH_ZALBA_CUTANJA= "xquery version \"3.1\";\n"
+            + "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/resenje\";\n"
+            + "for $x in collection(\"/db/sample/zalba_cutanja\")\n"
+            + "where $x//*/text()[contains(lower-case(.) ,%s)]\n" + "return $x";
 
 
     //XQUERY I XUPDATE ZA POVERENIKE
@@ -79,6 +88,11 @@ public class XQueryExpressions {
     public static final String X_UPDATE_REMOVE_IZVESTAJ_BY_ID_EXPRESSION =
             "xquery version \"3.1\";\n" +
                     "xmldb:remove('/db/sample/izvestaj', '%s')";
+
+    public static final String SEARCH_IZVESTAJI = "xquery version \"3.1\";\n"
+            + "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/izvestaj\";\n"
+            + "for $x in collection(\"/db/sample/izvestaj\")\n"
+            + "where $x//*/text()[contains(lower-case(.) ,%s)]\n" + "return $x";
 
 
     //XQUERY I XUPDATE ZA GRADJANINA
@@ -114,5 +128,9 @@ public class XQueryExpressions {
             "for $x in collection(\"/db/sample/resenja\")/Resenje[@id_zalbe=%d]\n" +
             "return $x";
 
+    public static final String SEARCH_RESENJE= "xquery version \"3.1\";\n"
+            + "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/resenje\";\n"
+            + "for $x in collection(\"/db/sample/resenja\")\n"
+            + "where $x//*/text()[contains(lower-case(.) ,%s)]\n" + "return $x";
 
 }

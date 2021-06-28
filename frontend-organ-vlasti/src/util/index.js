@@ -17,6 +17,10 @@ export const constructGradjanin = xml => {
   };
 };
 
+export const constructKolekcijaZahtevaXML = xml =>{
+  return xml.getChildElements("za:Zahtev").map(x => constructZahtev(x));
+}
+
 export const constructKolekcijaZahteva = xml => {
   xml = Xonomy.xml2js(xml);
   return xml.getChildElements("za:Zahtev").map(x => constructZahtev(x));
@@ -254,6 +258,11 @@ export const constructKolekcijaResenja = xml => {
   return xml.getChildElements("re:Resenje").map(x => constructResenje(x));
 };
 
+export const constructKolekcijaResenjaXML = xml => {
+  return xml.getChildElements("re:Resenje").map(x => constructResenje(x));
+};
+
+
 export const constructResenje = xml => {
   return {
     id: xml.getAttribute("id").value,
@@ -271,6 +280,11 @@ export const constructResenje = xml => {
 
 export const constructKolekcijaIzvestaja = xml => {
   xml = Xonomy.xml2js(xml);
+  let mapa = xml.getChildElements("iz:Izvestaj").map(x => constructIzvestaj(x))
+  return mapa;
+}
+
+export const constructKolekcijaIzvestajaXML = xml => {
   let mapa = xml.getChildElements("iz:Izvestaj").map(x => constructIzvestaj(x))
   return mapa;
 }
@@ -302,9 +316,8 @@ export const constructRezultatPretrage = str => {
   let xml = Xonomy.xml2js(str)
   return {
     zahtevi: constructKolekcijaZahtevaXML(xml.getChildElements("zahtevi")[0]),
-    resenja: [],
-    izvestaji: []
-    // constructKolekcijaResenja(xml.getChildElements("resenja")[0])
+    resenja: constructKolekcijaResenjaXML(xml.getChildElements("resenja")[0]),
+    izvestaji: constructKolekcijaIzvestajaXML(xml.getChildElements("izvestaji")[0])
   };
 }
 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<zo:Zalba_na_odluku xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:zo="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:za="http://ftn.uns.ac.rs/tim5/model/zahtev" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="8255397329022454179" about="http://localhost:8086/zalba_na_odluku/8255397329022454179" vocab="http://ftn.uns.ac.rs.tim5/model/predicate" property="pred:obavestenje_url" content="http://localhost:8087/obavestenje/7532785620919748957" id_zahteva="7965159911996134959" id_obavestenja="7532785620919748957">
+    <zo:poverenik>
+        <util:Mesto>Београд</util:Mesto>
+        <util:Postanski_broj>11000</util:Postanski_broj>
+        <util:Ulica>Булевар Краља Александра</util:Ulica>
+        <util:Broj>15</util:Broj>
+    </zo:poverenik>
+    <zo:zalilac property="pred:email_trazioca" content="gradjanin">
+        <zo:osnovni_podaci>
+            <util:Adresa>
+                <util:Mesto>NS</util:Mesto>
+                <util:Ulica>CD</util:Ulica>
+                <util:Broj>45</util:Broj>
+            </util:Adresa>
+            <util:Ime>Bojan</util:Ime>
+            <util:Prezime>Poprzen</util:Prezime>
+        </zo:osnovni_podaci>
+        <zo:drugi_podaci_za_kontakt></zo:drugi_podaci_za_kontakt>
+    </zo:zalilac>
+    <zo:organ_vlasti property="pred:naziv_organa_vlasti" content="Народна банка Србије">
+        <util:Adresa>
+            <util:Mesto>Нови Сад</util:Mesto>
+            <util:Ulica>Булевар Цара Лазара</util:Ulica>
+            <util:Broj>50</util:Broj>
+        </util:Adresa>
+        <util:Naziv>Народна банка Србије</util:Naziv>
+    </zo:organ_vlasti>
+    <zo:datum_zahteva>
+        <util:dan>---27</util:dan>
+        <util:mesec>--06</util:mesec>
+        <util:godina>2021</util:godina>
+    </zo:datum_zahteva>
+    <zo:odluka>
+        <zo:broj_odluke>0</zo:broj_odluke>
+        <zo:datum_odluke property="pred:datum_odluke" content="27.6.2021">
+            <util:dan>---27</util:dan>
+            <util:mesec>--06</util:mesec>
+            <util:godina>2021</util:godina>
+        </zo:datum_odluke>
+    </zo:odluka>
+    <zo:osnova_za_zaljenje></zo:osnova_za_zaljenje>
+    <zo:mesto_zalbe property="pred:mesto" content="NS">NS</zo:mesto_zalbe>
+    <zo:datum_zalbe property="pred:datum_zalbe" content="27.6.2021">
+        <util:dan>---27</util:dan>
+        <util:mesec>--06</util:mesec>
+        <util:godina>2021</util:godina>
+    </zo:datum_zalbe>
+    <zo:odgovor_organa_vlasti>
+        <zo:prihvatio>ne</zo:prihvatio>
+        <zo:odbio>ne</zo:odbio>
+    </zo:odgovor_organa_vlasti>
+</zo:Zalba_na_odluku>

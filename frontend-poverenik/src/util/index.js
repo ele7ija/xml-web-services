@@ -85,6 +85,10 @@ export const constructKolekcijaZalbi = xml => {
   return xml.getChildElements("zo:Zalba_na_odluku").map(x => constructZalbaNaOdluku(x));
 };
 
+export const constructKolekcijaZalbiXML = xml => {
+  return xml.getChildElements("zo:Zalba_na_odluku").map(x => constructZalbaNaOdluku(x));
+};
+
 export const constructZalbaNaOdluku = xml => {
   return {
     id: xml.getAttribute("id").value,
@@ -115,6 +119,10 @@ export const constructZalbaNaOdluku = xml => {
 
 export const constructKolekcijaZalbiNaCutanje = xml => {
   xml = Xonomy.xml2js(xml);
+  return xml.getChildElements("zc:Zalba_cutanja").map(x => constructZalbaNaCutanje(x));
+};
+
+export const constructKolekcijaZalbiNaCutanjeXML = xml => {
   return xml.getChildElements("zc:Zalba_cutanja").map(x => constructZalbaNaCutanje(x));
 };
 
@@ -159,6 +167,10 @@ export const constructKolekcijaResenja = xml => {
   return xml.getChildElements("re:Resenje").map(x => constructResenje(x));
 };
 
+export const constructKolekcijaResenjaXML = xml => {
+  return xml.getChildElements("re:Resenje").map(x => constructResenje(x));
+};
+
 export const constructResenje = xml => {
   return {
     id: xml.getAttribute("id").value,
@@ -173,6 +185,11 @@ export const constructResenje = xml => {
     }
   };
 };
+
+export const constructKolekcijaIzvestajaXML = xml => {
+  let mapa = xml.getChildElements("iz:Izvestaj").map(x => constructIzvestaj(x))
+  return mapa;
+}
 
 export const constructKolekcijaIzvestaja = xml => {
   xml = Xonomy.xml2js(xml);
@@ -195,3 +212,33 @@ export const constructIzvestaj = xml => {
     datum_podnosenja: constructDatum(xml.getChildElements("iz:datum_podnosenja")[0]),
   };
 }
+
+
+
+export const pretragaXML = pretraga =>
+    `<?xml version="1.0" encoding="UTF-8"?>
+        <pretraga>
+          <term>${pretraga.term}</term>
+          <metadata>${pretraga.metadata}</metadata>
+        </pretraga>`;
+
+export const constructRezultatPretrage = str => {
+  let xml = Xonomy.xml2js(str)
+  return {
+    zalbe_cutanje: constructKolekcijaZalbiNaCutanjeXML(xml.getChildElements("zalbe_cutanje")[0]),
+    zalbe_odluka: constructKolekcijaZalbiXML(xml.getChildElements("zalbe_odluka")[0]),
+    resenja: constructKolekcijaResenjaXML(xml.getChildElements("resenja")[0]),
+    izvestaji: constructKolekcijaIzvestajaXML(xml.getChildElements("izvestaji")[0])
+  };
+}
+
+export const constructReferencedBy = str => {
+  let xml = Xonomy.xml2js(str);
+  return xml.getChildElements("dokument").map(x => x.getText())
+}
+
+export const referencedByXML = about =>
+    `<?xml version="1.0" encoding="UTF-8"?>
+        <referenced-by-search>
+          <about>${about}</about>
+        </referenced-by-search>`;

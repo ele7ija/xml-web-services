@@ -17,6 +17,7 @@ import ResenjaAll from '@/components/poverenik/resenje/ResenjaAll';
 import ResenjeView from '@/components/poverenik/resenje/ResenjeView';
 import Izvestaji from '@/components/poverenik/izvestaj/Izvestaji';
 import Izvestaj from '@/components/poverenik/izvestaj/Izvestaj';
+import Pretrage from '@/components/poverenik/pretrage/Pretrage';
 
 
 Vue.use(VueRouter);
@@ -109,6 +110,11 @@ const router = new VueRouter({
       path: '/izvestaj/:id',
       component: Izvestaj
     },
+    {
+      name: 'Pretrage',
+      path: '/pretrage',
+      component: Pretrage
+    }
   ]
 });
 

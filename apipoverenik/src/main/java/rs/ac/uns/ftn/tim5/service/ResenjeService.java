@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.XMLDBException;
 import rs.ac.uns.ftn.tim5.SOAP.client.ResenjeClient;
+import rs.ac.uns.ftn.tim5.helper.PretrageHelper;
 import rs.ac.uns.ftn.tim5.helper.SparqlQueryResult;
+import rs.ac.uns.ftn.tim5.helper.XQueryExpressions;
 import rs.ac.uns.ftn.tim5.helper.XmlConversionAgent;
 import rs.ac.uns.ftn.tim5.model.exception.EntityNotFoundException;
 import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlDatabaseException;
@@ -24,7 +26,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 
 import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.*;
 
@@ -73,6 +75,9 @@ public class ResenjeService implements AbstractXmlService<Resenje> {
 
     @Autowired
     private ZalbaNaCutanjeService zalbaNaCutanjeService;
+
+    @Autowired
+    private PretrageHelper pretrageHelper;
 
     @PostConstruct
     public void injectRepositoryProperties() {
@@ -362,5 +367,41 @@ public class ResenjeService implements AbstractXmlService<Resenje> {
         } catch (XMLDBException | JAXBException e) {
             return null;
         }
+    }
+
+    public List<Resenje> pronadjiTerm(String term) {
+        try {
+            return this.resenjeAbstractXmlRepository.findEntities(String.format(XQueryExpressions.SEARCH_RESENJE, term));
+        } catch (XMLDBException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<Resenje> pronadjiMetadata(String metadata) {
+        String[] sts = metadata.split("\\*OR\\*");
+        Set<Resenje> retval = new HashSet<>();
+        for (String andsubstr : sts) {
+            String[] andsubstrtokens = andsubstr.split("\\*AND\\*");
+            System.out.println("Search by metadata AND substring: " + Arrays.toString(andsubstrtokens));
+            Set<String> ids = pretrageHelper.searchMetadata(andsubstrtokens, SPARQL_NAMED_GRAPH_URI);
+
+            ids.forEach((String s) -> {
+                try {
+                    retval.add(resenjeAbstractXmlRepository.getEntity(Long.parseLong(s)));
+                } catch (XMLDBException | JAXBException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+
+        return new ArrayList<>(retval);
+    }
+
+    public List<String> getRefers(String about) {
+
+        return rdfService.search(SPARQL_NAMED_GRAPH_URI, about);
     }
 }

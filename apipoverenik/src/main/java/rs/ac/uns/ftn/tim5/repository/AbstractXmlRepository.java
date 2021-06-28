@@ -118,4 +118,18 @@ public class AbstractXmlRepository<T extends Identifiable> {
         this.X_QUERY_FIND_ALL_ENTITIES = X_QUERY_FIND_ALL_ENTITIES;
         this.X_UPDATE_REMOVE_ENTITY_BY_ID_EXPRESSION = X_UPDATE_REMOVE_ENTITY_BY_ID_EXPRESSION;
     }
+
+    public List<T> findEntities(String query) throws XMLDBException, JAXBException {
+        Collection collection = this.dbConnection.getCollection(this.collectionId);
+        XQueryService xQueryService = (XQueryService) collection.getService("XQueryService", "1.0");
+        CompiledExpression compiledExpression = xQueryService.compile(query);
+        ResourceSet resourceSet = xQueryService.execute(compiledExpression);
+        ResourceIterator resourceIterator = resourceSet.getIterator();
+        List<T> entities = new ArrayList<>();
+        while (resourceIterator.hasMoreResources()) {
+            XMLResource xmlResource = (XMLResource) resourceIterator.nextResource();
+            entities.add(this.xmlConversionAgent.unmarshall(xmlResource.getContentAsDOM(), this.jaxbContextPath));
+        }
+        return entities;
+    }
 }

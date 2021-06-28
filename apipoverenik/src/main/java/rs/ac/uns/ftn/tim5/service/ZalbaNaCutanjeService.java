@@ -10,6 +10,7 @@ import org.xml.sax.SAXException;
 import org.xmldb.api.base.XMLDBException;
 
 import rs.ac.uns.ftn.tim5.SOAP.client.ZalbaCutanjeClient;
+import rs.ac.uns.ftn.tim5.helper.PretrageHelper;
 import rs.ac.uns.ftn.tim5.helper.SparqlQueryResult;
 import rs.ac.uns.ftn.tim5.helper.XmlConversionAgent;
 import rs.ac.uns.ftn.tim5.model.exception.EntityNotFoundException;
@@ -28,8 +29,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.*;
@@ -68,6 +68,9 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
 
     @Autowired
     private ZalbaCutanjeClient zalbaCutanjeClient;
+
+    @Autowired
+    private PretrageHelper pretrageHelper;
 
     @Autowired
     @Lazy
@@ -439,5 +442,39 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public List<ZalbaCutanja> pronadjiTerm(String term) {
+        try {
+            return this.zalbaCutanjaAbstractXmlRepository.findEntities(String.format(SEARCH_ZALBA_CUTANJA, term));
+        } catch (XMLDBException | JAXBException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<ZalbaCutanja> pronadjiMetadata(String metadata) {
+        String[] sts = metadata.split("\\*OR\\*");
+        Set<ZalbaCutanja> retval = new HashSet<>();
+        for (String andsubstr : sts) {
+            String[] andsubstrtokens = andsubstr.split("\\*AND\\*");
+            System.out.println("Search by metadata AND substring: " + Arrays.toString(andsubstrtokens));
+            Set<String> ids = pretrageHelper.searchMetadata(andsubstrtokens, SPARQL_NAMED_GRAPH_URI);
+
+            ids.forEach((String s) -> {
+                try {
+                    retval.add(zalbaCutanjaAbstractXmlRepository.getEntity(Long.parseLong(s)));
+                } catch (XMLDBException | JAXBException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+
+        return new ArrayList<>(retval);
+    }
+
+    public List<String> getRefers(String about) {
+
+        return rdfService.search(SPARQL_NAMED_GRAPH_URI, about);
     }
 }

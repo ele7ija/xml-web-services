@@ -53,6 +53,14 @@ const state = {
         name: 'Izvestaji',
         hasChildren: false,
         id: 6
+      },
+      {
+        displayName: 'Pretrage',
+        fullName: "Pretrage",
+        description: 'Pretraga svih dokumenata poverenika',
+        name: 'Pretrage',
+        hasChildren: false,
+        id: 7
       }
     ]
   },

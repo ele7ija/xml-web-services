@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.XMLDBException;
+import rs.ac.uns.ftn.tim5.helper.PretrageHelper;
 import rs.ac.uns.ftn.tim5.helper.XmlConversionAgent;
 import rs.ac.uns.ftn.tim5.model.exception.EntityNotFoundException;
 import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlDatabaseException;
@@ -14,6 +15,7 @@ import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlException;
 import rs.ac.uns.ftn.tim5.model.exception.XmlDatabaseException;
 import rs.ac.uns.ftn.tim5.model.izvestaj.Izvestaj;
 import rs.ac.uns.ftn.tim5.model.obavestenje.Obavestenje;
+import rs.ac.uns.ftn.tim5.model.zalba_na_odluku.ZalbaNaOdluku;
 import rs.ac.uns.ftn.tim5.repository.AbstractXmlRepository;
 import rs.ac.uns.ftn.tim5.transformation.XSLFOTransformer;
 
@@ -23,10 +25,9 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 
-import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_QUERY_FIND_ALL_IZVESTAJI_EXPRESSION;
-import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.X_UPDATE_REMOVE_IZVESTAJ_BY_ID_EXPRESSION;
+import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.*;
 
 @Service
 public class IzvestajService implements AbstractXmlService<Izvestaj> {
@@ -60,6 +61,9 @@ public class IzvestajService implements AbstractXmlService<Izvestaj> {
     private SparqlUtil sparqlUtil;
 
     private XSLFOTransformer XSLFOTransformer;
+
+    @Autowired
+    private PretrageHelper pretrageHelper;
 
     @PostConstruct
     public void injectRepositoryProperties() {
@@ -332,5 +336,38 @@ public class IzvestajService implements AbstractXmlService<Izvestaj> {
     }
 
 
+    public List<Izvestaj> pronadjiTerm(String term) {
+        try {
+            return this.izvestajAbstractXmlRepository.findEntities(String.format(SEARCH_IZVESTAJI, term));
+        } catch (XMLDBException | JAXBException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<Izvestaj> pronadjiMetadata(String metadata) {
+        String[] sts = metadata.split("\\*OR\\*");
+        Set<Izvestaj> retval = new HashSet<>();
+        for (String andsubstr : sts) {
+            String[] andsubstrtokens = andsubstr.split("\\*AND\\*");
+            System.out.println("Search by metadata AND substring: " + Arrays.toString(andsubstrtokens));
+            Set<String> ids = pretrageHelper.searchMetadata(andsubstrtokens, SPARQL_NAMED_GRAPH_URI);
+
+            ids.forEach((String s) -> {
+                try {
+                    retval.add(izvestajAbstractXmlRepository.getEntity(Long.parseLong(s)));
+                } catch (XMLDBException | JAXBException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+
+        return new ArrayList<>(retval);
+    }
+
+    public List<String> getRefers(String about) {
+
+        return rdfService.search(SPARQL_NAMED_GRAPH_URI, about);
+    }
 }
 

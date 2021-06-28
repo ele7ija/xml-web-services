@@ -336,4 +336,9 @@ public class ObavestenjeService implements AbstractXmlService<Obavestenje> {
                 x -> this.zalbaNaCutanjeService.findByIdZahteva(x.getIdZahteva()) == null
         ).collect(Collectors.toList());
     }
+
+    public List<String> getRefers(String about) {
+
+        return rdfService.search(SPARQL_NAMED_GRAPH_URI, about);
+    }
 }

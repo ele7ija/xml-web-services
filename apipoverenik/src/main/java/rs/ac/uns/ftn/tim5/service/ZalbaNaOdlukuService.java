@@ -10,13 +10,16 @@ import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.XMLDBException;
 import rs.ac.uns.ftn.tim5.SOAP.client.ZalbaOdlukaClient;
+import rs.ac.uns.ftn.tim5.helper.PretrageHelper;
 import rs.ac.uns.ftn.tim5.helper.SparqlQueryResult;
+import rs.ac.uns.ftn.tim5.helper.XQueryExpressions;
 import rs.ac.uns.ftn.tim5.helper.XmlConversionAgent;
 import rs.ac.uns.ftn.tim5.model.exception.EntityNotFoundException;
 import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlDatabaseException;
 import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlException;
 import rs.ac.uns.ftn.tim5.model.exception.XmlDatabaseException;
 import rs.ac.uns.ftn.tim5.model.obavestenje.Obavestenje;
+import rs.ac.uns.ftn.tim5.model.resenje.Resenje;
 import rs.ac.uns.ftn.tim5.model.zalba_cutanja.ZalbaCutanja;
 import rs.ac.uns.ftn.tim5.model.zalba_na_odluku.ZalbaNaOdluku;
 import rs.ac.uns.ftn.tim5.repository.AbstractXmlRepository;
@@ -29,7 +32,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static rs.ac.uns.ftn.tim5.helper.XQueryExpressions.*;
@@ -69,6 +72,9 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
 
     @Autowired
     private ZalbaOdlukaClient zalbaOdlukaClient;
+
+    @Autowired
+    private PretrageHelper pretrageHelper;
 
     @Autowired
     @Lazy
@@ -445,5 +451,39 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public List<ZalbaNaOdluku> pronadjiTerm(String term) {
+        try {
+            return this.zalbaNaOdlukuAbstractXmlRepository.findEntities(String.format(SEARCH_ZALBA_ODLUKE, term));
+        } catch (XMLDBException | JAXBException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<ZalbaNaOdluku> pronadjiMetadata(String metadata) {
+        String[] sts = metadata.split("\\*OR\\*");
+        Set<ZalbaNaOdluku> retval = new HashSet<>();
+        for (String andsubstr : sts) {
+            String[] andsubstrtokens = andsubstr.split("\\*AND\\*");
+            System.out.println("Search by metadata AND substring: " + Arrays.toString(andsubstrtokens));
+            Set<String> ids = pretrageHelper.searchMetadata(andsubstrtokens, SPARQL_NAMED_GRAPH_URI);
+
+            ids.forEach((String s) -> {
+                try {
+                    retval.add(zalbaNaOdlukuAbstractXmlRepository.getEntity(Long.parseLong(s)));
+                } catch (XMLDBException | JAXBException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+
+        return new ArrayList<>(retval);
+    }
+
+    public List<String> getRefers(String about) {
+
+        return rdfService.search(SPARQL_NAMED_GRAPH_URI, about);
     }
 }
