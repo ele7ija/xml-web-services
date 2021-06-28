@@ -248,3 +248,23 @@ export const constructZalbaNaCutanje = xml => {
     datum: constructDatum(xml.getChildElements("zc:datum_zalbe")[0]),
   };
 };
+
+export const constructKolekcijaResenja = xml => {
+  xml = Xonomy.xml2js(xml);
+  return xml.getChildElements("re:Resenje").map(x => constructResenje(x));
+};
+
+export const constructResenje = xml => {
+  return {
+    id: xml.getAttribute("id").value,
+    about: xml.getAttribute("about").value,
+    zalba_url: xml.getAttribute("content").value,
+    zalilac: xml.getChildElements("re:zalba")[0].getChildElements("re:Podnosilac")[0].getText(),
+    organVlasti: {
+      naziv: xml.getChildElements("re:zalba")[0].getChildElements("re:Organ_vlasti")[0].getChildElements("util:Naziv")[0].getText(),
+    },
+    poverenik: {
+      imePrezime: xml.getChildElements("re:poverenik")[0].getChildElements("util:Ime")[0].getText() + " " + xml.getChildElements("re:poverenik")[0].getChildElements("util:Prezime")[0].getText()
+    }
+  };
+};

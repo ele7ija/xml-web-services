@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.jena.sparql.resultset.ResultsFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
@@ -64,6 +65,11 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
     private ZalbaCutanjeClient zalbaCutanjeClient;
 
     private XSLFOTransformer xslfoTransformer;
+
+    @Autowired
+    @Lazy
+    private ResenjeService resenjeService;
+
 
     @PostConstruct
     public void injectRepositoryProperties(){
@@ -428,7 +434,7 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
         //TODO: Zalbe koje se filtriraju ispod dodatno isfiltrirati po nepostojanju resenja za zalbu sa datim ID-jem
         return zalbeCutanja.stream().filter(
                 x -> x.getOdgovorOrganaVlasti().getPrihvatio().getValue().equals("ne") &&
-                     x.getOdgovorOrganaVlasti().getOdbio().getValue().equals("ne")
+                     x.getOdgovorOrganaVlasti().getOdbio().getValue().equals("ne") && this.resenjeService.findByIdZalbe(x.getId()) == null
         ).collect(Collectors.toList());
     }
 }

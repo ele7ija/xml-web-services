@@ -14,6 +14,7 @@ import Izvestaj from '@/components/sluzbenik/izvestaj/Izvestaj';
 import Pretrage from '@/components/sluzbenik/pretrage/Pretrage';
 import store from '../vuex';
 import Zalbe from '@/components/zalbe/Zalbe'
+import ResenjaAll from '@/components/sluzbenik/resenje/ResenjaAll';
 
 Vue.use(VueRouter);
 
@@ -85,7 +86,11 @@ const router = new VueRouter({
       path: '/zalbe',
       component: Zalbe
     },
-
+    {
+      name: 'ResenjaAll',
+      path: '/resenja',
+      component: ResenjaAll
+    },
   ]
 });
 

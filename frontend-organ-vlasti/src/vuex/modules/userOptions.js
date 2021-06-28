@@ -66,6 +66,14 @@ const state = {
         name: 'Zalbe',
         hasChildren: false,
         id: 8
+      },
+      {
+        displayName: 'Resenja',
+        fullName: "Resenja",
+        description: 'Pregledaj izdata resenja na sve vrste zalbi.',
+        name: 'ResenjaAll',
+        hasChildren: false,
+        id: 9
       }
     ]
   },

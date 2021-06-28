@@ -43,6 +43,11 @@ public class XQueryExpressions {
             "xquery version \"3.1\";\n" +
                     "xmldb:remove('/db/sample/resenja', '%s')";
 
+    public static final String X_QUERY_FIND_RESENJE_BY_ID_ZALBE_EXPRESSION = "xquery version \"3.1\";\n" +
+            "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/resenje\";\n" +
+            "for $x in collection(\"/db/sample/resenja\")/Resenje[@id_zalbe=%d]\n" +
+            "return $x";
+
 
     //XQUERY I XUPDATE ZA IZVESTAJ
 

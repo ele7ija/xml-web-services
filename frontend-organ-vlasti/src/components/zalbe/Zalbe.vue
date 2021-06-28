@@ -6,7 +6,6 @@
         <table class="table table-sm table-bordered">
           <thead>
             <th class="text-center">Zalba</th>
-            <th class="text-center">Status</th>
             <th class="text-center">Organ Vlasti</th>
             <th class="text-center">Datum</th>
             <th class="text-center" :style="{width: '12%'}">PDF</th>
@@ -19,8 +18,7 @@
               v-for="(zalba, index) in zalbe"
               :key="index"
             >
-              <td class="text-center"><a :href="zalba.about">{{zalba.about}}</a></td>
-              <td class="text-center">{{zalba.status}}</td>
+              <td class="text-center">{{zalba.id}}</td>
               <td class="text-center">{{zalba.organVlasti.naziv}}</td>
               <td class="text-center">{{zalba.datum}}</td>
               <td>
@@ -92,7 +90,6 @@
         <table class="table table-sm table-bordered">
           <thead>
             <th class="text-center">Zalba</th>
-            <th class="text-center">Status</th>
             <th class="text-center">Organ Vlasti</th>
             <th class="text-center">Datum</th>
             <th class="text-center" :style="{width: '12%'}">PDF</th>
@@ -105,8 +102,7 @@
               v-for="(zalba, index) in zalbeOdluka"
               :key="index"
             >
-              <td class="text-center"><a :href="zalba.about">{{zalba.about}}</a></td>
-              <td class="text-center">{{zalba.status}}</td>
+              <td class="text-center">{{zalba.id}}</td>
               <td class="text-center">{{zalba.organVlasti.naziv}}</td>
               <td class="text-center">{{zalba.datum}}</td>
               <td>
