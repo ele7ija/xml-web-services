@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.XMLDBException;
+import rs.ac.uns.ftn.tim5.SOAP.client.IzvestajClient;
 import rs.ac.uns.ftn.tim5.helper.XmlConversionAgent;
 import rs.ac.uns.ftn.tim5.model.exception.EntityNotFoundException;
 import rs.ac.uns.ftn.tim5.model.exception.InvalidXmlDatabaseException;
@@ -61,6 +62,8 @@ public class IzvestajService implements AbstractXmlService<Izvestaj> {
     @Autowired
     private SparqlUtil sparqlUtil;
 
+    @Autowired
+    private IzvestajClient izvestajClient;
 
     @PostConstruct
     public void injectRepositoryProperties() {
@@ -142,6 +145,8 @@ public class IzvestajService implements AbstractXmlService<Izvestaj> {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+
+        izvestajClient.sendIzvestaj(izvestaj);
 
         return izvestaj;
     }

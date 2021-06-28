@@ -44,8 +44,8 @@ const state = {
         description: 'Pregledaj godisnji izvestaj organa vlasti.',
         name: 'Izvestaji',
         hasChildren: false,
-        id: 5
-      }
+        id: 15
+      },
     ]
   },
   role: ''

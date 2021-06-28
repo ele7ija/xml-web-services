@@ -85,7 +85,7 @@ import java.math.BigInteger;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "izvestaj", propOrder = {
     "statistikaZahteva",
     "statistikaZalbi",
     "organVlasti",

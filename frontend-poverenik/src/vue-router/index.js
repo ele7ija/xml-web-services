@@ -12,6 +12,8 @@ import ZalbaNaCutanjeCreate from '@/components/gradjanin/zalbe/ZalbaNaCutanjeCre
 import ZalbeNaOdlukuPoverenik from '@/components/poverenik/zalbe/ZalbeNaOdlukuPoverenik';
 import ZalbeNaCutanjePoverenik from '@/components/poverenik/zalbe/ZalbeNaCutanjePoverenik';
 import Izvestaji from '@/components/poverenik/izvestaj/Izvestaji';
+import Izvestaj from '@/components/poverenik/izvestaj/Izvestaj';
+
 
 Vue.use(VueRouter);
 
@@ -77,7 +79,12 @@ const router = new VueRouter({
       name: 'Izvestaji',
       path: '/izvestaji',
       component: Izvestaji
-    }
+    },
+    {
+      name: 'Izvestaj',
+      path: '/izvestaj/:id',
+      component: Izvestaj
+    },
   ]
 });
 
