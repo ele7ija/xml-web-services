@@ -429,6 +429,7 @@ public class ZahtevService implements AbstractXmlService<Zahtev> {
     public List<Zahtev> pronadjiTerm(String term) {
 
         try {
+
             return this.zahtevAbstractXmlRepository.findEntities(String.format(XQueryExpressions.SEARCH_ZAHTEVI, term));
         } catch (XMLDBException e) {
             e.printStackTrace();

@@ -17,7 +17,7 @@ public class XQueryExpressions {
     public static final String SEARCH_ZAHTEVI = "xquery version \"3.1\";\n"
             + "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/zahtev\";\n"
             + "for $x in collection(\"/db/sample/zahtev\")\n"
-            + "where $x//*/text()[contains(lower-case(.) ,%s)]\n" + "return $x";
+            + "where $x//*/text()[contains(lower-case(.) ,\"%s\")]\n" + "return $x";
 
 
     //XQUERY I XUPDATE ZA OBAVESTENJE
@@ -56,7 +56,7 @@ public class XQueryExpressions {
     public static final String SEARCH_RESENJE= "xquery version \"3.1\";\n"
             + "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/resenje\";\n"
             + "for $x in collection(\"/db/sample/resenja\")\n"
-            + "where $x//*/text()[contains(lower-case(.) ,%s)]\n" + "return $x";
+            + "where $x//*/text()[contains(lower-case(.) ,\"%s\")]\n" + "return $x";
 
 
     //XQUERY I XUPDATE ZA IZVESTAJ
@@ -73,7 +73,7 @@ public class XQueryExpressions {
     public static final String SEARCH_IZVESTAJI = "xquery version \"3.1\";\n"
             + "declare default element namespace \"http://ftn.uns.ac.rs/tim5/model/izvestaj\";\n"
             + "for $x in collection(\"/db/sample/izvestaj\")\n"
-            + "where $x//*/text()[contains(lower-case(.) ,%s)]\n" + "return $x";
+            + "where $x//*/text()[contains(lower-case(.) ,\"%s\")]\n" + "return $x";
 
 
     //XQUERY I XUPDATE ZA GRADJANINA
