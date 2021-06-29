@@ -1,12 +1,28 @@
 # XML i web servisi projekat
 
-### Pokretanje RDF baze
+## Pokretanje svega preko Docker-a
 
-1. Skinuti Apache TomEE plus **8.0.5** sa sajta: https://tomee.apache.org/download-ng.html
-2. Skinuti Apache Jena **Fuseki** sa sajta: https://jena.apache.org/download/index.cgi
-3. Staviti .war fajl iz Jena Fuseki foldera u apache/webapps
-4. Pokrenuti Apache TomEE na portu **8083** (podesiti server.xml u tomee folderu)
+### Pokretanje email servisa
 
-### Pokretanje svega docker-compose-om
+1. Pozicionirati se u ./emailservice
+2. Pokrenuti `docker-compose up`
 
-Jos nije spremno pokretanje preko docker-compose
+### Pokretanje organa vlasti
+
+1. Pozicionirati se u ./apiorganvlasti
+2. Pokrenuti `docker-compose up`
+
+frontend:
+1. Pozicionirati se u frontend-organ-vlasti
+2. Pokrenuti `npm install`
+3. Pokrenuti `npm run serve`
+
+### Pokretanje poverenika
+
+1. Pozicionirati se u ./apipoverenik
+2. Pokrenuti `docker-compose up`
+
+frontend:
+1. Pozicionirati se u frontend-poverenik
+2. Pokrenuti `npm install`
+3. Pokrenuti `npm run serve`
