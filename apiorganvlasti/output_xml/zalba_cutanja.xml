@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<zc:Zalba_cutanja xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:zc="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja" xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:za="http://ftn.uns.ac.rs/tim5/model/zahtev" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="7477971854308555280" about="http://localhost:8086/zalba_cutanja/7477971854308555280" vocab="http://ftn.uns.ac.rs.tim5/model/predicate" property="pred:zahtev_url" content="http://localhost:8086/zahtev/4626697510559565878" id_zahteva="4626697510559565878">
+<zc:Zalba_cutanja xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:zc="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja" xmlns:ob="http://ftn.uns.ac.rs/tim5/model/obavestenje" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:za="http://ftn.uns.ac.rs/tim5/model/zahtev" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="7100049618213740904" about="http://localhost:8086/zalba_cutanja/7100049618213740904" vocab="http://ftn.uns.ac.rs.tim5/model/predicate" property="pred:zahtev_url" content="http://localhost:8086/zahtev/8501115336173178033" id_zahteva="8501115336173178033">
     <zc:poverenik>
         <util:Mesto>Београд</util:Mesto>
         <util:Postanski_broj>11000</util:Postanski_broj>
         <util:Ulica>Булевар Краља Александра</util:Ulica>
         <util:Broj>15</util:Broj>
     </zc:poverenik>
-    <zc:zalilac property="pred:email_trazioca" content="novi_gradj">
+    <zc:zalilac property="pred:email_trazioca" content="millan.djuric@hotmail.com">
         <zc:osnovni_podaci>
             <util:Adresa>
                 <util:Mesto>Novi Sad</util:Mesto>
-                <util:Ulica>Futoska</util:Ulica>
-                <util:Broj>23</util:Broj>
+                <util:Ulica>Vladislava Kacanskog</util:Ulica>
+                <util:Broj>6</util:Broj>
             </util:Adresa>
-            <util:Ime>Novi</util:Ime>
-            <util:Prezime>Gradj</util:Prezime>
+            <util:Ime>Milan</util:Ime>
+            <util:Prezime>Djuric</util:Prezime>
         </zc:osnovni_podaci>
         <zc:drugi_podaci_za_kontakt></zc:drugi_podaci_za_kontakt>
     </zc:zalilac>
@@ -28,14 +28,14 @@
     </zc:organ_vlasti>
     <zc:razlog_zalbe>није поступио у целости</zc:razlog_zalbe>
     <zc:datum_zahteva>
-        <util:dan>---27</util:dan>
+        <util:dan>---29</util:dan>
         <util:mesec>--06</util:mesec>
         <util:godina>2021</util:godina>
     </zc:datum_zahteva>
-    <zc:zahtevana_informacije>Trazim</zc:zahtevana_informacije>
+    <zc:zahtevana_informacije>Z1</zc:zahtevana_informacije>
     <zc:mesto_zalbe property="pred:mesto" content="Novi Sad">Novi Sad</zc:mesto_zalbe>
-    <zc:datum_zalbe property="pred:datum_zalbe" content="27.6.2021">
-        <util:dan>---27</util:dan>
+    <zc:datum_zalbe property="pred:datum_zalbe" content="29.6.2021">
+        <util:dan>---29</util:dan>
         <util:mesec>--06</util:mesec>
         <util:godina>2021</util:godina>
     </zc:datum_zalbe>

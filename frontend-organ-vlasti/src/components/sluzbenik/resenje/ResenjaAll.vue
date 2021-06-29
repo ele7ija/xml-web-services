@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12">
         <h3 class="mt-5 mb-4 text-center">Resenja</h3>
-        <table class="talble table-sm table-bordered">
+        <table class="talble table-sm table-bordered" :style="{width: '100%'}">
           <thead>
             <tr>
               <th>Resenje</th>
@@ -51,7 +51,7 @@
           </tbody>
           <tbody v-else>
             <tr>
-              <td colspan="9">
+              <td colspan="6">
                 <div class="spinner-border" role="status" :style="{width: '2rem', height: '2rem', 'font-size': '10px', left: '50%', position: 'relative'}">
                   <span class="sr-only">Loading...</span>
                 </div>

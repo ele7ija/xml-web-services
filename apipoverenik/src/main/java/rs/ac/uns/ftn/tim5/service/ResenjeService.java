@@ -333,7 +333,7 @@ public class ResenjeService implements AbstractXmlService<Resenje> {
                 ),
                 String.format("<%s/resenje/%d>  ?p  ?o", System.getenv("FRONTEND_URL"), resenjeId));
         String sep = System.getProperty("file.separator");
-        String filePath = String.format(".%s%s%resenje_metadata.ttl", sep, OUTPUT_FOLDER_METADATA, sep);
+        String filePath = String.format(".%s%s%sresenje_metadata.ttl", sep, OUTPUT_FOLDER_METADATA, sep);
         this.rdfService.runAndExportInNativeFormat(
                 sparqlQuery,
                 filePath

@@ -5,19 +5,19 @@
     "bindings": [
       { 
         "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/poverenik" } ,
-        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Bojan " }
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Mika Mikic" }
       } ,
       { 
         "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/odluka_poverenika" } ,
-        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "prihvaceno" }
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "odbijena_zalba" }
       } ,
       { 
         "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/datum_resenja" } ,
-        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "28.6.2021" }
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "29.6.2021" }
       } ,
       { 
         "p": { "type": "uri" , "value": "http://ftn.uns.ac.rs/tim5/model/predicate/zalba_url" } ,
-        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "http://localhost:8087/zalba_na_odluku/9007743062685848592" }
+        "o": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "http://localhost:8087/zalba_cutanja/7100049618213740904" }
       }
     ]
   }

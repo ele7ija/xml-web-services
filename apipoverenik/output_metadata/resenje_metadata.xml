@@ -10,7 +10,7 @@
         <uri>http://ftn.uns.ac.rs/tim5/model/predicate/poverenik</uri>
       </binding>
       <binding name="o">
-        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Bojan </literal>
+        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Mika Mikic</literal>
       </binding>
     </result>
     <result>
@@ -18,7 +18,7 @@
         <uri>http://ftn.uns.ac.rs/tim5/model/predicate/odluka_poverenika</uri>
       </binding>
       <binding name="o">
-        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">prihvaceno</literal>
+        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">odbijena_zalba</literal>
       </binding>
     </result>
     <result>
@@ -26,7 +26,7 @@
         <uri>http://ftn.uns.ac.rs/tim5/model/predicate/datum_resenja</uri>
       </binding>
       <binding name="o">
-        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">28.6.2021</literal>
+        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">29.6.2021</literal>
       </binding>
     </result>
     <result>
@@ -34,7 +34,7 @@
         <uri>http://ftn.uns.ac.rs/tim5/model/predicate/zalba_url</uri>
       </binding>
       <binding name="o">
-        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">http://localhost:8087/zalba_na_odluku/9007743062685848592</literal>
+        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">http://localhost:8087/zalba_cutanja/7100049618213740904</literal>
       </binding>
     </result>
   </results>

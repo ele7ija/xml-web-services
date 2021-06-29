@@ -18,7 +18,7 @@
         <uri>http://ftn.uns.ac.rs/tim5/model/predicate/datum</uri>
       </binding>
       <binding name="o">
-        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">22.6.2021</literal>
+        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">29.6.2021</literal>
       </binding>
     </result>
     <result>
@@ -34,7 +34,7 @@
         <uri>http://ftn.uns.ac.rs/tim5/model/predicate/email_trazioca</uri>
       </binding>
       <binding name="o">
-        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">password</literal>
+        <literal datatype="http://www.w3.org/2000/01/rdf-schema#Literal">millan.djuric@hotmail.com</literal>
       </binding>
     </result>
   </results>

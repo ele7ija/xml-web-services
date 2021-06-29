@@ -248,14 +248,14 @@ public class ZalbaNaOdlukuService implements AbstractXmlService<ZalbaNaOdluku> {
         /**
          * Izmeni tako da se port slaze sa frontendom organa vlasti (neophodno za rdf pretrage)
          */
-        zalbaNaOdluku.setAbout(
+        /*zalbaNaOdluku.setAbout(
                 String.format(
                         "%s%s%s",
                         System.getenv("FRONTEND_URL"),
                         "/zalba_na_odluku/",
                         zalbaNaOdluku.getId()
                 )
-        );
+        );*/
     }
 
     public ZalbaNaOdluku findByIdZahteva(Long idZahteva) {

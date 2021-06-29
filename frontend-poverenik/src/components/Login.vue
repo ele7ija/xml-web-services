@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex';
+import {mapActions, mapGetters} from 'vuex';
 import router from '../vue-router';
 export default {
   name: 'Login',
@@ -41,6 +41,9 @@ export default {
     };
   },
   computed: {
+    ...mapGetters({
+      redirectUri: 'userOptions/getRedirectUri'
+    }),
     isValid() {
       return this.email && this.password;
     }
@@ -55,7 +58,12 @@ export default {
         this.loading = true;
         await this.vuexLogin({email: this.email, password: this.password});
         this.loading = false;
-        router.push({path: '/'});
+        if (this.redirectUri) {
+          router.push({path: this.redirectUri});
+          this.$store.commit('userOptions/setRedirectUri', '', {root: true});
+        } else {
+          router.push({path: '/'});
+        }
       } catch(error) {
         this.loading = false;
         this.loginFailed = true;

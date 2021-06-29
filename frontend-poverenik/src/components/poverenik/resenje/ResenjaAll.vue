@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12">
         <h3 class="mt-5 mb-4 text-center">Resenja</h3>
-        <table class="talble table-sm table-bordered">
+        <table class="talble table-sm table-bordered" :style="{width: '100%'}">
           <thead>
             <tr>
               <th>Resenje</th>

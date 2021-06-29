@@ -1,6 +1,6 @@
-<http://localhost:8086/zahtev/8802974989372004556>
+<http://localhost:8086/zahtev/8501115336173178033>
         <http://ftn.uns.ac.rs/tim5/model/predicate/datum>
-                "31.5.2021"^^<http://www.w3.org/2000/01/rdf-schema#Literal> ;
+                "29.6.2021"^^<http://www.w3.org/2000/01/rdf-schema#Literal> ;
         <http://ftn.uns.ac.rs/tim5/model/predicate/email_trazioca>
                 "millan.djuric@hotmail.com"^^<http://www.w3.org/2000/01/rdf-schema#Literal> ;
         <http://ftn.uns.ac.rs/tim5/model/predicate/mesto>

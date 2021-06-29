@@ -64,12 +64,14 @@ const state = {
       }
     ]
   },
-  role: ''
+  role: '',
+  redirectUri: ''
 };
 
 const getters = {
   getOptions: state => state.options,
-  getRole: state => state.role
+  getRole: state => state.role,
+  getRedirectUri: state => state.redirectUri
 };
 
 const actions = {
@@ -82,7 +84,8 @@ const actions = {
 };
 
 const mutations = {
-  setRole: (state, role) => state.role = role
+  setRole: (state, role) => state.role = role,
+  setRedirectUri: (state, redirectUri) => state.redirectUri = redirectUri
 };
 
 export default {

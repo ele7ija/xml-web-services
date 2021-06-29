@@ -256,14 +256,14 @@ public class ZalbaNaCutanjeService implements AbstractXmlService<ZalbaCutanja> {
         /**
          * Izmeni ako da se slaze sa portom frontenda organa vlasti (neophodno za rdf pretrage)
          */
-        zalbaCutanja.setAbout(
+        /*zalbaCutanja.setAbout(
                 String.format(
                         "%s%s%s",
                         System.getenv("FRONTEND_URL"),
                         "/zalba_cutanja/",
                         zalbaCutanja.getId()
                 )
-        );
+        );*/
     }
 
     public byte[] generatePdf(Long id) {

@@ -1,0 +1,9 @@
+<http://localhost:8087/resenje/5203049539128806976>
+        <http://ftn.uns.ac.rs/tim5/model/predicate/datum_resenja>
+                "29.6.2021"^^<http://www.w3.org/2000/01/rdf-schema#Literal> ;
+        <http://ftn.uns.ac.rs/tim5/model/predicate/odluka_poverenika>
+                "odbijena_zalba"^^<http://www.w3.org/2000/01/rdf-schema#Literal> ;
+        <http://ftn.uns.ac.rs/tim5/model/predicate/poverenik>
+                "Mika Mikic"^^<http://www.w3.org/2000/01/rdf-schema#Literal> ;
+        <http://ftn.uns.ac.rs/tim5/model/predicate/zalba_url>
+                "http://localhost:8087/zalba_cutanja/7100049618213740904"^^<http://www.w3.org/2000/01/rdf-schema#Literal> .

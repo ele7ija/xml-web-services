@@ -1,6 +1,6 @@
-<http://localhost:8086/obavestenje/8361356400602624137>
+<http://localhost:8086/obavestenje/8126788147892368802>
         <http://ftn.uns.ac.rs/tim5/model/predicate/datum>
-                "31.5.2021"^^<http://www.w3.org/2000/01/rdf-schema#Literal> ;
+                "29.6.2021"^^<http://www.w3.org/2000/01/rdf-schema#Literal> ;
         <http://ftn.uns.ac.rs/tim5/model/predicate/email_trazioca>
                 "millan.djuric@hotmail.com"^^<http://www.w3.org/2000/01/rdf-schema#Literal> ;
         <http://ftn.uns.ac.rs/tim5/model/predicate/istekao>
@@ -10,4 +10,4 @@
         <http://ftn.uns.ac.rs/tim5/model/predicate/odbijen>
                 "ne"^^<http://www.w3.org/2000/01/rdf-schema#Literal> ;
         <http://ftn.uns.ac.rs/tim5/model/predicate/zahtev_url>
-                "http://localhost:8086/zahtev/8802974989372004556"^^<http://www.w3.org/2000/01/rdf-schema#Literal> .
+                "http://localhost:8086/zahtev/6406835370805234675"^^<http://www.w3.org/2000/01/rdf-schema#Literal> .

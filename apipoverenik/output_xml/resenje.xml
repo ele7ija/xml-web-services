@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<re:Resenje xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:zc="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:zo="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="5897206406473343517" id_zalbe="9007743062685848592" about="http://localhost:8087/resenje/5897206406473343517" vocab="http://ftn.uns.ac.rs.tim5/model/predicate" property="pred:zalba_url" content="http://localhost:8087/zalba_na_odluku/9007743062685848592" tip_zalbe="zalba_na_odluku">
-    <re:datum_resenja property="pred:datum_resenja" content="28.6.2021">
-        <util:dan>---28</util:dan>
+<re:Resenje xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:zc="http://ftn.uns.ac.rs/tim5/model/zalba_cutanja" xmlns:re="http://ftn.uns.ac.rs/tim5/model/resenje" xmlns:pred="http://ftn.uns.ac.rs/tim5/model/predicate/" xmlns:zo="http://ftn.uns.ac.rs/tim5/model/zalba_na_odluku" xmlns:util="http://ftn.uns.ac.rs/tim5/model/util" xmlns:iz="http://ftn.uns.ac.rs/tim5/model/izvestaj" id="7226324159235131968" id_zalbe="8129003837456421897" about="http://localhost:8087/resenje/7226324159235131968" vocab="http://ftn.uns.ac.rs.tim5/model/predicate" property="pred:zalba_url" content="http://localhost:8087/zalba_cutanja/8129003837456421897" tip_zalbe="zalba_cutanja">
+    <re:datum_resenja property="pred:datum_resenja" content="29.6.2021">
+        <util:dan>---29</util:dan>
         <util:mesec>--06</util:mesec>
         <util:godina>2021</util:godina>
     </re:datum_resenja>
     <re:broj_resenja></re:broj_resenja>
     <re:zalba>
         <re:Datum_podnosenja_zahteva>
-            <util:dan>---28</util:dan>
+            <util:dan>---29</util:dan>
             <util:mesec>--06</util:mesec>
             <util:godina>2021</util:godina>
         </re:Datum_podnosenja_zahteva>
-        <re:Tip_zalbe>zalba_na_odluku</re:Tip_zalbe>
-        <re:Podnosilac>Bojan Poprzen</re:Podnosilac>
+        <re:Tip_zalbe>zalba_cutanja</re:Tip_zalbe>
+        <re:Podnosilac>Milan Djuric</re:Podnosilac>
         <re:Organ_vlasti>
             <util:Adresa>
                 <util:Mesto>Нови Сад</util:Mesto>
@@ -29,13 +29,13 @@
         <re:odbijen_zahtev>false</re:odbijen_zahtev>
     </re:odluka>
     <re:obrazlozenje></re:obrazlozenje>
-    <re:poverenik property="pred:poverenik" content="Bojan ">
+    <re:poverenik property="pred:poverenik" content="Mika Mikic">
         <util:Adresa>
-            <util:Mesto>NS</util:Mesto>
-            <util:Ulica>CD</util:Ulica>
-            <util:Broj>45</util:Broj>
+            <util:Mesto>Novi Sad</util:Mesto>
+            <util:Ulica>Zeleznicka</util:Ulica>
+            <util:Broj>51</util:Broj>
         </util:Adresa>
-        <util:Ime>Bojan</util:Ime>
-        <util:Prezime></util:Prezime>
+        <util:Ime>Mika</util:Ime>
+        <util:Prezime>Mikic</util:Prezime>
     </re:poverenik>
 </re:Resenje>
