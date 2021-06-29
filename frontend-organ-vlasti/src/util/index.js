@@ -250,6 +250,7 @@ export const constructZalbaNaCutanje = xml => {
       naziv: xml.getChildElements("zc:organ_vlasti")[0].getChildElements("util:Naziv")[0].getText(),
     },
     datum: constructDatum(xml.getChildElements("zc:datum_zalbe")[0]),
+    razlog_zalbe: xml.getChildElements('zc:razlog_zalbe')[0].getText()
   };
 };
 

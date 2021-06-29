@@ -204,6 +204,7 @@ export default {
       let brNijePostupio = 0;
       let brNijePostupioUCelosti = 0;
       for (let zalba_cutanje of this.zalbe_cutanje) {
+        console.log(zalba_cutanje)
         if (zalba_cutanje.razlog_zalbe == 'није поступио') {
           brNijePostupio++;
         }
