@@ -1,6 +1,7 @@
 # XML i web servisi projekat
 
 ## Pokretanje svega preko Docker-a
+Obavezno pokrenuti u redosledu koji je naveden u ovom fajlu (zbog eksternih docker mreza)
 
 ### Pokretanje email servisa
 
