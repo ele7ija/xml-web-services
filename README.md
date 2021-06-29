@@ -1,5 +1,8 @@
 # XML i web servisi projekat
 
+## Video prezentacija projekta
+Dostupna na linku: [https://drive.google.com/file/d/1td-tMmIQNnalByMkL161-xuyEL-1qPpv/view?usp=sharing](https://drive.google.com/file/d/1td-tMmIQNnalByMkL161-xuyEL-1qPpv/view?usp=sharing)
+
 ## Pokretanje svega preko Docker-a
 Obavezno pokrenuti u redosledu koji je naveden u ovom fajlu (zbog eksternih docker mreza)
 
